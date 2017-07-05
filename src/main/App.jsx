@@ -4,7 +4,6 @@ import '../common/template/dependencies'
 import Header from '../common/template/Header'
 import Sidebar from '../common/template/Sidebar'
 import Footer from '../common/template/Footer'
-import Routes from '../main/Routes'
 
 class App extends Component {
   render() {
@@ -13,7 +12,7 @@ class App extends Component {
         <Header />
         <Sidebar />
         <div className='content-wrapper'>
-          <Routes />
+          {this.props.children}
         </div>
         <Footer />
       </div>
