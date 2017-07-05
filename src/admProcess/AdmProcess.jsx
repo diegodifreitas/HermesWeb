@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+
 import ContentHeader from '../common/template/ContentHeader'
 import Content from '../common/template/Content'
 import Row from '../common/layout/Row'
@@ -9,7 +12,15 @@ import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
 import TabContent from '../common/tabs/TabContent'
 
+import { selectTab, showTabs } from '../common/tabs/tabActions'
+
 class AdmProcess extends Component {
+
+    componentWillMount() {
+        this.props.selectTab('tabList')
+        this.props.showTabs('tabList', 'tabCreate')
+    }
+
     render() {
         return (
             <div className=''>
@@ -34,5 +45,5 @@ class AdmProcess extends Component {
         )
     }
 }
-
-export default AdmProcess
+const mapDispatchToProps = dispatch => bindActionCreators({ selectTab, showTabs }, dispatch)
+export default connect(null, mapDispatchToProps)(AdmProcess)
