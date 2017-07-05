@@ -7,21 +7,27 @@ import Tabs from '../common/tabs/Tabs'
 import TabsHeader from '../common/tabs/TabsHeader'
 import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
+import TabContent from '../common/tabs/TabContent'
 
 class AdmProcess extends Component {
     render() {
-        return ( 
+        return (
             <div className=''>
                 <ContentHeader title='Processo Administrativo' small='Cadastro' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
-                            <TabHeader label='Listar' icon='bars' target='tabList'/>
-                            <TabHeader label='Incluir' icon='plus' target='tabCreate'/>
-                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate'/>
-                            <TabHeader label='Excluir' icon='trash-o' target='tabDelete'/>
+                            <TabHeader label='Listar' icon='bars' target='tabList' />
+                            <TabHeader label='Incluir' icon='plus' target='tabCreate' />
+                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            <TabHeader label='Excluir' icon='trash-o' target='tabDelete' />
                         </TabsHeader>
-                        <TabsContent></TabsContent>
+                        <TabsContent>
+                            <TabContent id='tabList'> <h1> Lista </h1></TabContent>
+                            <TabContent id='tabCreate'> <h1> Incluir </h1></TabContent>
+                            <TabContent id='tabUpdate'> <h1> Alterar </h1></TabContent>
+                            <TabContent id='tabDelete'> <h1> Delete </h1></TabContent>
+                        </TabsContent>
                     </Tabs>
                 </Content>
             </div>
