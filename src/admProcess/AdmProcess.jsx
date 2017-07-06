@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 
 import ContentHeader from '../common/template/ContentHeader'
 import Content from '../common/template/Content'
-import Row from '../common/layout/Row'
 import Tabs from '../common/tabs/Tabs'
 import TabsHeader from '../common/tabs/TabsHeader'
 import TabsContent from '../common/tabs/TabsContent'
