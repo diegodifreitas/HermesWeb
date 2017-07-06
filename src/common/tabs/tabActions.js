@@ -1,11 +1,11 @@
-export function selectTab(tabId){
+export const selectTab = (tabId) => {
     return {
         type: 'TAB_SELECTED',
         payload: tabId
     }
 }
 
-export function showTabs(...tabIds){
+export const showTabs = (...tabIds) => {
     const tabsToShow = { }
     tabIds.forEach( e => tabsToShow[e] = true)
     return {
