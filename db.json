@@ -20,6 +20,20 @@
       "modalidade": "Inexigibilidade - 002/2017",
       "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "pendencias": "Acompanhamento"
+    },
+    {
+      "prtp": "06/2017",
+      "modalidade": "Chamamento Público - 001/2017",
+      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "pendencias": "Não há",
+      "id": 4
+    },
+    {
+      "prtp": "08/2017",
+      "modalidade": "Chamamento Público - 001/2015",
+      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "pendencias": "Acompanhamento",
+      "id": 5
     }
   ]
 }

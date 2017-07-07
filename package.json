@@ -29,5 +29,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "authors": [
+    "Diego Dulval de Freitas <diegodifreitas@gmail.com>"
+  ],
+  "keywords": [
+    "react",
+    "redux",
+    "react-redux",
+    "tcc",
+    "pfc"
+  ]
 }

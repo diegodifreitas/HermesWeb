@@ -4,6 +4,7 @@ import '../common/template/dependencies'
 import Header from '../common/template/Header'
 import Sidebar from '../common/template/Sidebar'
 import Footer from '../common/template/Footer'
+import Messages from '../common/msg/Messages'
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           {this.props.children}
         </div>
         <Footer />
+        <Messages />
       </div>
     )
   }
