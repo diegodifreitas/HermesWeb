@@ -14,7 +14,7 @@ import List from './AdmProcessList'
 import Form from './AdmProcessForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { create } from './admProcessActions'
+import { create, update, remove } from './admProcessActions'
 
 class AdmProcess extends Component {
 
@@ -40,10 +40,14 @@ class AdmProcess extends Component {
                                 <List />
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <Form onSubmit= {this.props.create} />
+                                <Form onSubmit= {this.props.create} submitLabel='Incluir' submitClass='primary'/>
                             </TabContent>
-                            <TabContent id='tabUpdate'> <h1> Alterar </h1></TabContent>
-                            <TabContent id='tabDelete'> <h1> Delete </h1></TabContent>
+                            <TabContent id='tabUpdate'>
+                                <Form onSubmit= {this.props.update} submitLabel='Alterar' submitClass='primary'/>
+                            </TabContent>
+                            <TabContent id='tabDelete'> 
+                                <Form onSubmit= {this.props.remove} readOnly={true} submitLabel='Excluir' submitClass='danger' />
+                            </TabContent>
                         </TabsContent>
                     </Tabs>
                 </Content>
@@ -52,5 +56,5 @@ class AdmProcess extends Component {
     }
 }
 const mapDispatchToProps = dispatch => 
-    bindActionCreators({ selectTab, showTabs, create }, dispatch)
+    bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
 export default connect(null, mapDispatchToProps)(AdmProcess)

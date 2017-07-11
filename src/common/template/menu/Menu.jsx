@@ -18,9 +18,8 @@ class Menu extends Component {
             < ul className='sidebar-menu' >
                 <MenuItem path='/' label='Dashboard' icon='dashboard' target='dashboard' />
                 <MenuItem path='myAccount' label='Minha Conta' icon='id-card-o' target='myaccount' />
-                <MenuTree label='Processo Administrativo' icon='newspaper-o' target='admprocess'>
-                    <MenuItem path='admProcess' label='Em Seleção' icon='paper-plane-o' />
-                    <MenuItem path='admProcess' label='Em Execução' icon='handshake-o' />
+                <MenuTree label='Cadastro' icon='newspaper-o' target='admprocess'>
+                    <MenuItem path='admProcess' label='Processo Administrativo' icon='paper-plane-o' />
                 </MenuTree>
             </ul >
         )

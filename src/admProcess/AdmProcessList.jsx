@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getList } from './admProcessActions'
+import { getList, showUpdate, showDelete } from './admProcessActions'
 
 class AdmProcessList extends Component {
 
@@ -18,6 +18,15 @@ class AdmProcessList extends Component {
                 <td> {ap.modalidade} </td>
                 <td> {ap.descricaoSumaria} </td>
                 <td> {ap.pendencias} </td>
+                <td>
+                    {/*Criar Icon Button*/}
+                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(ap)} >
+                        <i className='fa fa-pencil' />
+                    </button>
+                    <button className='btn btn-danger' onClick={() => this.props.showDelete(ap)} >
+                        <i className='fa fa-trash-o' />
+                    </button>
+                </td>
             </tr>
         ))
     }
@@ -32,6 +41,7 @@ class AdmProcessList extends Component {
                             <th> Modalidade </th>
                             <th> Descrição Sumária </th>
                             <th> Pendências </th>
+                            <th className='table-action'> Ações </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,5 +53,5 @@ class AdmProcessList extends Component {
     }
 }
 const mapStateToProps = state => ({ list: state.admProcess.list })
-const mapDispatchToProps = dispatch => bindActionCreators({ getList }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcessList)
