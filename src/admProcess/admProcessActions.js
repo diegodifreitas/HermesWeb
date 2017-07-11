@@ -15,15 +15,15 @@ export const getList = () => {
 }
 
 export const create = (values) => {
-    return submit(values, 'postAdmProcess') 
+    return submit(values, 'postAdmProcess')
 }
 
 export const update = (values) => {
-     return submit(values, 'putAdmProcess')
+    return submit(values, 'putAdmProcess')
 }
 
 export const remove = (values) => {
-     return submit(values, 'deleteAdmProcess')
+    return submit(values, 'deleteAdmProcess')
 }
 
 const submit = (values, method) => {
@@ -65,4 +65,23 @@ export const init = () => {
         getList(),
         initialize('admProcessForm', INITIAL_VALUE)
     ]
+}
+
+export const getModalidadeSelect = () => {
+    const modalidades = {
+        modalidades: [
+            {
+                id: 1,
+                name: 'Teste'
+            },
+            {
+                id: 2,
+                name: "Teste 2"
+            }
+        ]
+    }
+    return {
+        type: 'MODALIDADE_SELECT_FETCHED',
+        payload: modalidades
+    }
 }
