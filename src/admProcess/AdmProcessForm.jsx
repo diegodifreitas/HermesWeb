@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { init, getModalidadeSelect } from './admProcessActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndCombo from '../common/form/LabelAndCombo'
+import LabelAndDate from '../common/form/LabelAndDate'
 
 class AdmProcessForm extends Component {
     componentWillMount() {
@@ -34,6 +35,9 @@ class AdmProcessForm extends Component {
                     <Field name='modalide-combo' label='Modalidade' cols='12 6'
                         placeholder='Informe a Modalidade' values={this.props.modalidades}
                         component={LabelAndCombo} readOnly={this.props.readOnly} />
+
+                    {/*<Field name='published_at' component={LabelAndDate} label='Data de Publicação' 
+                        cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />*/}
 
                 </div>
                 <div className='box-footer'>

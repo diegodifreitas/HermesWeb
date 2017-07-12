@@ -3,6 +3,8 @@ import jquery from 'jquery'
 
 require( 'jquery-ui')
 require( 'admin-lte/plugins/fastclick/fastclick.min')
+
+require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
 require('admin-lte/plugins/slimScroll/jquery.slimscroll.min')
 require('admin-lte/dist/js/app.min')
 
