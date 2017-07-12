@@ -5,6 +5,9 @@ require( 'jquery-ui')
 require( 'admin-lte/plugins/fastclick/fastclick.min')
 
 require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
+require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')
+require('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
+
 require('admin-lte/plugins/slimScroll/jquery.slimscroll.min')
 require('admin-lte/dist/js/app.min')
 

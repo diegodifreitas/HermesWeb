@@ -5,7 +5,10 @@ export default class LabelAndDate extends Component {
 
     componentDidMount() {
         window.$(this.refs.input).datepicker({
-            autoclose: true
+            language: 'pt-BR',
+            autoclose: true, 
+            todayHighlight: true,
+            minViewMode: 0
         })
     }
     componentWillUnmount() {
@@ -25,10 +28,14 @@ export default class LabelAndDate extends Component {
                         </div>
                         <input {...props.input} readOnly={props.readOnly} type={props.type}
                             className="form-control pull-right datepicker date" data-dateformat="dd/mm/yy"
-                            ref="input" id="datepicker" />
+                            ref="input" id="datepicker"
+                            placeholder={props.placeholder} />
                     </div>
                 </div>
             </Grid>
         )
     }
 }
+
+{/*<Field name='published_at' component={LabelAndDate} label='Data de Publicação' 
+                        cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />*/}

@@ -34,10 +34,10 @@ class AdmProcessForm extends Component {
 
                     <Field name='modalide-combo' label='Modalidade' cols='12 6'
                         placeholder='Informe a Modalidade' values={this.props.modalidades}
-                        component={LabelAndCombo} readOnly={this.props.readOnly} />
+                        component={LabelAndCombo} readOnly={readOnly} />
 
-                    {/*<Field name='published_at' component={LabelAndDate} label='Data de Publicação' 
-                        cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />*/}
+                    <Field name='published_at' component={LabelAndDate} label='Data de Publicação'
+                        cols='12 6' readOnly={readOnly} placeholder='Informe a data' />
 
                 </div>
                 <div className='box-footer'>
