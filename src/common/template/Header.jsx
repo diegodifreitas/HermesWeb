@@ -3,7 +3,7 @@ import React from 'react'
 export default prrops => (
     <header className='main-header'>
         <a href='/#/' className='logo'>
-            <span className='logo-mini'><b>H</b></span>
+            <span className='logo-mini'><i className='fa fa-bank'></i></span>
             <span className='logo-lg'>
                 <i className='fa fa-bank'></i>
                 <b> Hermes </b>
