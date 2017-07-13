@@ -1,5 +1,9 @@
 import React from 'react'
-import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
+
+import {
+    Route,
+    Switch
+} from 'react-router-dom'
 
 import App from './App'
 import AccountInfo from '../accountInfo/AccountInfo'
@@ -7,12 +11,10 @@ import AdmProcess from '../admProcess/AdmProcess'
 import Dashboard from '../dashboard/Dashboard'
 
 export default props => (
-    <Router history={hashHistory}>
-        <Route path='/' component={App}>
-            <IndexRoute component={Dashboard} />
-            <Router path='/myAccount' component={AccountInfo} />
-            <Router path='/admProcess' component={AdmProcess} />
-        </Route>
-        <Redirect from='*' to='/' />
-    </Router>
+    <Switch> 
+            <Route exact path='/' component={Dashboard} />
+            <Route exact path='/myAccount' component={AccountInfo} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/admProcess' component={AdmProcess} />
+    </Switch>
 )

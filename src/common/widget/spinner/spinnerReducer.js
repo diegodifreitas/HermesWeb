@@ -8,6 +8,5 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, isLoading: true }
         default:
             return state
-    }
-    
+    }   
 }
