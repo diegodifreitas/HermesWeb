@@ -5,7 +5,7 @@ import Menu from './menu/Menu'
 export default props => (
     <aside className='main-sidebar'>
         <section className='sidebar'>
-            <Menu />
+            <Menu location={props.location} />
         </section>
     </aside>
 )

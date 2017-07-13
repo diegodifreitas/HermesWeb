@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.1.1"
   },
   "devDependencies": {
     "admin-lte": "^2.3.11",
@@ -18,7 +19,6 @@
     "react-dropzone": "^3.13.3",
     "react-redux": "^5.0.5",
     "react-redux-toastr": "^7.0.0",
-    "react-router": "^3.0.2",
     "react-scripts": "1.0.10",
     "redux": "^3.7.1",
     "redux-form": "^6.8.0",
