@@ -5,33 +5,16 @@ import {
     Switch
 } from 'react-router-dom'
 
-//import App from './App'
+import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import AccountInfo from '../accountInfo/AccountInfo'
 import AdmProcess from '../admProcess/AdmProcess'
 import Dashboard from '../dashboard/Dashboard'
 
 export default props => {
-    const userIsInATeam = (nextState, replace, callback) => {
-        var arr = window.$('ul.sidebar-menu a')
-        var iLen = arr.length
-        for (var i = 0;i < iLen; i++) {
-            if (arr[i].href == arr[i].baseURI) {
-                var li = arr[i].parentNode
-                window.$(li).addClass('active')
-            }
-            else {
-                var li = arr[i].parentNode
-                window.$(li).removeClass('active')
-            }
-        }
-        console.log(
-            '???? eai ?'
-        )
 
-    }
     return (
         <Switch>
-            <Route exact path='/' component={Dashboard} onUpdater={userIsInATeam()} />
+            <Route exact path='/' component={Dashboard} onUpdater={ mapActiveUrlToMenu() } />
             <Route exact path='/myAccount' component={AccountInfo} />
             <Route exact path='/admProcess' component={AdmProcess} />
             <Route path='*' component={Dashboard} />

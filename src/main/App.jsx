@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import '../common/template/dependencies'
+import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import Header from '../common/template/Header'
 import Sidebar from '../common/template/Sidebar'
 import Footer from '../common/template/Footer'
@@ -19,18 +20,7 @@ class App extends Component {
       }, 1000)
     }
     // TODO: Criar função para nãop repetir este código
-    const arr = window.$('ul.sidebar-menu a')
-    const iLen = arr.length
-    for (var i = 0; i < iLen; i++) {
-      if (arr[i].href == arr[i].baseURI) {
-        const li = arr[i].parentNode
-        window.$(li).addClass('active')
-      }
-      else {
-        const li = arr[i].parentNode
-        window.$(li).removeClass('active')
-      }
-    }
+    mapActiveUrlToMenu()
   }
 
   render() {
