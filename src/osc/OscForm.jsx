@@ -19,9 +19,9 @@ class OscForm extends Component {
     }
 
     render() {
-        const { handleSubmit, readOnly } = this.props
+        const { d, readOnly } = this.props
         return (
-            <form role='form' onSubmit={handleSubmit}>
+            <form role='form' onSubmit={d}>
                 <BoxBody>
                     <Field name='nome' component={LabelAndInput} readOnly={readOnly}
                         label='Nome da Organização' cols='12 12' placeholder='Informe o Nome da Organização' />
@@ -44,11 +44,12 @@ class OscForm extends Component {
                     <Field name='telefone' component={LabelAndInput} label='Telefone'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
                 </BoxBody>
-                <Box color='danger'>
-                    <BoxHeader title='Responsavél' />
-                    <BoxBody>
+
+                <BoxBody>
+                    <fieldset>
+                        <legend> Responsavél </legend>
                         <Field name='nome' component={LabelAndInput} readOnly={readOnly}
-                            label='Nome do Responsavél Legal*' cols='12 12' placeholder='Nome da responsável pela organização' />
+                            label='Nome do Responsavél Legal' cols='12 12' placeholder='Nome da responsável pela organização' />
 
                         <Field name='cargo' component={LabelAndInput} readOnly={readOnly}
                             label='Cargo' cols='12 3' placeholder='Informe o Cargo' />
@@ -74,8 +75,9 @@ class OscForm extends Component {
                             cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' />
                         <Field name='terminoDoMandato' component={LabelAndDate} label='Término do Mandato'
                             cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' />
-                    </BoxBody>
-                </Box>
+                    </fieldset>
+                </BoxBody>
+
                 <BoxFooter >
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
