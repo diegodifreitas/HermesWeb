@@ -7,7 +7,7 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 const INITIAL_VALUE = {}
 
 export const getList = () => {
-    const request = Api.getAdmProcess()
+    const request = Api.getOsc()
     return {
         type: "OSC_FETCHED",
         payload: request

@@ -15,8 +15,8 @@ class Menu extends Component {
                 <li className='header'> MENU DE NAVEGAÇÃO </li>
                 <MenuItem path='/' label='Dashboard' icon='dashboard' />
                 <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
-                <MenuItem path='/osc' label='OSCs' icon='id-card-o' />
-                <MenuItem path='/admProcess' label='Processo Administrativo' icon='paper-plane-o' />
+                <MenuItem path='/osc' label='OSCs' icon='university' />
+                <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
             </ul >
         )
     }

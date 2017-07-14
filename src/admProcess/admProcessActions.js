@@ -72,11 +72,15 @@ export const getModalidadeSelect = () => {
         modalidades: [
             {
                 id: 1,
-                name: 'Teste'
+                nome: 'Inexigibilidade'
             },
             {
                 id: 2,
-                name: "Teste 2"
+                nome: "Chamamento Público"
+            },
+            {
+                id: 3,
+                nome: "Dispensa"
             }
         ]
     }

@@ -3,20 +3,35 @@ import Grid from '../layout/Grid'
 
 export default class LabelAndDate extends Component {
 
+    // handleDateChangeEvent(ev) {
+    //     var fieldName = window.$(ev.target).attr('name')
+    //     var value = ev.target.value
+    //     this.props.dispatch(this.props.blur(fieldName, value))
+    // }
+
     componentDidMount() {
         window.$(this.refs.input).datepicker({
-            language: 'pt-BR',
-            autoclose: true, 
+            format: "dd/mm/yyyy",
+            clearBtn: true,
+            language: "pt-BR",
+            autoclose: true,
             todayHighlight: true,
-            minViewMode: 0
+            toggleActive: true
         })
     }
+
     componentWillUnmount() {
         window.$(this.refs.input).datepicker('destroy')
     }
 
     render() {
         const { props } = this
+        // window.$(this.refs.input).on('changeDate', (e) => {
+        //     props.input.value = e.target.value
+        //     console.log(props.input.value)
+        //     return null
+        // })
+
         return (
             <Grid cols={props.cols} section={true}>
                 <div className="form-group">
@@ -26,16 +41,16 @@ export default class LabelAndDate extends Component {
                         <div className="input-group-addon">
                             <i className="fa fa-calendar"></i>
                         </div>
-                        <input {...props.input} readOnly={props.readOnly} type={props.type}
-                            className="form-control pull-right datepicker date" data-dateformat="dd/mm/yy"
-                            ref="input" id="datepicker"
-                            placeholder={props.placeholder} />
+                        <input {...props.input}
+                            readOnly={props.readOnly}
+                            type={props.type}
+                            className="form-control pull-right datepicker date"
+                            ref="input"
+                            placeholder={props.placeholder} 
+                            onBlur={(event, value) => props.input.onBlur(value)}/>
                     </div>
                 </div>
             </Grid>
         )
     }
 }
-
-{/*<Field name='published_at' component={LabelAndDate} label='Data de Publicação' 
-                        cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />*/}

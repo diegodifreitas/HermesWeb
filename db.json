@@ -1,39 +1,70 @@
 {
   "admprocess": [
     {
+      "dotacaoOrcamentaria": " R$ 6.000,00 (seis mil reais)",
+      "prtp": "008/2017",
+      "objeto": "Seleção de Entidade de Direito Privado, sem fins lucrativos, qualificada como Organização da Sociedade Civil, nos termos da Lei Federal nº 13.019/2014, que se interesse firmar Termo de Parceria com o Município de Santa Rita do Sapucaí, através da Secretaria Municipal de Esportes, Cultura, Lazer e Turismo, para atuação na área cultural do Município.",
+      "pendencias": "Não há.",
+      "descricaoSumaria": "Secretaria Municipal de Esportes, Cultura, Lazer e Turismo",
+      "id": 7,
+      "modalidade": {
+        "id": 1,
+        "nome": "Inexigibilidade",
+        "numero": "008/2017"
+      },
+      "dataPublicacao": "14/07/2017"
+    },
+    {
+      "modalidade": {
+        "nome": "Inexigibilidade",
+        "numero": "020/2017"
+      },
+      "dotacaoOrcamentaria": "R$ 10.000,00 (dez mil reais)",
+      "pendencias": "Não há",
+      "prtp": "020/2017",
+      "objeto": "Seleção de Entidade de Direito Privado, sem fins lucrativos, qualificada como Organização da Sociedade Civil, nos termos da Lei Federal nº 13.019/2014, que se interesse firmar Termo de Parceria com o Município de Santa Rita do Sapucaí, através da Secretaria Municipal de Desenvolvimento Social, para atuação na Política Pública de Assistência Social na Oferta de Serviços para Pessoa com Deficiência – PCD.",
+      "id": 8,
+      "descricaoSumaria": "Secretaria Municipal de Desenvolvimento Social",
+      "dataPublicacao": ""
+    }
+  ],
+  "osc": [
+    {
+      "nome": "Associação DEMOV – Deficientes em Movimento ",
+      "cnpj": "19.988.498/0001-70",
+      "conselhoMunicipal": "Conselho Municipal de Assistência Social",
+      "email": "demov.org@hotmail.com",
+      "endereco": "Juca Castelo, 86",
+      "bairro": "Centro",
+      "telefone": "35987136728",
+      "responsavel": {
+        "nome": "Eduardo Borges Nogueira",
+        "cargo": "Presidente",
+        "cpf": "87984938687",
+        "rg": "368022511 SSP / SP",
+        "bairro": "Fernandes",
+        "telefone": "34714960",
+        "endereco": "João Batista de Melo",
+        "email": "eduardoborgesnogueira@hotmail.com"
+      },
+      "id": 1
+    }
+  ],
+  "modalidades": [
+    {
       "id": 1,
-      "prtp": "03/2017",
-      "modalidade": "Inexigibilidade - 009/2017",
-      "descricaoSumaria": "[Alterado - Ok] Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "pendencias": "Não há"
+      "nome": "INEXIBILIDADE",
+      "numero": "008/2017"
+    },
+    {
+      "id": 2,
+      "nome": "CHAMAMENTO PUBLÍCO",
+      "numero": "008/2017"
     },
     {
       "id": 3,
-      "prtp": "04/2017",
-      "modalidade": "Inexigibilidade - 002/2017",
-      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "pendencias": "Acompanhamento"
-    },
-    {
-      "prtp": "06/2017",
-      "modalidade": "Chamamento Público - 001/2017",
-      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "pendencias": "Não há",
-      "id": 4
-    },
-    {
-      "prtp": "08/2017",
-      "modalidade": "Chamamento Público - 001/2015",
-      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "pendencias": "Acompanhamento",
-      "id": 5
-    },
-    {
-      "prtp": "09/2017",
-      "modalidade": "Inexigibilidade - 002/2017",
-      "descricaoSumaria": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "pendencias": "Não há",
-      "id": 6
+      "nome": "DISPENSA",
+      "numero": "008/2017"
     }
   ]
 }

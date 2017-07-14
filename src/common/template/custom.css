@@ -9,3 +9,7 @@ button {
 li.header {
     text-align: center;
 }
+
+.logo-h, .wing-left, .wing-right {
+    fill: white;
+}
