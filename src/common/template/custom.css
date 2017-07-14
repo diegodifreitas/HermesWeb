@@ -5,3 +5,7 @@ button {
 .table-action{
     width: 150px;
 }
+
+li.header {
+    text-align: center;
+}

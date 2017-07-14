@@ -12,12 +12,11 @@ class Menu extends Component {
     render() {
         return (
             < ul className='sidebar-menu tree' data-widget="tree" >
-            <li className='header'> MENU DE NAVEGAÇÃO </li>
-                <MenuItem path='/' label='Dashboard' icon='dashboard' target='dashboard' />
-                <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' target='myaccount' />
-                <MenuTree label='Cadastro' icon='newspaper-o' target='admprocess'>
-                    <MenuItem path='/admProcess' label='Processo Administrativo' icon='paper-plane-o' />
-                </MenuTree>
+                <li className='header'> MENU DE NAVEGAÇÃO </li>
+                <MenuItem path='/' label='Dashboard' icon='dashboard' />
+                <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
+                <MenuItem path='/osc' label='OSCs' icon='id-card-o' />
+                <MenuItem path='/admProcess' label='Processo Administrativo' icon='paper-plane-o' />
             </ul >
         )
     }

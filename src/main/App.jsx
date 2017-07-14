@@ -19,7 +19,6 @@ class App extends Component {
         }, 2000)
       }, 1000)
     }
-    // TODO: Criar função para nãop repetir este código
     mapActiveUrlToMenu()
   }
 
