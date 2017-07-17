@@ -17,7 +17,7 @@ class OscList extends Component {
                 <td> {osc.nome} </td>
                 <td> {osc.cnpj} </td>
                 <td> {osc.responsavel.nome} </td>
-                <td> {osc.responsavel.fimDoMandato} </td>
+                <td> {osc.responsavel.terminoDoMandato} </td>
                 <td> {osc.situacao} </td>
                 <td>
                     {/*Criar Icon Button*/}

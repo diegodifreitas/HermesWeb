@@ -12,6 +12,7 @@ import BoxFooter from '../common/template/box/BoxFooter'
 
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndCombo from '../common/form/LabelAndCombo'
+import LabelAndMask from '../common/form/LabelAndMask'
 import LabelAndDate from '../common/form/LabelAndDate'
 
 class OscForm extends Component {
@@ -73,10 +74,10 @@ class OscForm extends Component {
                             cols='12 4' readOnly={readOnly} placeholder='Informe o email do Responsavél' type='email' />
 
                         <Field name='responsavel.inicioDoMandato' component={LabelAndDate} label='Início do Mandato'
-                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' />
-                            
+                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
+
                         <Field name='responsavel.terminoDoMandato' component={LabelAndDate} label='Término do Mandato'
-                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' />
+                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
                     </fieldset>
                 </BoxBody>
 

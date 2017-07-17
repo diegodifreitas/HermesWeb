@@ -2,36 +2,21 @@ import React, { Component } from 'react'
 import Grid from '../layout/Grid'
 
 export default class LabelAndDate extends Component {
-
-    // handleDateChangeEvent(ev) {
-    //     var fieldName = window.$(ev.target).attr('name')
-    //     var value = ev.target.value
-    //     this.props.dispatch(this.props.blur(fieldName, value))
-    // }
-
+    
     componentDidMount() {
-        window.$(this.refs.input).datepicker({
-            format: "dd/mm/yyyy",
-            clearBtn: true,
-            language: "pt-BR",
-            autoclose: true,
-            todayHighlight: true,
-            toggleActive: true
-        })
-    }
+        const klass = this
+        const element = window.$(this.refs.input)
 
-    componentWillUnmount() {
-        window.$(this.refs.input).datepicker('destroy')
+        element.datepicker({
+            language: "pt-BR"
+        })
+            .on("input change", (e) => {
+                klass.props.input.onChange(e)
+            })
     }
 
     render() {
         const { props } = this
-        // window.$(this.refs.input).on('changeDate', (e) => {
-        //     props.input.value = e.target.value
-        //     console.log(props.input.value)
-        //     return null
-        // })
-
         return (
             <Grid cols={props.cols} section={true}>
                 <div className="form-group">
@@ -41,13 +26,13 @@ export default class LabelAndDate extends Component {
                         <div className="input-group-addon">
                             <i className="fa fa-calendar"></i>
                         </div>
-                        <input {...props.input}
-                            readOnly={props.readOnly}
+                        <input  {...props.input}
                             type={props.type}
-                            className="form-control pull-right datepicker date"
+                            className="form-control"
                             ref="input"
-                            placeholder={props.placeholder} 
-                            onBlur={(event, value) => props.input.onBlur(value)}/>
+                            placeholder={props.placeholder}
+                            readOnly={props.readOnly}
+                        />
                     </div>
                 </div>
             </Grid>

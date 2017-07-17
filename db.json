@@ -45,7 +45,9 @@
         "bairro": "Fernandes",
         "telefone": "34714960",
         "endereco": "João Batista de Melo",
-        "email": "eduardoborgesnogueira@hotmail.com"
+        "email": "eduardoborgesnogueira@hotmail.com",
+        "inicioDoMandato": "06/12/2016",
+        "terminoDoMandato": "27/08/2018"
       },
       "id": 1
     }

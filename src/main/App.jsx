@@ -18,7 +18,8 @@ class App extends Component {
           ele.outerHTML = ''
         }, 2000)
       }, 1000)
-    }
+    } 
+
     mapActiveUrlToMenu()
   }
 

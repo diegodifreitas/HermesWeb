@@ -2,6 +2,7 @@ import jquery from 'jquery'
     window.$ = window.jQuery = jquery
 
 require( 'jquery-ui')
+require( 'jquery.inputmask/dist/jquery.inputmask.bundle.js')
 require( 'admin-lte/plugins/fastclick/fastclick.min')
 
 require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
@@ -19,6 +20,7 @@ require( 'font-awesome/css/font-awesome.min.css')
 require( 'ionicons/dist/css/ionicons.min.css')
 
 require( './custom.css')
+
 
 
 
