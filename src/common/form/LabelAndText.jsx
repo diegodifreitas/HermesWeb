@@ -6,7 +6,7 @@ export default props => (
         <div className='form-group'>
             <label htmlFor={props.name}> {props.label} </label>
             <textarea {...props.input} 
-                    className='form-control'
+                    className={`form-control ${props.style}`}
                     placeholder={props.placeholder} 
                     readOnly={props.readOnly} 
                     type={props.type} />

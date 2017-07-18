@@ -16,7 +16,11 @@ class Menu extends Component {
                 <MenuItem path='/' label='Dashboard' icon='dashboard' />
                 <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
                 <MenuItem path='/osc' label='OSCs' icon='university' />
-                <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
+
+                <MenuTree label='Processo Administrativo' icon='bullhorn'>
+                    <MenuItem path='/admProcess' label='Cadastro' icon='plus' />
+                    <MenuItem path='/monitoring' label='Monitoramento' icon='briefcase' />
+                </MenuTree>
             </ul >
         )
     }

@@ -8,6 +8,7 @@ import {
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import AccountInfo from '../accountInfo/AccountInfo'
 import AdmProcess from '../admProcess/AdmProcess'
+import Monitoring from '../admProcess/monitoring/MonitoringProcess'
 import Dashboard from '../dashboard/Dashboard'
 import Osc from '../osc/Osc'
 
@@ -19,6 +20,7 @@ export default props => {
             <Route exact path='/myAccount' component={AccountInfo} />
             <Route exact path='/osc' component={Osc} />
             <Route exact path='/admProcess' component={AdmProcess} />
+            <Route exact path='/monitoring' component={Monitoring} />
             <Route path='*' component={Dashboard} />
         </Switch>
     )
