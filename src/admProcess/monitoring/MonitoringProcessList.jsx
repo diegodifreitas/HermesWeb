@@ -2,26 +2,28 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import { getList, showUpdate, showDelete } from './monitoringProcessActions'
+
 class MonitoringProcessList extends Component {
 
     componentWillMount() {
-
+        this.props.getList()
     }
 
     renderRows() {
         const list = this.props.list || []
-        return list.map(ap => (
-            <tr key={ap.id}>
-                <td> {ap.prtp} </td>
-                <td> {ap.modalidade.nome}  &nbsp; <b>nº:</b> &nbsp; {ap.modalidade.numero} </td>
-                <td> {ap.descricaoSumaria} </td>
-                <td> {ap.pendencias} </td>
+        return list.map(monitoringProcess => (
+            <tr key={monitoringProcess.id}>
+                <td> {monitoringProcess.fase} </td>
+                <td> {monitoringProcess.descricao} </td>
+                <td> {monitoringProcess.setor} </td>
+                <td> {monitoringProcess.dataPrevista} </td>
                 <td>
                     {/*Criar Icon Button*/}
-                    <button className='btn btn-warning' onClick={() => null } >
+                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(monitoringProcess)} >
                         <i className='fa fa-pencil' />
                     </button>
-                    <button className='btn btn-danger' onClick={() => null } >
+                    <button className='btn btn-danger' onClick={() => this.props.showDelete(monitoringProcess)} >
                         <i className='fa fa-trash-o' />
                     </button>
                 </td>
@@ -35,10 +37,10 @@ class MonitoringProcessList extends Component {
                 <table className='table'>
                     <thead>
                         <tr>
-                            <th> PRTP </th>
-                            <th> Modalidade </th>
-                            <th> Descrição Sumária </th>
-                            <th> Pendências </th>
+                            <th> Fase </th>
+                            <th> Descrição </th>
+                            <th> Setor </th>
+                            <th> Data Prevista</th>
                             <th className='table-action'> Ações </th>
                         </tr>
                     </thead>
@@ -50,6 +52,6 @@ class MonitoringProcessList extends Component {
         )
     }
 }
-const mapStateToProps = state => ({ list: state.admProcess.list })
-const mapDispatchToProps = dispatch => bindActionCreators({  }, dispatch)
+const mapStateToProps = state => ({ list: state.monitoringProcess.list })
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(MonitoringProcessList)

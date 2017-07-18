@@ -5,6 +5,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import SpinnerReducer from '../common/widget/spinner/spinnerReducer'
 import TabReducer from '../common/tabs/tabReducer'
 import AdmProcessReducer from '../admProcess/admProcessReducer'
+import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcessReducer'
 import OscReducer from '../osc/oscReducer'
 
 const rootReducer = combineReducers({
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
     form: formReducer,
     toastr: toastrReducer,
     common: SpinnerReducer,
-    osc: OscReducer
+    osc: OscReducer,
+    monitoringProcess: MonitoringProcessReducer
 })
 
 export default rootReducer
