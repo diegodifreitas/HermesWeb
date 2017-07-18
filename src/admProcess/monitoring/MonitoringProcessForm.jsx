@@ -27,33 +27,36 @@ class MonitoringProcessForm extends Component {
         const { handleSubmit, readOnly } = this.props
         return (
             <form role='form' onSubmit={handleSubmit}>
-                    <BoxBody >
-                        <Row>
-                            <Grid cols='12 12' style='monitoring-row'>
-                                <Field name='fase' label='Fase' cols='12 12'
-                                    placeholder='Informe a Fase' values={this.props.fases}
-                                    component={LabelAndCombo} readOnly={readOnly} />
-                            </Grid>
-                        </Row>
-                        <Row>
-                            <Grid cols='12 8' style='monitoring-row'>
-                                <Field name='descricao' label='Descrição' cols='12 12'
-                                    placeholder='Informe uma descrição da fase'
-                                    component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
-                            </Grid>
-                            <Grid cols='12 4' style='monitoring-row' >
-                                <Field name='dataPrevista' component={LabelAndDate} readOnly={readOnly}
-                                    label='Data Prevista' cols='12 12' placeholder='Informe a data...' />
-                                <Field name='setor' component={LabelAndInput} readOnly={readOnly}
-                                    label='Setor' cols='12 12' placeholder='Informe o Setor...' />
-                            </Grid>
-                        </Row>
+                <BoxBody >
+                    <Row>
+                        <Grid cols='12 12' style='monitoring-row'>
+                            <Field name='idProcesso' component={LabelAndInput} readOnly={true}
+                                label='ID do Processo Administrativo' cols='12 2' type="number" placeholder='PRTP' idValue={this.props.idProcess} />
 
-                    </BoxBody>
-                    <BoxFooter>
-                        <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                        <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
-                    </BoxFooter>
+                            <Field name='fase' label='Fase' cols='12 10'
+                                placeholder='Informe a Fase' values={this.props.fases}
+                                component={LabelAndCombo} readOnly={readOnly} />
+                        </Grid>
+                    </Row>
+                    <Row>
+                        <Grid cols='12 8' style='monitoring-row'>
+                            <Field name='descricao' label='Descrição' cols='12 12'
+                                placeholder='Informe uma descrição da fase'
+                                component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
+                        </Grid>
+                        <Grid cols='12 4' style='monitoring-row' >
+                            <Field name='dataPrevista' component={LabelAndDate} readOnly={readOnly}
+                                label='Data Prevista' cols='12 12' placeholder='Informe a data...' />
+                            <Field name='setor' component={LabelAndInput} readOnly={readOnly}
+                                label='Setor' cols='12 12' placeholder='Informe o Setor...' />
+                        </Grid>
+                    </Row>
+
+                </BoxBody>
+                <BoxFooter>
+                    <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
+                </BoxFooter>
             </form >
         )
     }

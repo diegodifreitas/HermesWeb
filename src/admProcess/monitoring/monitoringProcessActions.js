@@ -6,8 +6,8 @@ import { showTabs, selectTab } from '../../common/tabs/tabActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = () => {
-    const request = Api.getMonitoringProcess()
+export const getList = (search = '') => {
+    const request = Api.getMonitoringProcess(search)
     return {
         type: "MONITORING_PROCESS_FETCHED",
         payload: request
@@ -83,7 +83,7 @@ export const getFasesSelect = () => {
                 nome: "Monitoramento"
             },
             {
-                id: 3,
+                id: 4,
                 nome: "Prestação de Contas"
             }
         ]

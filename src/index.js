@@ -11,7 +11,7 @@ import App from './main/App'
 import Routes from './main/Routes'
 
 
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 
 import reducers from './main/reducers'
@@ -23,9 +23,9 @@ const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
 const store = applyMiddleware(multi, thunk, promise)(createStore)(reducers, devTools)
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter >
+        <Router >
             <App  />
-        </BrowserRouter>
+        </Router>
     </Provider>
     , document.getElementById('root'))
 registerServiceWorker()

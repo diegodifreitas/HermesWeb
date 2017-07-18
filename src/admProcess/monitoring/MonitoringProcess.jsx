@@ -33,7 +33,7 @@ class MonitoringProcess extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Acompanhamento do Processo' small='Processo #XX' />
+                <ContentHeader title='Acompanhamento do Processo' small={this.props.match.params.id} />
                 <Content >
                     <Tabs>
                         <TabsHeader>
@@ -44,7 +44,7 @@ class MonitoringProcess extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List />
+                                <List processoId={this.props.match.params.id}/>
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form
@@ -52,20 +52,24 @@ class MonitoringProcess extends Component {
                                     submitLabel='Incluir'
                                     submitClass='primary'
                                     readOnly={false}
-                                    values={null} />
+                                    idProcess={this.props.match.params.id} 
+                                    />
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
-                                    submitClass='primary' />
+                                    submitClass='primary' 
+                                    idProcess={this.props.match.params.id} 
+                                    />
                             </TabContent>
                             <TabContent id='tabDelete'>
                                 <Form
                                     onSubmit={this.props.remove}
                                     readOnly={true}
                                     submitLabel='Excluir'
-                                    submitClass='danger' />
+                                    submitClass='danger' 
+                                    idProcess={this.props.match.params.id} />
                             </TabContent>
                         </TabsContent>
                     </Tabs>

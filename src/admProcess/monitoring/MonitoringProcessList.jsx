@@ -7,7 +7,7 @@ import { getList, showUpdate, showDelete } from './monitoringProcessActions'
 class MonitoringProcessList extends Component {
 
     componentWillMount() {
-        this.props.getList()
+        this.props.getList(this.props.processoId)
     }
 
     renderRows() {

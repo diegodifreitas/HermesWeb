@@ -10,7 +10,7 @@ export const deleteAdmProcess = (admProcess) => api.delete('admprocess/' + admPr
 export const putAdmProcess = (admProcess) => api.put('admprocess/' + admProcess.id, admProcess)
 
 export const postMonitoringProcess = (monitoringProcess) => api.post('monitoringProcess', monitoringProcess)
-export const getMonitoringProcess = (search = '') => api.get('monitoringProcess' + search)
+export const getMonitoringProcess = (search) => api.get('monitoringProcess?idProcesso=' + search)
 export const deleteMonitoringProcess = (monitoringProcess) => api.delete('monitoringProcess/' + monitoringProcess.id)
 export const putMonitoringProcess = (monitoringProcess) => api.put('monitoringProcess/' + monitoringProcess.id, monitoringProcess)
 

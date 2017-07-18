@@ -20,7 +20,8 @@ export default props => {
             <Route exact path='/myAccount' component={AccountInfo} />
             <Route exact path='/osc' component={Osc} />
             <Route exact path='/admProcess' component={AdmProcess} />
-            <Route exact path='/monitoring' component={Monitoring} />
+            <Route exact path='/admProcess/:id/monitoring' component={Monitoring} />
+
             <Route path='*' component={Dashboard} />
         </Switch>
     )

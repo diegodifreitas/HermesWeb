@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
+
 
 import { getList, showUpdate, showDelete } from './admProcessActions'
 
@@ -19,6 +21,10 @@ class AdmProcessList extends Component {
                 <td> {ap.descricaoSumaria} </td>
                 <td> {ap.pendencias} </td>
                 <td>
+                    
+                    <Link className="btn btn-success" to={'/admProcess/' + ap.id + '/monitoring'} >
+                        <i className='fa fa-briefcase' />
+                    </Link>
                     {/*Criar Icon Button*/}
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(ap)} >
                         <i className='fa fa-pencil' />
