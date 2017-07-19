@@ -52,7 +52,7 @@ class MonitoringProcess extends Component {
                                     submitLabel='Incluir'
                                     submitClass='primary'
                                     readOnly={false}
-                                    idProcess={this.props.match.params.id} 
+                                    processoId={this.props.match.params.id} 
                                     />
                             </TabContent>
                             <TabContent id='tabUpdate'>
@@ -60,7 +60,7 @@ class MonitoringProcess extends Component {
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' 
-                                    idProcess={this.props.match.params.id} 
+                                    processoId={this.props.match.params.id} 
                                     />
                             </TabContent>
                             <TabContent id='tabDelete'>
@@ -69,7 +69,7 @@ class MonitoringProcess extends Component {
                                     readOnly={true}
                                     submitLabel='Excluir'
                                     submitClass='danger' 
-                                    idProcess={this.props.match.params.id} />
+                                    processoId={this.props.match.params.id} />
                             </TabContent>
                         </TabsContent>
                     </Tabs>

@@ -14,24 +14,24 @@ export const getList = (search = '') => {
     }
 }
 
-export const create = (values) => {
-    return submit(values, 'postMonitoringProcess')
+export const create = (values, search) => {
+    return submit(values, 'postMonitoringProcess', search)
 }
 
-export const update = (values) => {
-    return submit(values, 'putMonitoringProcess')
+export const update = (values, search) => {
+    return submit(values, 'putMonitoringProcess', search)
 }
 
-export const remove = (values) => {
-    return submit(values, 'deleteMonitoringProcess')
+export const remove = (values, search) => {
+    return submit(values, 'deleteMonitoringProcess', search)
 }
 
-const submit = (values, method) => {
+const submit = (values, method, search) => {
     return dispatch => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                dispatch(init())
+                dispatch(init(search))
             })
             .catch(e => {
                 //alterar isso quando integrar com a API
@@ -58,11 +58,11 @@ export const showDelete = (monitoringProcess) => {
     ]
 }
 
-export const init = () => {
+export const init = (search) => {
     return [
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
-        getList(),
+        getList(search),
         initialize('monitoringProcessForm', INITIAL_VALUE)
     ]
 }

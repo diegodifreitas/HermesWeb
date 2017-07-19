@@ -24,38 +24,47 @@ class MonitoringProcessForm extends Component {
         this.props.getFasesSelect()
     }
     render() {
-        const { handleSubmit, readOnly } = this.props
+        const { handleSubmit, readOnly, processoId } = this.props
         return (
-            <form role='form' onSubmit={handleSubmit}>
+            <form role='form' onSubmit={(values) => handleSubmit(values, processoId)}>
                 <BoxBody >
-                    <Row>
-                        <Grid cols='12 12' style='monitoring-row'>
-                            <Field name='idProcesso' component={LabelAndInput} readOnly={true}
-                                label='ID do Processo Administrativo' cols='12 2' type="number" placeholder='PRTP' idValue={this.props.idProcess} />
-
-                            <Field name='fase' label='Fase' cols='12 10'
-                                placeholder='Informe a Fase' values={this.props.fases}
-                                component={LabelAndCombo} readOnly={readOnly} />
-                        </Grid>
-                    </Row>
-                    <Row>
-                        <Grid cols='12 8' style='monitoring-row'>
-                            <Field name='descricao' label='Descrição' cols='12 12'
-                                placeholder='Informe uma descrição da fase'
-                                component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
-                        </Grid>
-                        <Grid cols='12 4' style='monitoring-row' >
-                            <Field name='dataPrevista' component={LabelAndDate} readOnly={readOnly}
-                                label='Data Prevista' cols='12 12' placeholder='Informe a data...' />
-                            <Field name='setor' component={LabelAndInput} readOnly={readOnly}
-                                label='Setor' cols='12 12' placeholder='Informe o Setor...' />
-                        </Grid>
-                    </Row>
+                    <fieldset>
+                        <legend> Etapa Atual </legend>
+                        <Row>
+                            <Grid cols='12 8' style='monitoring-row'>
+                                <Field name='atualDescricao' label='Descrição' cols='12 12'
+                                    placeholder='Informe uma descrição da fase'
+                                    component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
+                            </Grid>
+                            <Grid cols='12 4' style='monitoring-row' >
+                                <Field name='atualData' component={LabelAndDate} readOnly={readOnly}
+                                    label='Data' cols='12 12' placeholder='Informe a data...' />
+                                <Field name='atualSetor' component={LabelAndInput} readOnly={readOnly}
+                                    label='Setor' cols='12 12' placeholder='Informe o Setor...' />
+                            </Grid>
+                        </Row>
+                    </fieldset>
+                    <fieldset>
+                        <legend> Proxima Etapa </legend>
+                        <Row>
+                            <Grid cols='12 8' style='monitoring-row'>
+                                <Field name='proximaDescricao' label='Descrição' cols='12 12'
+                                    placeholder='Informe uma descrição da fase'
+                                    component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
+                            </Grid>
+                            <Grid cols='12 4' style='monitoring-row' >
+                                <Field name='proximaData' component={LabelAndDate} readOnly={readOnly}
+                                    label='Data Prevista' cols='12 12' placeholder='Informe a data...' />
+                                <Field name='proximoSetor' component={LabelAndInput} readOnly={readOnly}
+                                    label='Setor' cols='12 12' placeholder='Informe o Setor...' />
+                            </Grid>
+                        </Row>
+                    </fieldset>
 
                 </BoxBody>
                 <BoxFooter>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
+                    <button type='button' className='btn btn-default' onClick={ () => this.props.init(this.props.processoId)}> Cancelar </button>
                 </BoxFooter>
             </form >
         )

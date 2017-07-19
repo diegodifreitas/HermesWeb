@@ -13,21 +13,30 @@ class MonitoringProcessList extends Component {
     renderRows() {
         const list = this.props.list || []
         return list.map(monitoringProcess => (
-            <tr key={monitoringProcess.id}>
-                <td> {monitoringProcess.fase} </td>
-                <td> {monitoringProcess.descricao} </td>
-                <td> {monitoringProcess.setor} </td>
-                <td> {monitoringProcess.dataPrevista} </td>
-                <td>
-                    {/*Criar Icon Button*/}
-                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(monitoringProcess)} >
-                        <i className='fa fa-pencil' />
-                    </button>
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(monitoringProcess)} >
-                        <i className='fa fa-trash-o' />
-                    </button>
-                </td>
-            </tr>
+            <tbody key={monitoringProcess.id}>
+
+                <tr key={`atual-${monitoringProcess.id}`}>
+                    <td> Atual </td>
+                    <td> {monitoringProcess.atualDescricao} </td>
+                    <td> {monitoringProcess.atualSetor} </td>
+                    <td> {monitoringProcess.atualData} </td>
+                    <td>
+                        {/*Criar Icon Button*/}
+                        <button className='btn btn-warning' onClick={() => this.props.showUpdate(monitoringProcess)} >
+                            <i className='fa fa-pencil' />
+                        </button>
+                        <button className='btn btn-danger' onClick={() => this.props.showDelete(monitoringProcess)} >
+                            <i className='fa fa-trash-o' />
+                        </button>
+                    </td>
+                </tr>
+                <tr key={`proxima-${monitoringProcess.id}`}>
+                    <td> Proxima </td>
+                    <td> {monitoringProcess.proximaDescricao} </td>
+                    <td> {monitoringProcess.proximoSetor} </td>
+                    <td> {monitoringProcess.proximaData} </td>
+                </tr>
+            </tbody>
         ))
     }
 
@@ -44,9 +53,9 @@ class MonitoringProcessList extends Component {
                             <th className='table-action'> Ações </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {this.renderRows()}
-                    </tbody>
+
+                    {this.renderRows()}
+
                 </table>
             </div>
         )

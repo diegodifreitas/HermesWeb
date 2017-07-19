@@ -26,6 +26,18 @@
       "id": 8,
       "descricaoSumaria": "Secretaria Municipal de Desenvolvimento Social",
       "dataPublicacao": ""
+    },
+    {
+      "descricaoSumaria": "FAI- Centro de Ensino Superior em Gestão Tecnologia e Educação",
+      "prtp": "028/2017",
+      "modalidade": {
+        "nome": "Inexigibilidade",
+        "numero": "028/2017"
+      },
+      "pendencias": "Não há",
+      "objeto": "SELEÇÃO DE ENTIDADE DE DIREITO PRIVADO, SEM FINS LUCRATIVOS, QUALIFICADA COMO ORGANIZAÇÃO DA SOCIEDADE CIVIL, NOS TERMOS DA LEI FEDERAL Nº 13.019/2014, QUE SE INTERESSE FIRMAR TERMO DE PARCERIA COM O MUNICÍPIO DE SANTA RITA DO SAPUCAÍ, ATRAVÉS DA SECRETARIA MUNICIPAL DE CIÊNCIA, TECNOLOGIA, INDÚSTRIA E COMÉRCIO, PARA ATUAÇÃO NAS ÁREAS DE CULTURA, EDUCAÇÃO E EMPREENDEDORISMO, ATRAVÉS DA REALIZAÇÃO DO FESTIVAL CIDADE CRIATIVA CIDADE FELIZ, O QUAL, ATRAVÉS DE MÚLTIPLOS EVENTOS, ATENDE TODA A POPULAÇÃO DE SANTA RITA DO SAPUCAÍ.",
+      "dataPublicacao": "18/07/2017",
+      "id": 9
     }
   ],
   "osc": [
@@ -50,6 +62,16 @@
         "terminoDoMandato": "27/08/2018"
       },
       "id": 1
+    },
+    {
+      "cnpj": "07.866.182/0001-27",
+      "nome": "Associação dos Produtores Rurais do Pouso do Campo",
+      "email": "osc1@gmail.com",
+      "responsavel": {
+        "nome": "Não Declarado",
+        "email": "responsavel1@gmail.com"
+      },
+      "id": 2
     }
   ],
   "modalidades": [
@@ -71,20 +93,54 @@
   ],
   "monitoringProcess": [
     {
-      "descricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
-      "dataPrevista": "30/08/2017",
-      "setor": "Administrativo",
-      "fase": "Seleção",
+      "atualDescricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      "atualData": "30/08/2017",
+      "atualSetor": "Administrativo",
       "id": 1,
-      "idProcesso": 8
+      "idProcesso": 8,
+      "proximaDescricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      "proximaData": "26/07/2017",
+      "proximoSetor": "Contabíl"
     },
     {
+      "atualDescricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      "atualData": "30/08/2017",
+      "atualSetor": "OSC",
+      "id": 2,
       "idProcesso": 8,
-      "fase": "Execução",
-      "descricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
-      "dataPrevista": "27/07/2017",
-      "setor": "Contabíl",
-      "id": 2
+      "proximaDescricao": "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness.",
+      "proximaData": "26/07/2017",
+      "proximoSetor": "Contabíl"
+    },
+    {
+      "atualDescricao": "Recebimento do Termo de Referência para a Celebração de Parcerias (TRCP)",
+      "atualData": "10/05/2017",
+      "atualSetor": "Divisão de Contabilidade",
+      "proximaDescricao": "Formalização do Processo e Publicação do Termo de Referência e Plano de Trabalho no Site\n\n",
+      "proximoSetor": "Divisão de Contabilidade",
+      "proximaData": "10/05/2017",
+      "id": 3,
+      "idProcesso": 9
+    },
+    {
+      "atualDescricao": "Envio do PATP para Assinatura do Gestor das Parcerias\n",
+      "atualSetor": "Divisão de Contabilidade",
+      "atualData": "10/05/2017",
+      "proximaDescricao": "Aguardar Assinatura e Solicitação de Bloqueio Orçamentário.\n",
+      "proximaData": "10/05/2017",
+      "proximoSetor": "Gestor da Parceria",
+      "id": 4,
+      "idProcesso": 9
+    },
+    {
+      "atualDescricao": "Devolução do PRTP para acertos no Termo de Referência",
+      "atualSetor": "Divisão de Contabilidade",
+      "atualData": "30/05/2017",
+      "proximaDescricao": "Encaminhar para Secretaria para acertos [Alterei]",
+      "proximoSetor": "Divisão de Contabilidade",
+      "proximaData": "08/06/2017",
+      "id": 5,
+      "idProcesso": 9
     }
   ]
 }
