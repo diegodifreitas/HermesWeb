@@ -14,24 +14,24 @@ export const getList = (search = '') => {
     }
 }
 
-export const create = (values, search) => {
-    return submit(values, 'postMonitoringProcess', search)
+export const create = (values) => {
+    return submit(values, 'postMonitoringProcess', values.idProcesso)
 }
 
 export const update = (values, search) => {
-    return submit(values, 'putMonitoringProcess', search)
+    return submit(values, 'putMonitoringProcess', values.idProcesso)
 }
 
 export const remove = (values, search) => {
-    return submit(values, 'deleteMonitoringProcess', search)
+    return submit(values, 'deleteMonitoringProcess', values.idProcesso)
 }
 
-const submit = (values, method, search) => {
+const submit = (values, method) => {
     return dispatch => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                dispatch(init(search))
+                dispatch(init(values.idProcesso))
             })
             .catch(e => {
                 //alterar isso quando integrar com a API
@@ -67,29 +67,4 @@ export const init = (search) => {
     ]
 }
 
-export const getFasesSelect = () => {
-    const fases = {
-        fases: [
-            {
-                id: 1,
-                nome: 'Seleção'
-            },
-            {
-                id: 2,
-                nome: "Execução"
-            },
-            {
-                id: 3,
-                nome: "Monitoramento"
-            },
-            {
-                id: 4,
-                nome: "Prestação de Contas"
-            }
-        ]
-    }
-    return {
-        type: 'FASES_SELECT_FETCHED',
-        payload: fases
-    }
-}
+export const load = data => ({ type: "LOAD", payload: data })

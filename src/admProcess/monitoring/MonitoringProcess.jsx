@@ -48,11 +48,11 @@ class MonitoringProcess extends Component {
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form
+                                    initialValues={{ idProcesso: this.props.match.params.id }}
                                     onSubmit={this.props.create}
                                     submitLabel='Incluir'
                                     submitClass='primary'
                                     readOnly={false}
-                                    processoId={this.props.match.params.id} 
                                     />
                             </TabContent>
                             <TabContent id='tabUpdate'>
@@ -60,7 +60,7 @@ class MonitoringProcess extends Component {
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' 
-                                    processoId={this.props.match.params.id} 
+                                    initialValues={{ idProcesso: this.props.match.params.id }}
                                     />
                             </TabContent>
                             <TabContent id='tabDelete'>
@@ -69,7 +69,7 @@ class MonitoringProcess extends Component {
                                     readOnly={true}
                                     submitLabel='Excluir'
                                     submitClass='danger' 
-                                    processoId={this.props.match.params.id} />
+                                    initialValues={{ idProcesso: this.props.match.params.id }} />
                             </TabContent>
                         </TabsContent>
                     </Tabs>

@@ -14,7 +14,6 @@ class MonitoringProcessList extends Component {
         const list = this.props.list || []
         return list.map(monitoringProcess => (
             <tbody key={monitoringProcess.id}>
-
                 <tr key={`atual-${monitoringProcess.id}`}>
                     <td> Atual </td>
                     <td> {monitoringProcess.atualDescricao} </td>
@@ -53,9 +52,7 @@ class MonitoringProcessList extends Component {
                             <th className='table-action'> Ações </th>
                         </tr>
                     </thead>
-
                     {this.renderRows()}
-
                 </table>
             </div>
         )

@@ -16,23 +16,21 @@ import Box from '../../common/template/box/Box'
 import BoxFooter from '../../common/template/box/BoxFooter'
 import BoxBody from '../../common/template/box/BoxBody'
 
-import { init, getFasesSelect } from './monitoringProcessActions'
+import { init, getFasesSelect, load } from './monitoringProcessActions'
 
 
 class MonitoringProcessForm extends Component {
-    componentWillMount() {
-        this.props.getFasesSelect()
-    }
+
     render() {
-        const { handleSubmit, readOnly, processoId } = this.props
+        const { handleSubmit, readOnly } = this.props
         return (
-            <form role='form' onSubmit={(values) => handleSubmit(values, processoId)}>
+            <form role='form' onSubmit={handleSubmit}>
                 <BoxBody >
                     <fieldset>
                         <legend> Etapa Atual </legend>
                         <Row>
                             <Grid cols='12 8' style='monitoring-row'>
-                                <Field name='atualDescricao' label='Descrição' cols='12 12'
+                                <Field name='atualDescricao' label='Descrição' cols='12 10'
                                     placeholder='Informe uma descrição da fase'
                                     component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
                             </Grid>
@@ -60,11 +58,10 @@ class MonitoringProcessForm extends Component {
                             </Grid>
                         </Row>
                     </fieldset>
-
                 </BoxBody>
                 <BoxFooter>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-default' onClick={ () => this.props.init(this.props.processoId)}> Cancelar </button>
+                    <button type='button' className='btn btn-default' onClick={() => this.props.init(this.props.processoId)}> Cancelar </button>
                 </BoxFooter>
             </form >
         )
@@ -72,6 +69,5 @@ class MonitoringProcessForm extends Component {
 }
 
 MonitoringProcessForm = reduxForm({ form: 'monitoringProcessForm', destroyOnUnmount: false })(MonitoringProcessForm)
-const mapStateToProps = state => ({ fases: state.monitoringProcess.fasesSelect })
-const mapDispatchToProps = dispatch => bindActionCreators({ init, getFasesSelect }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(MonitoringProcessForm)
+const mapDispatchToProps = dispatch => bindActionCreators({ init, load }, dispatch)
+export default connect(null, mapDispatchToProps)(MonitoringProcessForm)
