@@ -5,18 +5,17 @@ import { bindActionCreators } from 'redux'
 
 import LabelAndInput from '../../common/form/LabelAndInput'
 import LabelAndText from '../../common/form/LabelAndText'
-import LabelAndCombo from '../../common/form/LabelAndCombo'
+
 import LabelAndDate from '../../common/form/LabelAndDate'
 
 import Grid from '../../common/layout/Grid'
 import Row from '../../common/layout/Row'
 
-import BoxHeader from '../../common/template/box/BoxHeader'
-import Box from '../../common/template/box/Box'
+
 import BoxFooter from '../../common/template/box/BoxFooter'
 import BoxBody from '../../common/template/box/BoxBody'
 
-import { init, getFasesSelect, load } from './monitoringProcessActions'
+import { init, load } from './monitoringProcessActions'
 
 
 class MonitoringProcessForm extends Component {
@@ -24,7 +23,7 @@ class MonitoringProcessForm extends Component {
     render() {
         const { handleSubmit, readOnly } = this.props
         return (
-            <form role='form' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <BoxBody >
                     <fieldset>
                         <legend> Etapa Atual </legend>

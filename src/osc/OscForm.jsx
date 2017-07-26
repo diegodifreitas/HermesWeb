@@ -4,15 +4,10 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { init } from './oscActions'
-import Box from '../common/template/box/Box'
 
-import BoxHeader from '../common/template/box/BoxHeader'
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
-
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndCombo from '../common/form/LabelAndCombo'
-import LabelAndMask from '../common/form/LabelAndMask'
 import LabelAndDate from '../common/form/LabelAndDate'
 
 class OscForm extends Component {
@@ -22,7 +17,7 @@ class OscForm extends Component {
     render() {
         const { handleSubmit, readOnly } = this.props
         return (
-            <form role='form' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <BoxBody>
                     <Field name='nome' component={LabelAndInput} readOnly={readOnly}
                         label='Nome da Organização' cols='12 12' placeholder='Informe o Nome da Organização' />

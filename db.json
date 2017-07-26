@@ -61,9 +61,11 @@
         "inicioDoMandato": "06/12/2016",
         "terminoDoMandato": "27/08/2018"
       },
+      "situacao": "Aprovada",
       "id": 1
     },
     {
+      "situacao": "Aguardando avaliação do gestor",
       "cnpj": "07.866.182/0001-27",
       "nome": "Associação dos Produtores Rurais do Pouso do Campo",
       "email": "osc1@gmail.com",
@@ -72,6 +74,17 @@
         "email": "responsavel1@gmail.com"
       },
       "id": 2
+    },
+    {
+      "situacao": "Aguardando aprovação do administrador",
+      "cnpj": "09.877.182/0002-30",
+      "nome": "Associação dos Produtores de Garrafas Pets",
+      "email": "osc2@gmail.com",
+      "responsavel": {
+        "nome": "Não Declarado",
+        "email": "responsavel1@gmail.com"
+      },
+      "id": 3
     }
   ],
   "modalidades": [

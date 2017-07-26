@@ -16,7 +16,7 @@ class AdmProcessForm extends Component {
     render() {
         const { handleSubmit, readOnly } = this.props
         return (
-            <form role='form' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div className='box-body'>
                     <Field name='prtp' component={LabelAndInput} readOnly={readOnly}
                         label='PRTP' cols='12 2' placeholder='Informe o PRTP' />

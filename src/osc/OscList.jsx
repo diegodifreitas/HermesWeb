@@ -27,6 +27,11 @@ class OscList extends Component {
                     <button className='btn btn-danger' onClick={() => this.props.showDelete(osc)} >
                         <i className='fa fa-trash-o' />
                     </button>
+                    { osc.situacao !== 'Aprovada' &&
+                            <button className='btn btn-success' onClick={() => null} >
+                                <i className='fa fa-check' />
+                            </button>
+                    }
                 </td>
             </tr>
         ))

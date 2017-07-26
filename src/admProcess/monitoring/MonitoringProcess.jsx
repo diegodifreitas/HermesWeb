@@ -12,11 +12,6 @@ import TabsContent from '../../common/tabs/TabsContent'
 import TabHeader from '../../common/tabs/TabHeader'
 import TabContent from '../../common/tabs/TabContent'
 
-import BoxHeader from '../../common/template/box/BoxHeader'
-import Box from '../../common/template/box/Box'
-import BoxFooter from '../../common/template/box/BoxFooter'
-import BoxBody from '../../common/template/box/BoxBody'
-
 import Form from './MonitoringProcessForm'
 import List from './MonitoringProcessList'
 

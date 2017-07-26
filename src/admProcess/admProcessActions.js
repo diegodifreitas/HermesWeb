@@ -1,5 +1,5 @@
 import { toastr } from 'react-redux-toastr'
-import { reset as resetForm, initialize } from 'redux-form'
+import { initialize } from 'redux-form'
 
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
