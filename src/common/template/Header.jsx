@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navbar from './Navbar'
+
 export default prrops => (
     <header className='main-header'>
         <a href='/#/' className='logo'>
@@ -26,6 +28,7 @@ export default prrops => (
         </a>
         <nav className='navbar navbar-static-top'>
             <a href className='sidebar-toggle' data-toggle='offcanvas'> </a>
+            <Navbar/>
         </nav>
     </header>
 )
