@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
+//import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
+
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import AccountInfo from '../accountInfo/AccountInfo'
@@ -11,14 +13,13 @@ import Osc from '../osc/Osc'
 import AuthOrApp from './AuthOrApp'
 
 export default props => (
-    <Router history={hashHistory}>
-        <Route path='/' component={AuthOrApp} onUpdater={mapActiveUrlToMenu()}>
-            <IndexRoute component={Dashboard} />
+
+        <Switch>
+            <Route exact path='/' component={Dashboard} onUpdater={mapActiveUrlToMenu()} />
             <Route exact path='/myAccount' component={AccountInfo} />
             <Route exact path='/osc' component={Osc} />
             <Route exact path='/admProcess' component={AdmProcess} />
             <Route exact path='/admProcess/:id/monitoring' component={Monitoring} />
-        </Route>
-        <Redirect from='*' to='/' />
-    </Router>
+            <Route path='*' component={Dashboard} />
+        </Switch>
 )

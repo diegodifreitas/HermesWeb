@@ -42,35 +42,12 @@
   ],
   "osc": [
     {
-      "nome": "Associação DEMOV – Deficientes em Movimento ",
-      "cnpj": "19.988.498/0001-70",
-      "conselhoMunicipal": "Conselho Municipal de Assistência Social",
-      "email": "demov.org@hotmail.com",
-      "endereco": "Juca Castelo, 86",
-      "bairro": "Centro",
-      "telefone": "35987136728",
-      "responsavel": {
-        "nome": "Eduardo Borges Nogueira",
-        "cargo": "Presidente",
-        "cpf": "87984938687",
-        "rg": "368022511 SSP / SP",
-        "bairro": "Fernandes",
-        "telefone": "34714960",
-        "endereco": "João Batista de Melo",
-        "email": "eduardoborgesnogueira@hotmail.com",
-        "inicioDoMandato": "06/12/2016",
-        "terminoDoMandato": "27/08/2018"
-      },
-      "situacao": "Aprovada",
-      "id": 1
-    },
-    {
       "situacao": "Aguardando avaliação do gestor",
       "cnpj": "07.866.182/0001-27",
       "nome": "Associação dos Produtores Rurais do Pouso do Campo",
       "email": "osc1@gmail.com",
       "responsavel": {
-        "nome": "Não Declarado",
+        "nome": "Não Declarado [Alterado]",
         "email": "responsavel1@gmail.com"
       },
       "id": 2

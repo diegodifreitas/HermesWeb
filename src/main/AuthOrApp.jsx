@@ -11,7 +11,7 @@ import { validateToken } from '../auth/authActions'
 class AuthOrApp extends Component {
     componentWillMount() {
         if (this.props.auth.user) {
-            this.props.validateToken(this.props.auth.user.token)
+            //this.props.validateToken(this.props.auth.user.token)
         }
     }
 
