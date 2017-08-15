@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 
-import '../common/template/dependencies'
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import Header from '../common/template/Header'
 import Sidebar from '../common/template/Sidebar'
 import Footer from '../common/template/Footer'
 import Messages from '../common/msg/Messages'
-import Routes from './Routes'
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +16,7 @@ class App extends Component {
           ele.outerHTML = ''
         }, 2000)
       }, 1000)
-    } 
+    }
 
     mapActiveUrlToMenu()
   }
@@ -29,7 +27,7 @@ class App extends Component {
         <Header />
         <Sidebar />
         <div className='content-wrapper'>
-          <Routes />
+          {this.props.children}
         </div>
         <Footer />
         <Messages />

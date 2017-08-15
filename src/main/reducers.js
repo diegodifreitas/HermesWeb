@@ -7,6 +7,7 @@ import TabReducer from '../common/tabs/tabReducer'
 import AdmProcessReducer from '../admProcess/admProcessReducer'
 import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcessReducer'
 import OscReducer from '../osc/oscReducer'
+import AuthReducer from '../auth/authReducer'
 
 const rootReducer = combineReducers({
     tab: TabReducer,
@@ -15,7 +16,9 @@ const rootReducer = combineReducers({
     toastr: toastrReducer,
     common: SpinnerReducer,
     osc: OscReducer,
-    monitoringProcess: MonitoringProcessReducer
+    monitoringProcess: MonitoringProcessReducer,
+    auth: AuthReducer
+
 })
 
 export default rootReducer
