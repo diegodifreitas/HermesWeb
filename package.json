@@ -6,7 +6,6 @@
     "jquery.inputmask": "^3.3.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-modal-bootstrap": "^1.1.1",
     "react-router-dom": "^4.1.2"
   },
   "devDependencies": {

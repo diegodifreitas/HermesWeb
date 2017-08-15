@@ -21,7 +21,7 @@ class AdmProcessList extends Component {
                 <td> {ap.descricaoSumaria} </td>
                 <td> {ap.pendencias} </td>
                 <td>
-                    
+     
                     <Link className="btn btn-success" to={'/admProcess/' + ap.id + '/monitoring'} >
                         <i className='fa fa-briefcase' />
                     </Link>
