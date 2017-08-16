@@ -2,7 +2,7 @@ import React from 'react'
 
 //import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import AccountInfo from '../accountInfo/AccountInfo'
@@ -10,7 +10,6 @@ import AdmProcess from '../admProcess/AdmProcess'
 import Monitoring from '../admProcess/monitoring/MonitoringProcess'
 import Dashboard from '../dashboard/Dashboard'
 import Osc from '../osc/Osc'
-import AuthOrApp from './AuthOrApp'
 
 export default props => (
 

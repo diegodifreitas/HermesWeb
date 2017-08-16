@@ -32,8 +32,8 @@ class App extends Component {
             <Header />
             <Sidebar />
             <div className='content-wrapper'>
-              <Routes />
               {this.props.children}
+              <Routes />
             </div>
             <Footer />
             <Messages />
