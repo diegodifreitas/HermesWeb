@@ -19,6 +19,11 @@ export const getOsc = (search = '') => api.get('osc' + search)
 export const deleteOsc = (osc) => api.delete('osc/' + osc.id)
 export const putOsc = (osc) => api.put('osc/' + osc.id, osc)
 
+export const postUser = (user) => api.post('user', user)
+export const getUser = (search = '') => api.get('user' + search)
+export const deleteUser = (user) => api.delete('user/' + user.id)
+export const putUser = (user) => api.put('user/' + user.id, user)
+
 
 const apis = {
   getAdmProcess,
@@ -34,7 +39,12 @@ const apis = {
   getOsc,
   postOsc,
   deleteOsc,
-  putOsc
+  putOsc,
+
+  getUser,
+  postUser,
+  deleteUser,
+  putUser
 }
 
 export default apis

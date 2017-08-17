@@ -40,6 +40,26 @@
       "id": 9
     }
   ],
+
+  "user": [
+    {
+      "imagem": "https://adminlte.io/themes/AdminLTE/dist/img/user4-128x128.jpg",
+      "nome": "Joaquim",
+      "tipo": "Servidor Publico",
+      "email": "osc1@gmail.com",
+      "id": 1,
+      "situacao": "Aprovado"
+    },
+    {
+      "imagem": "  https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB07JN5T9.png?v=2.4.4.1",
+      "nome": "Zezinho",
+      "email": "osc2@gmail.com",
+      "tipo": "OSC",
+      "id": 2,
+      "situacao": "Aprovado"
+    }
+  ],
+
   "osc": [
     {
       "situacao": "Aguardando avaliação do gestor",
