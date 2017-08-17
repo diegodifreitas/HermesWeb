@@ -7,7 +7,7 @@ import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndText from '../common/form/LabelAndText'
 import LabelAndCombo from '../common/form/LabelAndCombo'
-import DragDropUpload from '../common/widget/DragDropUpload'
+import LabelAndUpload from '../common/form/LabelAndUpload'
 
 import LabelAndDate from '../common/form/LabelAndDate'
 
@@ -19,7 +19,9 @@ class AccountInfoForm extends Component {
             <form onSubmit={handleSubmit}>
                 <div className='box-body'>
 
-                    <DragDropUpload />
+                    <Field name='image' component={LabelAndUpload}
+                        label='Foto Perfil' cols='12 4' placeholder='TESTESTESTESTESTE'/>
+
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 4' placeholder='...' />
 
