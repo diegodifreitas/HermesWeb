@@ -8,6 +8,7 @@ export default props =>
             <li className='header'> MENU DE NAVEGAÇÃO </li>
             <MenuItem path='/' label='Dashboard' icon='dashboard' />
             <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
+            <MenuItem path='/users' label='Gestão de Usuários' icon='users' />
             <MenuItem path='/osc' label='OSCs' icon='university' />
             <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
         </ul >
