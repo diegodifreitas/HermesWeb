@@ -7,6 +7,7 @@ import TabReducer from '../common/tabs/tabReducer'
 import AdmProcessReducer from '../admProcess/admProcessReducer'
 import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcessReducer'
 import OscReducer from '../osc/oscReducer'
+import UserManagementReducer from '../userManagement/userManagementReducer'
 import AccountInfoReducer from '../accountInfo/accountInfoReducer'
 import AuthReducer from '../auth/authReducer'
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     toastr: toastrReducer,
     common: SpinnerReducer,
     osc: OscReducer,
+    users: UserManagementReducer,
     accountInfo: AccountInfoReducer,
     monitoringProcess: MonitoringProcessReducer,
     auth: AuthReducer
