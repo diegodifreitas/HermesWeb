@@ -38,11 +38,11 @@ class OscList extends Component {
             </tr>
         ))
     }
-
+ 
     render() {
         return (
             <div>
-                <FieldSearch name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
+                <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
 
                 <div className='class="box-body table-responsive no-padding"'>
                     <table className='table table-hover'>

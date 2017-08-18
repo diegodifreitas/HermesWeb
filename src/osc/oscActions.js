@@ -6,13 +6,34 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = () => {
-    const request = Api.getOsc()
+export const getList = (field, value) => {
+    let search = value ? `?q=${value}` : ''
+
+/*     switch (field) {
+        case 'search_name':
+            search = `?name=${value}`
+            break
+        case 'search_cnpj':
+            search = `?cnpj=${value}`
+            break
+    } */
+
+    const request = Api.getOsc(search)
     return {
         type: "OSC_FETCHED",
         payload: request
     }
 }
+
+export const search = () => {
+    return (dispatch, getState) => {
+        const description = getState().todo.description
+        const search = description ? `?q=${description}` : ''
+        const request = Api.getTodos(search)
+            .then(resp => dispatch({ type: 'TODO_SEARCHED', payload: resp.data }))
+    }
+}
+
 
 export const create = (values) => {
     return submit(values, 'postOsc')
