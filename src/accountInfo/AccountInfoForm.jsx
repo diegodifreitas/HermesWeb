@@ -20,7 +20,7 @@ class AccountInfoForm extends Component {
                 <div className='box-body'>
 
                     <Field name='image' component={LabelAndUpload}
-                        label='Foto Perfil' cols='12 4' placeholder='TESTESTESTESTESTE'/>
+                        label='Foto Perfil' cols='12 4' placeholder='TESTESTESTESTESTE' />
 
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 4' placeholder='...' />
