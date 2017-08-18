@@ -11,7 +11,9 @@ export default class FileUpload extends Component {
         reader.onload = function (img) {
             window.$(this.refs.in).val('');
             this.props.handleFileChange(img.target.result);
+
         }.bind(this);
+
         reader.readAsDataURL(file);
     }
 

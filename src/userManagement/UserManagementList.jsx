@@ -22,8 +22,7 @@ class UserManagementList extends Component {
                 <td style={Object.assign({}, styles.tableLine, styles.fieldImg)} >
                     <img src={user.imagem}
                         style={styles.image}
-                        alt="user image"
-                        className='img-circle' />
+                        alt="user image" />
                 </td>
                 <td style={styles.tableLine} > {user.nome} </td>
                 <td style={styles.tableLine} > {user.email} </td>
