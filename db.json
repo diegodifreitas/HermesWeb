@@ -40,7 +40,6 @@
       "id": 9
     }
   ],
-
   "user": [
     {
       "imagem": "https://adminlte.io/themes/AdminLTE/dist/img/user4-128x128.jpg",
@@ -59,7 +58,6 @@
       "situacao": "Aprovado"
     }
   ],
-
   "osc": [
     {
       "situacao": "Aguardando avaliação do gestor",
