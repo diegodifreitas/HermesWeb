@@ -17,7 +17,6 @@ export default class LabelAndUpload extends Component {
         }
     }
 
-
     handleFileChange = (dataURI) => {
         this.setState({
             img: dataURI,
@@ -32,6 +31,9 @@ export default class LabelAndUpload extends Component {
             img: null,
             croppedImg: dataURI
         });
+
+        this.props.input.onChange(dataURI)
+
     }
 
     handleRequestHide = () => {
