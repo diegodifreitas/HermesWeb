@@ -39,8 +39,8 @@ class AdmProcessList extends Component {
 
     render() {
         return (
-            <div>
-                <table className='table'>
+            <div className='class="box-body table-responsive no-padding"'>
+                <table className='table table-hover'>
                     <thead>
                         <tr>
                             <th> PRTP </th>

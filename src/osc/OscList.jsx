@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux'
 
 import { getList, showUpdate, showDelete } from './oscActions'
 
+import FieldSearch from '../common/form/FieldSearch'
+
 class OscList extends Component {
 
     componentWillMount() {
@@ -27,10 +29,10 @@ class OscList extends Component {
                     <button className='btn btn-danger' onClick={() => this.props.showDelete(osc)} >
                         <i className='fa fa-trash-o' />
                     </button>
-                    { osc.situacao !== 'Aprovada' &&
-                            <button className='btn btn-success' onClick={() => null} >
-                                <i className='fa fa-check' />
-                            </button>
+                    {osc.situacao !== 'Aprovada' &&
+                        <button className='btn btn-success' onClick={() => null} >
+                            <i className='fa fa-check' />
+                        </button>
                     }
                 </td>
             </tr>
@@ -40,21 +42,25 @@ class OscList extends Component {
     render() {
         return (
             <div>
-                <table className='table'>
-                    <thead>
-                        <tr>
-                            <th> Nome </th>
-                            <th> CNPJ </th>
-                            <th> Responsável </th>
-                            <th> Fim do Mandato </th>
-                            <th> Situação </th>
-                            <th className='table-action'> Ações </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderRows()}
-                    </tbody>
-                </table>
+                <FieldSearch name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
+
+                <div className='class="box-body table-responsive no-padding"'>
+                    <table className='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th> Nome </th>
+                                <th> CNPJ </th>
+                                <th> Responsável </th>
+                                <th> Fim do Mandato </th>
+                                <th> Situação </th>
+                                <th className='table-action'> Ações </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderRows()}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

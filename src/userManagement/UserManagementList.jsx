@@ -19,11 +19,11 @@ class UserManagementList extends Component {
         return list.map(user => (
             <tr key={user.id}>
 
-                <td style={Object.assign({},styles.tableLine, styles.fieldImg)} > 
-                    <img src={user.imagem} 
-                         style={styles.image}
-                         alt="user image" 
-                         className='img-circle' /> 
+                <td style={Object.assign({}, styles.tableLine, styles.fieldImg)} >
+                    <img src={user.imagem}
+                        style={styles.image}
+                        alt="user image"
+                        className='img-circle' />
                 </td>
                 <td style={styles.tableLine} > {user.nome} </td>
                 <td style={styles.tableLine} > {user.email} </td>
@@ -48,8 +48,8 @@ class UserManagementList extends Component {
 
     render() {
         return (
-            <div>
-                <table className='table'>
+            <div className='class="box-body table-responsive no-padding"'>
+                <table className='table table-hover'>
                     <thead>
                         <tr>
                             <th> Imagem </th>
