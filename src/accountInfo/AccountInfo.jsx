@@ -24,7 +24,7 @@ class AccountInfo extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Informações da Conta' small='Versão 1.0' />
+                <ContentHeader routes={this.props.match} title='Informações da Conta' small='Versão 1.0' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
