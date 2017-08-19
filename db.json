@@ -55,17 +55,39 @@
       "email": "osc2@gmail.com",
       "tipo": "OSC",
       "id": 2,
-      "situacao": "Aprovado"
+      "situacao": "Aprovada"
     }
   ],
   "osc": [
+    {
+      "situacao": "Aprovada",
+      "cnpj": "07.856.182/0001-27",
+      "nome": "Associação dos Galos Cegos",
+      "email": "euai@gmail.com",
+      "responsavel": {
+        "nome": "Daniel Orivaldo da Silva",
+        "email": "alimento@gmail.com"
+      },
+      "id": 9
+    },
+    {
+      "situacao": "Inativa",
+      "cnpj": "07.856.182/0001-27",
+      "nome": "Associação dos Associados",
+      "email": "osc1@gmail.com",
+      "responsavel": {
+        "nome": "Clayton Rasta",
+        "email": "responsavel5@gmail.com"
+      },
+      "id": 5
+    },
     {
       "situacao": "Aguardando avaliação do gestor",
       "cnpj": "07.866.182/0001-27",
       "nome": "Associação dos Produtores Rurais do Pouso do Campo",
       "email": "osc1@gmail.com",
       "responsavel": {
-        "nome": "Não Declarado [Alterado]",
+        "nome": "Cabeça de Gelo",
         "email": "responsavel1@gmail.com"
       },
       "id": 2
@@ -76,7 +98,7 @@
       "nome": "Associação dos Produtores de Garrafas Pets",
       "email": "osc2@gmail.com",
       "responsavel": {
-        "nome": "Não Declarado",
+        "nome": "Moises Não Consegue",
         "email": "responsavel1@gmail.com"
       },
       "id": 3

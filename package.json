@@ -7,7 +7,9 @@
     "react": "^15.6.1",
     "react-avatar-cropper": "^0.1.3",
     "react-dom": "^15.6.1",
-    "react-router-dom": "^4.1.2"
+    "react-router-dom": "^4.1.2",
+    "react-router-dynamic-breadcrumbs": "^1.0.6",
+    "route-parser": "^0.0.5"
   },
   "devDependencies": {
     "admin-lte": "^2.3.11",
