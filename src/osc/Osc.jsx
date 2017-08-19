@@ -40,21 +40,21 @@ class Osc extends Component {
                                 <List />
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <Form onSubmit= {this.props.create} 
-                                    submitLabel='Incluir' 
-                                    submitClass='primary'/>
+                                <Form onSubmit={this.props.create}
+                                    submitLabel='Incluir'
+                                    submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabUpdate'>
-                                <Form 
-                                    onSubmit= {this.props.update} 
-                                    submitLabel='Alterar' 
-                                    submitClass='primary'/>
+                                <Form
+                                    onSubmit={this.props.update}
+                                    submitLabel='Alterar'
+                                    submitClass='primary' />
                             </TabContent>
-                            <TabContent id='tabDelete'> 
-                                <Form 
-                                    onSubmit= {this.props.remove}
-                                    readOnly={true} 
-                                    submitLabel='Excluir' 
+                            <TabContent id='tabDelete'>
+                                <Form
+                                    onSubmit={this.props.remove}
+                                    readOnly={true}
+                                    submitLabel='Excluir'
                                     submitClass='danger' />
                             </TabContent>
                         </TabsContent>
@@ -64,6 +64,6 @@ class Osc extends Component {
         )
     }
 }
-const mapDispatchToProps = dispatch => 
+const mapDispatchToProps = dispatch =>
     bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
 export default connect(null, mapDispatchToProps)(Osc)

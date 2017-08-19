@@ -19,8 +19,25 @@ class OscList extends Component {
                 <td> {osc.nome} </td>
                 <td> {osc.cnpj} </td>
                 <td> {osc.responsavel.nome} </td>
-                <td> {osc.responsavel.terminoDoMandato} </td>
-                <td> {osc.situacao} </td>
+                <td>
+                    <div className="progress progress-xs progress-striped active">
+                        <div className="progress-bar progress-bar-success" style={ {width: '75%'}}></div>
+                    </div>
+                </td>
+                <td>
+                    {osc.situacao === 'Aprovada' &&
+                        <span className='label label-success'>{osc.situacao}</span>
+                    }
+                    {osc.situacao === 'Aguardando aprovação do administrador' &&
+                        <span className='label label-primary'>{osc.situacao}</span>
+                    }
+                    {osc.situacao === 'Aguardando avaliação do gestor' &&
+                        <span className='label label-warning'>{osc.situacao}</span>
+                    }
+                    {osc.situacao === 'Inativa' &&
+                        <span className='label label-danger'> {osc.situacao}</span>
+                    }
+                </td>
                 <td>
                     {/*Criar Icon Button*/}
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(osc)} >
@@ -38,7 +55,7 @@ class OscList extends Component {
             </tr>
         ))
     }
- 
+
     render() {
         return (
             <div>
