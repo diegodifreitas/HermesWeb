@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import { getList, showUpdate, showDelete } from './userManagementActions'
 
+import FieldSearch from '../common/form/FieldSearch'
 import styles from './userManagement.css.js'
 
 class UserManagementList extends Component {
@@ -47,21 +48,24 @@ class UserManagementList extends Component {
 
     render() {
         return (
-            <div className='class="box-body table-responsive no-padding"'>
-                <table className='table table-hover'>
-                    <thead>
-                        <tr>
-                            <th> Imagem </th>
-                            <th> Nome </th>
-                            <th> Email </th>
-                            <th> Tipo </th>
-                            <th className='table-action'> Ações </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderRows()}
-                    </tbody>
-                </table>
+            <div>
+                <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
+                <div className='class="box-body table-responsive no-padding"'>
+                    <table className='table table-hover'>
+                        <thead>
+                            <tr>
+                                <th> Imagem </th>
+                                <th> Nome </th>
+                                <th> Email </th>
+                                <th> Tipo </th>
+                                <th className='table-action'> Ações </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderRows()}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         )
     }

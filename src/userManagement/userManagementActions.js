@@ -6,8 +6,11 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = () => {
-    const request = Api.getUser()
+export const getList = (field, value) => {
+   
+    let search = value ? `?q=${value}` : ''
+   
+    const request = Api.getUser(search)
     return {
         type: "USERS_FETCHED",
         payload: request
