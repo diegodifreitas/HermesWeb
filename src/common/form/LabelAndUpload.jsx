@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Grid from '../layout/Grid'
 
 import AvatarCropper from 'react-avatar-cropper'
-import FileUpload from '../widget/FileUpload'
+import FileUpload from './FileUpload'
 
 import './upload.css'
 
