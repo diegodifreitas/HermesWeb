@@ -1,13 +1,13 @@
 
 export const mapActiveUrlToMenu = () => {
     const elements = window.$('ul.sidebar-menu a')
-    elements.filter(indice => verify(indice, elements))
+    elements.filter(index => verify(index, elements))
 }
 
-const verify = (indice, elements) => {
-    let liElement = window.$(elements[indice]).parent()
+const verify = (index, elements) => {
+    let liElement = window.$(elements[index]).parent()
     var target = null
-    if (elements[indice].href === elements[indice].baseURI) {
+    if (elements[index].href === elements[index].baseURI) {
         target = liElement.addClass('active')
         target = target.parent().parent()
         if (target.is("li")) {
