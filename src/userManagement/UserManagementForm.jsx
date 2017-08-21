@@ -34,7 +34,7 @@ class UserManagementForm extends Component {
                     <Field name='telefone' component={LabelAndInput} label='Telefone'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
                 </BoxBody>
-                
+
                 <BoxFooter >
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
