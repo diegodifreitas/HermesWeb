@@ -9,6 +9,9 @@ import Messages from '../common/msg/Messages'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Routes from './Routes'
 
+import '../styles/less/AdminLTE.css'
+import '../styles/less/skins/_all-skins.css'
+
 class App extends Component {
   componentDidMount() {
     const ele = document.getElementById('ipl-progress-indicator')
