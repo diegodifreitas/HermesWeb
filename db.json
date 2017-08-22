@@ -53,7 +53,7 @@
       "cidade": "Santa Rita do Sapucai - MG"
     },
     {
-      "imagem": "  https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB07JN5T9.png?v=2.4.4.1",
+      "imagem": "https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB07JN5T9.png?v=2.4.4.1",
       "nome": "Zezinho",
       "email": "osc2@gmail.com",
       "tipo": "OSC",
@@ -62,6 +62,17 @@
       "endereco": "Rua das Calçadas, 34",
       "telefone": "9766-8438",
       "cidade": "Santa Rita do Sapucai - MG"
+    },
+    {
+      "imagem": "https://i.ytimg.com/vi/bDXQO34c_jQ/hqdefault.jpg",
+      "nome": "Edivaldo Péricles Cleiton Rasta",
+      "email": "kbecadegelo@gmail.com",
+      "tipo": "Servidor Publico",
+      "id": 4,
+      "situacao": "Aprovada",
+      "endereco": "povoado Santo Antônio",
+      "telefone": "9766-4567",
+      "cidade": "DEBOCHAR - PA"
     }
   ],
   "osc": [
