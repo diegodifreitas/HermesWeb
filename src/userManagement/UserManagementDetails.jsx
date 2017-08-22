@@ -3,12 +3,12 @@ import Modal from 'react-modal'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { openModal, closeModal } from './modalActions'
+import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
 
-import ButtonIcon from '../common/template/button/ButtonIcon'
+import ButtonIcon from '../common/ui/button/ButtonIcon'
 import LabelAndText from '../common/form/LabelAndText'
 import Grid from '../common/layout/Grid'
 import Row from '../common/layout/Row'
