@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { getList, showUpdate, showDelete } from './userManagementActions'
 
 import FieldSearch from '../common/form/FieldSearch'
+import UserManagementDetails from './UserManagementDetails'
 import styles from './userManagement.css.js'
 
 class UserManagementList extends Component {
@@ -30,6 +31,7 @@ class UserManagementList extends Component {
                 <td style={styles.tableLine}> {user.tipo} </td>
                 <td>
                     {/*Criar Icon Button*/}
+                    <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(user)} >
                         <i className='fa fa-pencil' />
                     </button>
@@ -66,6 +68,7 @@ class UserManagementList extends Component {
                         </tbody>
                     </table>
                 </div>
+                <UserManagementDetails />
             </div>
         )
     }

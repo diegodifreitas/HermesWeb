@@ -2,11 +2,12 @@ import jquery from 'jquery'
     window.$ = window.jQuery = jquery
 
 require( 'jquery-ui')
-require( 'jquery.inputmask/dist/jquery.inputmask.bundle.js')
+require( 'admin-lte/bootstrap/js/bootstrap.min')
+require( 'jquery.inputmask/dist/jquery.inputmask.bundle')
 require( 'admin-lte/plugins/fastclick/fastclick.min')
 
-require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
-require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js')
+require('bootstrap-datepicker/dist/js/bootstrap-datepicker.min')
+require('bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min')
 require('bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
 
 require('admin-lte/plugins/slimScroll/jquery.slimscroll.min')
