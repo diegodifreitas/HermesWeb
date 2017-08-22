@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import LabelAndInput from '../../common/form/LabelAndInput'
-import LabelAndText from '../../common/form/LabelAndText'
+import LabelAndTextArea from '../../common/form/LabelAndTextArea'
 
 import LabelAndDate from '../../common/form/LabelAndDate'
 
@@ -31,7 +31,7 @@ class MonitoringProcessForm extends Component {
                             <Grid cols='12 8' style='monitoring-row'>
                                 <Field name='atualDescricao' label='Descrição' cols='12 10'
                                     placeholder='Informe uma descrição da fase'
-                                    component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
+                                    component={LabelAndTextArea} readOnly={readOnly} style='monitoring-text-area' />
                             </Grid>
                             <Grid cols='12 4' style='monitoring-row' >
                                 <Field name='atualData' component={LabelAndDate} readOnly={readOnly}
@@ -47,7 +47,7 @@ class MonitoringProcessForm extends Component {
                             <Grid cols='12 8' style='monitoring-row'>
                                 <Field name='proximaDescricao' label='Descrição' cols='12 12'
                                     placeholder='Informe uma descrição da fase'
-                                    component={LabelAndText} readOnly={readOnly} style='monitoring-text-area' />
+                                    component={LabelAndTextArea} readOnly={readOnly} style='monitoring-text-area' />
                             </Grid>
                             <Grid cols='12 4' style='monitoring-row' >
                                 <Field name='proximaData' component={LabelAndDate} readOnly={readOnly}
