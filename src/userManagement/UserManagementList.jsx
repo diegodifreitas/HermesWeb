@@ -20,9 +20,9 @@ class UserManagementList extends Component {
 
         return list.map(user => (
             <tr key={user.id}>
-
                 <td style={Object.assign({}, styles.tableLine, styles.fieldImg)} >
                     <img src={user.imagem}
+                        className='img img-responsive img-circle'
                         style={styles.image}
                         alt="user image" />
                 </td>
@@ -31,10 +31,8 @@ class UserManagementList extends Component {
                 <td style={styles.tableLine}> {user.tipo} </td>
                 <td>
                     {/*Criar Icon Button*/}
-                    <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
-                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(user)} >
-                        <i className='fa fa-pencil' />
-                    </button>
+                    {/* <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button> */}
+                    <UserManagementDetails user={user} update={this.props.showUpdate} />
                     <button className='btn btn-danger' onClick={() => this.props.showDelete(user)} >
                         <i className='fa fa-trash-o' />
                     </button>
@@ -43,6 +41,7 @@ class UserManagementList extends Component {
                             <i className='fa fa-check' />
                         </button>
                     }
+
                 </td>
             </tr>
         ))
@@ -51,24 +50,25 @@ class UserManagementList extends Component {
     render() {
         return (
             <div>
-                <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
-                <div className='class="box-body table-responsive no-padding"'>
-                    <table className='table table-hover'>
-                        <thead>
-                            <tr>
-                                <th> Imagem </th>
-                                <th> Nome </th>
-                                <th> Email </th>
-                                <th> Tipo </th>
-                                <th className='table-action'> Ações </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderRows()}
-                        </tbody>
-                    </table>
+                <div>
+                    <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
+                    <div className='class="box-body table-responsive no-padding"'>
+                        <table className='table table-hover'>
+                            <thead>
+                                <tr>
+                                    <th> Imagem </th>
+                                    <th> Nome </th>
+                                    <th> Email </th>
+                                    <th> Tipo </th>
+                                    <th className='table-action'> Ações </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderRows()}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <UserManagementDetails />
             </div>
         )
     }
