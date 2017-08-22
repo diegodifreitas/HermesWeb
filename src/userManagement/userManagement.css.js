@@ -6,11 +6,17 @@ export default {
         border: '2px solid #ecf0f5',
     },
 
+    imageUserDetails: {
+        color: 'white',
+        height: '100px',
+        border: '2px solid #ecf0f5',
+    },
+
     fieldImg: {
         width: '80px'
     },
 
-    tableLine:{
+    tableLine: {
         verticalAlign: 'baseline'
     }
 
