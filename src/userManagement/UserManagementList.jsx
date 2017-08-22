@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { getList, showUpdate, showDelete } from './userManagementActions'
+import { openModal, closeModal } from './modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
 import UserManagementDetails from './UserManagementDetails'
-import styles from './userManagement.css.js'
+
+import ButtonIcon from '../common/template/button/ButtonIcon'
 
 class UserManagementList extends Component {
 
@@ -15,31 +17,31 @@ class UserManagementList extends Component {
     }
 
     renderRows() {
+        const { openModal, showDelete } = this.props
 
+        let styles = {
+            imgList: { width: '80px', verticalAlign: 'middle' },
+            image: { color: 'white', width: '40px', height: '40px', border: '2px solid #ecf0f5' },
+            td: { verticalAlign: 'middle' }
+        }
         const list = this.props.list || []
-
         return list.map(user => (
             <tr key={user.id}>
-                <td style={Object.assign({}, styles.tableLine, styles.fieldImg)} >
+                <td style={styles.imgList} >
                     <img src={user.imagem}
                         className='img img-responsive img-circle'
                         style={styles.image}
                         alt="user image" />
                 </td>
-                <td style={styles.tableLine} > {user.nome} </td>
-                <td style={styles.tableLine} > {user.email} </td>
-                <td style={styles.tableLine}> {user.tipo} </td>
+                <td style={styles.td} > {user.nome} </td>
+                <td style={styles.td} > {user.email} </td>
+                <td style={styles.td}> {user.tipo} </td>
                 <td>
-                    {/*Criar Icon Button*/}
-                    {/* <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button> */}
-                    <UserManagementDetails user={user} update={this.props.showUpdate} />
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(user)} >
-                        <i className='fa fa-trash-o' />
-                    </button>
+
+                    <ButtonIcon style='primary' onClick={() => openModal(user)} icon='user-o' />
+                    <ButtonIcon style='danger' onClick={() => showDelete(user)} icon='trash-o' />
                     {user.situacao !== 'Aprovada' &&
-                        <button className='btn btn-success' onClick={() => null} >
-                            <i className='fa fa-check' />
-                        </button>
+                        <ButtonIcon style='success' onClick={() => null} icon='check' />
                     }
 
                 </td>
@@ -69,10 +71,24 @@ class UserManagementList extends Component {
                         </table>
                     </div>
                 </div>
+                <UserManagementDetails user={this.props.user} update={this.props.showUpdate} />
             </div>
         )
     }
 }
-const mapStateToProps = state => ({ list: state.users.list })
-const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
+
+const mapStateToProps = state => (
+    {
+        list: state.users.list,
+        visible: state.modal.visible,
+        user: state.modal.data
+    })
+const mapDispatchToProps = dispatch => bindActionCreators(
+    {
+        getList,
+        showUpdate,
+        showDelete,
+        openModal,
+        closeModal
+    }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagementList)

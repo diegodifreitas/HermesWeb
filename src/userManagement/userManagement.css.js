@@ -17,8 +17,6 @@ export default {
         width: '80px'
     },
 
-    tableLine: {
-        verticalAlign: 'baseline'
-    }
+    tableLine: { verticalAlign: 'baseline' }
 
 }
