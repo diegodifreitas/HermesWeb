@@ -47,7 +47,10 @@
       "tipo": "Servidor Publico",
       "email": "osc1@gmail.com",
       "id": 1,
-      "situacao": "Aprovado"
+      "situacao": "Aprovado",
+      "endereco": "Rua das Oliveiras, 567",
+      "telefone": "9766-8488",
+      "cidade": "Santa Rita do Sapucai - MG"
     },
     {
       "imagem": "  https://d85wutc1n854v.cloudfront.net/live/products/600x375/WB07JN5T9.png?v=2.4.4.1",
@@ -55,7 +58,10 @@
       "email": "osc2@gmail.com",
       "tipo": "OSC",
       "id": 2,
-      "situacao": "Aprovada"
+      "situacao": "Aprovada",
+      "endereco": "Rua das Calçadas, 34",
+      "telefone": "9766-8438",
+      "cidade": "Santa Rita do Sapucai - MG"
     }
   ],
   "osc": [
