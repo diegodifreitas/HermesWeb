@@ -11,6 +11,7 @@ import Monitoring from '../admProcess/monitoring/MonitoringProcess'
 import Dashboard from '../dashboard/Dashboard'
 import Osc from '../osc/Osc'
 import UserManagement from '../userManagement/UserManagement'
+import Message from '../userManagement/message/Message'
 
 export default props => (
 
@@ -20,6 +21,7 @@ export default props => (
             <Route exact path='/users' component={UserManagement} />
             <Route exact path='/osc' component={Osc} />
             <Route exact path='/admProcess' component={AdmProcess} />
+            <Route exact path='/messages' component={Message} />
             <Route exact path='/admProcess/:id/monitoring' component={Monitoring} />
             <Route path='*' component={Dashboard} />
         </Switch>

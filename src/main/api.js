@@ -24,6 +24,11 @@ export const getUser = (search = '') => api.get('user' + search)
 export const deleteUser = (user) => api.delete('user/' + user.id)
 export const putUser = (user) => api.put('user/' + user.id, user)
 
+export const postMessage = (message) => api.post('message', message)
+export const getMessage = (search = '') => api.get('message' + search)
+export const deleteMessage = (message) => api.delete('message/' + message.id)
+export const putMessage = (message) => api.put('message/' + message.id, message)
+
 
 const apis = {
   getAdmProcess,
@@ -44,7 +49,12 @@ const apis = {
   getUser,
   postUser,
   deleteUser,
-  putUser
+  putUser,
+
+  getMessage,
+  postMessage,
+  deleteMessage,
+  putMessage
 }
 
 export default apis
