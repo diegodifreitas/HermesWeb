@@ -31,17 +31,17 @@ class UserManagementList extends Component {
                     <img src={user.imagem}
                         className='img img-responsive img-circle'
                         style={styles.image}
-                        alt="user image" />
+                        alt="user" />
                 </td>
                 <td style={styles.td} > {user.nome} </td>
                 <td style={styles.td} > {user.email} </td>
                 <td style={styles.td}> {user.tipo} </td>
                 <td>
 
-                    <ButtonIcon style='primary' onClick={() => openModal(user)} icon='user-o' />
-                    <ButtonIcon style='danger' onClick={() => showDelete(user)} icon='trash-o' />
+                    <ButtonIcon cssStyle='primary' onClick={() => openModal(user)} icon='user-o' />
+                    <ButtonIcon cssStyle='danger' onClick={() => showDelete(user)} icon='trash-o' />
                     {user.situacao !== 'Aprovada' &&
-                        <ButtonIcon style='success' onClick={() => null} icon='check' />
+                        <ButtonIcon cssStyle='success' onClick={() => null} icon='check' />
                     }
 
                 </td>

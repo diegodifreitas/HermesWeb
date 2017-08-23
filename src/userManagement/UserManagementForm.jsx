@@ -8,7 +8,6 @@ import { init } from './userManagementActions'
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndDate from '../common/form/LabelAndDate'
 
 class UserManagementForm extends Component {
     componentWillMount() {

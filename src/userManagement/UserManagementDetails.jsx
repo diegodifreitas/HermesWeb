@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal'
+import { Link } from 'react-router-dom'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
-
-import BoxBody from '../common/template/box/BoxBody'
-import BoxFooter from '../common/template/box/BoxFooter'
 
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 import LabelAndText from '../common/form/LabelAndText'
@@ -16,7 +14,7 @@ import Row from '../common/layout/Row'
 class UserManagementDetails extends Component {
     render() {
         var styles = {
-            modal: { overlay: { zIndex: 1040 }},
+            modal: { overlay: { zIndex: 1040 } },
             imageUserDetails: {
                 color: 'white',
                 height: '100px',
@@ -51,7 +49,7 @@ class UserManagementDetails extends Component {
                                         <img src={user.imagem}
                                             className='img img-responsive img-circle'
                                             style={styles.imageUserDetails}
-                                            alt="user image" />
+                                            alt="user profile" />
                                     </div>
                                 </Row>
                                 <Row>
@@ -85,7 +83,10 @@ class UserManagementDetails extends Component {
                             </Grid>
                         </div>
                         <div className="modal-footer">
-                            <ButtonIcon style='warning' onClick={() => update(user)} icon='pencil' />
+                            <ButtonIcon cssStyle='warning' onClick={() => update(user)} icon='pencil' />
+                            <Link to='/messages' >
+                                <ButtonIcon cssStyle='warning' onClick={() => null} icon='dashboard' />
+                            </Link>
                         </div>
                     </div>
                 </div>
