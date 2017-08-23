@@ -4,7 +4,7 @@ import Grid from '../layout/Grid'
 import AvatarCropper from 'react-avatar-cropper'
 import FileUpload from './FileUpload'
 
-import './upload.css'
+import '../../styles/upload.css'
 
 export default class LabelAndUpload extends Component {
 

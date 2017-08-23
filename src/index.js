@@ -8,7 +8,6 @@ import multi from 'redux-multi'
 import thunk from 'redux-thunk'
 
 import AuthOrApp from './main/AuthOrApp'
-import App from './main/App'
 import reducers from './main/reducers'
 import registerServiceWorker from './registerServiceWorker'
 

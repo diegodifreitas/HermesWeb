@@ -10,7 +10,7 @@ import If from '../common/operator/If'
 import Messages from '../common/msg/Messages'
 import Input from '../common/form/InputAuth'
 
-import '../styles/less/login-bg.css'
+import '../styles/login-bg.css'
 
 class Auth extends Component {
     constructor(props) {

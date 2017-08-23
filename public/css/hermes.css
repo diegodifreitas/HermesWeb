@@ -166,3 +166,15 @@ html,
         transform: translate(100%) scaleX(0.1);
       };
     }
+
+    * {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	font-style: normal;
+	font-variant: normal;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+	font-family: Futura, "Trebuchet MS", Arial, sans-serif !important;
+	font-style: normal;
+	font-variant: normal;
+}

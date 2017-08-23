@@ -1,6 +1,4 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-
 import Breadcrumbs from 'react-router-dynamic-breadcrumbs';
 
 const routes = {
