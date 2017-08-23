@@ -3,12 +3,12 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { getList, showUpdate, showDelete } from './userManagementActions'
-import { openModal, closeModal } from './modalActions'
+import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
 import UserManagementDetails from './UserManagementDetails'
 
-import ButtonIcon from '../common/template/button/ButtonIcon'
+import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 class UserManagementList extends Component {
 
