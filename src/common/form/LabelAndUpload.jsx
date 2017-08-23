@@ -53,7 +53,7 @@ export default class LabelAndUpload extends Component {
                             <span>Click Para Alterar</span>
                             <i className="fa fa-camera"></i>
                         </div>
-                        <img className='img-responsive' src={this.state.croppedImg} />
+                        <img className='img-responsive' alt='croppie' src={this.state.croppedImg} />
                     </div>
                     {this.state.cropperOpen &&
                         <AvatarCropper

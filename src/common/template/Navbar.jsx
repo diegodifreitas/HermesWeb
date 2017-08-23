@@ -32,12 +32,12 @@ class Navbar extends Component {
                         <ul className="dropdown-menu">
                             <li className="user-header">
                                 <img src="http://lorempixel.com/160/160/abstract"
-                                    className="img-circle" alt="User Image" />
+                                    className="img-circle" alt="user login" />
                                 <p>{name}<small>{email}</small></p>
                             </li>
                             <li className="user-footer">
                                 <div className="pull-right">
-                                    <a href="#" onClick={this.props.logout}
+                                    <a href="/logout" onClick={this.props.logout}
                                         className="btn btn-default btn-flat">Sair</a>
                                 </div>
                             </li>

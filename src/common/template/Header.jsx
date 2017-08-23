@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 export default prrops => (
     <header className='main-header'>
-        <a href='/#/' className='logo'>
+        <a href='/' className='logo'>
             <span className='logo-mini'>
                 <svg width="50" className="logo-menu" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 350">
                     <path className="logo-h" d="M191.55,152.37v28.7H158.81V152.84s0-25.7-32.74-25.7V232.82s0,26.18,32.74,26.18V213.81h32.74v44.8c31.26,0,31.26-25.61,31.26-25.61V126.66C191.55,126.66,191.55,152.37,191.55,152.37Z"
@@ -20,7 +20,7 @@ export default prrops => (
             </span>
         </a>
         <nav className='navbar navbar-static-top'>
-            <a href="#" className="sidebar-toggle" data-toggle="push-menu" role="button">
+            <a href="/" className="sidebar-toggle" data-toggle="push-menu" role="button">
                 <span className="sr-only">Toggle navigation</span>
             </a>
             <Navbar />

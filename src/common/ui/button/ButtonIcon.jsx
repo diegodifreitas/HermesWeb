@@ -4,7 +4,7 @@ import If from '../../operator/If'
 
 export default props => (
     <If test={!props.hide}>
-        <button className={'btn btn-'+ props.style} 
+        <button className={'btn btn-'+ props.cssStyle} 
             onClick={props.onClick}>
             <i className={'fa fa-'+ props.icon}></i>
         </button>

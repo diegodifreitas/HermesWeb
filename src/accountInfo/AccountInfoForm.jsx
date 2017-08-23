@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 
 import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndCombo from '../common/form/LabelAndCombo'
 import LabelAndUpload from '../common/form/LabelAndUpload'
 
 import LabelAndDate from '../common/form/LabelAndDate'

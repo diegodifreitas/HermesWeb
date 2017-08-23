@@ -28,12 +28,12 @@ class MonitoringProcessForm extends Component {
                     <fieldset>
                         <legend> Etapa Atual </legend>
                         <Row>
-                            <Grid cols='12 8' style='monitoring-row'>
+                            <Grid cols='12 8' cssStyle='monitoring-row'>
                                 <Field name='atualDescricao' label='Descrição' cols='12 10'
                                     placeholder='Informe uma descrição da fase'
-                                    component={LabelAndTextArea} readOnly={readOnly} style='monitoring-text-area' />
+                                    component={LabelAndTextArea} readOnly={readOnly}  />
                             </Grid>
-                            <Grid cols='12 4' style='monitoring-row' >
+                            <Grid cols='12 4' cssStyle='monitoring-row' >
                                 <Field name='atualData' component={LabelAndDate} readOnly={readOnly}
                                     label='Data' cols='12 12' placeholder='Informe a data...' />
                                 <Field name='atualSetor' component={LabelAndInput} readOnly={readOnly}
@@ -44,12 +44,12 @@ class MonitoringProcessForm extends Component {
                     <fieldset>
                         <legend> Proxima Etapa </legend>
                         <Row>
-                            <Grid cols='12 8' style='monitoring-row'>
+                            <Grid cols='12 8' cssStyle='monitoring-row'>
                                 <Field name='proximaDescricao' label='Descrição' cols='12 12'
                                     placeholder='Informe uma descrição da fase'
-                                    component={LabelAndTextArea} readOnly={readOnly} style='monitoring-text-area' />
+                                    component={LabelAndTextArea} readOnly={readOnly} />
                             </Grid>
-                            <Grid cols='12 4' style='monitoring-row' >
+                            <Grid cols='12 4' cssStyle='monitoring-row' >
                                 <Field name='proximaData' component={LabelAndDate} readOnly={readOnly}
                                     label='Data Prevista' cols='12 12' placeholder='Informe a data...' />
                                 <Field name='proximoSetor' component={LabelAndInput} readOnly={readOnly}
