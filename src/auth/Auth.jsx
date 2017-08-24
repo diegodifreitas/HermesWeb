@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 import { login, signup } from './authActions'
 import Row from '../common/layout/Row'
 import Grid from '../common/layout/Grid'
-import Messages from '../common/msg/Messages'
+import Toastr from '../common/ui/Toastr'
 import Input from '../common/form/InputAuth'
 
 import '../styles/login-bg.css'
@@ -89,7 +89,7 @@ class Auth extends Component {
                             {loginMode ? 'Novo usuário? Registrar aqui!' :
                                 'Já é cadastrado? Entrar aqui!'}
                         </a>
-                        <Messages />
+                        <Toastr />
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import Header from '../common/template/Header'
 import Sidebar from '../common/template/Sidebar'
 import Footer from '../common/template/Footer'
-import Messages from '../common/msg/Messages'
+import Toastr from '../common/ui/Toastr'
 
 import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './Routes'
@@ -37,11 +37,10 @@ class App extends Component {
               <Routes />
             </div>
             <Footer />
-            <Messages />
+            <Toastr />
           </div>
         </Router>
       </div>
-
     )
   }
 }
