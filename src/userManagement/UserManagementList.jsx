@@ -38,8 +38,7 @@ class UserManagementList extends Component {
                 <td style={styles.td}> {user.tipo} </td>
                 <td>
 
-                    <ButtonIcon cssStyle='primary' onClick={() => openModal(user)} icon='user-o' />
-                    <ButtonIcon cssStyle='danger' onClick={() => showDelete(user)} icon='trash-o' />
+                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />
                     {user.situacao !== 'Aprovada' &&
                         <ButtonIcon cssStyle='success' onClick={() => null} icon='check' />
                     }
@@ -71,7 +70,9 @@ class UserManagementList extends Component {
                         </table>
                     </div>
                 </div>
-                <UserManagementDetails user={this.props.user} update={this.props.showUpdate} />
+                <UserManagementDetails user={this.props.user}
+                    showUpdate={this.props.showUpdate}
+                    showDelete={this.props.showDelete} />
             </div>
         )
     }

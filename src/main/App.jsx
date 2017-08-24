@@ -24,6 +24,7 @@ class App extends Component {
     mapActiveUrlToMenu()
   }
 
+
   render() {
     return (
       <div className='wrapper'>

@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import If from '../../operator/If'
 
-export default props => (
-    <If test={!props.hide}>
-        <button className={'btn btn-'+ props.cssStyle} 
-            onClick={props.onClick}>
-            <i className={'fa fa-'+ props.icon}></i>
-        </button>
-    </If>
-)
+
+class ButtonIcon extends Component {
+
+    componentDidMount() {
+        window.$('[data-toggle="tooltip"]').tooltip();
+    }
+
+    render() {
+        return (
+            <If test={!this.props.hide}>
+                <button className={'btn btn-' + this.props.cssStyle}
+                    onClick={this.props.onClick}
+                    data-toggle="tooltip" data-placement="top" title={this.props.tooltip}
+                >
+                    <i className={'fa fa-' + this.props.icon}></i>
+                </button>
+            </If>
+        )
+    }
+}
+
+export default ButtonIcon

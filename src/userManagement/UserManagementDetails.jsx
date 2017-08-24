@@ -23,7 +23,7 @@ class UserManagementDetails extends Component {
             },
         }
 
-        const { modal, closeModal, update, user } = this.props
+        const { modal, closeModal, showUpdate, showDelete, user } = this.props
 
         return (
             <Modal
@@ -83,10 +83,16 @@ class UserManagementDetails extends Component {
                             </Grid>
                         </div>
                         <div className="modal-footer">
-                            <ButtonIcon cssStyle='warning' onClick={() => update(user)} icon='pencil' />
+                            <ButtonIcon cssStyle='warning' onClick={() => 
+                                showUpdate(user)} icon='pencil' 
+                                tooltip='Editar'/>
                             <Link to='/messages' >
-                                <ButtonIcon cssStyle='warning' onClick={() => null} icon='dashboard' />
+                                <ButtonIcon cssStyle='primary'
+                                 onClick={() => null} 
+                                 icon='dashboard' 
+                                 tooltip='Enviar mensagem'/>
                             </Link>
+                            <ButtonIcon cssStyle='danger' tooltip='Deletar' onClick={() => showDelete(user)} icon='trash-o' />
                         </div>
                     </div>
                 </div>

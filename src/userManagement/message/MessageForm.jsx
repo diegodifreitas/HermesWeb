@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 import Grid from '../../common/layout/Grid'
 import ButtonIcon from '../../common/ui/button/ButtonIcon'
@@ -24,11 +24,11 @@ export default props => {
             </Grid>
             <Grid cols='12 3 2'>
                 <ButtonIcon style='primary' icon='plus'
-                    onClick={props.handleAdd}> </ButtonIcon>
+                    onClick={props.handleAdd} tooltip='Enviar' > </ButtonIcon>
                 <ButtonIcon style='info' icon='search'
-                    onClick={props.handleSearch}> </ButtonIcon>
+                    onClick={props.handleSearch} tooltip='Pesquisar' > </ButtonIcon>
                 <ButtonIcon style='default' icon='close'
-                    onClick={props.handleClear}> </ButtonIcon>
+                    onClick={props.handleClear} tooltip='Limpar' > </ButtonIcon>
             </Grid>
         </div>
     )
