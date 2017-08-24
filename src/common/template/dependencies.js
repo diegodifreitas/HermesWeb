@@ -22,7 +22,7 @@ require('admin-lte/dist/css/skins/_all-skins.min.css')
 require('font-awesome/css/font-awesome.min.css')
 require('ionicons/dist/css/ionicons.min.css')
 
-require('./custom.css')
+require('../../styles/ui.css')
 
 
 
