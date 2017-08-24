@@ -1,15 +1,18 @@
 import React from 'react'
 import Grid from '../layout/Grid'
 
-export default props => (
+export default (props) => (
     <Grid cols={props.cols}>
         <div className='form-group'>
             <label htmlFor={props.name}> {props.label} </label>
-            <input {...props.input} 
-                    className='form-control'
-                    placeholder={props.placeholder} 
-                    readOnly={props.readOnly} 
-                    type={props.type} />
+            <input {...props.input}
+                className='form-control'
+                placeholder={props.placeholder}
+                readOnly={props.readOnly}
+                type={props.type} />
+            {props.meta.touched &&
+                ((props.meta.error && <span>{props.meta.error}</span>) ||
+                    (props.meta.warning && <span>{props.meta.warning}</span>))}
         </div>
     </Grid>
 )
