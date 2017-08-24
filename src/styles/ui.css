@@ -1,11 +1,14 @@
 .skin-blue-light .sidebar-menu li.active {
-  border-left: 4px solid #3c8dbc;
+  border-left: 4px solid #3784b1;
 }
 .skin-blue-light .sidebar-menu li.active i {
   color: #3c8dbc;
 }
 .skin-blue-light .sidebar-menu li a {
   font-weight: 400 !important;
+}
+.skin-blue-light .main-header .logo {
+  background-color: #3784b1;
 }
 .form-group textarea {
   height: 8em;
@@ -24,4 +27,7 @@ li.header {
 .wing-left,
 .wing-right {
   fill: white;
+}
+.direct-chat-messages {
+  height: 100%;
 }
