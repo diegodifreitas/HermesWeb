@@ -17,7 +17,7 @@ class UserManagementList extends Component {
     }
 
     renderRows() {
-        const { openModal, showDelete } = this.props
+        const { openModal } = this.props
 
         let styles = {
             imgList: { width: '80px', verticalAlign: 'middle' },
@@ -49,10 +49,11 @@ class UserManagementList extends Component {
     }
 
     render() {
+        const { showDelete, getList, user } = this.props
         return (
             <div>
                 <div>
-                    <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
+                    <FieldSearch handleClick={getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
                     <div className='class="box-body table-responsive no-padding"'>
                         <table className='table table-hover'>
                             <thead>
@@ -70,9 +71,9 @@ class UserManagementList extends Component {
                         </table>
                     </div>
                 </div>
-                <UserManagementDetails user={this.props.user}
-                    showUpdate={this.props.showUpdate}
-                    showDelete={this.props.showDelete} />
+                <UserManagementDetails user={user}
+                    showUpdate={showUpdate}
+                    showDelete={showDelete} />
             </div>
         )
     }
