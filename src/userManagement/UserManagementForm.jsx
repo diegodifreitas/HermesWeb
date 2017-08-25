@@ -49,23 +49,29 @@ class UserManagementForm extends Component {
             <form onSubmit={handleSubmit}>
                 <BoxBody>
                     <Field name='nome' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome da Organização' cols='12 12' placeholder='Informe o Nome da Organização' />
+                        label='Nome' cols='12 3' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um email para a organização' />
+                        cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
+
+                    <Field name='tipo' component={LabelAndInput} label='Tipo'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario' />
+
+                    <Field name='telefone' component={LabelAndInput} label='Telefone'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
                     <Field name='endereco' component={LabelAndInput} readOnly={readOnly}
                         label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
                     <Field name='bairro' component={LabelAndInput} label='Bairro'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
+                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
 
-                    <Field name='telefone' component={LabelAndInput} label='Telefone'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
+                    <Field name='cidade' component={LabelAndInput} label='Cidade'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
                 </BoxBody>
 
                 <BoxFooter >
-                    <button type='submit' disabled={pristine || submitting} className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                    <button type='submit' disabled={submitting} className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     <button type='button' className='btn btn-warning' disabled={pristine || submitting} onClick={reset}> Limpar </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
                 </BoxFooter>

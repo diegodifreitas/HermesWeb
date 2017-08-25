@@ -92,15 +92,16 @@ const UserManagementDetails = props => {
                         </Grid>
                     </div>
                     <div className="modal-footer">
-                        <ButtonIcon cssStyle='warning' onClick={() => handleUpdate(user)} icon='pencil'
-                            tooltip='Editar' />
+                        <ButtonIcon cssStyle='warning' tooltip='Editar'
+                            onClick={() => handleUpdate(user)} icon='pencil' />
                         <Link to='/messages' >
                             <ButtonIcon cssStyle='primary'
                                 onClick={() => closeModal()}
-                                icon='dashboard'
+                                icon='comments-o'
                                 tooltip='Enviar mensagem' />
                         </Link>
-                        <ButtonIcon cssStyle='danger' tooltip='Deletar' onClick={() => handleDelete(user)} icon='trash-o' />
+                        <ButtonIcon cssStyle='danger' tooltip='Deletar'
+                            onClick={() => handleDelete(user)} icon='trash-o' />
                     </div>
                 </div>
             </div>

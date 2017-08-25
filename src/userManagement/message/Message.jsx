@@ -38,7 +38,7 @@ class Message extends Component {
             text: this.state.text,
             user: {
                 photo: "https://avatars3.githubusercontent.com/u/11650796?v=4&s=460",
-                name: "Usuario #X",
+                name: "Diego Dulval",
                 id: 2,
             },
             datetime: Date.now(),
