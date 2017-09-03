@@ -12,31 +12,19 @@ import LabelAndInput from '../common/form/LabelAndInput'
 const validate = values => {
     const errors = {}
     if (!values.nome) {
-        errors.nome = 'Required'
-    } else if (values.nome.length > 15) {
-        errors.nome = 'Must be 15 characters or less'
+        errors.nome = 'Campo obrigatório'
     }
     if (!values.email) {
-        errors.email = 'Required'
+        errors.email = 'Campo obrigatório'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
+        errors.email = 'Email inválido'
     }
     if (!values.telefone) {
-        errors.telefone = 'Required'
-    } else if (isNaN(Number(values.telefone))) {
-        errors.telefone = 'Must be a number'
-    } else if (Number(values.age) < 8) {
-        errors.telefone = 'Sorry, invalid number'
+        errors.telefone = 'Campo obrigatório'
+    }else if (Number(values.telefone) < 6) {
+        errors.telefone = 'Telefone inválido'
     }
     return errors
-}
-
-const warn = values => {
-    const warnings = {}
-    if (!values.endereco) {
-        warnings.endereco = 'Hmm, is empty...'
-    }
-    return warnings
 }
 
 class UserManagementForm extends Component {
@@ -83,7 +71,6 @@ class UserManagementForm extends Component {
 UserManagementForm = reduxForm({
     form: 'usersForm',
     validate, // <--- validation function given to redux-form
-    warn, // <--- warning function given to redux-form 
     destroyOnUnmount: false
 })(UserManagementForm)
 const mapStateToProps = state => ({})
