@@ -10,68 +10,84 @@ import BoxFooter from '../common/template/box/BoxFooter'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndDate from '../common/form/LabelAndDate'
 
-class OscForm extends Component {
-    componentWillMount() {
+const validate = values => {
+    const errors = {}
+    if (!values.name) {
+        errors.name = 'Campo obrigatório'
     }
+    if (!values.cnpj) {
+        errors.cnpj = 'Campo obrigatório'
+    }
+    if (!values.email) {
+        errors.email = 'Campo obrigatório'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Email inválido'
+    }
+    if (!values.phone) {
+        errors.phone = 'Campo obrigatório'
+    } else if (Number(values.phone) < 6) {
+        errors.phone = 'Telefone inválido'
+    } 
+    return errors
+}
+
+class OscForm extends Component {
 
     render() {
         const { handleSubmit, readOnly } = this.props
         return (
             <form onSubmit={handleSubmit}>
                 <BoxBody>
-                    <Field name='nome' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome da Organização' cols='12 12' placeholder='Informe o Nome da Organização' />
+                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
+                        label='Nome da Organização' cols='12 6' placeholder='Informe o Nome da Organização' />
 
                     <Field name='cnpj' component={LabelAndInput} readOnly={readOnly}
                         label='CNPJ' cols='12 3' placeholder='Informe o CNPJ' />
 
-                    <Field name='conselhoMunicipal' component={LabelAndInput} readOnly={readOnly}
-                        label='Conselho Municipal' cols='12 6' placeholder='Indique em qual Conselho Municipal tem Inscrição' />
-
                     <Field name='email' component={LabelAndInput} label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email para a organização' type='email' />
 
-                    <Field name='endereco' component={LabelAndInput} readOnly={readOnly}
-                        label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
+                        label='Endereço' cols='12 4' placeholder='Ex: Av. João de Camargo, 89' />
 
-                    <Field name='bairro' component={LabelAndInput} label='Bairro'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
+                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
+                        cols='12 4' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
 
-                    <Field name='telefone' component={LabelAndInput} label='Telefone'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
+                    <Field name='phone' component={LabelAndInput} label='Telefone'
+                        cols='12 4' readOnly={readOnly} placeholder='Informe um número de telefone' />
                 </BoxBody>
 
                 <BoxBody>
                     <fieldset>
                         <legend> Responsavél </legend>
-                        <Field name='responsavel.nome' component={LabelAndInput} readOnly={readOnly}
+                        <Field name='member.name' component={LabelAndInput} readOnly={readOnly}
                             label='Nome do Responsavél Legal' cols='12 12' placeholder='Nome da responsável pela organização' />
 
-                        <Field name='responsavel.cargo' component={LabelAndInput} readOnly={readOnly}
+                        <Field name='member.cargo' component={LabelAndInput} readOnly={readOnly}
                             label='Cargo' cols='12 3' placeholder='Informe o Cargo' />
 
-                        <Field name='responsavel.cpf' component={LabelAndInput} readOnly={readOnly}
+                        <Field name='member.cpf' component={LabelAndInput} readOnly={readOnly}
                             label='CPF' cols='12 6' placeholder='Informe o CPF do Responsavél' />
 
-                        <Field name='responsavel.rg' component={LabelAndInput} label='RG'
+                        <Field name='member.rg' component={LabelAndInput} label='RG'
                             cols='12 3' readOnly={readOnly} placeholder='Informe o RG do Responsavél' />
 
-                        <Field name='responsavel.endereco' component={LabelAndInput} readOnly={readOnly}
+                        <Field name='member.street' component={LabelAndInput} readOnly={readOnly}
                             label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
-                        <Field name='responsavel.bairro' component={LabelAndInput} label='Bairro'
+                        <Field name='member.neighborhood' component={LabelAndInput} label='Bairro'
                             cols='12 3' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
 
-                        <Field name='responsavel.telefone' component={LabelAndInput} label='Telefone'
+                        <Field name='member.phone' component={LabelAndInput} label='Telefone'
                             cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                        <Field name='responsavel.email' component={LabelAndInput} label='Email'
+                        <Field name='member.email' component={LabelAndInput} label='Email'
                             cols='12 4' readOnly={readOnly} placeholder='Informe o email do Responsavél' type='email' />
 
-                        <Field name='responsavel.inicioDoMandato' component={LabelAndDate} label='Início do Mandato'
+                        <Field name='member.inicioDoMandato' component={LabelAndDate} label='Início do Mandato'
                             cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
 
-                        <Field name='responsavel.terminoDoMandato' component={LabelAndDate} label='Término do Mandato'
+                        <Field name='member.terminoDoMandato' component={LabelAndDate} label='Término do Mandato'
                             cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
                     </fieldset>
                 </BoxBody>
@@ -85,7 +101,7 @@ class OscForm extends Component {
     }
 }
 
-OscForm = reduxForm({ form: 'oscForm', destroyOnUnmount: false })(OscForm)
+OscForm = reduxForm({ form: 'oscForm', validate, destroyOnUnmount: false })(OscForm)
 const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(OscForm)

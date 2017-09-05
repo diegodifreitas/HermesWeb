@@ -11,18 +11,18 @@ import LabelAndInput from '../common/form/LabelAndInput'
 
 const validate = values => {
     const errors = {}
-    if (!values.nome) {
-        errors.nome = 'Campo obrigatório'
+    if (!values.name) {
+        errors.name = 'Campo obrigatório'
     }
     if (!values.email) {
         errors.email = 'Campo obrigatório'
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
         errors.email = 'Email inválido'
     }
-    if (!values.telefone) {
-        errors.telefone = 'Campo obrigatório'
-    }else if (Number(values.telefone) < 6) {
-        errors.telefone = 'Telefone inválido'
+    if (!values.phone) {
+        errors.phone = 'Campo obrigatório'
+    }else if (Number(values.phone) < 6) {
+        errors.phone = 'Telefone inválido'
     }
     return errors
 }
@@ -36,25 +36,25 @@ class UserManagementForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <BoxBody>
-                    <Field name='nome' component={LabelAndInput} readOnly={readOnly}
+                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 3' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='tipo' component={LabelAndInput} label='Tipo'
+                    <Field name='type' component={LabelAndInput} label='Tipo'
                         cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario' />
 
-                    <Field name='telefone' component={LabelAndInput} label='Telefone'
+                    <Field name='phone' component={LabelAndInput} label='Telefone'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='endereco' component={LabelAndInput} readOnly={readOnly}
+                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
                         label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
-                    <Field name='bairro' component={LabelAndInput} label='Bairro'
+                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
                         cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
 
-                    <Field name='cidade' component={LabelAndInput} label='Cidade'
+                    <Field name='city' component={LabelAndInput} label='Cidade'
                         cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
                 </BoxBody>
 

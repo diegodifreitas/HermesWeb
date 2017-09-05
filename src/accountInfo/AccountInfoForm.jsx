@@ -26,17 +26,12 @@ class AccountInfoForm extends Component {
                     <Field name='email' component={LabelAndInput} readOnly={readOnly}
                         label="Email" cols='12 4 3' placeholder='...' />
 
-                    <Field name='dataNascimento' component={LabelAndDate} label='Data de Nascimento'
-                        cols='12 8 3' readOnly={readOnly} placeholder='..' type='text' />
+                    <Field name='office' component={LabelAndInput} readOnly={readOnly}
+                        label='Cargo' cols='12 12 3' placeholder='Ex: Av. João de Camargo, 89' />
 
-                    <Field name='endereco' component={LabelAndInput} readOnly={readOnly}
-                        label='Endereço' cols='12 12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                    <Field name='publicAdmin' component={LabelAndInput} readOnly={readOnly}
+                        label='Administração Pública' cols='12 12 9' placeholder='Vai er uma lista aqui...' />
 
-                    <Field name='bairro' component={LabelAndInput} label='Bairro'
-                        cols='12 6 3' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
-
-                    <Field name='telefone' component={LabelAndInput} label='Telefone'
-                        cols='12 6 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
                 </div>
                 <div className='box-footer'>
