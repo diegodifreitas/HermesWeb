@@ -31,8 +31,9 @@ const submit = (values, method) => {
                 dispatch(init())
             })
             .catch(e => {
-                //alterar isso quando integrar com a API
-                toastr.error('Erro', 'Fica ativo ai, ta dando erro!')
+                //alterar isso quando integrar com a AP
+                //toastr.success('Sucesso', 'Seus dados foram alterados com sucesso!')
+                toastr.error('Erro', 'Este email já está cadastrado no sistema!')
                 //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
             })
     }
