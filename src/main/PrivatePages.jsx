@@ -7,7 +7,7 @@ import Footer from '../common/template/Footer'
 import Toastr from '../common/ui/Toastr'
 
 import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './Routes'
+import Routes from './PrivateRoutes'
 
 class PrivatePages extends Component {
   componentDidMount() {
