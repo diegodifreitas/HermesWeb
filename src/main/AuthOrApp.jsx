@@ -4,8 +4,8 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import App from './App'
-import Auth from '../auth/Auth'
+import PublicPages from './PublicPages'
+import PrivatePages from './PrivatePages'
 import { validateToken } from '../auth/authActions'
 
 class AuthOrApp extends Component {
@@ -19,9 +19,9 @@ class AuthOrApp extends Component {
         const { user, validToken } = this.props.auth
         if (user && validToken) {
             //axios.defaults.headers.common['authorization'] = user.token
-            return <App>{this.props.children}</App>
+            return <PrivatePages>{this.props.children}</PrivatePages>
         } else if (!user && !validToken) {
-            return <Auth />
+            return <PublicPages />
         } else {
             return false
         }

@@ -9,21 +9,17 @@ import Toastr from '../common/ui/Toastr'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from './Routes'
 
-class App extends Component {
+class PrivatePages extends Component {
   componentDidMount() {
     const ele = document.getElementById('ipl-progress-indicator')
     if (ele) {
       setTimeout(() => {
         ele.classList.add('available')
-        setTimeout(() => {
-          ele.outerHTML = ''
-        }, 2000)
       }, 1000)
     }
 
     mapActiveUrlToMenu()
   }
-
 
   render() {
     return (
@@ -45,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default PrivatePages
