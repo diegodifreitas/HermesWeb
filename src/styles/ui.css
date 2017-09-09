@@ -31,3 +31,15 @@ li.header {
 .direct-chat-messages {
   height: 100%;
 }
+.input-group .input-group-addon {
+  background-color: white;
+  border-color: white;
+  border-bottom-color: #3784b1;
+}
+.btn {
+  font-size: 12px;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
+}
