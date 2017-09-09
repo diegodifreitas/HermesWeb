@@ -5,8 +5,6 @@ import { bindActionCreators } from 'redux'
 
 import { init } from './registerActions'
 
-import BoxBody from '../common/template/box/BoxBody'
-import BoxFooter from '../common/template/box/BoxFooter'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndDate from '../common/form/LabelAndDate'
 
