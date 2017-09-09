@@ -8,6 +8,8 @@ import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndText from '../common/form/LabelAndText'
 import LabelAndCombo from '../common/form/LabelAndCombo'
 import LabelAndDate from '../common/form/LabelAndDate'
+import FileUpload from '../common/form/LabelAndFileUpload'
+
 
 class AdmProcessForm extends Component {
     componentWillMount() {
@@ -43,6 +45,9 @@ class AdmProcessForm extends Component {
 
                     <Field name='dataPublicacao' component={LabelAndDate} label='Data de Publicação'
                         cols='12 6' readOnly={readOnly} placeholder='Informe a data' />
+                    
+                    <Field name='file' component={FileUpload} label='Anexo'
+                        cols='12 12' readOnly={readOnly} placeholder='Adicionar anexo' />
 
                 </div>
                 <div className='box-footer'>

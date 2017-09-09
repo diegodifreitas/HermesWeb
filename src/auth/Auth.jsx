@@ -10,9 +10,6 @@ import Grid from '../common/layout/Grid'
 import Toastr from '../common/ui/Toastr'
 import Input from '../common/form/InputAuth'
 
-import '../styles/login-bg.css'
-
-
 const validate = values => {
     const errors = {}
     if (!values.email) {
