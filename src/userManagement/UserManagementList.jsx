@@ -33,9 +33,9 @@ class UserManagementList extends Component {
                         style={styles.image}
                         alt="user" />
                 </td>
-                <td style={styles.td} > {user.nome} </td>
+                <td style={styles.td} > {user.name} </td>
                 <td style={styles.td} > {user.email} </td>
-                <td style={styles.td}> {user.tipo} </td>
+                <td style={styles.td}> {user.type} </td>
                 <td>
 
                     <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />

@@ -62,8 +62,8 @@ const UserManagementDetails = props => {
                                 </div>
                             </Row>
                             <Row>
-                                <h3 >{user.nome}</h3>
-                                <h5 >{user.tipo}</h5>
+                                <h3 >{user.name}</h3>
+                                <h5 >{user.type}</h5>
                             </Row>
                         </Grid>
                         <Grid cols='8 8 8 8'>
@@ -76,17 +76,17 @@ const UserManagementDetails = props => {
                                 <LabelAndText colsTitle='3 3 3 3'
                                     colsText='9 9 9 9'
                                     title='Cidade:'
-                                    text={user.cidade}
+                                    text={user.city}
                                 />
                                 <LabelAndText colsTitle='3 3 3 3'
                                     colsText='9 9 9 9'
                                     title='Endereço:'
-                                    text={user.endereco}
+                                    text={user.street}
                                 />
                                 <LabelAndText colsTitle='3 3 3 3'
                                     colsText='9 9 9 9'
                                     title='Telefone:'
-                                    text={user.telefone}
+                                    text={user.phone}
                                 />
                             </Row>
                         </Grid>
