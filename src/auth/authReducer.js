@@ -1,7 +1,7 @@
 const userKey = '_hermesapp_user'
 const INITIAL_STATE = {
-    user: null,//JSON.parse(localStorage.getItem(userKey)),
-    validToken: false
+    user: { name: 'Diego Dulval', email:'diegodulval@fai-mg.br'},//JSON.parse(localStorage.getItem(userKey)),
+    validToken: true
 }
 
 

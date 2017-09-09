@@ -12,16 +12,16 @@ export function signup(values) {
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, values)
-            .then(resp => {
+        /* axios.post(url, values)
+            .then(resp => { */
                 dispatch([
-                    { type: 'USER_FETCHED', payload: resp.data }
+                    { type: 'USER_FETCHED', payload: { name: 'Diego Dulval', email:'diegodulval@fai-mg.br'} }
                 ])
-            })
+            /* })
             .catch(e => {
                 e.response.data.errors.forEach(
                     error => toastr.error('Erro', error))
-            })
+            }) */
     }
 }
 

@@ -12,6 +12,21 @@ import Input from '../common/form/InputAuth'
 
 import '../styles/login-bg.css'
 
+
+const validate = values => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Campo obrigatório'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Email inválido'
+    }
+    if (!values.password) {
+        errors.password = 'Campo obrigatório'
+        return errors
+    }
+}
+
+
 class Auth extends Component {
     constructor(props) {
         super(props)
@@ -82,6 +97,6 @@ class Auth extends Component {
     }
 }
 
-Auth = reduxForm({ form: 'authForm' })(Auth)
+Auth = reduxForm({ form: 'authForm', validate })(Auth)
 const mapDispatchToProps = dispatch => bindActionCreators({ login, signup }, dispatch)
 export default connect(null, mapDispatchToProps)(Auth)
