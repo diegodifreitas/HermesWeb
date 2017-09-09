@@ -3,8 +3,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import ContentHeader from '../common/template/ContentHeader'
-import Content from '../common/template/Content'
 import Form from './RegisterForm'
 import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
