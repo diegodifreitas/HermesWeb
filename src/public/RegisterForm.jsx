@@ -36,6 +36,7 @@ class Register extends Component {
         return (
             <div className="form">
                 <form onSubmit={handleSubmit}>
+                    <legend> Organização </legend>
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome da Organização' cols='12 6' placeholder='Informe o Nome da Organização' />
 
