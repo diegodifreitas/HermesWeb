@@ -3,15 +3,27 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import Form from './RegisterForm'
+import OSCForm from './OSCForm'
+import ResponsavelForm from './ResponsavelForm'
 import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
 
+import StepZilla from 'react-stepzilla'
 
 import './register.css'
 class Register extends Component {
 
     render() {
+        const steps =
+            [
+                { name: 'OSC', component: <OSCForm /> },
+                {
+                    name: 'Respónsavel', component: <ResponsavelForm onSubmit={this.props.create}
+                        submitLabel='Solicitar Acesso'
+                        submitClass='primary' />
+                }
+            ]
+
         return (
             <div className="container-fluid">
                 <div className="main">
@@ -29,9 +41,9 @@ class Register extends Component {
                     </div>
 
                     <div className="col-sm-6 right-side">
-                        <Form onSubmit={this.props.create}
-                            submitLabel='Solicitar Acesso'
-                            submitClass='primary' />
+                        <div className='step-progress'>
+                            <StepZilla steps={steps} />
+                        </div>
                     </div>
                     <Toastr />
                 </div>
