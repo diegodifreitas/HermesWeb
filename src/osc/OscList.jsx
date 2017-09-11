@@ -16,9 +16,9 @@ class OscList extends Component {
         const list = this.props.list || []
         return list.map(osc => (
             <tr key={osc.id}>
-                <td> {osc.nome} </td>
+                <td> {osc.name} </td>
                 <td> {osc.cnpj} </td>
-                <td> {osc.responsavel.nome} </td>
+                <td> {osc.member.name} </td>
                 <td>
                     <div className="progress progress-xs progress-striped active">
                         <div className="progress-bar progress-bar-success" style={ {width: '75%'}}></div>
