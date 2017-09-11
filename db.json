@@ -158,9 +158,9 @@
       "cnpj": "07.856.182/0001-27",
       "name": "Associação dos Associados",
       "email": "osc1@gmail.com",
-      "responsavel": {
+      "member": {
         "name": "Clayton Rasta",
-        "email": "responsavel5@gmail.com"
+        "email": "member5@gmail.com"
       },
       "id": 5
     },
@@ -169,9 +169,9 @@
       "cnpj": "07.866.182/0001-27",
       "name": "Associação dos Produtores Rurais do Pouso do Campo",
       "email": "osc1@gmail.com",
-      "responsavel": {
+      "member": {
         "name": "Cabeça de Gelo",
-        "email": "responsavel1@gmail.com"
+        "email": "member1@gmail.com"
       },
       "id": 2
     },
@@ -180,9 +180,9 @@
       "cnpj": "09.877.182/0002-30",
       "name": "Associação dos Produtores de Garrafas Pets",
       "email": "osc2@gmail.com",
-      "responsavel": {
+      "member": {
         "name": "Lourival",
-        "email": "responsavel1@gmail.com"
+        "email": "member1@gmail.com"
       },
       "id": 3
     },
@@ -191,7 +191,7 @@
       "name": "FINATEL- Fundação Instituto Nacional de Telecomunicações",
       "cnpj": "24.492.886/0001-04",
       "email": "secretaria@finatel.com.br",
-      "responsavel": {
+      "member": {
         "name": "Serjão Berranteiro",
         "cargo": "Presidente",
         "cpf": "12675876541",
@@ -205,7 +205,7 @@
       "name": "FAI- Centro de Ensino Superior em Gestão Tecnologia e Educação",
       "cnpj": "125.679.769/0001-46",
       "email": "secretaria@fai-mg.br",
-      "responsavel": {
+      "member": {
         "name": "Zezinho",
         "cargo": "Diretor",
         "cpf": "333.234.243-43",
@@ -213,6 +213,80 @@
         "terminoDoMandato": "11/07/2018"
       },
       "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "dispatchConfig": null,
+      "_targetInst": null,
+      "isDefaultPrevented": null,
+      "isPropagationStopped": null,
+      "_dispatchListeners": null,
+      "_dispatchInstances": null,
+      "nativeEvent": null,
+      "type": null,
+      "target": null,
+      "eventPhase": null,
+      "bubbles": null,
+      "cancelable": null,
+      "defaultPrevented": null,
+      "isTrusted": null,
+      "id": 13
+    },
+    {
+      "dispatchConfig": null,
+      "_targetInst": null,
+      "isDefaultPrevented": null,
+      "isPropagationStopped": null,
+      "_dispatchListeners": null,
+      "_dispatchInstances": null,
+      "nativeEvent": null,
+      "type": null,
+      "target": null,
+      "eventPhase": null,
+      "bubbles": null,
+      "cancelable": null,
+      "defaultPrevented": null,
+      "isTrusted": null,
+      "id": 14
+    },
+    {
+      "dispatchConfig": null,
+      "_targetInst": null,
+      "isDefaultPrevented": null,
+      "isPropagationStopped": null,
+      "_dispatchListeners": null,
+      "_dispatchInstances": null,
+      "nativeEvent": null,
+      "type": null,
+      "target": null,
+      "eventPhase": null,
+      "bubbles": null,
+      "cancelable": null,
+      "defaultPrevented": null,
+      "isTrusted": null,
+      "id": 15
+    },
+    {
+      "dispatchConfig": null,
+      "_targetInst": null,
+      "isDefaultPrevented": null,
+      "isPropagationStopped": null,
+      "_dispatchListeners": null,
+      "_dispatchInstances": null,
+      "nativeEvent": null,
+      "type": null,
+      "target": null,
+      "eventPhase": null,
+      "bubbles": null,
+      "cancelable": null,
+      "defaultPrevented": null,
+      "isTrusted": null,
+      "id": 16
+    },
+    {
+      "id": 17
     }
   ],
   "modalidades": [
