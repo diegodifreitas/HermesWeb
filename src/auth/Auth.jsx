@@ -32,7 +32,6 @@ class Auth extends Component {
 
     componentDidMount() {
         const ele = document.getElementById('ipl-progress-indicator')
-        window.$('.carousel').carousel();
         if (ele) {
             setTimeout(() => {
                 ele.classList.add('available')
@@ -74,7 +73,7 @@ class Auth extends Component {
 
                     <div className="col-sm-6 right-side">
                         <h1>Entrar</h1>
-
+                        <p>Entre com seu email e senha para acessar o seu painel administrativo.</p>
                         <div className="form">
                             <form id="loginForm" name="loginForm" onSubmit={handleSubmit(v => this.onSubmit(v))}>
                                 <Field component={Input} type="email" name="email"
@@ -89,6 +88,8 @@ class Auth extends Component {
 
                             </form>
                         </div>
+                        <br/>
+                        <p>Esqueceu sua senha? <Link to={'/recovery'}> Clique aqui! </Link></p>
                     </div>
                     <Toastr />
                 </div>

@@ -47,6 +47,9 @@
     background-color: white;
     overflow-y: scroll;
 }
+  .right-side .form button {
+    float:right;
+  }
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 

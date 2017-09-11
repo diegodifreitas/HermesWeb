@@ -53,7 +53,7 @@ class AuthRecovery extends Component {
 
                     <div className="col-sm-6 right-side">
                         <h1>Recuperar Senha</h1>
-                        <h3>Informa seu email abaixo</h3>
+                        <p>Informa seu email abaixo</p>
                         <div className="form">
                             <form id="recoveryForm" name="recoveryForm" onSubmit={handleSubmit(v => this.onSubmit(v))}>
                                 <Field component={Input} type="email" name="email"
