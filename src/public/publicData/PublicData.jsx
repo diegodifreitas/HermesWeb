@@ -41,21 +41,23 @@ class PublicData extends Component {
 
     render() {
         return (
-            <div className=''>
-                <ContentHeader title='Dados Publicos' small='1.0' />
-                <Content >
-                    <Box color='primary direct-chat direct-chat-primary'>
-                        {this.state.isLoading &&
-                            <div className="overlay">
-                                <i className="fa fa-refresh fa-spin"></i>
-                            </div>
-                        }
-                        <BoxHeader title='Processo Administrativo' />
-                        <BoxBody>
-                            <AdmProcessList list={this.state.list} />
-                        </BoxBody>
-                    </Box>
-                </  Content>
+            <div className="container-fluid">
+                <div className="main">
+                    <ContentHeader title='Dados Publicos' small='1.0' />
+                    <Content >
+                        <Box color='primary direct-chat direct-chat-primary'>
+                            {this.state.isLoading &&
+                                <div className="overlay">
+                                    <i className="fa fa-refresh fa-spin"></i>
+                                </div>
+                            }
+                            <BoxHeader title='Processo Administrativo' />
+                            <BoxBody>
+                                <AdmProcessList list={this.state.list} />
+                            </BoxBody>
+                        </Box>
+                    </  Content>
+                </div>
             </div>
         )
     }
