@@ -59,7 +59,7 @@ class AuthRecovery extends Component {
                                 <Field component={Input} type="email" name="email"
                                     placeholder="E-mail" icon='envelope' />
                                 <button type="submit"
-                                    className="btn btn-deep-purple">
+                                    className="btn btn-success">
                                     Enviar
                                 </button>
                             </form>

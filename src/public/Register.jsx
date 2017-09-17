@@ -42,7 +42,10 @@ class Register extends Component {
 
                     <div className="col-sm-6 right-side">
                         <div className='step-progress'>
-                            <StepZilla steps={steps} />
+                            <StepZilla steps={steps} 
+                                backButtonText='Voltar' nextButtonText='Proximo' 
+                                backButtonCls='btn btn-primary' nextButtonCls='btn btn-primary pull-right'
+                            />
                         </div>
                     </div>
                     <Toastr />

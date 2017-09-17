@@ -68,7 +68,7 @@ class Auth extends Component {
                         <p>Sistema de software para gestão de parcerias entre a administração pública e as organizações da sociedade civil.</p>
                         <br />
                         <Link to='/singup' className="btn btn-primary">Solicitar acesso</Link>
-                        <a className="btn btn-success" href="/" target="_blank">Dados Públicos</a>
+                        <Link to='/publicdata' className="btn btn-success" >Dados Públicos</Link>
                     </div>
 
                     <div className="col-sm-6 right-side">
@@ -82,14 +82,14 @@ class Auth extends Component {
                                     placeholder="Senha" icon='lock' />
 
                                 <button type="submit"
-                                    className="btn btn-deep-purple">
+                                    className="btn btn-success">
                                     {loginMode ? 'Entrar' : 'Registrar'}
                                 </button>
 
                             </form>
                         </div>
-                        <br/>
-                        <p>Esqueceu sua senha? <Link to={'/recovery'}> Clique aqui! </Link></p>
+                        <br />
+                        <p><Link to={'/recovery'}>Esqueci minha senha. </Link></p>
                     </div>
                     <Toastr />
                 </div>
