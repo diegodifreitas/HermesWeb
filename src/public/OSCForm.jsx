@@ -2,12 +2,9 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as StepZilla from 'react-stepzilla'
 
 import { init } from './registerActions'
-
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndDate from '../common/form/LabelAndDate'
 
 const validate = values => {
     const errors = {}
