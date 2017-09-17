@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux'
 
 import PublicPages from './PublicPages'
 import PrivatePages from './PrivatePages'
-import { validateToken } from '../auth/authActions'
+import { validateToken } from '../public/auth/authActions'
 
 class AuthOrApp extends Component {
     componentWillMount() {

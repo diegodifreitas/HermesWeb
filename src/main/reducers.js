@@ -9,7 +9,7 @@ import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcess
 import OscReducer from '../osc/oscReducer'
 import UserManagementReducer from '../userManagement/userManagementReducer'
 import AccountInfoReducer from '../accountInfo/accountInfoReducer'
-import AuthReducer from '../auth/authReducer'
+import AuthReducer from '../public/auth/authReducer'
 
 const rootReducer = combineReducers({
     modal: ModalReducer,
