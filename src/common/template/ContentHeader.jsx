@@ -7,6 +7,7 @@ const routes = {
     '/osc': 'OSC',
     '/users': 'Gestão de Usuários',
     '/myAccount': 'Meus Dados',
+    '/publicdata': 'Dados Públicos'
 };
 
 
@@ -17,7 +18,7 @@ const ContentHeader = props => (
         <Breadcrumbs
             WrapperComponent={(props) => <ol className="breadcrumb" >{props.children}</ol>}
             ActiveLinkComponent={(props) => <li className="active" >{props.children}</li>}
-            LinkComponent={(props) => <li>{props.children}</li>} 
+            LinkComponent={(props) => <li>{props.children}</li>}
             mappedRoutes={routes} />
     </section>
 )
