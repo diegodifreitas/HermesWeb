@@ -16,7 +16,7 @@ export default class FileUpload extends Component {
             addRemoveLinks: true,
             acceptedFiles: "image/jpeg,image/png,image/gif,application/pdf",
             autoProcessQueue: false,
-            dictDefaultMessage: "Anexar documento",
+            dictDefaultMessage: this.props.placeholder,
             dictRemoveFile: "Remover documento"
         };
 
@@ -42,10 +42,12 @@ export default class FileUpload extends Component {
 
         return (
             <Grid cols={this.props.cols}>
-                <label htmlFor={this.props.name}> {this.props.label} </label>
-                <div className="example">
-                    <div id="content">
-                        <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+                <div className='form-group'>
+                    <label htmlFor={this.props.name}> {this.props.label} </label>
+                    <div className="example">
+                        <div id="content">
+                            <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+                        </div>
                     </div>
                 </div>
             </Grid>
