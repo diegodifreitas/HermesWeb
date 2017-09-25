@@ -11,17 +11,7 @@
       }
     },
     {
-      "text": "Agora não estou afim, deixa pra mais tarde. Bjs :*",
-      "user": {
-        "photo": "https://i.ytimg.com/vi/bDXQO34c_jQ/hqdefault.jpg",
-        "name": "Edivaldo Péricles Cleiton Rasta",
-        "id": 2
-      },
-      "datetime": 1503552538292,
-      "id": 2
-    },
-    {
-      "text": "Tô de brinks, vou alterar agora. :)",
+      "text": "Ok, Muito obrigado. :)",
       "user": {
         "photo": "https://i.ytimg.com/vi/bDXQO34c_jQ/hqdefault.jpg",
         "name": "Edivaldo Péricles Cleiton Rasta",
@@ -31,7 +21,7 @@
       "id": 3
     },
     {
-      "text": "Ok!",
+      "text": "De nada!",
       "user": {
         "photo": "https://avatars3.githubusercontent.com/u/11650796?v=4&s=460",
         "name": "Diego Dulval",
@@ -77,10 +67,12 @@
   ],
   "user": [
     {
-      "imagem": "https://pbs.twimg.com/profile_images/1242764472/moises-arcoiro-guda_400x400.jpg",
-      "name": "Moisés Adivinho",
-      "type": "Servidor Publico",
-      "email": "bapetedoguga@gmail.com",
+      "approvalAdm": true,
+      "approvalPs": true,
+      "image": "https://avatars0.githubusercontent.com/u/5324414?v=4&s=460",
+      "name": "Edy Segura",
+      "type": "Administrador",
+      "email": "edysegura@gmail.com",
       "id": 1,
       "situacao": "Aguadando Aprovação",
       "street": "Rua das Oliveiras, 567",
@@ -89,18 +81,23 @@
       "neighborhood": "Guga"
     },
     {
-      "imagem": "http://pm1.narvii.com/6360/db0f5dd5d0fced6a72c523374d098bf44e94f2fb_hq.jpg",
-      "name": "Gleiston Walker",
-      "email": "vinDiesel@gmail.com",
-      "type": "Administrador",
+      "approvalAdm": false,
+      "approvalPs": true,
+      "image": "https://avatars3.githubusercontent.com/u/20707340?v=4&s=460",
+      "name": "João Pedro Paulino",
+      "email": "jp@gmail.com",
+      "type": "OSC",
       "id": 2,
       "situacao": "Aprovada",
       "street": "Rua das Calçadas, 34",
-      "phone": "9766-8438",
-      "city": "Santa Rita do Sapucai - MG"
+      "phone": "35 9878-5145",
+      "city": "Santa Rita do Sapucai - MG",
+      "neighborhood": "Eletronica"
     },
     {
-      "imagem": "https://avatars3.githubusercontent.com/u/11650796?v=4&s=460",
+      "approvalAdm": true,
+      "approvalPs": true,
+      "image": "https://avatars3.githubusercontent.com/u/11650796?v=4&s=460",
       "name": "Diego Dulval",
       "email": "diegodifreitas@gmail.com",
       "type": "Administrador",
@@ -111,19 +108,21 @@
       "city": "Santa Rita do Sapucai - MG"
     },
     {
-      "imagem": "https://i.ytimg.com/vi/bDXQO34c_jQ/hqdefault.jpg",
-      "name": "Edivaldo Péricles Cleiton Rasta",
-      "email": "kbecadegelo@gmail.com",
+      "approvalAdm": false,
+      "approvalPs": true,
+      "image": "http://images.freeimages.com/images/premium/previews/5488/54880468-businessman-profile-icon-male-portrait-flat.jpg",
+      "name": "João William",
+      "email": "animesbr@gmail.com",
       "type": "Servidor Publico",
       "id": 4,
       "situacao": "Aprovada",
-      "street": "povoado Santo Antônio",
+      "street": "Povoado Santo Antônio",
       "phone": "9766-4567",
-      "city": "DEBOCHAR - PA"
+      "city": "Santa Rita do Sapucai - MG"
     },
     {
-      "imagem": "https://vakinha-site.s3.amazonaws.com/uploads/vakinha/image/117625/cover_maxresdefault.jpg",
-      "name": "Daniel Orivaldo da Silva",
+      "image": "https://avatars3.githubusercontent.com/u/103433?v=4&s=460",
+      "name": "Tulio Faria",
       "email": "alimento@gmail.com",
       "type": "Servidor Publico",
       "id": 6,
@@ -133,49 +132,52 @@
       "city": "Maringa - PR"
     },
     {
-      "name": "Gil Brother",
-      "email": "away@gmail.com",
-      "street": "Casa da monica",
-      "neighborhood": "Solidario",
-      "type": "Servidor Publico",
+      "approvalAdm": true,
+      "approvalPs": true,
+      "entity": {},
+      "entityType": "PUBLIC-SERVER",
+      "name": "Rafael Toledo",
+      "email": "concrete@gmail.com",
+      "street": "Av. Paulista",
+      "neighborhood": "Centro",
+      "type": "Administrador",
       "phone": "98854335",
       "situacao": "Aprovada",
-      "city": "Aquidauna - SP",
+      "city": "São Paulo - SP",
       "id": 5,
-      "imagem": "https://i.ytimg.com/vi/5HTyZWkB1rI/hqdefault.jpg"
+      "image": "http://images.freeimages.com/images/premium/previews/5488/54880468-businessman-profile-icon-male-portrait-flat.jpg"
     }
   ],
   "osc": [
-    {
-      "situacao": "Inativa",
-      "cnpj": "07.856.182/0001-27",
-      "name": "Associação dos Associados",
-      "email": "osc1@gmail.com",
-      "member": {
-        "name": "Clayton Rasta",
-        "email": "member5@gmail.com"
-      },
-      "id": 5
-    },
     {
       "situacao": "Aguardando avaliação do gestor",
       "cnpj": "07.866.182/0001-27",
       "name": "Associação dos Produtores Rurais do Pouso do Campo",
       "email": "osc1@gmail.com",
       "member": {
-        "name": "Cabeça de Gelo",
-        "email": "member1@gmail.com"
+        "name": "Christian",
+        "email": "member1@gmail.com",
+        "cargo": "Presidente",
+        "cpf": "185.718.725-41",
+        "inicioDoMandato": "08/07/2017",
+        "terminoDoMandato": "13/05/2019",
+        "rg": "15.731.458"
       },
-      "id": 2
+      "id": 2,
+      "phone": "35-3445-2264"
     },
     {
       "situacao": "Aguardando aprovação do administrador",
       "cnpj": "09.877.182/0002-30",
-      "name": "Associação dos Produtores de Garrafas Pets",
+      "name": "Grupo de Teatro",
       "email": "osc2@gmail.com",
       "member": {
         "name": "Lourival",
-        "email": "member1@gmail.com"
+        "email": "member1@gmail.com",
+        "cargo": "Presidente",
+        "cpf": "145.788.765-41",
+        "inicioDoMandato": "08/08/2017",
+        "terminoDoMandato": "13/02/2019"
       },
       "id": 3
     },
@@ -185,13 +187,15 @@
       "cnpj": "24.492.886/0001-04",
       "email": "secretaria@finatel.com.br",
       "member": {
-        "name": "Serjão Berranteiro",
+        "name": "Alex Alves",
+        "email": "alex@gmail.com",
         "cargo": "Presidente",
-        "cpf": "12675876541",
+        "cpf": "126.758.765-41",
         "inicioDoMandato": "08/08/2017",
         "terminoDoMandato": "13/02/2019"
       },
-      "id": 10
+      "id": 10,
+      "phone": "35-8478-5248"
     },
     {
       "situacao": "Aprovada",
@@ -199,7 +203,7 @@
       "cnpj": "125.679.769/0001-46",
       "email": "secretaria@fai-mg.br",
       "member": {
-        "name": "Zezinho",
+        "name": "José Claudio",
         "cargo": "Diretor",
         "cpf": "333.234.243-43",
         "inicioDoMandato": "01/02/2017",
