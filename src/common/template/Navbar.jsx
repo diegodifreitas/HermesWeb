@@ -25,13 +25,13 @@ class Navbar extends Component {
                             aria-expanded={this.state.open ? 'true' : 'false'}
                             className="dropdown-toggle"
                             data-toggle="dropdown">
-                            <img src="https://avatars3.githubusercontent.com/u/11650796?v=4&s=460"
+                            <img src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg"
                                 className="user-image" alt="User" />
                             <span className="hidden-xs">{name}</span>
                         </a>
                         <ul className="dropdown-menu">
                             <li className="user-header">
-                                <img src="https://avatars3.githubusercontent.com/u/11650796?v=4&s=460"
+                                <img src="https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg"
                                     className="img-circle" alt="user login" />
                                 <p>{name}<small>{email}</small></p>
                             </li>

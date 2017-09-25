@@ -10,10 +10,11 @@ export default class LabelAndUpload extends Component {
 
     constructor(props) {
         super(props)
+
         this.state = {
             cropperOpen: false,
             img: null,
-            croppedImg: "http://www.fillmurray.com/400/400"
+            croppedImg: props.input.value || "https://www.watsonmartin.com/wp-content/uploads/2016/03/default-profile-picture.jpg"
         }
     }
 
