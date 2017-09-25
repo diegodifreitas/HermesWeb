@@ -1,11 +1,13 @@
-# Hermes Web
+# Hermes Web 
+### Work in process.
+Sistema de software para gestão de parcerias entre a administração pública e as organizações da sociedade civil
 
-Work in process
 
 ## Getting Started
 
 * npm install
 * npm install -g json-server
+* json-server --watch db.json --port 3001
 * npm run start
 * localhost:3000
 
@@ -20,7 +22,9 @@ npm run test
 
 ## Built With
 
-* React - The web library ui used
+* React
+* Redux
+* Redux-form
 * Json-Server 
 
 ## Authors
