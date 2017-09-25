@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux'
 import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndUpload from '../common/form/LabelAndUpload'
+import BoxBody from '../common/template/box/BoxBody'
 
 import LabelAndDate from '../common/form/LabelAndDate'
 
@@ -15,25 +16,27 @@ class AccountInfoForm extends Component {
         const { handleSubmit, readOnly } = this.props
         return (
             <form onSubmit={handleSubmit}>
-                <div className='box-body'>
 
+                <BoxBody>
                     <Field name='image' component={LabelAndUpload}
-                        label='Foto Perfil' cols='12 4 3' placeholder='Adicionar imagem' />
-
+                        label='Foto Perfil' cols='12 4 2' placeholder='Adicionar imagem' />
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 4  3' placeholder='...' />
+                        label='Nome' cols='12 4  10' placeholder='Diego Dulval de Freitas' />
 
                     <Field name='email' component={LabelAndInput} readOnly={readOnly}
-                        label="Email" cols='12 4 3' placeholder='...' />
+                        label="Email" cols='12 4 10' placeholder='diegodifreitas@gmail.com   ' />
 
-                    <Field name='office' component={LabelAndInput} readOnly={readOnly}
-                        label='Cargo' cols='12 12 3' placeholder='Ex: Av. João de Camargo, 89' />
+                </BoxBody>
+                <BoxBody>
+                    <fieldset>
+                        <legend> Alterar senha  </legend>
+                        <Field name='password' type='password' component={LabelAndInput} readOnly={readOnly}
+                            label='Senha atual' cols='12 12 6' placeholder='' />
+                        <Field name='newPassword' type='password' component={LabelAndInput} readOnly={readOnly}
+                            label='Nova senha' cols='12 12 6' placeholder='' />
+                    </fieldset>
+                </BoxBody>
 
-                    <Field name='publicAdmin' component={LabelAndInput} readOnly={readOnly}
-                        label='Administração Pública' cols='12 12 9' placeholder='Vai er uma lista aqui...' />
-
-
-                </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>

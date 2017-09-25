@@ -6,20 +6,19 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = () => {
-    const request = Api.getAdmProcess()
+export const getList = (value) => {
+
+    let search = '?q=Diego Dulval' 
+
+    const request = Api.getUser(search)
     return {
-        type: "ACCOUNT_INFO_FETCHED",
+        type: "ADM_ACCOUNT_FETCHED",
         payload: request
     }
 }
 
-export const create = (values) => {
-    return submit(values, 'postAdmProcess')
-}
-
 export const update = (values) => {
-    return submit(values, 'putAdmProcess')
+    return submit(values, 'putUser')
 }
 
 
@@ -33,8 +32,7 @@ const submit = (values, method) => {
             .catch(e => {
                 //alterar isso quando integrar com a AP
                 //toastr.success('Sucesso', 'Seus dados foram alterados com sucesso!')
-                toastr.error('Erro', 'Este email já está cadastrado no sistema!')
-                //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                toastr.error('Erro', 'Este email já está cadastrado no sistema!')       
             })
     }
 }
@@ -43,7 +41,7 @@ export const init = () => {
     return [
         showTabs('tabList'),
         selectTab('tabList'),
-        //getList(),
+        getList(),
         initialize('accountInfoForm', INITIAL_VALUE)
     ]
 }
