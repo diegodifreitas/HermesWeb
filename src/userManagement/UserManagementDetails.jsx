@@ -55,7 +55,7 @@ const UserManagementDetails = props => {
                         <Grid cols='4 4 4 4'>
                             <Row>
                                 <div className="">
-                                    <img src={user.imagem}
+                                    <img src={user.image}
                                         className='img img-responsive img-circle'
                                         style={styles.imageUserDetails}
                                         alt="user profile" />

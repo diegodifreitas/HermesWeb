@@ -8,6 +8,8 @@ import { init } from './userManagementActions'
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
 import LabelAndInput from '../common/form/LabelAndInput'
+import LabelAndCombo from '../common/form/LabelAndCombo'
+import LabelAndUpload from '../common/form/LabelAndUpload'
 
 const validate = values => {
     const errors = {}
@@ -21,7 +23,7 @@ const validate = values => {
     }
     if (!values.phone) {
         errors.phone = 'Campo obrigatório'
-    }else if (Number(values.phone) < 6) {
+    } else if (Number(values.phone) < 6) {
         errors.phone = 'Telefone inválido'
     }
     return errors
@@ -36,14 +38,23 @@ class UserManagementForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <BoxBody>
+
+                    <Field name='image' component={LabelAndUpload}
+                        label='Foto' cols='12 3 3' placeholder='Adicionar imagem' />
+
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 3' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='type' component={LabelAndInput} label='Tipo'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario' />
+                    <Field name='type' component={LabelAndCombo} label='Tipo'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
+                        values={[
+                            { id: 1, nome: "Servidor Público" },
+                            { id: 2, nome: "Administrador",
+                              id: 3, nome: "OSC" }
+                        ]} />
 
                     <Field name='phone' component={LabelAndInput} label='Telefone'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />

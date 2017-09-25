@@ -28,7 +28,7 @@ class UserManagementList extends Component {
         return list.map(user => (
             <tr key={user.id}>
                 <td style={styles.imgList} >
-                    <img src={user.imagem}
+                    <img src={user.image}
                         className='img img-responsive img-circle'
                         style={styles.image}
                         alt="user" />
@@ -39,7 +39,7 @@ class UserManagementList extends Component {
                 <td>
 
                     <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />
-                    {user.situacao !== 'Aprovada' &&
+                    {user.approvalAdm === false &&
                         <ButtonIcon cssStyle='success' onClick={() => null} icon='check' />
                     }
 
