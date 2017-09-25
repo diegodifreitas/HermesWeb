@@ -11,7 +11,7 @@ class AdmProcessList extends Component {
         return list.map(ap => (
             <tr key={ap.id}>
                 <td> {ap.prtp} </td>
-                <td> {ap.modalidade.nome}  &nbsp; <b>nº:</b> &nbsp; {ap.modalidade.numero} </td>
+                <td> {ap.modalidade}  &nbsp; <b>nº:</b> &nbsp; {ap.modalidadeNumero} </td>
                 <td> {ap.descricaoSumaria} </td>
                 <td> {ap.pendencias} </td>
                 <td>
