@@ -49,18 +49,13 @@
       "pendencias": "Não há.",
       "descricaoSumaria": "Secretaria Municipal de Esportes, Cultura, Lazer e Turismo",
       "id": 7,
-      "modalidade": {
-        "id": 1,
-        "nome": "Inexigibilidade",
-        "numero": "008/2017"
-      },
+      "modalidade": "Inexigibilidade",
+      "modalidadeNumero": "028/2017",
       "dataPublicacao": "14/07/2017"
     },
     {
-      "modalidade": {
-        "nome": "Inexigibilidade",
-        "numero": "020/2017"
-      },
+      "modalidade": "Inexigibilidade",
+      "modalidadeNumero": "028/2017",
       "dotacaoOrcamentaria": "R$ 10.000,00 (dez mil reais)",
       "pendencias": "Não há",
       "prtp": "020/2017",
@@ -72,10 +67,8 @@
     {
       "descricaoSumaria": "FAI- Centro de Ensino Superior em Gestão Tecnologia e Educação",
       "prtp": "028/2017",
-      "modalidade": {
-        "nome": "Inexigibilidade",
-        "numero": "028/2017"
-      },
+      "modalidade": "Inexigibilidade",
+      "modalidadeNumero": "028/2017",
       "pendencias": "Não há",
       "objeto": "SELEÇÃO DE ENTIDADE DE DIREITO PRIVADO, SEM FINS LUCRATIVOS, QUALIFICADA COMO ORGANIZAÇÃO DA SOCIEDADE CIVIL, NOS TERMOS DA LEI FEDERAL Nº 13.019/2014, QUE SE INTERESSE FIRMAR TERMO DE PARCERIA COM O MUNICÍPIO DE SANTA RITA DO SAPUCAÍ, ATRAVÉS DA SECRETARIA MUNICIPAL DE CIÊNCIA, TECNOLOGIA, INDÚSTRIA E COMÉRCIO, PARA ATUAÇÃO NAS ÁREAS DE CULTURA, EDUCAÇÃO E EMPREENDEDORISMO, ATRAVÉS DA REALIZAÇÃO DO FESTIVAL city CRIATIVA city FELIZ, O QUAL, ATRAVÉS DE MÚLTIPLOS EVENTOS, ATENDE TODA A POPULAÇÃO DE SANTA RITA DO SAPUCAÍ.",
       "dataPublicacao": "18/07/2017",
