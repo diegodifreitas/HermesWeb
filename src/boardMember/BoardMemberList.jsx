@@ -6,8 +6,11 @@ import { getList, showUpdate, showDelete } from './boardMemberActions'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
-import BoardMemberDetails from './BoardMemberDetails'
+import Grid from '../common/layout/Grid'
 
+import BoardMemberForm from './BoardMemberForm'
+
+import BoxBody from '../common/template/box/BoxBody'
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 class BoardMemberList extends Component {
@@ -19,30 +22,15 @@ class BoardMemberList extends Component {
     renderRows() {
         const { openModal } = this.props
 
-        let styles = {
-            imgList: { width: '80px', verticalAlign: 'middle' },
-            image: { color: 'white', width: '40px', height: '40px', border: '2px solid #ecf0f5' },
-            td: { verticalAlign: 'middle' }
-        }
         const list = this.props.list || []
-        return list.map(user => (
-            <tr key={user.id}>
-                <td style={styles.imgList} >
-                    <img src={user.image}
-                        className='img img-responsive img-circle'
-                        style={styles.image}
-                        alt="user" />
-                </td>
-                <td style={styles.td} > {user.name} </td>
-                <td style={styles.td} > {user.email} </td>
-                <td style={styles.td}> {user.type} </td>
+        return list.map(member => (
+            <tr key={member.id}>
+                <td> {member.name} </td>
+                <td> {member.email} </td>
+                <td> {member.phone} </td>
+                <td> {member.cpf} </td>
                 <td>
-
-                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />
-                    {user.approvalAdm === false &&
-                        <ButtonIcon cssStyle='success' onClick={() => null} icon='check' />
-                    }
-
+                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(member)} icon='user-o' />
                 </td>
             </tr>
         ))
@@ -52,29 +40,39 @@ class BoardMemberList extends Component {
         const { showDelete, showUpdate, getList, user } = this.props
         return (
             <div>
-                <div>
-                    <FieldSearch handleClick={getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
-                    <div className='class="box-body table-responsive no-padding"'>
-                        <table className='table table-hover'>
-                            <thead>
-                                <tr>
-                                    <th> Imagem </th>
-                                    <th> Nome </th>
-                                    <th> Email </th>
-                                    <th> Tipo </th>
-                                    <th className='table-action'> Ações </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.renderRows()}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <BoardMemberDetails user={user}
+                {this.props.list.length == 0 &&
+                    <Grid cols='12 12'>
+                        <div className="alert alert-info alert-dismissible">
+                            <h4><i className="icon fa fa-info"></i> Nenhum membro da diretoria cadastrado!</h4>
+                        </div>
+                    </Grid>
+                }
+                {this.props.list.length > 0 &&
+                    <BoxBody>
+                        <div className='table-responsive no-padding'>
+                            <table className='table table-hover'>
+                                <thead>
+                                    <tr>
+                                        <th> Nome </th>
+                                        <th> Email </th>
+                                        <th> Telefone </th>
+                                        <th> CPF </th>
+                                        <th className='table-action'> Ações </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.renderRows()}
+                                </tbody>
+                            </table>
+                        </div>
+                    </BoxBody>
+                }
+
+                <BoardMemberForm user={user}
                     showUpdate={showUpdate}
                     showDelete={showDelete} />
-            </div>
+
+            </div >
         )
     }
 }
