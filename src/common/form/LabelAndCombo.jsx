@@ -3,10 +3,10 @@ import Grid from '../layout/Grid'
  
 export default class LabelAndCombo extends Component {
     renderOptions() {
-        const empty = {id: null, nome: 'Selecione'}
+        const empty = {id: null, value:null, nome: 'Selecione'}
         const values = this.props.values ? [empty, ...this.props.values] : [empty]
         return values.map(v => (
-            <option key={v.id} value={v.nome}>{v.nome}</option>
+            <option key={v.id} value={v.value}>{v.nome}</option>
         ))
     }
     render() {
