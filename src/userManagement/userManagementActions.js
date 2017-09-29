@@ -38,8 +38,8 @@ const submit = (values, method) => {
             })
             .catch(e => {
                 //alterar isso quando integrar com a API
-                toastr.error('Erro', 'Fica ativo ai, ta dando erro!')
-                //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                //toastr.error('Ocorreu um Erro', 'Verifique os campos!')
+                e.response.data.errors.forEach( error => toastr.error('Erro', error))           
             })
     }
 }
