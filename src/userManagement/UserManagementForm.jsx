@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -42,31 +42,49 @@ class UserManagementForm extends Component {
                     <Field name='image' component={LabelAndUpload}
                         label='Foto' cols='12 3 3' placeholder='Adicionar imagem' />
 
+                    <Field name='type' component={LabelAndCombo} label='Tipo'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
+                        values={[
+                            { id: 1, value: "PUBLIC-SERVER", nome: "Servidor Público" },
+                            { id: 2, value: "ADMINISTRATOR", nome: "Administrador" },
+                            { id: 3, value: "OSC", nome: "OSC" }
+                        ]} />
+
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 3' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='type' component={LabelAndCombo} label='Tipo'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
-                        values={[
-                            { id: 1, nome: "Servidor Público" },
-                            { id: 2, nome: "Administrador",
-                              id: 3, nome: "OSC" }
-                        ]} />
+                    <Field name='password' component={LabelAndInput} type="password" label='Senha'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe uma senha*' />
 
-                    <Field name='phone' component={LabelAndInput} label='Telefone'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
+                    {this.props.typeValue !== undefined &&
+                        <div>
+                            {this.props.typeValue === 'PUBLIC-SERVER' &&
+                                <Field name='office' component={LabelAndInput} label='Cargo'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe seu cargo' />
+                            }
 
-                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
-                        label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                            {this.props.typeValue !== 'ADMINISTRATOR' && this.props.typeValue !== 'PUBLIC-SERVER' &&
+                                <div>
+                                    <Field name='phone' component={LabelAndInput} label='Telefone'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
+                                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
+                                        label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
-                    <Field name='city' component={LabelAndInput} label='Cidade'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
+                                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
+
+                                    <Field name='city' component={LabelAndInput} label='Cidade'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
+                                </div>
+                            }
+                        </div>
+                    }
+
+
                 </BoxBody>
 
                 <BoxFooter >
@@ -82,8 +100,18 @@ class UserManagementForm extends Component {
 UserManagementForm = reduxForm({
     form: 'usersForm',
     validate, // <--- validation function given to redux-form
-    destroyOnUnmount: false
+    destroyOnUnmount: false,
+    initialValues: {
+        approvalADM: true,
+        approvalPS: true
+    }
 })(UserManagementForm)
-const mapStateToProps = state => ({})
+const mapStateToProps = state => {
+    const selector = formValueSelector('usersForm')
+    const typeValue = selector(state, 'type');
+    return ({
+        typeValue
+    })
+}
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagementForm)
