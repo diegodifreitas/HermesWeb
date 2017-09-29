@@ -18,12 +18,7 @@ class OscList extends Component {
             <tr key={osc.id}>
                 <td> {osc.name} </td>
                 <td> {osc.cnpj} </td>
-                <td> {osc.member.name} </td>
-                <td>
-                    <div className="progress progress-xs progress-striped active">
-                        <div className="progress-bar progress-bar-success" style={ {width: '75%'}}></div>
-                    </div>
-                </td>
+                <td> {osc.phone} </td>
                 <td>
                     {osc.situacao === 'Aprovada' &&
                         <span className='label label-success'>{osc.situacao}</span>
@@ -67,8 +62,7 @@ class OscList extends Component {
                             <tr>
                                 <th> Nome </th>
                                 <th> CNPJ </th>
-                                <th> Responsável </th>
-                                <th> Fim do Mandato </th>
+                                <th> Phone </th>
                                 <th> Situação </th>
                                 <th className='table-action'> Ações </th>
                             </tr>
