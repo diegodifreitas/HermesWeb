@@ -2,14 +2,20 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import Modal from 'react-modal'
+import { Link } from 'react-router-dom'
 
-import { init } from './userManagementActions'
+import { init } from './boardMemberActions'
+import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndCombo from '../common/form/LabelAndCombo'
 import LabelAndUpload from '../common/form/LabelAndUpload'
+import LabelAndDate from '../common/form/LabelAndDate'
+import LabelAndToggle from '../common/form/LabelAndToggle'
+import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 const validate = values => {
     const errors = {}
@@ -30,60 +36,119 @@ const validate = values => {
 }
 
 class BoardMemberForm extends Component {
-    componentWillMount() {
-    }
 
     render() {
-        const { handleSubmit, readOnly, pristine, reset, submitting } = this.props
+        const { modal, closeModal, handleSubmit, readOnly, pristine, reset, submitting, user } = this.props
+
+        var styles = {
+            modal: { overlay: { zIndex: 1040 } },
+            modalBody: { maxHeight: "calc(100vh - 80px)",
+                         overflowY: "auto"
+                       }
+        }
+
+        const handleUpdate = (user) => {
+            closeModal()
+        }
+
+        const handleDelete = (user) => {
+            closeModal()
+        }
         return (
-            <form onSubmit={handleSubmit}>
-                <BoxBody>
+            <Modal
+                contentLabel="Membro da Diretoria Modal"
+                style={styles.modal}
+                className="modal-dialog"
+                closeTimeoutMS={150}
+                isOpen={modal.visible}
+                onRequestClose={closeModal}
+            >
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={closeModal}>
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 className="modal-title">Membro da Diretoria</h4>
+                        </div>
+                        <div className="modal-body" style={styles.modalBody}>
+                            <form onSubmit={handleSubmit}>
+                                <BoxBody>
 
-                    <Field name='image' component={LabelAndUpload}
-                        label='Foto' cols='12 3 3' placeholder='Adicionar imagem' />
+                                    <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
+                                        label='Responsavél' cols='12 2' />
 
-                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 3' placeholder='Informe um Nome*' />
+                                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
+                                        label='Nome' cols='12 10' placeholder='Informe um Nome*' />
 
-                    <Field name='email' component={LabelAndInput} type="email" label='Email'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
+                                    <Field name='email' component={LabelAndInput} type="email" label='Email'
+                                        cols='12 6' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='type' component={LabelAndCombo} label='Tipo'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
-                        values={[
-                            { id: 1, nome: "Servidor Público" },
-                            { id: 2, nome: "Administrador",
-                              id: 3, nome: "OSC" }
-                        ]} />
+                                    <Field name='phone' component={LabelAndInput} label='Telefone'
+                                        cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='phone' component={LabelAndInput} label='Telefone'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
+                                    <Field name='cpf' component={LabelAndInput} label='CPF'
+                                        cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
 
-                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
-                        label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                                    <Field name='rg' component={LabelAndInput} label='RG'
+                                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' />
 
-                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
+                                    <Field name='office' component={LabelAndInput} label='Cargo'
+                                        cols='12 4' readOnly={readOnly} placeholder='Qual seu cargo?' />
 
-                    <Field name='city' component={LabelAndInput} label='Cidade'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
-                </BoxBody>
+                                    <Field name='beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
+                                        cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
 
-                <BoxFooter >
-                    <button type='submit' disabled={submitting} className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-warning' disabled={pristine || submitting} onClick={reset}> Limpar </button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
-                </BoxFooter>
-            </form>
+                                    <Field name='endOfMandate' component={LabelAndDate} label='Término do Mandato'
+                                        cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
+
+                                </BoxBody>
+                                <BoxBody>
+                                    <fieldset>
+                                        <legend> Localização </legend>
+                                        <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
+                                            label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+
+                                        <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
+                                            label='Numero' cols='12 6' placeholder='Ex: 456' />
+
+                                        <Field name='address.neighborhood' component={LabelAndInput} label='Bairro'
+                                            cols='12 6' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
+
+                                        <Field name='address.city' component={LabelAndInput} readOnly={readOnly}
+                                            label='Cidade' cols='12 6' placeholder='Ex: Av. Santa Rita do Sapucai - MG' />
+                                    </fieldset>
+                                </BoxBody>
+
+                                <div className="modal-footer">
+
+                                    <ButtonIcon
+                                        cssStyle='warning' tooltip='Limpar' type='button'
+                                        disabled={pristine || submitting}
+                                        onClick={reset} icon='clean' />
+
+                                    <ButtonIcon cssStyle='default' tooltip='Cancelar'
+                                        onClick={() => handleDelete(user)} icon='trash-o' />
+                                    <ButtonIcon
+                                        cssStyle='success' tooltip='Editar' type='submit'
+                                        disabled={submitting}
+                                        onClick={() => handleUpdate(user)} icon='pencil' />
+                                </div>
+
+                            </form >
+                        </div>
+                    </div>
+                </div>
+            </Modal >
         )
     }
 }
 
-UserManagementForm = reduxForm({
-    form: 'usersForm',
+BoardMemberForm = reduxForm({
+    form: 'oscForm',
     validate, // <--- validation function given to redux-form
     destroyOnUnmount: false
-})(UserManagementForm)
-const mapStateToProps = state => ({})
-const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(UserManagementForm)
+})(BoardMemberForm)
+const mapStateToProps = state => ({ modal: state.modal })
+const mapDispatchToProps = dispatch => bindActionCreators({ init, openModal, closeModal }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberForm)
