@@ -52,44 +52,47 @@ const BoardMemberDetails = props => {
                         <h4 className="modal-title">Membro da Diretoria</h4>
                     </div>
                     <div className="modal-body">
-                        <Grid cols='4 4 4 4'>
-                            <Row>
-                                <div className="">
-                                    <img src={user.image}
-                                        className='img img-responsive img-circle'
-                                        style={styles.imageUserDetails}
-                                        alt="user profile" />
-                                </div>
-                            </Row>
-                            <Row>
-                                <h3 >{user.name}</h3>
-                                <h5 >{user.type}</h5>
-                            </Row>
-                        </Grid>
-                        <Grid cols='8 8 8 8'>
-                            <Row>
-                                <LabelAndText colsTitle='3 3 3 3'
-                                    colsText='9 9 9 9'
-                                    title='Email:'
-                                    text={user.email}
-                                />
-                                <LabelAndText colsTitle='3 3 3 3'
-                                    colsText='9 9 9 9'
-                                    title='Cidade:'
-                                    text={user.city}
-                                />
-                                <LabelAndText colsTitle='3 3 3 3'
-                                    colsText='9 9 9 9'
-                                    title='Endereço:'
-                                    text={user.street}
-                                />
-                                <LabelAndText colsTitle='3 3 3 3'
-                                    colsText='9 9 9 9'
-                                    title='Telefone:'
-                                    text={user.phone}
-                                />
-                            </Row>
-                        </Grid>
+                        <form onSubmit={handleSubmit}>
+                            <BoxBody>
+
+                                <Field name='image' component={LabelAndUpload}
+                                    label='Foto' cols='12 3 3' placeholder='Adicionar imagem' />
+
+                                <Field name='name' component={LabelAndInput} readOnly={readOnly}
+                                    label='Nome' cols='12 3' placeholder='Informe um Nome*' />
+
+                                <Field name='email' component={LabelAndInput} type="email" label='Email'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
+
+                                <Field name='type' component={LabelAndCombo} label='Tipo'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
+                                    values={[
+                                        { id: 1, nome: "Servidor Público" },
+                                        {
+                                            id: 2, nome: "Administrador",
+                                            id: 3, nome: "OSC"
+                                        }
+                                    ]} />
+
+                                <Field name='phone' component={LabelAndInput} label='Telefone'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
+
+                                <Field name='street' component={LabelAndInput} readOnly={readOnly}
+                                    label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+
+                                <Field name='neighborhood' component={LabelAndInput} label='Bairro'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
+
+                                <Field name='city' component={LabelAndInput} label='Cidade'
+                                    cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
+                            </BoxBody>
+
+                            <BoxFooter >
+                                <button type='submit' disabled={submitting} className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                                <button type='button' className='btn btn-warning' disabled={pristine || submitting} onClick={reset}> Limpar </button>
+                                <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
+                            </BoxFooter>
+                        </form>
                     </div>
                     <div className="modal-footer">
                         <ButtonIcon cssStyle='warning' tooltip='Editar'
