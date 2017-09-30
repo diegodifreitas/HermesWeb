@@ -29,9 +29,13 @@ export const getMessage = (search = '') => api.get('message' + search)
 export const deleteMessage = (message) => api.delete('message/' + message.id)
 export const putMessage = (message) => api.put('message/' + message.id, message)
 
+export const postMember = (member, osc) => api.post(`osc/${osc}/boardMember`, Member)
+export const getMember = (search = '', osc) => api.get(`osc/${osc}/boardMember` + search)
+export const deleteMember = (member, osc) => api.delete(`osc/${osc}/boardMember/` + Member.id)
+export const putMember = (member, osc) => api.put(`osc/${osc}/boardMember/` + member.id, member)
 
 const apis = {
-  getAdmProcess,
+  getAdmProces,
   postAdmProcess,
   deleteAdmProcess,
   putAdmProcess,
@@ -45,6 +49,11 @@ const apis = {
   postOsc,
   deleteOsc,
   putOsc,
+
+  getMember,
+  postMember,
+  deleteMember,
+  putMember,
 
   getUser,
   postUser,
