@@ -13,14 +13,12 @@ import TabContent from '../common/tabs/TabContent'
 import List from './OscList'
 import Form from './OscForm'
 
-import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { create, update, remove } from './oscActions'
+import { init, create, update, remove } from './oscActions'
 
 class Osc extends Component {
 
     componentWillMount() {
-        this.props.selectTab('tabList')
-        this.props.showTabs('tabList', 'tabCreate')
+        this.props.init()
     }
 
     render() {
@@ -65,5 +63,5 @@ class Osc extends Component {
     }
 }
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
+    bindActionCreators({ init, create, update, remove }, dispatch)
 export default connect(null, mapDispatchToProps)(Osc)

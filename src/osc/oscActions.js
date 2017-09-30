@@ -4,7 +4,7 @@ import { initialize } from 'redux-form'
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
-const INITIAL_VALUE = {}
+const INITIAL_VALUE = { boardMemberList:[]}
 
 export const getList = (field, value) => {
     let search = value ? `?q=${value}` : ''

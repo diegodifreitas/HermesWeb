@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -13,7 +13,7 @@ import LabelAndDate from '../common/form/LabelAndDate'
 
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 
-import BoardMemberList from '../boardMember/BoardMemberList'
+import BoardMemberList from './boardMember/BoardMemberList'
 
 const validate = values => {
     const errors = {}
@@ -39,7 +39,7 @@ const validate = values => {
 class OscForm extends Component {
 
     render() {
-        const { handleSubmit, readOnly, openModal } = this.props
+        const { handleSubmit, readOnly, openModal, boardMemberList } = this.props
         return (
             <form onSubmit={handleSubmit}>
                 <BoxBody>
@@ -86,7 +86,7 @@ class OscForm extends Component {
                             <ButtonIcon cssStyle='success' tooltip='Adicionar Membro Da Diretoria' type="button"
                                 onClick={() => openModal()} icon='plus' />
                         </legend>
-                        <BoardMemberList />
+                        <BoardMemberList list={boardMemberList} />
                     </fieldset>
                 </BoxBody>
 
@@ -110,10 +110,13 @@ OscForm = reduxForm(
             type: "OSC"
         }
     })(OscForm)
+
+const selector = formValueSelector('oscForm')
 const mapStateToProps = state => (
     {
         visible: state.modal.visible,
-        user: state.modal.data
+        user: state.modal.data,
+        boardMemberList: selector(state, 'boardMemberList')
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {
