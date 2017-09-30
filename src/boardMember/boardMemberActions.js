@@ -6,58 +6,56 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = (field, value) => {
-   
+export const getList = (field, value, osc) => {
+
     let search = value ? `?q=${value}` : ''
-   
-    const request = Api.getUser(search)
+
+    const request = Api.getMember(search, osc)
     return {
-        type: "USERS_FETCHED",
+        type: "MEMBER_FETCHED",
         payload: request
     }
 }
 
-export const create = (values) => {
-    return submit(values, 'postUser')
+export const create = (values, osc) => {
+    return submit(values, 'postMember')
 }
 
-export const update = (values) => {
-    return submit(values, 'putUser')
+export const update = (values, osc) => {
+    return submit(values, osc, 'putMember')
 }
 
-export const remove = (values) => {
-    return submit(values, 'deleteUser')
+export const remove = (values, osc) => {
+    return submit(values, osc, 'deleteMember')
 }
 
-const submit = (values, method) => {
+const submit = (values, osc, method) => {
     return dispatch => {
-        Api[method](values)
+        Api[method](values, osc)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
                 dispatch(init())
             })
             .catch(e => {
-                //alterar isso quando integrar com a API
-                toastr.error('Erro', 'Fica ativo ai, ta dando erro!')
-                //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }
 }
 
 //TODO - refatorar trecho para não ocorrer código repetido.
-export const showUpdate = (users) => {
+export const showUpdate = (members) => {
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('usersForm', users)
+        initialize('membersForm', members)
     ]
 }
 
-export const showDelete = (users) => {
+export const showDelete = (members) => {
     return [
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('usersForm', users)
+        initialize('membersForm', members)
     ]
 }
 
@@ -66,6 +64,6 @@ export const init = () => {
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
         getList(),
-        initialize('usersForm', INITIAL_VALUE)
+        initialize('membersForm', INITIAL_VALUE)
     ]
 }
