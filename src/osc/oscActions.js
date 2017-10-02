@@ -25,16 +25,6 @@ export const getList = (field, value) => {
     }
 }
 
-export const search = () => {
-    return (dispatch, getState) => {
-        const description = getState().todo.description
-        const search = description ? `?q=${description}` : ''
-        const request = Api.getTodos(search)
-            .then(resp => dispatch({ type: 'TODO_SEARCHED', payload: resp.data }))
-    }
-}
-
-
 export const create = (values) => {
     return submit(values, 'postOsc')
 }
@@ -55,9 +45,7 @@ const submit = (values, method) => {
                 dispatch(init())
             })
             .catch(e => {
-                //alterar isso quando integrar com a API
-                toastr.error('Erro', 'Fica ativo ai, ta dando erro!')
-                //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                e.response.data.errors.forEach( error => toastr.error('Erro', error))           
             })
     }
 }
