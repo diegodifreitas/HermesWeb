@@ -16,8 +16,9 @@ export const putMonitoringProcess = (monitoringProcess) => api.put('monitoringPr
 
 export const postOsc = (osc) => api.post('osc', osc)
 export const getOsc = (search = '') => api.get('osc' + search)
+export const getOscById = (id) => api.get('osc/' + id)
 export const deleteOsc = (osc) => api.delete('osc/' + osc.id)
-export const putOsc = (osc) => api.put('osc/' + osc.id, osc)
+export const putOsc = (osc) => api.put('osc', osc)
 
 export const postUser = (user) => api.post('user', user)
 export const getUser = (search = '') => api.get('user' + search)
@@ -49,6 +50,7 @@ const apis = {
   postOsc,
   deleteOsc,
   putOsc,
+  getOscById,
 
   getMember,
   postMember,
