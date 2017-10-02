@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
+import { reduxForm, Field, formValueSelector, initialize } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -116,7 +116,7 @@ const mapStateToProps = state => (
     {
         visible: state.modal.visible,
         user: state.modal.data,
-        boardMemberList: selector(state, 'boardMemberList')
+        boardMemberList: selector(state, 'boardMemberList'),
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {
