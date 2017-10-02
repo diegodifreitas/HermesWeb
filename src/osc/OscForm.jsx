@@ -14,6 +14,7 @@ import LabelAndDate from '../common/form/LabelAndDate'
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 import BoardMemberList from './boardMember/BoardMemberList'
+import BoardMemberForm from './boardMember/BoardMemberForm'
 
 const validate = values => {
     const errors = {}
@@ -89,6 +90,11 @@ class OscForm extends Component {
                         <BoardMemberList list={boardMemberList} />
                     </fieldset>
                 </BoxBody>
+
+                <BoardMemberForm  onSubmit={handleSubmit}
+                                  submitLabel='Incluir'
+                                  submitClass='primary'
+                />
 
                 <BoxFooter >
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
