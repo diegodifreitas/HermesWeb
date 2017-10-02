@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
+import Api from '../main/api'
+
 import { getList, showUpdate, showDelete } from './oscActions'
 
 import FieldSearch from '../common/form/FieldSearch'
+
 
 class OscList extends Component {
 
@@ -14,28 +17,31 @@ class OscList extends Component {
 
     renderRows() {
         const list = this.props.list || []
-        return list.map(osc => (
-            <tr key={osc.id}>
+        return list.map((osc, index) => (
+            <tr key={index}>
                 <td> {osc.name} </td>
                 <td> {osc.cnpj} </td>
                 <td> {osc.phone} </td>
                 <td>
-                    {osc.situacao === 'Aprovada' &&
-                        <span className='label label-success'>{osc.situacao}</span>
+                    {(osc.approvalADM === true && osc.approvalPS === true) &&
+                        <span className='label label-success'>Ativa</span>
                     }
-                    {osc.situacao === 'Aguardando aprovação do administrador' &&
-                        <span className='label label-primary'>{osc.situacao}</span>
+                    {(osc.approvalADM === false && osc.approvalPS === true) &&
+                        <span className='label label-primary'>Aguardando aprovação do Administrador</span>
                     }
-                    {osc.situacao === 'Aguardando avaliação do gestor' &&
-                        <span className='label label-warning'>{osc.situacao}</span>
-                    }
-                    {osc.situacao === 'Inativa' &&
-                        <span className='label label-danger'> {osc.situacao}</span>
+                    {(osc.approvalPS === false && osc.approvalADM === false) &&
+                        <span className='label label-warning'>Aguardando avaliação do gestor</span>
                     }
                 </td>
                 <td>
                     {/*Criar Icon Button*/}
-                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(osc)} >
+                    <button className='btn btn-warning' onClick={() => {
+                        Api.getOsc(`/${osc.id}`)
+                            .then(resp => {
+                                this.props.showUpdate(resp.data)
+                            })
+                    }}
+                    >
                         <i className='fa fa-pencil' />
                     </button>
                     <button className='btn btn-danger' onClick={() => this.props.showDelete(osc)} >
