@@ -18,7 +18,8 @@ class BoardMemberList extends Component {
         const { openModal } = this.props
 
         const list = this.props.list || []
-        return list.map(member => (
+
+        return list.map((member) => (
             <tr key={member.id}>
                 <td> {member.name} </td>
                 <td> {member.email} </td>
