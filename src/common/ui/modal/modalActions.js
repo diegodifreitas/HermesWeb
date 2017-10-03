@@ -1,3 +1,5 @@
+import { initialize } from 'redux-form'
+
 export const selectModal = (modalId) => {
     return {
         type: 'MODAL_SELECTED',
@@ -5,11 +7,14 @@ export const selectModal = (modalId) => {
     }
 }
 
-export const openModal = (data) => {
-    return {
-        type: 'MODAL_OPEN',
-        payload: data
-    }
+export const openModal = (data, form) => {
+    return [
+        initialize(form, data),
+        {
+            type: 'MODAL_OPEN',
+            payload: data
+        }
+    ]
 }
 
 export const closeModal = (modalId) => {
