@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { openModal, closeModal } from '../../common/ui/modal/modalActions'
+import { showUpdate } from './boardMemberActions'
 
 import FieldSearch from '../../common/form/FieldSearch'
 import Grid from '../../common/layout/Grid'
@@ -15,8 +15,6 @@ import ButtonIcon from '../../common/ui/button/ButtonIcon'
 class BoardMemberList extends Component {
 
     renderRows() {
-        const { openModal } = this.props
-
         const list = this.props.list || []
 
         return list.map((member) => (
@@ -26,7 +24,7 @@ class BoardMemberList extends Component {
                 <td> {member.phone} </td>
                 <td> {member.cpf} </td>
                 <td>
-                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(member)} icon='user-o' />
+                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes' onClick={() => showUpdate(member)} icon='user-o' />
                 </td>
             </tr>
         ))
@@ -75,7 +73,6 @@ const mapStateToProps = state => (
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {
-        openModal,
-        closeModal
+        showUpdate
     }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberList)
