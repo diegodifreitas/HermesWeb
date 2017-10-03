@@ -16,7 +16,6 @@ export const getList = (field, value) => {
             payload: request
         }
     ]
-    return
 }
 
 export const requestOsc = osc => ({

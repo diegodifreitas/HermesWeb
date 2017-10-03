@@ -87,7 +87,7 @@ class OscForm extends Component {
                             <ButtonIcon cssStyle='success' tooltip='Adicionar Membro Da Diretoria' type="button"
                                 onClick={() => openModal()} icon='plus' />
                         </legend>
-                        <BoardMemberList list={boardMemberList} />
+                        <BoardMemberList list={boardMemberList} handleOpen={ this.props.openModal } />
                     </fieldset>
                 </BoxBody>
 

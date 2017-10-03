@@ -80,7 +80,9 @@ class OscList extends Component {
                         </table>
                     }
                     {this.props.isLoading &&
-                        <h1> CARREGANDO! </h1>
+                            <div className="overlay">
+                                <i className="fa fa-refresh fa-spin"></i>
+                            </div>
                     }
                 </div>
             </div>
