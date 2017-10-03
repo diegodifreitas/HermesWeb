@@ -144,7 +144,7 @@ class BoardMemberForm extends Component {
 }
 
 BoardMemberForm = reduxForm({
-    form: 'oscForm',
+    form: 'boardMemberForm',
     validate, // <--- validation function given to redux-form
     destroyOnUnmount: false
 })(BoardMemberForm)

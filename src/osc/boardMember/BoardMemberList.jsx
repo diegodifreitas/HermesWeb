@@ -26,7 +26,7 @@ class BoardMemberList extends Component {
                 <td> {member.phone} </td>
                 <td> {member.cpf} </td>
                 <td>
-                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(member)} icon='user-o' />
+                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(member)} icon='user-o' />
                 </td>
             </tr>
         ))
