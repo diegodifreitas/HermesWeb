@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { showUpdate } from './boardMemberActions'
-
 import FieldSearch from '../../common/form/FieldSearch'
 import Grid from '../../common/layout/Grid'
-
-import BoardMemberForm from './BoardMemberForm'
 
 import BoxBody from '../../common/template/box/BoxBody'
 import ButtonIcon from '../../common/ui/button/ButtonIcon'
@@ -24,7 +20,7 @@ class BoardMemberList extends Component {
                 <td> {member.phone} </td>
                 <td> {member.cpf} </td>
                 <td>
-                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes' onClick={() => showUpdate(member)} icon='user-o' />
+                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes' onClick={() => this.props.handleOpen(member, 'boardMemberForm')} icon='user-o' />
                 </td>
             </tr>
         ))
@@ -72,7 +68,5 @@ const mapStateToProps = state => (
         user: state.modal.data
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
-    {
-        showUpdate
-    }, dispatch)
+    { }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberList)
