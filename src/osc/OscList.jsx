@@ -63,25 +63,33 @@ class OscList extends Component {
                 <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />
 
                 <div className='class="box-body table-responsive no-padding"'>
-                    <table className='table table-hover'>
-                        <thead>
-                            <tr>
-                                <th> Nome </th>
-                                <th> CNPJ </th>
-                                <th> Phone </th>
-                                <th> Situação </th>
-                                <th className='table-action'> Ações </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.renderRows()}
-                        </tbody>
-                    </table>
+                    {!this.props.isLoading &&
+                        <table className='table table-hover'>
+                            <thead>
+                                <tr>
+                                    <th> Nome </th>
+                                    <th> CNPJ </th>
+                                    <th> Phone </th>
+                                    <th> Situação </th>
+                                    <th className='table-action'> Ações </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderRows()}
+                            </tbody>
+                        </table>
+                    }
+                    {this.props.isLoading &&
+                        <h1> CARREGANDO! </h1>
+                    }
                 </div>
             </div>
         )
     }
 }
-const mapStateToProps = state => ({ list: state.osc.list })
+const mapStateToProps = state => ({
+    list: state.osc.list,
+    isLoading: state.osc.isFetching
+})
 const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(OscList)
