@@ -4,26 +4,25 @@ import { initialize } from 'redux-form'
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
-const INITIAL_VALUE = { boardMemberList:[]}
+const INITIAL_VALUE = { boardMemberList: [] }
 
 export const getList = (field, value) => {
     let search = value ? `?q=${value}` : ''
-
-/*     switch (field) {
-        case 'search_name':
-            search = `?name=${value}`
-            break
-        case 'search_cnpj':
-            search = `?cnpj=${value}`
-            break
-    } */
-
     const request = Api.getOsc(search)
-    return {
-        type: "OSC_FETCHED",
-        payload: request
-    }
+    return [
+        requestOsc(),
+        {
+            type: "OSC_RECEIVE",
+            payload: request
+        }
+    ]
+    return
 }
+
+export const requestOsc = osc => ({
+    type: 'OSC_REQUEST',
+    payload: osc
+})
 
 export const create = (values) => {
     return submit(values, 'postOsc')
@@ -39,13 +38,14 @@ export const remove = (values) => {
 
 const submit = (values, method) => {
     return dispatch => {
+        dispatch(requestOsc(values))
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
                 dispatch(init())
             })
             .catch(e => {
-                e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }
 }
