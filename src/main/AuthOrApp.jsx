@@ -17,7 +17,7 @@ class AuthOrApp extends Component {
 
     render() {
         const { user, validToken } = this.props.auth
-        if (user && validToken) {
+        if (user) {
             //axios.defaults.headers.common['authorization'] = user.token
             return <PrivatePages>{this.props.children}</PrivatePages>
         } else if (!user && !validToken) {
