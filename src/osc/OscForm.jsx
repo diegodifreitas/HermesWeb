@@ -56,7 +56,7 @@ class OscForm extends Component {
                             cols='12 3' readOnly={readOnly} placeholder='Informe um email para a organização' type='email' />
 
                         <Field name='password' component={LabelAndInput} label='Senha'
-                            cols='12 4' readOnly={readOnly} placeholder='Informe uma senha' />
+                            cols='12 4' type='password' readOnly={readOnly} placeholder='Informe uma senha' />
 
                         <Field name='phone' component={LabelAndInput} label='Telefone'
                             cols='12 4' readOnly={readOnly} placeholder='Informe um número de telefone' />
