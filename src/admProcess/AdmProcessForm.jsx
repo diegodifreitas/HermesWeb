@@ -21,8 +21,8 @@ class AdmProcessForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
                 <div className='box-body'>
-                    <Field name='prtp' component={LabelAndInput} readOnly={readOnly}
-                        label='PRTP' cols='12 2' placeholder='Informe o PRTP' />
+                    <Field name='prctp' component={LabelAndInput} readOnly={readOnly}
+                        label='PRCTP' cols='12 2' placeholder='Informe o PRTP' />
 
                     <Field name='description' component={LabelAndInput} readOnly={readOnly}
                         label="Descrição Súmaria" cols='12 10' placeholder='Informe a descrição súmaria' />
@@ -31,18 +31,18 @@ class AdmProcessForm extends Component {
                         placeholder='Informe a Modalidade' values={this.props.modalidades}
                         component={LabelAndCombo} readOnly={readOnly} />
 
-                    <Field name='numberModality' label='Numéro da Modalidade' cols='12 3'
+                    <Field name='modalityNumber' label='Numéro da Modalidade' cols='12 3'
                         placeholder='Informe o número da Modalidade'
                         component={LabelAndInput} readOnly={readOnly} />
 
-                    <Field name='dataPublicacao' component={LabelAndDate} label='Data de Publicação'
+                    <Field name='date' component={LabelAndDate} label='Data de Publicação'
                         cols='12 5' readOnly={readOnly} placeholder='Informe a data' />
 
                     <Field name='finished' component={LabelAndToggle} readOnly={readOnly}
                         label='Finalizado' cols='12 1' />
 
-                    <Field name='object' component={LabelAndText} readOnly={readOnly}
-                        label='Objeto' cols='12 12' placeholder='Descreva o objeto do processo' />
+                    <Field name='object' component={LabelAndInput} readOnly={readOnly}
+                        label='Objeto' cols='12 6' placeholder='Descreva o objeto do processo' />
 
                     <Field name='budgetAllocation' component={LabelAndInput} readOnly={readOnly}
                         label='Dotação Orçamentária' cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />
@@ -65,7 +65,18 @@ class AdmProcessForm extends Component {
     }
 }
 
-AdmProcessForm = reduxForm({ form: 'admProcessForm', destroyOnUnmount: false })(AdmProcessForm)
+AdmProcessForm = reduxForm({ 
+    form: 'admProcessForm', 
+    destroyOnUnmount: false,
+    initialValues:{
+        documentList: null,
+        publicServer: {},
+        urlReferenceTerm: "ronaldo",
+        id: null,
+        date: new Date('October 13, 2014 11:13:00')
+    }
+    
+})(AdmProcessForm)
 const mapStateToProps = state => {
     const selector = formValueSelector('admProcessForm')
     const modalidadeValue = selector(state, 'modality');
