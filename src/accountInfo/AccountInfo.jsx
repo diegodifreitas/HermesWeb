@@ -13,12 +13,11 @@ import TabContent from '../common/tabs/TabContent'
 import Form from './AccountInfoForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { update, getList } from './accountInfoActions'
+import { update, init } from './accountInfoActions'
 
 class AccountInfo extends Component {
     componentWillMount() {
-        this.props.selectTab('tabList')
-        this.props.showTabs('tabList')
+        this.props.init(this.props.user)
     }
 
     render() {
@@ -45,6 +44,7 @@ class AccountInfo extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => 
-    bindActionCreators({ selectTab, showTabs, update, getList }, dispatch)
-export default connect(null, mapDispatchToProps)(AccountInfo)
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ update, init }, dispatch)
+const mapStateToProps = state => ({ user: state.auth.user })
+export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)

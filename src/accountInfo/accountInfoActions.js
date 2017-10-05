@@ -4,19 +4,6 @@ import { initialize } from 'redux-form'
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
-const INITIAL_VALUE = {}
-
-export const getList = (value) => {
-
-    let search = '?q=Diego Dulval' 
-
-    const request = Api.getUser(search)
-    return {
-        type: "ADM_ACCOUNT_FETCHED",
-        payload: request
-    }
-}
-
 export const update = (values) => {
     return submit(values, 'putUser')
 }
@@ -37,11 +24,10 @@ const submit = (values, method) => {
     }
 }
 
-export const init = () => {
+export const init = (data) => {
     return [
         showTabs('tabList'),
         selectTab('tabList'),
-        getList(),
-        initialize('accountInfoForm', INITIAL_VALUE)
+        initialize('accountInfoForm', data)
     ]
 }
