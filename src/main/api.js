@@ -25,11 +25,6 @@ export const getUser = (search = '') => api.get('user' + search)
 export const deleteUser = (user) => api.delete('user/' + user.id)
 export const putUser = (user) => api.put('user/' + user.id, user)
 
-export const postMessage = (message) => api.post('message', message)
-export const getMessage = (search = '') => api.get('message' + search)
-export const deleteMessage = (message) => api.delete('message/' + message.id)
-export const putMessage = (message) => api.put('message/' + message.id, message)
-
 export const postMember = (member, osc) => api.post(`osc/${osc}/boardMember`, member)
 export const getMember = (search = '', osc) => api.get(`osc/${osc}/boardMember` + search)
 export const deleteMember = (member, osc) => api.delete(`osc/${osc}/boardMember/` + member.id)
@@ -60,12 +55,7 @@ const apis = {
   getUser,
   postUser,
   deleteUser,
-  putUser,
-
-  getMessage,
-  postMessage,
-  deleteMessage,
-  putMessage
+  putUser
 }
 
 export default apis

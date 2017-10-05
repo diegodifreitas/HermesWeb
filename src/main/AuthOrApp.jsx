@@ -8,6 +8,10 @@ import PublicPages from './PublicPages'
 import PrivatePages from './PrivatePages'
 import { validateToken } from '../public/auth/authActions'
 
+import moment from 'moment'
+import 'moment/locale/pt-br'
+moment.locale('pt-BR')
+
 class AuthOrApp extends Component {
     componentWillMount() {
         if (this.props.auth.user) {

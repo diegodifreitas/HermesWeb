@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import Header from '../common/template/Header'
@@ -7,7 +8,10 @@ import Footer from '../common/template/Footer'
 import Toastr from '../common/ui/Toastr'
 
 import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './PrivateRoutes'
+
+import AdministratorRoutes from './routes/AdministratorRoutes'
+import PublicServerRoutes from './routes/PublicServerRoutes'
+import OSCRoutes from './routes/OSCRoutes'
 
 class PrivatePages extends Component {
   componentDidMount() {
@@ -22,6 +26,7 @@ class PrivatePages extends Component {
   }
 
   render() {
+    const { user } = this.props.auth
     return (
       <div className='wrapper'>
         <Router>
@@ -30,7 +35,17 @@ class PrivatePages extends Component {
             <Sidebar />
             <div className='content-wrapper'>
               {this.props.children}
-              <Routes />
+
+              {user.type === 'ADMINISTRATOR' &&
+                <AdministratorRoutes />
+              }
+              {user.type === 'PUBLIC-SERVER' &&
+                <PublicServerRoutes />
+              }
+              {user.type === 'OSC' &&
+                <OSCRoutes />
+              }
+
             </div>
             <Footer />
             <Toastr />
@@ -41,4 +56,6 @@ class PrivatePages extends Component {
   }
 }
 
-export default PrivatePages
+
+const mapStateToProps = state => ({ auth: state.auth })
+export default connect(mapStateToProps, null)(PrivatePages)
