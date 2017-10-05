@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import Grid from '../layout/Grid'
+import moment from 'moment'
 
 export default class LabelAndDate extends Component {
-    
+
     componentDidMount() {
         const klass = this
         const element = window.$(this.refs.input)
 
         element.datepicker({
             language: "pt-BR"
+        }).on("input change", (e) => {
+            klass.props.input.onChange(e)
         })
-            .on("input change", (e) => {
-                klass.props.input.onChange(e)
-            })
     }
 
     render() {
