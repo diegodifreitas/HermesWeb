@@ -1,6 +1,8 @@
 import { toastr } from 'react-redux-toastr'
 import { initialize } from 'redux-form'
 
+import moment from 'moment'
+
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
@@ -8,11 +10,20 @@ const INITIAL_VALUE = {}
 
 export const getList = () => {
     const request = Api.getAdmProcess()
-    return {
-        type: "ADM_PROCESS_FETCHED",
-        payload: request
-    }
+    return [
+        requestAdmProcess(),
+        {
+            type: "ADM_PROCESS_RECEIVE",
+            payload: request
+        }
+    ]
 }
+
+
+export const requestAdmProcess = admProcess => ({
+    type: 'ADM_PROCESS_REQUEST',
+    payload: admProcess
+})
 
 export const create = (values) => {
     return submit(values, 'postAdmProcess')
@@ -28,15 +39,15 @@ export const remove = (values) => {
 
 const submit = (values, method) => {
     return dispatch => {
-        Api[method](values)
+        const data = { ...values, date: moment(values.date).format() }
+        dispatch(requestAdmProcess(values))
+        Api[method](data)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
                 dispatch(init())
             })
             .catch(e => {
-                //alterar isso quando integrar com a API
-                toastr.error('Erro', 'Fica ativo ai, ta dando erro!')
-                //e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }
 }
@@ -65,27 +76,4 @@ export const init = () => {
         getList(),
         initialize('admProcessForm', INITIAL_VALUE)
     ]
-}
-
-export const getModalidadeSelect = () => {
-    const modalidades = {
-        modalidades: [
-            {
-                id: 1,
-                nome: 'Inexigibilidade'
-            },
-            {
-                id: 2,
-                nome: "Chamamento Público"
-            },
-            {
-                id: 3,
-                nome: "Dispensa"
-            }
-        ]
-    }
-    return {
-        type: 'MODALIDADE_SELECT_FETCHED',
-        payload: modalidades
-    }
 }

@@ -3,7 +3,7 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { init, getModalidadeSelect } from './admProcessActions'
+import { init } from './admProcessActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndText from '../common/form/LabelAndText'
 import LabelAndCombo from '../common/form/LabelAndCombo'
@@ -13,11 +13,9 @@ import LabelAndToggle from '../common/form/LabelAndToggle'
 
 
 class AdmProcessForm extends Component {
-    componentWillMount() {
-        this.props.getModalidadeSelect()
-    }
+
     render() {
-        const { handleSubmit, readOnly } = this.props
+        const { handleSubmit, readOnly, list } = this.props
         return (
             <form onSubmit={handleSubmit}>
                 <div className='box-body'>
@@ -28,7 +26,10 @@ class AdmProcessForm extends Component {
                         label="Descrição Súmaria" cols='12 10' placeholder='Informe a descrição súmaria' />
 
                     <Field name='modality' label='Modalidade' cols='12 3'
-                        placeholder='Informe a Modalidade' values={this.props.modalidades}
+                        placeholder='Informe a Modalidade' values={[
+                            {id: 1, nome: 'Inexigibilidade'},
+                            {id: 2, nome: "Chamamento Público"},         
+                            {id: 3, nome: "Dispensa"}]}
                         component={LabelAndCombo} readOnly={readOnly} />
 
                     <Field name='modalityNumber' label='Numéro da Modalidade' cols='12 3'
@@ -65,25 +66,23 @@ class AdmProcessForm extends Component {
     }
 }
 
-AdmProcessForm = reduxForm({ 
-    form: 'admProcessForm', 
+AdmProcessForm = reduxForm({
+    form: 'admProcessForm',
     destroyOnUnmount: false,
-    initialValues:{
+    initialValues: {
         documentList: null,
         publicServer: {},
         urlReferenceTerm: "ronaldo",
-        id: null,
-        date: new Date('October 13, 2014 11:13:00')
+        id: null
     }
-    
+
 })(AdmProcessForm)
 const mapStateToProps = state => {
     const selector = formValueSelector('admProcessForm')
     const modalidadeValue = selector(state, 'modality');
     return ({
         modalidadeValue,
-        modalidades: state.admProcess.modalidadesSelect
     })
 }
-const mapDispatchToProps = dispatch => bindActionCreators({ init, getModalidadeSelect }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcessForm)

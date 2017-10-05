@@ -20,7 +20,11 @@ class AdmProcess extends Component {
 
     componentWillMount() {
         this.props.selectTab('tabList')
-        this.props.showTabs('tabList', 'tabCreate')
+        if (this.props.auth.user.type === 'OSC') {
+            this.props.showTabs('tabList')
+        } else {
+            this.props.showTabs('tabList', 'tabCreate')
+        }
     }
 
     render() {
@@ -40,22 +44,22 @@ class AdmProcess extends Component {
                                 <List />
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <Form 
-                                    onSubmit= {this.props.create} 
-                                    submitLabel='Incluir' 
-                                    submitClass='primary'/>
+                                <Form
+                                    onSubmit={this.props.create}
+                                    submitLabel='Incluir'
+                                    submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabUpdate'>
-                                <Form 
-                                    onSubmit= {this.props.update}
-                                    submitLabel='Alterar' 
-                                    submitClass='primary'/>
+                                <Form
+                                    onSubmit={this.props.update}
+                                    submitLabel='Alterar'
+                                    submitClass='primary' />
                             </TabContent>
-                            <TabContent id='tabDelete'> 
-                                <Form 
-                                    onSubmit= {this.props.remove} 
-                                    readOnly={true} 
-                                    submitLabel='Excluir' 
+                            <TabContent id='tabDelete'>
+                                <Form
+                                    onSubmit={this.props.remove}
+                                    readOnly={true}
+                                    submitLabel='Excluir'
                                     submitClass='danger' />
                             </TabContent>
                         </TabsContent>
@@ -65,6 +69,8 @@ class AdmProcess extends Component {
         )
     }
 }
-const mapDispatchToProps = dispatch => 
+const mapDispatchToProps = dispatch =>
     bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
-export default connect(null, mapDispatchToProps)(AdmProcess)
+const mapStateToProps = state => ({ auth: state.auth })
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdmProcess)
