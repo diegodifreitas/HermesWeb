@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux'
 
 import Api from '../main/api'
 
-import { getList, showUpdate, showDelete } from './oscActions'
+import { getList, showUpdate, showDelete, update } from './oscActions'
 
 import FieldSearch from '../common/form/FieldSearch'
+import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 
 class OscList extends Component {
@@ -34,23 +35,25 @@ class OscList extends Component {
                     }
                 </td>
                 <td>
-                    {/*Criar Icon Button*/}
-                    <button className='btn btn-warning' onClick={() => {
+
+                    <ButtonIcon cssStyle='btn btn-warning' onClick={() => {
                         Api.getOsc(`/${osc.id}`)
                             .then(resp => {
                                 this.props.showUpdate(resp.data)
                             })
-                    }}
-                    >
-                        <i className='fa fa-pencil' />
-                    </button>
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(osc)} >
-                        <i className='fa fa-trash-o' />
-                    </button>
-                    {osc.situacao !== 'Aprovada' &&
-                        <button className='btn btn-success' onClick={() => null} >
-                            <i className='fa fa-check' />
-                        </button>
+                    }} icon='pencil' tooltip='Alterar' />
+
+                    <ButtonIcon tooltip='Deletar' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
+
+                    { (osc.approvalADM === false || osc.approvalPS === false) &&
+                        <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
+                            if (this.props.user.type === 'ADMINISTRATOR') {
+                                osc.approvalADM = true
+                            } else if (this.props.user.type === 'PUBLIC-SERVER') {
+                                osc.approvalPS = true
+                            }
+                            this.props.update(osc)
+                        }} icon='check' />
                     }
                 </td>
             </tr>
@@ -80,9 +83,9 @@ class OscList extends Component {
                         </table>
                     }
                     {this.props.isLoading &&
-                            <div className="overlay">
-                                <i className="fa fa-refresh fa-spin"></i>
-                            </div>
+                        <div className="overlay">
+                            <i className="fa fa-refresh fa-spin"></i>
+                        </div>
                     }
                 </div>
             </div>
@@ -91,7 +94,8 @@ class OscList extends Component {
 }
 const mapStateToProps = state => ({
     list: state.osc.list,
-    isLoading: state.osc.isFetching
+    isLoading: state.osc.isFetching,
+    user: state.auth.user
 })
-const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete, update }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(OscList)
