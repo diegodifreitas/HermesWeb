@@ -6,7 +6,6 @@ import { getList, showUpdate, showDelete } from './userManagementActions'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
-import UserManagementDetails from './UserManagementDetails'
 
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 
@@ -27,20 +26,14 @@ class UserManagementList extends Component {
         const list = this.props.list || []
         return list.map(user => (
             <tr key={user.id}>
-                <td style={styles.imgList} >
-                    <img src={user.image}
-                        className='img img-responsive img-circle'
-                        style={styles.image}
-                        alt="user" />
-                </td>
                 <td style={styles.td} > {user.name} </td>
                 <td style={styles.td} > {user.email} </td>
                 <td style={styles.td}> {user.type} </td>
                 <td>
 
                     <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />
-                    {user.approvalAdm === false &&
-                        <ButtonIcon cssStyle='success' onClick={() => null} icon='check' />
+                    {user.approvalADM === false &&
+                        <ButtonIcon cssStyle='success' tooltip='Aprovar Usuario' onClick={() => null} icon='check' />
                     }
 
                 </td>
@@ -58,7 +51,6 @@ class UserManagementList extends Component {
                         <table className='table table-hover'>
                             <thead>
                                 <tr>
-                                    <th> Imagem </th>
                                     <th> Nome </th>
                                     <th> Email </th>
                                     <th> Tipo </th>
@@ -71,9 +63,6 @@ class UserManagementList extends Component {
                         </table>
                     </div>
                 </div>
-                <UserManagementDetails user={user}
-                    showUpdate={showUpdate}
-                    showDelete={showDelete} />
             </div>
         )
     }
