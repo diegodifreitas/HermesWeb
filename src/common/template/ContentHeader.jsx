@@ -2,7 +2,7 @@ import React from 'react'
 import Breadcrumbs from 'react-router-dynamic-breadcrumbs';
 
 const routes = {
-    '/': 'Home',
+    '/': 'Início',
     '/admProcess': 'Processo Administrativo',
     '/osc': 'OSC',
     '/users': 'Gestão de Usuários',
