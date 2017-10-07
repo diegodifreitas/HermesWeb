@@ -9,7 +9,7 @@ import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndDate from '../common/form/LabelAndDate'
 import BoxBody from '../common/template/box/BoxBody'
 
-class ResponsavelForm extends Component {
+class ResponsibleForm extends Component {
 
     render() {
         const { handleSubmit, readOnly } = this.props
@@ -66,7 +66,7 @@ class ResponsavelForm extends Component {
     }
 }
 
-ResponsavelForm = reduxForm({ form: 'oscForm', destroyOnUnmount: false })(ResponsavelForm)
+ResponsibleForm = reduxForm({ form: 'oscForm', destroyOnUnmount: false })(ResponsibleForm)
 const mapStateToProps = state => ({})
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(ResponsavelForm)
+export default connect(mapStateToProps, mapDispatchToProps)(ResponsibleForm)

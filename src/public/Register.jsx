@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import StepZilla from 'react-stepzilla'
 
 import OSCForm from './OSCForm'
-import ResponsavelForm from './ResponsavelForm'
+import ResponsibleForm from './ResponsibleForm'
 import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
 
@@ -21,7 +21,7 @@ class Register extends Component {
                 {
                     name: 'Respónsavel',
                     component:
-                    <ResponsavelForm onSubmit={this.props.create}
+                    <ResponsibleForm onSubmit={this.props.create}
                         submitLabel='Solicitar Acesso'
                         submitClass='primary'
                     />
