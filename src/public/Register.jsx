@@ -19,9 +19,12 @@ class Register extends Component {
             [
                 { name: 'OSC', component: <OSCForm /> },
                 {
-                    name: 'Respónsavel', component: <ResponsavelForm onSubmit={this.props.create}
+                    name: 'Respónsavel',
+                    component:
+                    <ResponsavelForm onSubmit={this.props.create}
                         submitLabel='Solicitar Acesso'
-                        submitClass='primary' />
+                        submitClass='primary'
+                    />
                 }
             ]
 
