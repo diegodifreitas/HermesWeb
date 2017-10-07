@@ -29,7 +29,7 @@ class AdmProcessList extends Component {
         const { list } = this.props
         return (
             <div>
-                {list.length == 0 || list.length == null   &&
+                {(list.length == 0 || list.length == null)   &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible">
                             <h4><i className="icon fa fa-info"></i> Nenhum Processo administrativo disponível!</h4>

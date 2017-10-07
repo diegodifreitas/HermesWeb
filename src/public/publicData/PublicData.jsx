@@ -43,7 +43,7 @@ class PublicData extends Component {
         return (
             <div className="container-fluid">
                 <div className="main">
-                    <ContentHeader title='Dados Publicos' small='1.0' />
+                    <ContentHeader title='Dados Publicos' />
                     <Content >
                         <Box color='primary direct-chat direct-chat-primary'>
                             {this.state.isLoading &&
