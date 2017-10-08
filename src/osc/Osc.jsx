@@ -11,7 +11,7 @@ import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
 import TabContent from '../common/tabs/TabContent'
 import List from './OscList'
-import Form from './OscForm'
+import Form from './OscFormWithBoardMemberList'
 
 import { init, create, update, remove } from './oscActions'
 

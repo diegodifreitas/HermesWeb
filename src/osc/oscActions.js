@@ -74,3 +74,9 @@ export const init = () => {
         initialize('oscForm', INITIAL_VALUE)
     ]
 }
+
+export const clean = () => {
+    return [
+        initialize('oscForm', INITIAL_VALUE)
+    ]
+}
