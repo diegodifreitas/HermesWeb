@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import StepZilla from 'react-stepzilla'
 
-import OSCForm from './OSCForm'
+import OscForm from '../osc/OscForm'
 import ResponsibleForm from './ResponsibleForm'
 import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
@@ -17,9 +17,9 @@ class Register extends Component {
     render() {
         const steps =
             [
-                { name: 'OSC', component: <OSCForm /> },
+                { name: 'OSC', component: <OscForm /> },
                 {
-                    name: 'Respónsavel',
+                    name: 'Responsável',
                     component:
                     <ResponsibleForm onSubmit={this.props.create}
                         submitLabel='Solicitar Acesso'
@@ -34,7 +34,9 @@ class Register extends Component {
                     <PanelLeft link='/login' label='Entrar' />
                     <div className="col-sm-6 right-side">
                         <div className='step-progress'>
-                            <StepZilla steps={steps}
+                            <StepZilla 
+                                steps={steps}
+                                stepsNavigation={false}
                                 backButtonText='Voltar' nextButtonText='Proximo'
                                 backButtonCls='btn btn-primary' nextButtonCls='btn btn-primary pull-right'
                             />

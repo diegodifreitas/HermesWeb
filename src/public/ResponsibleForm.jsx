@@ -16,35 +16,36 @@ class ResponsibleForm extends Component {
         return (
             <form onSubmit={handleSubmit} className='form'>
                 <BoxBody>
+                    <fieldset>
+                        <legend> Dados do Responsável pela OSC </legend>
+                        <Field name='boardMemberList[0].name' component={LabelAndInput} readOnly={readOnly}
+                            label='Nome' cols='12 10' placeholder='Informe um Nome*' />
 
-                    <Field name='boardMemberList[0].name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 10' placeholder='Informe um Nome*' />
+                        <Field name='boardMemberList[0].email' component={LabelAndInput} type="email" label='Email'
+                            cols='12 6' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='boardMemberList[0].email' component={LabelAndInput} type="email" label='Email'
-                        cols='12 6' readOnly={readOnly} placeholder='Informe um email*' />
+                        <Field name='boardMemberList[0].phone' component={LabelAndInput} label='Telefone'
+                            cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='boardMemberList[0].phone' component={LabelAndInput} label='Telefone'
-                        cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
+                        <Field name='boardMemberList[0].cpf' component={LabelAndInput} label='CPF'
+                            cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
 
-                    <Field name='boardMemberList[0].cpf' component={LabelAndInput} label='CPF'
-                        cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
+                        <Field name='boardMemberList[0].rg' component={LabelAndInput} label='RG'
+                            cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' />
 
-                    <Field name='boardMemberList[0].rg' component={LabelAndInput} label='RG'
-                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' />
+                        <Field name='boardMemberList[0].office' component={LabelAndInput} label='Cargo'
+                            cols='12 4' readOnly={readOnly} placeholder='Qual seu cargo?' />
 
-                    <Field name='boardMemberList[0].office' component={LabelAndInput} label='Cargo'
-                        cols='12 4' readOnly={readOnly} placeholder='Qual seu cargo?' />
+                        <Field name='boardMemberList[0].beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
+                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
 
-                    <Field name='boardMemberList[0].beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
-                        cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
-
-                    <Field name='boardMemberList[0].endOfMandate' component={LabelAndDate} label='Término do Mandato'
-                        cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
-
+                        <Field name='boardMemberList[0].endOfMandate' component={LabelAndDate} label='Término do Mandato'
+                            cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
+                    </fieldset>
                 </BoxBody>
                 <BoxBody>
                     <fieldset>
-                        <legend> Localização </legend>
+                        <legend> Localização do Responsavél </legend>
                         <Field name='boardMemberList[0].address.street' component={LabelAndInput} readOnly={readOnly}
                             label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo' />
 
