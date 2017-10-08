@@ -19,7 +19,7 @@ export default class LabelAndDate extends Component {
         const { props } = this
         return (
             <Grid cols={props.cols} section={true}>
-                <div className="form-group">
+                <div className={props.meta.touched && props.meta.error ? 'form-group has-error' : 'form-group'}>
                     <label>{props.label}</label>
 
                     <div className="input-group date">
@@ -33,6 +33,10 @@ export default class LabelAndDate extends Component {
                             placeholder={props.placeholder}
                             readOnly={props.readOnly}
                         />
+                        {props.meta.touched &&
+                            ((props.meta.error &&
+                                <label className="control-label help-block" htmlFor="inputError"><i className="fa fa-times-circle-o"></i> {/* &nbsp; */} {props.meta.error}</label>) ||
+                                (props.meta.warning && <span>{props.meta.warning}</span>))}
                     </div>
                 </div>
             </Grid>

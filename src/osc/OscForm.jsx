@@ -39,16 +39,16 @@ class OSCForm extends Component {
                     <fieldset>
                         <legend> Localização da OSC </legend>
                         <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
-                            label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                            label='Endereço' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
-                            label='Numero' cols='12 3' placeholder='Ex: 456' />
+                            label='Numero' cols='12 4' placeholder='Ex: 456' />
 
                         <Field name='address.neighborhood' component={LabelAndInput} label='Bairro'
-                            cols='12 3' readOnly={readOnly} placeholder='Ex. Centro' />
+                            cols='12 4' readOnly={readOnly} placeholder='Ex. Centro' />
 
                         <Field name='address.city' component={LabelAndInput} readOnly={readOnly}
-                            label='Município' cols='12 12' placeholder='Ex: Santa Rita do Sapucai - MG' />
+                            label='Município' cols='12 8' placeholder='Ex: Santa Rita do Sapucai - MG' />
                     </fieldset>
                 </BoxBody>
             </div>
