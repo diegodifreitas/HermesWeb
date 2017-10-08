@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import Toastr from '../common/ui/Toastr'
-import Routes from './PublicRoutes'
+import Routes from './routes/PublicRoutes'
 
 class PublicPages extends Component {
     componentDidMount() {
