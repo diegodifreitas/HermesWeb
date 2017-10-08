@@ -96,3 +96,6 @@ li.header {
   -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
 }
+.progtrckr {
+  text-align: center;
+}
