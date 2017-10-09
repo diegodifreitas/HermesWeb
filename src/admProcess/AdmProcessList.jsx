@@ -40,15 +40,15 @@ class AdmProcessList extends Component {
     render() {
         const { list, qtd } = this.props
         return (
-            <div className='class="box-body table-responsive no-padding"'>
-                {qtd === 0 && !this.props.isLoading &&
+            <div className='box-body table-responsive no-padding'>
+                {(qtd === 0 && !this.props.isLoading) &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible" style={{ margin: "0 0 0 0" }}>
                             <h4><i className="icon fa fa-info"></i> Nenhum Processo administrativo cadastrado!</h4>
                         </div>
                     </Grid>
                 }
-                {qtd > 0 && !this.props.isLoading &&
+                {(qtd > 0 && !this.props.isLoading) &&
                     <table className='table table-hover'>
                         <thead>
                             <tr>

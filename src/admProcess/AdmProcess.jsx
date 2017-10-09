@@ -30,7 +30,7 @@ class AdmProcess extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Processo Administrativo' small='Cadastro' />
+                <ContentHeader title='Processo Administrativo'/>
                 <Content >
                     <Tabs>
                         <TabsHeader>
