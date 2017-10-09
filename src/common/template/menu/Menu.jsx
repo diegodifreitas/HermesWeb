@@ -10,9 +10,12 @@ class Menu extends Component {
         const { user } = this.props.auth
         return (
             < ul className='sidebar-menu tree' data-widget="tree" >
-                <li className='header'> MENU DE NAVEGAÇÃO </li>
-                <MenuItem path='/' label='Dashboard' icon='dashboard' />
+                <li className='header'> Menu de navegação </li>
+                <MenuItem path='/' label='Painel de Informações' icon='dashboard' />
                 <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
+                {user.type === 'OSC' &&
+                    <MenuItem path='/members' label='Membros' icon='users' />
+                }
                 {user.type !== 'OSC' &&
                     <MenuItem path='/osc' label='OSCs' icon='university' />
                 }

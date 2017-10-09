@@ -51,7 +51,7 @@ export default class LabelAndUpload extends Component {
                     <div className="avatar-photo">
                         <FileUpload handleFileChange={this.handleFileChange} />
                         <div className="avatar-edit">
-                            <span>Click Para Alterar</span>
+                            <span>Selecione Para Alterar</span>
                             <i className="fa fa-camera"></i>
                         </div>
                         <img className='img-responsive' alt='croppie' src={this.state.croppedImg} />
