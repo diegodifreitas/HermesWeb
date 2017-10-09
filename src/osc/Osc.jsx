@@ -11,7 +11,7 @@ import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
 import TabContent from '../common/tabs/TabContent'
 import List from './OscList'
-import Form from './OscFormWithBoardMemberList'
+import Form from './OscFormWithMemberList'
 
 import { init, create, update, remove } from './oscActions'
 
@@ -24,7 +24,7 @@ class Osc extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Organizações da Sociedade Civil' small='Cadastro' />
+                <ContentHeader title='Organizações da Sociedade Civil' />
                 <Content >
                     <Tabs>
                         <TabsHeader>

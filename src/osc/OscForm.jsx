@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { Field } from 'redux-form'
 
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndMask from '../common/form/LabelAndMask'
 import BoxBody from '../common/template/box/BoxBody'
-import { validate } from '../validate/oscFormValidate'
 
 class OSCForm extends Component {
 
@@ -55,13 +54,5 @@ class OSCForm extends Component {
         )
     }
 }
-
-OSCForm = reduxForm({
-    form: 'oscForm', validate, destroyOnUnmount: false,
-    initialValues: {
-        approvalADM: false,
-        approvalPS: false
-    }
-})(OSCForm)
 
 export default OSCForm
