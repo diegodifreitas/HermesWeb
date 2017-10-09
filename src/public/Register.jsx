@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
 import StepZilla from 'react-stepzilla'
 
 import OscForm from '../osc/OscForm'
@@ -9,7 +10,7 @@ import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
 
 import PanelLeft from './PanelLeft'
-
+import { validate } from '../validate/oscFormValidate'
 
 import './register.css'
 class Register extends Component {
@@ -34,7 +35,7 @@ class Register extends Component {
                     <PanelLeft link='/login' label='Entrar' />
                     <div className="col-sm-6 right-side">
                         <div className='step-progress'>
-                            <StepZilla 
+                            <StepZilla
                                 steps={steps}
                                 stepsNavigation={false}
                                 backButtonText='Voltar' nextButtonText='Proximo'
@@ -48,6 +49,15 @@ class Register extends Component {
         )
     }
 }
+
+Register = reduxForm({
+    form: 'oscForm', validate, destroyOnUnmount: false,
+    initialValues: {
+        approvalADM: false,
+        approvalPS: false
+    }
+})(Register)
+
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ create }, dispatch)
 export default connect(null, mapDispatchToProps)(Register)
