@@ -7,6 +7,9 @@ import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndUpload from '../common/form/LabelAndUpload'
 import BoxBody from '../common/template/box/BoxBody'
+import BoxFooter from '../common/template/box/BoxFooter'
+
+import OscForm from '../osc/OscForm'
 
 import LabelAndDate from '../common/form/LabelAndDate'
 
@@ -17,30 +20,37 @@ class AccountInfoForm extends Component {
         return (
             <form onSubmit={handleSubmit}>
 
-                <BoxBody>
-                    <Field name='image' component={LabelAndUpload}
-                        label='Foto Perfil' cols='12 4 2' placeholder='Adicionar imagem' />
-                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 4  10' placeholder='Diego Dulval de Freitas' />
+                {this.props.user.type === 'OSC' &&
+                    <OscForm />
+                }
+                {this.props.user.type === 'ADMINISTRATOR' &&
+                    <div>
+                        <BoxBody>
+                            <Field name='image' component={LabelAndUpload}
+                                label='Foto Perfil' cols='12 4 2' placeholder='Adicionar imagem' />
+                            <Field name='name' component={LabelAndInput} readOnly={readOnly}
+                                label='Nome' cols='12 4  10' placeholder='Diego Dulval de Freitas' />
 
-                    <Field name='email' component={LabelAndInput} readOnly={readOnly}
-                        label="Email" cols='12 4 10' placeholder='diegodifreitas@gmail.com   ' />
+                            <Field name='email' component={LabelAndInput} readOnly={readOnly}
+                                label="Email" cols='12 4 10' placeholder='diegodifreitas@gmail.com   ' />
 
-                </BoxBody>
-                <BoxBody>
-                    <fieldset>
-                        <legend> Alterar senha  </legend>
-                        <Field name='password' type='password' component={LabelAndInput} readOnly={readOnly}
-                            label='Senha atual' cols='12 12 6' placeholder='' />
-                        <Field name='newPassword' type='password' component={LabelAndInput} readOnly={readOnly}
-                            label='Nova senha' cols='12 12 6' placeholder='' />
-                    </fieldset>
-                </BoxBody>
+                        </BoxBody>
+                        <BoxBody>
+                            <fieldset>
+                                <legend> Alterar senha  </legend>
+                                <Field name='password' type='password' component={LabelAndInput} readOnly={readOnly}
+                                    label='Senha atual' cols='12 12 6' placeholder='' />
+                                <Field name='newPassword' type='password' component={LabelAndInput} readOnly={readOnly}
+                                    label='Nova senha' cols='12 12 6' placeholder='' />
+                            </fieldset>
+                        </BoxBody>
+                    </div>
+                }
 
-                <div className='box-footer'>
+                <BoxFooter>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
-                </div>
+                </BoxFooter>
             </form>
         )
     }

@@ -10,6 +10,7 @@ import TabsHeader from '../common/tabs/TabsHeader'
 import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
 import TabContent from '../common/tabs/TabContent'
+
 import Form from './AccountInfoForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
@@ -23,7 +24,7 @@ class AccountInfo extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader routes={this.props.match} title='Informações da Conta' small='Versão 1.0' />
+                <ContentHeader routes={this.props.match} title='Informações da Conta' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
@@ -34,7 +35,8 @@ class AccountInfo extends Component {
                                 <Form
                                     onSubmit={this.props.update}
                                     submitLabel='Atualizar'
-                                    submitClass='primary' />
+                                    submitClass='primary'
+                                    user={this.props.user} />
                             </TabContent>
                         </TabsContent>
                     </Tabs>
