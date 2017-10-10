@@ -46,11 +46,12 @@ class OscList extends Component {
                     }
                 </td>
                 <td>
-
-                    <ButtonIcon cssStyle='btn btn-warning' onClick={() => this.readById(osc)} icon='pencil' tooltip='Alterar' />
-
-                    <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
-
+                    {this.props.user.type !== 'ADMINISTRATOR' &&
+                        <ButtonIcon cssStyle='btn btn-warning' onClick={() => this.readById(osc)} icon='pencil' tooltip='Alterar' />
+                    }
+                    {this.props.user.type === 'ADMINISTRATOR' &&
+                        <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.readById(osc)} icon='address-book-o' tooltip='Detalhes' />
+                    }
                     {(osc.approvalADM === false && this.props.user.type === 'ADMINISTRATOR') &&
                         <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
                             osc.approvalADM = true
@@ -58,10 +59,13 @@ class OscList extends Component {
                         }} icon='check' />
                     }
                     {(osc.approvalPS === false && this.props.user.type === 'PUBLIC-SERVER') &&
-                        <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
-                            osc.approvalPS = true
-                            this.props.update(osc)
-                        }} icon='check' />
+                        <div>
+                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
+                            <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
+                                osc.approvalPS = true
+                                this.props.update(osc)
+                            }} icon='check' />
+                        </div>
                     }
                 </td>
             </tr>
