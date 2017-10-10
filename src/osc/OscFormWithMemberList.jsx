@@ -28,16 +28,18 @@ class OscFormWithMemberList extends Component {
         return (
             <form onSubmit={handleSubmit}>
 
-                <OscForm />
+                <OscForm readOnly={readOnly} />
 
                 <BoxBody>
                     <fieldset>
                         <legend> Membros
-                            <ButtonIcon cssStyle='success' tooltip='Adicionar Membro' type="button"
-                                onClick={() => {
-                                    clean()
-                                    openModal()
-                                }} icon='plus' />
+                            {this.props.user.type === 'OSC' &&
+                                <ButtonIcon cssStyle='success' tooltip='Adicionar Membro' type="button"
+                                    onClick={() => {
+                                        clean()
+                                        openModal()
+                                    }} icon='plus' />
+                            }
                         </legend>
                         <MemberList list={memberList} handleOpen={this.props.openModal} />
                     </fieldset>
@@ -46,11 +48,14 @@ class OscFormWithMemberList extends Component {
                 <MemberForm onSubmit={handleSubmit}
                     submitLabel='Incluir'
                     submitClass='primary'
+                    readOnly={readOnly}
                 />
 
                 <BoxFooter >
-                    <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
+                    {this.props.user.type === 'OSC' &&
+                        <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                    }
+                    <button type='button' className='btn btn-default' onClick={this.props.init}> {this.props.user.type !== 'OSC' ? 'Voltar' : 'Cancelar'} </button>
                 </BoxFooter>
             </form>
         )
@@ -73,7 +78,7 @@ const selector = formValueSelector('oscForm')
 const mapStateToProps = state => (
     {
         visible: state.modal.visible,
-        user: state.modal.data,
+        user: state.auth.user,
         memberList: selector(state, 'boardMemberList'),
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
