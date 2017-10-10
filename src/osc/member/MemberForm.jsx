@@ -110,25 +110,30 @@ class MemberForm extends Component {
                                 </BoxBody>
 
                                 <div className="modal-footer">
-                                    <ButtonIcon
-                                        cssStyle='warning' tooltip='Limpar Formulário' type='button'
-                                        disabled={pristine || submitting}
-                                        onClick={reset} icon='eraser' />
-                                    {this.props.id &&
-                                        <span>
-                                            <ButtonIcon cssStyle='danger' tooltip='Excluir'
-                                                onClick={() => handleDelete(user)} icon='trash-o' />
+
+                                    {this.props.user.type !== 'ADMINISTRATOR' &&
+                                        <div>
                                             <ButtonIcon
-                                                cssStyle='success' tooltip='Editar' type='submit'
-                                                disabled={submitting}
-                                                onClick={() => handleUpdate(user)} icon='edit' />
-                                        </span>
-                                    }
-                                    {!this.props.id &&
-                                        <ButtonIcon
-                                            cssStyle='success' tooltip='Salvar' type='submit'
-                                            disabled={submitting}
-                                            onClick={() => handleCreate(user)} icon='plus' />
+                                                cssStyle='warning' tooltip='Limpar Formulário' type='button'
+                                                disabled={pristine || submitting}
+                                                onClick={reset} icon='eraser' />
+                                            {this.props.id &&
+                                                <span>
+                                                    <ButtonIcon cssStyle='danger' tooltip='Excluir'
+                                                        onClick={() => handleDelete(user)} icon='trash-o' />
+                                                    <ButtonIcon
+                                                        cssStyle='success' tooltip='Editar' type='submit'
+                                                        disabled={submitting}
+                                                        onClick={() => handleUpdate(user)} icon='edit' />
+                                                </span>
+                                            }
+                                            {!this.props.id &&
+                                                <ButtonIcon
+                                                    cssStyle='success' tooltip='Salvar' type='submit'
+                                                    disabled={submitting}
+                                                    onClick={() => handleCreate(user)} icon='plus' />
+                                            }
+                                        </div>
                                     }
                                 </div>
 
