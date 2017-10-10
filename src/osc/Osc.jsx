@@ -30,7 +30,12 @@ class Osc extends Component {
                         <TabsHeader>
                             <TabHeader label='Listar' icon='bars' target='tabList' />
                             <TabHeader label='Incluir' icon='plus' target='tabCreate' />
-                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            {this.props.user.type === 'ADMINISTRATOR' &&
+                                <TabHeader label='Detalhes' icon='address-book-o' target='tabUpdate' />
+                            }
+                            {this.props.user.type !== 'ADMINISTRATOR' &&
+                                <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            }
                             <TabHeader label='Excluir' icon='trash-o' target='tabDelete' />
                         </TabsHeader>
                         <TabsContent>
@@ -46,6 +51,7 @@ class Osc extends Component {
                                 <Form
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
+                                    readOnly={this.props.user.type === 'ADMINISTRATOR' ? true : false}
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabDelete'>
@@ -62,6 +68,10 @@ class Osc extends Component {
         )
     }
 }
+const mapStateToProps = state => (
+    {
+        user: state.auth.user
+    })
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ init, create, update, remove }, dispatch)
-export default connect(null, mapDispatchToProps)(Osc)
+export default connect(mapStateToProps, mapDispatchToProps)(Osc)
