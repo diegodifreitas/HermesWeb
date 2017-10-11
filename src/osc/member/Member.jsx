@@ -18,14 +18,13 @@ import { init, create, update, remove } from './memberActions'
 class Member extends Component {
 
     componentWillMount() {
-        this.props.init()
+        this.props.init(this.props.user.id)
     }
 
     render() {
-        const { name } = this.props.user
         return (
             <div className=''>
-                <ContentHeader title='Membros' small={user.name} />
+                <ContentHeader title='Membros' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
@@ -36,7 +35,7 @@ class Member extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List />
+                                <List list={this.props.list} />
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form onSubmit={this.props.create}
@@ -65,5 +64,8 @@ class Member extends Component {
 }
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ init, create, update, remove }, dispatch)
-const mapStateToProps = state => ({ user: state.auth.user })
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    list: state.member.payload.payload
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Member)

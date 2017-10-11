@@ -7,9 +7,9 @@ import { openModal, closeModal } from '../../common/ui/modal/modalActions'
 
 const INITIAL_VALUE = {}
 
-export const getList = (field, value) => {
+export const getList = (idOsc, field, value) => {
     let search = value ? `?q=${value}` : ''
-    const request = Api.getMember(search)
+    const request = Api.getMember(search, idOsc)
     return [
         requestMember(),
         {
@@ -28,18 +28,18 @@ export const create = (values) => {
     return submit(values, 'postMember')
 }
 
-export const update = (values) => {
-    return submit(values, 'putMember')
+export const update = (values, oscId) => {
+    return submit(values, 'putMember', oscId)
 }
 
 export const remove = (values) => {
     return submit(values, 'deleteMember')
 }
 
-const submit = (values, method) => {
+const submit = (values, method, oscId) => {
     return dispatch => {
         dispatch(requestMember(values))
-        Api[method](values)
+        Api[method](values, oscId)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
                 dispatch(init())
@@ -66,11 +66,11 @@ export const showDelete = (member) => {
     ]
 }
 
-export const init = () => {
+export const init = (idOsc) => {
     return [
         showTabs('tabList', 'tabCreate'),
         selectTab('tabList'),
-        getList(),
+        getList(idOsc, null, null),
         initialize('memberForm', INITIAL_VALUE)
     ]
 }

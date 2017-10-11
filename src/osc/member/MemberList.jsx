@@ -5,13 +5,15 @@ import { bindActionCreators } from 'redux'
 import FieldSearch from '../../common/form/FieldSearch'
 import Grid from '../../common/layout/Grid'
 
+import { showUpdate, showDelete } from './memberActions'
+
 import BoxBody from '../../common/template/box/BoxBody'
 import ButtonIcon from '../../common/ui/button/ButtonIcon'
 
 class MemberList extends Component {
 
     renderRows() {
-        const list = this.props.list || []
+        const { list = [], user, showUpdate, showDelete } = this.props
 
         return list.map((member) => (
             <tr key={member.id}>
@@ -20,15 +22,23 @@ class MemberList extends Component {
                 <td> {member.phone} </td>
                 <td> {member.cpf} </td>
                 <td>
-                    <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'
-                        onClick={() => this.props.handleOpen(member, 'memberForm')} icon='user-o' />
+                    {user.type === 'OSC' &&
+                        <span>
+                            <ButtonIcon tooltip='Editar' cssStyle='warning' onClick={() => showUpdate(member)} icon='user-o' />
+                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => showDelete(member)} icon='trash-o' />
+                        </span>
+                    }
+                    {user.type !== 'OSC' &&
+                        <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'
+                            onClick={() => this.props.handleOpen(member, 'memberForm')} icon='user-o' />
+                    }
                 </td>
             </tr>
         ))
     }
 
     render() {
-        const { user, list } = this.props
+        const { list = [] } = this.props
         return (
             <div>
                 {(list.length === 0 && !this.props.isLoading) &&
@@ -71,9 +81,12 @@ class MemberList extends Component {
 const mapStateToProps = state => (
     {
         visible: state.modal.visible,
-        user: state.modal.data,
+        user: state.auth.user,
         isLoading: state.osc.isFetching
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
-    {}, dispatch)
+    {
+        showDelete,
+        showUpdate
+    }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(MemberList)
