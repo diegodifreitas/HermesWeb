@@ -25,10 +25,10 @@ export const getUser = (search = '') => api.get('user' + search)
 export const deleteUser = (user) => api.delete('user/' + user.id)
 export const putUser = (user) => api.put('user', user)
 
-export const postMember = (member, osc) => api.post(`osc/${osc}/boardMember`, member)
-export const getMember = (search = '', osc) => api.get(`osc/${osc}/boardMember` + search)
-export const deleteMember = (member, osc) => api.delete(`osc/${osc}/boardMember/` + member.id)
-export const putMember = (member, osc) => api.put(`osc/${osc}/boardMember/` + member.id, member)
+export const postMember = (member, osc) => api.post(`osc/${osc}/member`, member)
+export const getMember = (search = '', osc) => api.get(`osc/${osc}/member` + search)
+export const deleteMember = (member, osc) => api.delete(`osc/${osc}/member/` + member.id)
+export const putMember = (member, osc) => api.put(`osc/${osc}/member`, member)
 
 const apis = {
   getAdmProcess,
