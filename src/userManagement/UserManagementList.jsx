@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getList, showUpdate, showDelete } from './userManagementActions'
+import { getList, showUpdate, showDelete, update } from './userManagementActions'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
@@ -16,7 +16,7 @@ class UserManagementList extends Component {
     }
 
     renderRows() {
-        const { openModal } = this.props
+        const { openModal, showUpdate, update } = this.props
 
         let styles = {
             imgList: { width: '80px', verticalAlign: 'middle' },
@@ -31,9 +31,12 @@ class UserManagementList extends Component {
                 <td style={styles.td}> {user.type} </td>
                 <td>
 
-                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => openModal(user)} icon='user-o' />
+                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => showUpdate(user)} icon='user-o' />
                     {user.approvalADM === false &&
-                        <ButtonIcon cssStyle='success' tooltip='Aprovar Usuario' onClick={() => null} icon='check' />
+                        <ButtonIcon cssStyle='success' tooltip='Aprovar Usuario' onClick={() => {
+                            user.approvalADM = true
+                            update(user)
+                        }} icon='check' />
                     }
 
                 </td>
@@ -80,6 +83,7 @@ const mapDispatchToProps = dispatch => bindActionCreators(
         showUpdate,
         showDelete,
         openModal,
-        closeModal
+        closeModal,
+        update
     }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagementList)
