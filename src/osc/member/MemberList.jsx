@@ -82,7 +82,7 @@ const mapStateToProps = state => (
     {
         visible: state.modal.visible,
         user: state.auth.user,
-        isLoading: state.osc.isFetching
+        isLoading: state.member.isFetching
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {
