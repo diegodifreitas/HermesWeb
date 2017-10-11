@@ -16,13 +16,13 @@ export function validate(values) {
     } else if (!/^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/i.test(values.cpf)) {
         errors.cpf = 'Cpf inválido'
     }
-    if (values.rg) {
+    if (!values.rg) {
         errors.rg = 'RG obrigatório'
     }
-    if (values.phone) {
+    if (!values.phone) {
         errors.phone = 'Telefone obrigatório'
     }
-    if (values.office) {
+    if (!values.office) {
         errors.office = 'Cargo obrigatório'
     }
 
