@@ -66,9 +66,9 @@ export const showDelete = (osc) => {
     ]
 }
 
-export const init = () => {
+export const init = (create = true) => {
     return [
-        showTabs('tabList', 'tabCreate'),
+        create ? showTabs('tabList', 'tabCreate') : showTabs('tabList'),
         selectTab('tabList'),
         getList(),
         initialize('oscForm', INITIAL_VALUE)

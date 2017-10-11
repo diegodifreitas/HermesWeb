@@ -18,7 +18,7 @@ import { init, create, update, remove } from './oscActions'
 class Osc extends Component {
 
     componentWillMount() {
-        this.props.init()
+        this.props.init(false)
     }
 
     render() {
