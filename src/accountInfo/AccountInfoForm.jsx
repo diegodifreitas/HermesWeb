@@ -23,24 +23,25 @@ class AccountInfoForm extends Component {
                 {this.props.user.type === 'OSC' &&
                     <OscForm />
                 }
-                {this.props.user.type === 'ADMINISTRATOR' &&
+                {this.props.user.type !== 'OSC' &&
                     <div>
                         <BoxBody>
-                            <Field name='image' component={LabelAndUpload}
-                                label='Foto Perfil' cols='12 4 2' placeholder='Adicionar imagem' />
                             <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                                label='Nome' cols='12 4  10' placeholder='Diego Dulval de Freitas' />
+                                label='Nome' cols='12 12' />
 
                             <Field name='email' component={LabelAndInput} readOnly={readOnly}
-                                label="Email" cols='12 4 10' placeholder='diegodifreitas@gmail.com   ' />
-
+                                label="Email" cols='12 6' />
+                            {this.props.user.type === 'PUBLIC-SERVER' &&
+                                <Field name='office' component={LabelAndInput} readOnly={readOnly}
+                                    label="Cargo" cols='12 6' />
+                            }
                         </BoxBody>
                         <BoxBody>
                             <fieldset>
                                 <legend> Alterar senha  </legend>
                                 <Field name='password' type='password' component={LabelAndInput} readOnly={readOnly}
                                     label='Senha atual' cols='12 12 6' placeholder='' />
-                                <Field name='newPassword' type='password' component={LabelAndInput} readOnly={readOnly}
+                                <Field name='password' type='password' component={LabelAndInput} readOnly={readOnly}
                                     label='Nova senha' cols='12 12 6' placeholder='' />
                             </fieldset>
                         </BoxBody>
@@ -49,7 +50,6 @@ class AccountInfoForm extends Component {
 
                 <BoxFooter>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
                 </BoxFooter>
             </form>
         )

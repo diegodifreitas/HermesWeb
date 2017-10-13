@@ -14,12 +14,27 @@ import TabContent from '../common/tabs/TabContent'
 import Form from './AccountInfoForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { update, init } from './accountInfoActions'
+import { updateOsc, updateAdm, updatePublicServer, init } from './accountInfoActions'
 
 class AccountInfo extends Component {
+    constructor(props) {
+        super(props)
+        this.update = this.update.bind(this)
+    }
     componentWillMount() {
         this.props.init(this.props.user)
     }
+
+    update(formData) {
+        const { updateOsc, updateAdm, updatePublicServer } = this.props
+        if (formData.type === 'OSC')
+            updateOsc(formData)
+        if (formData.type === 'PUBLIC-SERVER')
+            updatePublicServer(formData)
+        if (formData.type === 'ADMINISTRATOR')
+            updateAdm(formData)
+    }
+
 
     render() {
         return (
@@ -33,7 +48,7 @@ class AccountInfo extends Component {
                         <TabsContent>
                             <TabContent id='tabList'>
                                 <Form
-                                    onSubmit={this.props.update}
+                                    onSubmit={this.update}
                                     submitLabel='Atualizar'
                                     submitClass='primary'
                                     user={this.props.user} />
@@ -47,6 +62,6 @@ class AccountInfo extends Component {
 }
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ update, init }, dispatch)
+    bindActionCreators({ updateOsc, updateAdm, updatePublicServer, init }, dispatch)
 const mapStateToProps = state => ({ user: state.auth.user })
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)
