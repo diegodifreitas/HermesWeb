@@ -25,8 +25,13 @@ export const getUser = (search = '') => api.get('user' + search)
 export const deleteUser = (user) => api.delete('user/' + user.id)
 export const putUser = (user) => api.put('user', user)
 
+export const postServer = (server) => api.post('publicserver', server)
+export const getServer = (search = '') => api.get('publicserver' + search)
+export const deleteServer = (server) => api.delete('publicserver/' + server.id)
+export const putServer = (server) => api.put('publicserver', server)
+
 export const postMember = (member, osc) => api.post(`osc/${osc}/member`, member)
-export const getMember = (search = '', osc) => api.get(`osc/${osc}/member` + search)
+export const getMember = (search = '', osc) => api.get(`osc/${osc}/member${search}`)
 export const deleteMember = (member, osc) => api.delete(`osc/${osc}/member/` + member.id)
 export const putMember = (member, osc) => api.put(`osc/${osc}/member`, member)
 
@@ -55,7 +60,12 @@ const apis = {
   getUser,
   postUser,
   deleteUser,
-  putUser
+  putUser,
+
+  getServer,
+  postServer,
+  deleteServer,
+  putServer
 }
 
 export default apis

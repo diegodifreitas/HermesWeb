@@ -25,7 +25,7 @@ export function validate(values) {
     } else if (values.password.length < 6) {
         errors.password = 'A senha deve conter no minimo 6 dígitos'
     }
-/* 
+
     errors.boardMemberList.forEach(x => {
         if (!x.name) {
             errors.boardMemberList[0].name = 'Nome obrigatório'
@@ -40,13 +40,13 @@ export function validate(values) {
         } else if (!/^[0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2}$/i.test(x.cpf)) {
             errors.boardMemberList[0].cpf = 'Cpf inválido'
         }
-        if (x.rg) {
+        if (!x.rg) {
             errors.boardMemberList[0].rg = 'RG obrigatório'
         }
-        if (x.phone) {
+        if (!x.phone) {
             errors.boardMemberList[0].phone = 'Telefone obrigatório'
         }
-        if (x.office) {
+        if (!x.office) {
             errors.boardMemberList[0].office = 'Cargo obrigatório'
         }
 
@@ -58,11 +58,11 @@ export function validate(values) {
         }
         if (!x.endOfMandate) {
             errors.boardMemberList[0].endOfMandate = 'Cargo obrigatório'
-        } else if (begging < end) {
+        } else if (begging > end) {
             errors.boardMemberList[0].endOfMandate = 'Termíno do mandato deve ser posterior a data de ínicio'
         }
     })
 
- */
+
     return errors
 }

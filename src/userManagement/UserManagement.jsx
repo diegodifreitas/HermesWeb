@@ -26,7 +26,7 @@ class UserManagement extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Gestão de Usuários' small='Vrs 1.0' />
+                <ContentHeader title='Gestão de Usuários' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
