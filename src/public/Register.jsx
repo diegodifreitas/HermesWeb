@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { reduxForm } from 'redux-form'
-import StepZilla from 'react-stepzilla'
 
 import OscForm from '../osc/OscForm'
-import ResponsibleForm from './ResponsibleForm'
 import { create } from './registerActions'
 import Toastr from '../common/ui/Toastr'
 
@@ -16,32 +14,16 @@ import './register.css'
 class Register extends Component {
 
     render() {
-        const steps =
-            [
-                { name: 'OSC', component: <OscForm /> },
-                {
-                    name: 'Responsável',
-                    component:
-                    <ResponsibleForm onSubmit={this.props.create}
-                        submitLabel='Solicitar Acesso'
-                        submitClass='primary'
-                    />
-                }
-            ]
-
+        const { create } = this.props
         return (
             <div className="container-fluid">
                 <div className="main">
                     <PanelLeft link='/login' label='Entrar' />
                     <div className="col-sm-6 right-side">
-                        <div className='step-progress'>
-                            <StepZilla
-                                steps={steps}
-                                stepsNavigation={false}
-                                backButtonText='Voltar' nextButtonText='Proximo'
-                                backButtonCls='btn btn-primary' nextButtonCls='btn btn-primary pull-right'
-                            />
-                        </div>
+                        <form id="oscForm" name="oscForm" onSubmit={create(values => console.log("========>", values))} className='form'>
+                            <OscForm />
+                            <button type='submit' className='btn btn-primary'> Solicitar Acesso </button>
+                        </form>
                     </div>
                     <Toastr />
                 </div>

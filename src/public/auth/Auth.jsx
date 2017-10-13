@@ -35,9 +35,6 @@ class Auth extends Component {
         if (ele) {
             setTimeout(() => {
                 ele.classList.add('available')
-                setTimeout(() => {
-                    ele.outerHTML = ''
-                }, 2000)
             }, 1000)
         }
     }
