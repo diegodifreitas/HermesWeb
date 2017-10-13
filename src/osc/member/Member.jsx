@@ -30,7 +30,12 @@ class Member extends Component {
                         <TabsHeader>
                             <TabHeader label='Listar' icon='bars' target='tabList' />
                             <TabHeader label='Incluir' icon='plus' target='tabCreate' />
-                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            {this.props.user.type !== 'OSC' &&
+                                <TabHeader label='Detalhes' icon='address-book-o' target='tabUpdate' />
+                            }
+                            {this.props.user.type === 'OSC' &&
+                                <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            }
                             <TabHeader label='Excluir' icon='trash-o' target='tabDelete' />
                         </TabsHeader>
                         <TabsContent>
@@ -44,6 +49,7 @@ class Member extends Component {
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
+                                    readOnly={this.props.user.type === 'OSC' ? false : true}
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' />

@@ -51,7 +51,7 @@ class Osc extends Component {
                                 <Form
                                     onSubmit={this.props.update}
                                     submitLabel='Alterar'
-                                    readOnly={this.props.user.type === 'ADMINISTRATOR' ? true : false}
+                                    readOnly={this.props.user.type !== 'OSC' ? true : false}
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabDelete'>

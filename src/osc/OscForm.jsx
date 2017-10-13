@@ -8,9 +8,9 @@ import BoxBody from '../common/template/box/BoxBody'
 class OSCForm extends Component {
 
     render() {
-        const { handleSubmit, readOnly } = this.props
+        const { readOnly, ignorePassword = true } = this.props
         return (
-            <div className='form'>
+            <div>
                 <BoxBody>
                     <fieldset>
                         <legend> Dados da Organização </legend>
@@ -29,9 +29,10 @@ class OSCForm extends Component {
                         <Field name='email' component={LabelAndInput} label='Email'
                             cols='12 6' readOnly={readOnly} placeholder='Informe um email para a organização' type='email' />
 
-                        <Field name='password' component={LabelAndInput} label='Senha'
-                            cols='12 6' type='password' readOnly={readOnly} placeholder='Informe uma senha' />
-
+                        {ignorePassword === false &&
+                            <Field name='password' component={LabelAndInput} label='Senha'
+                                cols='12 6' type='password' readOnly={readOnly} placeholder='Informe uma senha' />
+                        }
                     </fieldset>
                 </BoxBody>
                 <BoxBody>

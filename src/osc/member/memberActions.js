@@ -8,7 +8,10 @@ import { openModal, closeModal } from '../../common/ui/modal/modalActions'
 const INITIAL_VALUE = {}
 
 export const getList = (idOsc, field, value) => {
-    let search = value ? `?q=${value}` : ''
+    let search = idOsc ? `?osc=${idOsc}` : ''
+
+    console.log(idOsc)
+
     const request = Api.getMember(search, idOsc)
     return [
         requestMember(),
@@ -80,3 +83,10 @@ export const clean = () => {
         initialize('memberForm', INITIAL_VALUE)
     ]
 }
+
+export const close = () => {
+    return [
+        closeModal()
+    ]
+}
+

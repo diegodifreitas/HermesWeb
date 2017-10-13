@@ -24,7 +24,7 @@ class MemberList extends Component {
                 <td>
                     {user.type === 'OSC' &&
                         <span>
-                            <ButtonIcon tooltip='Editar' cssStyle='warning' onClick={() => showUpdate(member)} icon='user-o' />
+                            <ButtonIcon tooltip='Editar' cssStyle='warning' onClick={() => showUpdate(member)} icon='pencil' />
                             <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => showDelete(member)} icon='trash-o' />
                         </span>
                     }

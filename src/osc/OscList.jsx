@@ -59,13 +59,13 @@ class OscList extends Component {
                         }} icon='check' />
                     }
                     {(osc.approvalPS === false && this.props.user.type === 'PUBLIC-SERVER') &&
-                        <div>
+                        <span>
                             <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
                             <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
                                 osc.approvalPS = true
                                 this.props.update(osc)
                             }} icon='check' />
-                        </div>
+                        </span>
                     }
                 </td>
             </tr>
