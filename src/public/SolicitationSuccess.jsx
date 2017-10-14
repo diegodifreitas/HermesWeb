@@ -12,7 +12,8 @@ const SolicitationSuccess = props => (
                         <br /><br /> <h4>Sua Solicitação foi enviada com </h4> <h2>Sucesso!</h2>
                         <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-8/128/Accept-icon.png" alt='success' />
                         {/* <h3>Obrigado por se cadastrar</h3> */}
-                        <p >Seus dados serão submetidos a análise. Em breve, entraremos em contato por e-mail.</p>
+                        <p >Seus dados serão submetidos a análise. </p>
+                        <p>Em breve, entraremos em contato por e-mail.</p>
                         <br /><br />
                     </div>
                 </div>

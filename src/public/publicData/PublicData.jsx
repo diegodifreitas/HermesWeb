@@ -6,8 +6,6 @@ import Content from '../../common/template/Content'
 import Box from '../../common/template/box/Box'
 import BoxHeader from '../../common/template/box/BoxHeader'
 import BoxBody from '../../common/template/box/BoxBody'
-import BoxFooter from '../../common/template/box/BoxFooter'
-
 
 import Api from '../../main/api'
 
@@ -23,11 +21,9 @@ class PublicData extends Component {
             list: [],
             text: ''
         }
-
-        this.refresh()
     }
 
-    refresh() {
+    componentWillMount() {
         this.setState({ ...this.state, isLoading: true })
         Api.getAdmProcess()
             .then(res => {
