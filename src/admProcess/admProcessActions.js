@@ -39,9 +39,10 @@ export const remove = (values) => {
 
 const submit = (values, method) => {
     return dispatch => {
-        const data = { ...values, date: moment(values.date).format() }
+        /* const date = moment(values.date, 'DD/MM/YYYY').format('MM/DD/YYYY')
+        const data = { ...values, date: moment(date).format() } */
         dispatch(requestAdmProcess(values))
-        Api[method](data)
+        Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
                 dispatch(init())

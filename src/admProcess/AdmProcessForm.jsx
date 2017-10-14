@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux'
 
 import { init } from './admProcessActions'
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndText from '../common/form/LabelAndText'
 import LabelAndCombo from '../common/form/LabelAndCombo'
 import LabelAndDate from '../common/form/LabelAndDate'
 import FileUpload from '../common/form/LabelAndFileUpload'
@@ -15,7 +14,7 @@ import LabelAndToggle from '../common/form/LabelAndToggle'
 class AdmProcessForm extends Component {
 
     render() {
-        const { handleSubmit, readOnly, list } = this.props
+        const { handleSubmit, readOnly } = this.props
         return (
             <form onSubmit={handleSubmit}>
                 <div className='box-body'>
@@ -27,9 +26,9 @@ class AdmProcessForm extends Component {
 
                     <Field name='modality' label='Modalidade' cols='12 3'
                         placeholder='Informe a Modalidade' values={[
-                            {id: 1, nome: 'Inexigibilidade'},
-                            {id: 2, nome: "Chamamento Público"},         
-                            {id: 3, nome: "Dispensa"}]}
+                            { id: 1, nome: 'Inexigibilidade' },
+                            { id: 2, nome: "Chamamento Público" },
+                            { id: 3, nome: "Dispensa" }]}
                         component={LabelAndCombo} readOnly={readOnly} />
 
                     <Field name='modalityNumber' label='Numéro da Modalidade' cols='12 3'
@@ -68,20 +67,19 @@ class AdmProcessForm extends Component {
 
 AdmProcessForm = reduxForm({
     form: 'admProcessForm',
-    destroyOnUnmount: false,
-    initialValues: {
-        documentList: null,
-        publicServer: {},
-        urlReferenceTerm: "ronaldo",
-        id: null
-    }
-
+    destroyOnUnmount: false
 })(AdmProcessForm)
 const mapStateToProps = state => {
     const selector = formValueSelector('admProcessForm')
     const modalidadeValue = selector(state, 'modality');
     return ({
-        modalidadeValue,
+        initialValues: {
+            publicServer: state.auth.user,
+            documentList: null,
+            id: null,
+            urlReferenceTerm: 'http://www.pdf995.com/samples/pdf.pdf'
+        },
+        modalidadeValue
     })
 }
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)

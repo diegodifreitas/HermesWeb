@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 import Grid from '../common/layout/Grid'
 import { getList, showUpdate, showDelete } from './admProcessActions'
@@ -16,16 +17,11 @@ class AdmProcessList extends Component {
         const list = this.props.list || []
         return list.map(ap => (
             <tr key={ap.id}>
-                <td> {ap.prtp} </td>
-                <td> {ap.modalidade}  &nbsp; <b>nº:</b> &nbsp; {ap.modalidadeNumero} </td>
-                <td> {ap.descricaoSumaria} </td>
-                <td> {ap.pendencias} </td>
+                <td> {ap.prctp} </td>
+                <td> {ap.modality}  &nbsp; <b>nº:</b> &nbsp; {ap.modalityNumber} </td>
+                <td> {ap.description} </td>
+                <td> {moment(ap.date, 'YYYY/MM/DD').format('DD/MM/YYYY')} </td>
                 <td>
-
-                    <Link className="btn btn-success" to={'/admProcess/' + ap.id + '/monitoring'} >
-                        <i className='fa fa-briefcase' />
-                    </Link>
-                    {/*Criar Icon Button*/}
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(ap)} >
                         <i className='fa fa-pencil' />
                     </button>
@@ -38,7 +34,7 @@ class AdmProcessList extends Component {
     }
 
     render() {
-        const { list, qtd } = this.props
+        const { qtd } = this.props
         return (
             <div className='box-body table-responsive no-padding'>
                 {(qtd === 0 && !this.props.isLoading) &&
@@ -55,7 +51,7 @@ class AdmProcessList extends Component {
                                 <th> PRTP </th>
                                 <th> Modalidade </th>
                                 <th> Descrição Sumária </th>
-                                <th> Pendências </th>
+                                <th> Data de Publicação </th>
                                 <th className='table-action'> Ações </th>
                             </tr>
                         </thead>
