@@ -19,10 +19,10 @@ export default class LabelAndDate extends Component {
         const { props } = this
 
         let value;
-        const regex = /^[0-9]{2}[\/][0-9]{2}[\/][0-9]{4}$/g;
+        const regex = /^\d{4}-\d{2}-\d{2}$/g;
         if (props.input.value) {
             const dataType = regex.test(props.input.value)
-            !dataType ?
+            dataType ?
                 value = moment(props.input.value, 'YYYY/MM/DD').format('DD/MM/YYYY')
                 : value = props.input.value
         }

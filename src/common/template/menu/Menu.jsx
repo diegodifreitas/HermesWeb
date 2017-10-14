@@ -19,10 +19,10 @@ class Menu extends Component {
                 {user.type !== 'OSC' &&
                     <MenuItem path='/osc' label='OSCs' icon='university' />
                 }
-                {user.type !== 'OSC' && user.type !== 'PUBLIC-SERVER' &&
+                {user.type === 'ADMINISTRATOR' &&
                     <MenuItem path='/users' label='Gestão de Usuários' icon='users' />
                 }
-                {user.type !== 'ADMINISTRATOR' &&
+                { (user.type !== 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
                     <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
                 }
             </ul >
