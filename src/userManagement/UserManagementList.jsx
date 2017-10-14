@@ -45,7 +45,7 @@ class UserManagementList extends Component {
     }
 
     render() {
-        const { showDelete, showUpdate, getList, user } = this.props
+        const { getList } = this.props
         return (
             <div>
                 <div>
