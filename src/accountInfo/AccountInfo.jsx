@@ -13,7 +13,6 @@ import TabContent from '../common/tabs/TabContent'
 
 import Form from './AccountInfoForm'
 
-import { selectTab, showTabs } from '../common/tabs/tabActions'
 import { updateOsc, updateAdm, updatePublicServer, init } from './accountInfoActions'
 
 class AccountInfo extends Component {

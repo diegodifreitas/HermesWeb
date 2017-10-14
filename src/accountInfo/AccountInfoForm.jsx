@@ -5,13 +5,10 @@ import { bindActionCreators } from 'redux'
 
 import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndUpload from '../common/form/LabelAndUpload'
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
 
 import OscForm from '../osc/OscForm'
-
-import LabelAndDate from '../common/form/LabelAndDate'
 
 class AccountInfoForm extends Component {
 
