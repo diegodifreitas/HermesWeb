@@ -43,7 +43,7 @@ class PrivatePages extends Component {
                 <PublicServerRoutes />
               }
               {user.type === 'OSC' &&
-                <OSCRoutes />
+                <OSCRoutes approval={(user.approvalPS && user.approvalADM)} />
               }
 
             </div>
