@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom'
 
 import BoxBody from '../../common/template/box/BoxBody'
 import BoxFooter from '../../common/template/box/BoxFooter'
 import LabelAndInput from '../../common/form/LabelAndInput'
-import LabelAndCombo from '../../common/form/LabelAndCombo'
-import LabelAndUpload from '../../common/form/LabelAndUpload'
 import LabelAndDate from '../../common/form/LabelAndDate'
 import LabelAndToggle from '../../common/form/LabelAndToggle'
-import ButtonIcon from '../../common/ui/button/ButtonIcon'
 
 import { update, init, close } from './memberActions'
 
@@ -20,7 +16,7 @@ import { validate } from '../../validate/memberFormValidate'
 class MemberForm extends Component {
 
     render() {
-        const { handleSubmit, readOnly, pristine, reset, submitting, user, member, close, update, init } = this.props
+        const { readOnly, user, member, close, update, init } = this.props
         return (
 
             <form>
@@ -61,7 +57,7 @@ class MemberForm extends Component {
                             label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
-                            label='Numero' cols='12 6' placeholder='Ex: 456' />
+                            label='Número' cols='12 6' placeholder='Ex: 456' />
 
                         <Field name='address.neighborhood' component={LabelAndInput} label='Bairro'
                             cols='12 6' readOnly={readOnly} placeholder='Informe o bairro da localização da organização' />
@@ -94,7 +90,6 @@ class MemberForm extends Component {
     }
 }
 
-const selector = formValueSelector('memberForm')
 MemberForm = reduxForm({
     form: 'memberForm',
     validate,

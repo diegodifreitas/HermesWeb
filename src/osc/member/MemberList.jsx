@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import FieldSearch from '../../common/form/FieldSearch'
-import Grid from '../../common/layout/Grid'
-
 import { showUpdate, showDelete } from './memberActions'
-
+import Grid from '../../common/layout/Grid'
 import BoxBody from '../../common/template/box/BoxBody'
 import ButtonIcon from '../../common/ui/button/ButtonIcon'
 

@@ -3,7 +3,7 @@ import { initialize } from 'redux-form'
 
 import Api from '../../main/api'
 import { showTabs, selectTab } from '../../common/tabs/tabActions'
-import { openModal, closeModal } from '../../common/ui/modal/modalActions'
+import { closeModal } from '../../common/ui/modal/modalActions'
 
 const INITIAL_VALUE = {}
 
