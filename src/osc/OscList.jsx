@@ -46,10 +46,10 @@ class OscList extends Component {
                     }
                 </td>
                 <td>
-                    {this.props.user.type !== 'ADMINISTRATOR' &&
+                    {this.props.user.type === 'OSC' &&
                         <ButtonIcon cssStyle='btn btn-warning' onClick={() => this.readById(osc)} icon='pencil' tooltip='Alterar' />
                     }
-                    {this.props.user.type === 'ADMINISTRATOR' &&
+                    {this.props.user.type !== 'OSC' &&
                         <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.readById(osc)} icon='address-book-o' tooltip='Detalhes' />
                     }
                     {(osc.approvalADM === false && this.props.user.type === 'ADMINISTRATOR') &&
@@ -73,7 +73,7 @@ class OscList extends Component {
     }
 
     render() {
-        const { list, qtd } = this.props
+        const { qtd } = this.props
         return (
             <div>
                 <FieldSearch handleClick={this.props.getList} name='name_search' icon='search' type='text' placeholder='Buscar por nome' />

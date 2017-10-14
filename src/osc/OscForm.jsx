@@ -29,7 +29,7 @@ class OSCForm extends Component {
                         <Field name='email' component={LabelAndInput} label='Email'
                             cols='12 6' readOnly={readOnly} placeholder='Informe um email para a organização' type='email' />
 
-                        {ignorePassword === false &&
+                        {ignorePassword &&
                             <Field name='password' component={LabelAndInput} label='Senha'
                                 cols='12 6' type='password' readOnly={readOnly} placeholder='Informe uma senha' />
                         }
@@ -42,7 +42,7 @@ class OSCForm extends Component {
                             label='Endereço' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
-                            label='Numero' cols='12 4' placeholder='Ex: 456' />
+                            label='Número' cols='12 4' placeholder='Ex: 456' />
 
                         <Field name='address.neighborhood' component={LabelAndInput} label='Bairro'
                             cols='12 4' readOnly={readOnly} placeholder='Ex. Centro' />

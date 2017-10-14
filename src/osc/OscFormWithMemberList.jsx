@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, formValueSelector, initialize } from 'redux-form'
+import { reduxForm, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from 'react-modal'
@@ -11,9 +11,6 @@ import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
-import LabelAndInput from '../common/form/LabelAndInput'
-import LabelAndDate from '../common/form/LabelAndDate'
-
 import ButtonIcon from '../common/ui/button/ButtonIcon'
 
 import OscForm from './OscForm'
