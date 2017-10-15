@@ -7,7 +7,7 @@ const api = axios.create({
 export const postAdmProcess = (admProcess) => api.post('admprocess', admProcess)
 export const getAdmProcess = (search = '') => api.get('admprocess' + search)
 export const deleteAdmProcess = (admProcess) => api.delete('admprocess/' + admProcess.id)
-export const putAdmProcess = (admProcess) => api.put('admprocess/' + admProcess.id, admProcess)
+export const putAdmProcess = (admProcess) => api.put('admprocess', admProcess)
 
 export const postMonitoringProcess = (monitoringProcess) => api.post('monitoringProcess', monitoringProcess)
 export const getMonitoringProcess = (search) => api.get('monitoringProcess?idProcesso=' + search)
@@ -35,6 +35,9 @@ export const getMember = (search = '', osc) => api.get(`osc/${osc}/member${searc
 export const deleteMember = (member, osc) => api.delete(`osc/${osc}/member/` + member.id)
 export const putMember = (member, osc) => api.put(`osc/${osc}/member`, member)
 
+export const postFile = (file) => api.post('storage/upload', file)
+export const getFile = (url) => api.get('storage/download/' + url)
+
 const apis = {
   getAdmProcess,
   postAdmProcess,
@@ -45,6 +48,9 @@ const apis = {
   getMonitoringProcess,
   deleteMonitoringProcess,
   putMonitoringProcess,
+
+  getFile,
+  postFile,
 
   getOsc,
   postOsc,
