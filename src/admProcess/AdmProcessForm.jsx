@@ -3,15 +3,29 @@ import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { init } from './admProcessActions'
+import { init, uploadFile } from './admProcessActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import LabelAndCombo from '../common/form/LabelAndCombo'
 import LabelAndDate from '../common/form/LabelAndDate'
 import FileUpload from '../common/form/LabelAndFileUpload'
 import LabelAndToggle from '../common/form/LabelAndToggle'
+import DownloadBtn from './DownloadBtn'
 
 
 class AdmProcessForm extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            urlFile: '',
+        }
+        this.handleUpload = this.handleUpload.bind(this)
+    }
+
+    handleUpload(file) {
+        this.props.uploadFile(file)
+    }
 
     render() {
         const { handleSubmit, readOnly } = this.props
@@ -47,14 +61,17 @@ class AdmProcessForm extends Component {
                     <Field name='budgetAllocation' component={LabelAndInput} readOnly={readOnly}
                         label='Dotação Orçamentária' cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />
 
-
-                    <Field name='file' component={FileUpload} label='Anexo'
-                        cols='12 12' readOnly={readOnly} placeholder='Adicionar anexo' />
-
-                    {this.props.modalidadeValue === 'Chamamento Público' &&
-                        <Field name='termoDeReferencia' component={FileUpload} label='Termo de Referência'
-                            cols='12 12' readOnly={readOnly} placeholder='Adicionar Termo de Referência.' />
+                    { this.props.url &&
+                    <Field name='urlReferenceTerm'
+                        component={DownloadBtn} label='Termo de Referência Atual'
+                        cols='12 12' readOnly={readOnly} />
                     }
+                    <Field name='urlReferenceTerm'
+                        maxFiles={1}
+                        handleUpload={this.handleUpload}
+                        component={FileUpload} label='Termo de Referência'
+                        cols='12 12' readOnly={readOnly} placeholder='Adicionar termo' />
+
                 </div>
                 <div className='box-footer'>
                     <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
@@ -72,15 +89,16 @@ AdmProcessForm = reduxForm({
 const mapStateToProps = state => {
     const selector = formValueSelector('admProcessForm')
     const modalidadeValue = selector(state, 'modality');
+    const url = selector(state, 'urlReferenceTerm');
     return ({
         initialValues: {
             publicServer: state.auth.user,
             documentList: null,
-            id: null,
-            urlReferenceTerm: 'http://www.pdf995.com/samples/pdf.pdf'
+            id: null
         },
-        modalidadeValue
+        modalidadeValue,
+        url
     })
 }
-const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ init, uploadFile }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcessForm)

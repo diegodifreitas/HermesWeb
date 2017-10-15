@@ -18,6 +18,11 @@ import { create, update, remove } from './admProcessActions'
 
 class AdmProcess extends Component {
 
+    constructor(props) {
+        super(props)
+        this.update = this.update.bind(this)
+    }
+
     componentWillMount() {
         this.props.selectTab('tabList')
         if (this.props.auth.user.type === 'OSC') {
@@ -27,10 +32,16 @@ class AdmProcess extends Component {
         }
     }
 
+    update(formData) {
+        const url = "localhost:8084/HS_WEB/storage/download?fileName=" + this.props.file[0].originalName
+        this.props.update({ ...formData, urlReferenceTerm: url })
+        //console.log({ ...formData, urlReferenceTerm: url });
+    }
+
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Processo Administrativo'/>
+                <ContentHeader title='Processo Administrativo' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
@@ -51,7 +62,7 @@ class AdmProcess extends Component {
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
-                                    onSubmit={this.props.update}
+                                    onSubmit={this.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' />
                             </TabContent>
@@ -71,6 +82,6 @@ class AdmProcess extends Component {
 }
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
-const mapStateToProps = state => ({ auth: state.auth })
+const mapStateToProps = state => ({ auth: state.auth, file: state.admProcess.file })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcess)

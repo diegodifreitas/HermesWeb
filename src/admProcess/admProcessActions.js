@@ -19,6 +19,20 @@ export const getList = () => {
     ]
 }
 
+export const uploadFile = (file) => {
+    const data = new FormData();
+    data.append("files", file);
+
+    const request = Api.postFile(data)
+
+    return [
+        {
+            type: "UPLOAD_FILE",
+            payload: request
+        }
+    ]
+}
+
 
 export const requestAdmProcess = admProcess => ({
     type: 'ADM_PROCESS_REQUEST',
@@ -30,7 +44,8 @@ export const create = (values) => {
 }
 
 export const update = (values) => {
-    return submit(values, 'putAdmProcess')
+    const date = moment(values.date, 'YYYY/MM/DD').format('MM/DD/YYYY')
+    return submit({ ...values, date }, 'putAdmProcess')
 }
 
 export const remove = (values) => {
@@ -39,8 +54,6 @@ export const remove = (values) => {
 
 const submit = (values, method) => {
     return dispatch => {
-        /* const date = moment(values.date, 'DD/MM/YYYY').format('MM/DD/YYYY')
-        const data = { ...values, date: moment(date).format() } */
         dispatch(requestAdmProcess(values))
         Api[method](values)
             .then(resp => {
