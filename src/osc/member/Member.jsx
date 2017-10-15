@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
 import ContentHeader from '../../common/template/ContentHeader'
 import Content from '../../common/template/Content'
@@ -17,8 +18,29 @@ import { init, create, update, remove } from './memberActions'
 
 class Member extends Component {
 
+    constructor(props) {
+        super(props)
+        this.update = this.update.bind(this)
+        this.create = this.create.bind(this)
+        this.delete = this.delete.bind(this)
+    }
+
     componentWillMount() {
         this.props.init(this.props.user.id)
+    }
+
+    create(data) {
+        this.props.create(data, this.props.user.id)
+    }
+    update(data) {
+        const begin = moment(data.beginningOfMandate, 'YYYY/MM/DD').format('DD/MM/YYYY')
+        const end = moment(data.endOfMandate, 'YYYY/MM/DD').format('DD/MM/YYYY')
+
+        data = { ...data, beginningOfMandate: begin, endOfMandate: end }
+        this.props.update(data, this.props.user.id)
+    }
+    delete(data) {
+        this.props.remove(data, this.props.user.id)
     }
 
     render() {
@@ -43,20 +65,20 @@ class Member extends Component {
                                 <List list={this.props.list} />
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <Form onSubmit={this.props.create}
+                                <Form onSubmit={this.create}
                                     submitLabel='Incluir'
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
                                     readOnly={this.props.user.type === 'OSC' ? false : true}
-                                    onSubmit={this.props.update}
+                                    onSubmit={this.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabDelete'>
                                 <Form
-                                    onSubmit={this.props.remove}
+                                    onSubmit={this.delete}
                                     readOnly={true}
                                     submitLabel='Excluir'
                                     submitClass='danger' />

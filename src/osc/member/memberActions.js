@@ -5,7 +5,7 @@ import Api from '../../main/api'
 import { showTabs, selectTab } from '../../common/tabs/tabActions'
 import { closeModal } from '../../common/ui/modal/modalActions'
 
-const INITIAL_VALUE = {}
+const INITIAL_VALUE = { responsible: false }
 
 export const getList = (idOsc, field, value) => {
     let search = idOsc ? `?osc=${idOsc}` : ''
@@ -27,16 +27,16 @@ export const requestMember = member => ({
     payload: member
 })
 
-export const create = (values) => {
-    return submit(values, 'postMember')
+export const create = (values, oscId) => {
+    return submit(values, 'postMember', oscId)
 }
 
 export const update = (values, oscId) => {
     return submit(values, 'putMember', oscId)
 }
 
-export const remove = (values) => {
-    return submit(values, 'deleteMember')
+export const remove = (values, oscId) => {
+    return submit(values, 'deleteMember', oscId)
 }
 
 const submit = (values, method, oscId) => {
@@ -45,7 +45,7 @@ const submit = (values, method, oscId) => {
         Api[method](values, oscId)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                dispatch(init())
+                dispatch(init(oscId))
             })
             .catch(e => {
                 e.response.data.errors.forEach(error => toastr.error('Erro', error))

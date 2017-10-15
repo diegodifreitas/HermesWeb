@@ -8,18 +8,19 @@ import BoxFooter from '../../common/template/box/BoxFooter'
 import LabelAndInput from '../../common/form/LabelAndInput'
 import LabelAndDate from '../../common/form/LabelAndDate'
 import LabelAndToggle from '../../common/form/LabelAndToggle'
+import LabelAndMask from '../../common/form/LabelAndMask'
 
-import { update, init, close } from './memberActions'
+import { init, close } from './memberActions'
 
 import { validate } from '../../validate/memberFormValidate'
 
 class MemberForm extends Component {
 
     render() {
-        const { readOnly, user, member, close, update, init } = this.props
+        const { handleSubmit, readOnly, user, close, init } = this.props
         return (
 
-            <form>
+            <form onSubmit={handleSubmit}>
                 <BoxBody>
 
                     <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
@@ -34,7 +35,7 @@ class MemberForm extends Component {
                     <Field name='phone' component={LabelAndInput} label='Telefone'
                         cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='cpf' component={LabelAndInput} label='CPF'
+                    <Field name='cpf' component={LabelAndMask} mask='999.999.999-99' label='CPF'
                         cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
 
                     <Field name='rg' component={LabelAndInput} label='RG'
@@ -70,12 +71,7 @@ class MemberForm extends Component {
                 <BoxFooter >
                     {this.props.user.type === 'OSC' &&
                         <span>
-                            <button type='submit'
-                                onClick={(e) => {
-                                    e.preventDefault()
-                                    update(member, user.id)
-                                }}
-                                className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                            <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                             <button type='button' className='btn btn-default' onClick={() => init(user.id)}> Cancelar </button>
                         </span>
                     }
@@ -93,11 +89,13 @@ class MemberForm extends Component {
 MemberForm = reduxForm({
     form: 'memberForm',
     validate,
-    destroyOnUnmount: false
+    destroyOnUnmount: false,
+    initialValues: {
+        responsible: false
+    }
 })(MemberForm)
 const mapStateToProps = state => ({
     user: state.auth.user,
-    member: state.form.memberForm.values
 })
-const mapDispatchToProps = dispatch => bindActionCreators({ update, init, close }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ init, close }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(MemberForm)
