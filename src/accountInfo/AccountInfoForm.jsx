@@ -10,6 +10,8 @@ import BoxFooter from '../common/template/box/BoxFooter'
 
 import OscForm from '../osc/OscForm'
 
+import { validate } from '../validate/oscFormValidate'
+
 class AccountInfoForm extends Component {
 
     render() {
@@ -53,6 +55,6 @@ class AccountInfoForm extends Component {
     }
 }
 
-AccountInfoForm = reduxForm({ form: 'accountInfoForm', destroyOnUnmount: false })(AccountInfoForm)
+AccountInfoForm = reduxForm({ form: 'accountInfoForm', destroyOnUnmount: false, validate })(AccountInfoForm)
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(null, mapDispatchToProps)(AccountInfoForm)
