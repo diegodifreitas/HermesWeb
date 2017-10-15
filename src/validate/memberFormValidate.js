@@ -34,7 +34,7 @@ export function validate(values) {
     }
     if (!values.endOfMandate) {
         errors.endOfMandate = 'Cargo obrigatório'
-    } else if (begging < end) {
+    } else if (begging > end) {
         errors.endOfMandate = 'Termíno do mandato deve ser posterior a data de ínicio'
     }
 
