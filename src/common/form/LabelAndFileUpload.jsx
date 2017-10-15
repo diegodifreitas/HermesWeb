@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import DropzoneComponent from 'react-dropzone-component';
 import Grid from '../layout/Grid';
 
+import Api from '../../main/api'
+
 import '../../styles/fileUpload.css';
 import '../../../node_modules/react-dropzone-component/dist/react-dropzone.min';
 
@@ -17,7 +19,9 @@ export default class FileUpload extends Component {
             acceptedFiles: "image/jpeg,image/png,image/gif,application/pdf",
             autoProcessQueue: false,
             dictDefaultMessage: this.props.placeholder,
-            dictRemoveFile: "Remover documento"
+            dictRemoveFile: "Remover arquivo",
+            maxFiles: this.props.maxFiles,
+            dictMaxFilesExceeded: 'Você só pode adicionar um arquivo' 
         };
 
         this.componentConfig = {
@@ -25,11 +29,19 @@ export default class FileUpload extends Component {
             showFiletypeIcon: true,
             postUrl: 'no-url'
         };
+
     }
 
     handleFileAdded(file) {
+
+        this.props.handleUpload(file)
+
+    }
+
+    handleFileRemove(file) {
         console.log(file);
     }
+
 
     render() {
         const config = this.componentConfig;
@@ -37,7 +49,8 @@ export default class FileUpload extends Component {
 
         // For a list of all possible events (there are many), see README.md!
         const eventHandlers = {
-            addedfile: this.handleFileAdded.bind(this)
+            addedfile: this.handleFileAdded.bind(this),
+            removedfile: this.handleFileRemove.bind(this)
         }
 
         return (
@@ -46,7 +59,7 @@ export default class FileUpload extends Component {
                     <label htmlFor={this.props.name}> {this.props.label} </label>
                     <div className="example">
                         <div id="content">
-                            <DropzoneComponent config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
+                            <DropzoneComponent  {...this.props} config={config} eventHandlers={eventHandlers} djsConfig={djsConfig} />
                         </div>
                     </div>
                 </div>

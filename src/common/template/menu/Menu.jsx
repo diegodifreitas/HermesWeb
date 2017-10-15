@@ -16,7 +16,7 @@ class Menu extends Component {
                 {user.type === 'OSC' &&
                     <MenuItem path='/members' label='Membros' icon='users' />
                 }
-                {user.type !== 'OSC' &&
+                {user.type !== 'OSC' && user.approvalADM === true && user.approvalPS === true &&
                     <MenuItem path='/osc' label='OSCs' icon='university' />
                 }
                 {user.type === 'ADMINISTRATOR' &&
