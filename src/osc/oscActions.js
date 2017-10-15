@@ -7,7 +7,7 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 const INITIAL_VALUE = { boardMemberList: [] }
 
 export const getList = (field, value) => {
-    let search = value ? `?q=${value}` : ''
+    let search = field === 'name_search' ? `?name=${value}` : ''
     const request = Api.getOsc(search)
     return [
         requestOsc(),

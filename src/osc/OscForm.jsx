@@ -21,7 +21,7 @@ class OSCForm extends Component {
                             label='CNPJ' cols='12 4' placeholder='Ex. 94.980.684/0001-89' />
 
                         <Field name='phone' component={LabelAndInput} label='Telefone'
-                            cols='12 4' readOnly={readOnly} placeholder='Ex. (35) 9766-0281' />
+                            cols='12 4' readOnly={readOnly} placeholder='Ex. 35 3445-0281' />
 
                         <Field name='registrationCM' component={LabelAndInput} label='Conselho Municipal'
                             cols='12 4' readOnly={readOnly} placeholder='Ex. 13-5436' />

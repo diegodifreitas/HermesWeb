@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { reduxForm, formValueSelector } from 'redux-form'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import Modal from 'react-modal'
+import Modal from '../common/ui/modal/Modal'
 
 import { init } from './oscActions'
 import { clean } from './member/memberActions'
@@ -23,13 +23,7 @@ class OscFormWithMemberList extends Component {
 
     render() {
         const { handleSubmit, readOnly, openModal, memberList, clean, closeModal, modal } = this.props
-        const styles = {
-            modal: { overlay: { zIndex: 1040 } },
-            modalBody: {
-                maxHeight: "calc(100vh - 80px)",
-                overflowY: "auto"
-            }
-        }
+
         return (
             <form onSubmit={handleSubmit}>
 
@@ -51,36 +45,19 @@ class OscFormWithMemberList extends Component {
                 </BoxBody>
 
                 <Modal
-                    contentLabel="Member Modal"
-                    style={styles.modal}
-                    className="modal-dialog"
-                    closeTimeoutMS={150}
-                    isOpen={modal.visible}
-                    onRequestClose={closeModal}
+                    visible={modal.visible}
+                    closeModal={closeModal}
+                    title={'Membro da Diretoria'}
                 >
-                    <div className="modal-dialog">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={closeModal}>
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                                <h4 className="modal-title">Membro da Diretoria</h4>
-                            </div>
-                            <div className="modal-body" style={styles.modalBody}>
-
-                                <MemberForm onSubmit={handleSubmit}
-                                    submitLabel='Incluir'
-                                    submitClass='primary'
-                                    readOnly={readOnly}
-                                />
-
-                            </div>
-                        </div>
-                    </div>
+                    <MemberForm onSubmit={handleSubmit}
+                        submitLabel='Incluir'
+                        submitClass='primary'
+                        readOnly={readOnly}
+                    />
                 </Modal >
 
                 <BoxFooter >
-                    {this.props.user.type === 'OSC' &&
+                    {this.props.user.type === 'OSC' || this.props.showSubmit &&
                         <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
                     }
                     <button type='button' className='btn btn-default' onClick={this.props.init}> {this.props.user.type !== 'OSC' ? 'Voltar' : 'Cancelar'} </button>

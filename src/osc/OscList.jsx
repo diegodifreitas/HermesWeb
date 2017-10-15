@@ -24,6 +24,13 @@ class OscList extends Component {
             })
     }
 
+    delete(osc) {
+        Api.getOsc(`/${osc.id}`)
+            .then(resp => {
+                this.props.showDelete(resp.data)
+            })
+    }
+
     renderRows() {
         const list = this.props.list || []
         return list.map((osc, index) => (
@@ -53,14 +60,17 @@ class OscList extends Component {
                         <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.readById(osc)} icon='address-book-o' tooltip='Detalhes' />
                     }
                     {(osc.approvalADM === false && this.props.user.type === 'ADMINISTRATOR') &&
-                        <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
-                            osc.approvalADM = true
-                            this.props.update(osc)
-                        }} icon='check' />
+                        <span>
+                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
+                            <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
+                                osc.approvalADM = true
+                                this.props.update(osc)
+                            }} icon='check' />
+                        </span>
                     }
                     {(osc.approvalPS === false && this.props.user.type === 'PUBLIC-SERVER') &&
                         <span>
-                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.props.showDelete(osc)} icon='trash-o' />
+                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => this.delete(osc)} icon='trash-o' />
                             <ButtonIcon tooltip='Aprovar' cssStyle='success' onClick={() => {
                                 osc.approvalPS = true
                                 this.props.update(osc)
@@ -81,7 +91,7 @@ class OscList extends Component {
                 {(qtd === 0 && !this.props.isLoading) &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible" style={{ margin: "0 0 0 0" }}>
-                            <h4><i className="icon fa fa-info"></i> Nenhum Processo administrativo cadastrado!</h4>
+                            <h4><i className="icon fa fa-info"></i> Nenhuma OSC cadastrado!</h4>
                         </div>
                     </Grid>
                 }

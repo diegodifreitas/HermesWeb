@@ -59,6 +59,7 @@ class Osc extends Component {
                                     onSubmit={this.props.remove}
                                     readOnly={true}
                                     submitLabel='Excluir'
+                                    showSubmit={true}
                                     submitClass='danger' />
                             </TabContent>
                         </TabsContent>
