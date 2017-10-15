@@ -12,11 +12,16 @@ import Osc from '../../osc/Osc'
 
 export default props => (
 
-        <Switch>
-            <Route exact path='/' component={Dashboard} onUpdater={mapActiveUrlToMenu()} />
-            <Route exact path='/myAccount' component={AccountInfo} />
-            <Route exact path='/osc' component={Osc} />
-            <Route exact path='/admProcess' component={AdmProcess} />
-            <Route path='*' component={Dashboard} />
-        </Switch>
+    <Switch>
+        <Route exact path='/' component={Dashboard} onUpdater={mapActiveUrlToMenu()} />
+        <Route exact path='/myAccount' component={AccountInfo} />
+
+        {props.approval &&
+           <Switch>
+                <Route exact path='/osc' component={Osc} />
+                <Route exact path='/admProcess' component={AdmProcess} />
+            </Switch>
+        }
+        <Route path='*' component={Dashboard} />
+    </Switch>
 )
