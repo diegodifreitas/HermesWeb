@@ -8,6 +8,7 @@ import AdmProcessReducer from '../admProcess/admProcessReducer'
 import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcessReducer'
 import OscReducer from '../osc/oscReducer'
 import MemberReducer from '../osc/member/memberReducer'
+import DocumentsReducer from '../admProcess/documents/documentsReducer'
 import UserManagementReducer from '../userManagement/userManagementReducer'
 import AccountInfoReducer from '../accountInfo/accountInfoReducer'
 import AuthReducer from '../public/auth/authReducer'
@@ -16,6 +17,8 @@ const rootReducer = combineReducers({
     modal: ModalReducer,
     tab: TabReducer,
     admProcess: AdmProcessReducer,
+    tab: TabReducer,
+    document: DocumentsReducer,
     form: formReducer,
     toastr: toastrReducer,
     osc: OscReducer,

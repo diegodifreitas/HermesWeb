@@ -20,6 +20,12 @@ export const getOscById = (id) => api.get('osc/' + id)
 export const deleteOsc = (osc) => api.delete('osc/' + osc.id)
 export const putOsc = (osc) => api.put('osc', osc)
 
+export const postDocument = (doc) => api.post('document', doc)
+export const getDocument = (search = '') => api.get('document' + search)
+export const getDocumentById = (id) => api.get('document/' + id)
+export const deleteDocument = (doc) => api.delete('document/' + doc.id)
+export const putDocument = (doc) => api.put('document', doc)
+
 export const postUser = (user) => api.post('user', user)
 export const getUser = (search = '') => api.get('user' + search)
 export const deleteUser = (user) => api.delete('user/' + user.id)
@@ -57,6 +63,12 @@ const apis = {
   deleteOsc,
   putOsc,
   getOscById,
+
+  getDocument,
+  postDocument,
+  deleteDocument,
+  putDocument,
+  getDocumentById,
 
   getMember,
   postMember,
