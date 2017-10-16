@@ -27,7 +27,7 @@ class PublicData extends Component {
         this.setState({ ...this.state, isLoading: true })
         Api.getAdmProcess()
             .then(res => {
-                this.setState({ ...this.state, text: '', list: res.data, isLoading: false })
+                this.setState({ ...this.state, text: '', list: res.data.payload, isLoading: false })
             })
             .catch(e => {
                 toastr.error('Erro', 'Não foi acessar o servidor!')
