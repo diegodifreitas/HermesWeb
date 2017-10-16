@@ -33,7 +33,7 @@ class AdmProcessForm extends Component {
             <form onSubmit={handleSubmit}>
                 <div className='box-body'>
                     <Field name='prctp' component={LabelAndInput} readOnly={readOnly}
-                        label='PRCTP' cols='12 2' placeholder='Informe o PRTP' />
+                        label='PRTP' cols='12 2' placeholder='Informe o PRTP' />
 
                     <Field name='description' component={LabelAndInput} readOnly={readOnly}
                         label="Descrição Súmaria" cols='12 10' placeholder='Informe a descrição súmaria' />

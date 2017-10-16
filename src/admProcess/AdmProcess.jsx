@@ -21,6 +21,8 @@ class AdmProcess extends Component {
     constructor(props) {
         super(props)
         this.update = this.update.bind(this)
+        this.create = this.create.bind(this)
+        
     }
 
     componentWillMount() {
@@ -35,7 +37,11 @@ class AdmProcess extends Component {
     update(formData) {
         const url = "localhost:8084/HS_WEB/storage/download?fileName=" + this.props.file[0].originalName
         this.props.update({ ...formData, urlReferenceTerm: url })
-        //console.log({ ...formData, urlReferenceTerm: url });
+    }
+
+    create(formData) {
+        const url = "localhost:8084/HS_WEB/storage/download?fileName=" + this.props.file[0].originalName
+        this.props.create({ ...formData, urlReferenceTerm: url })
     }
 
     render() {
@@ -56,7 +62,7 @@ class AdmProcess extends Component {
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form
-                                    onSubmit={this.props.create}
+                                    onSubmit={this.create}
                                     submitLabel='Incluir'
                                     submitClass='primary' />
                             </TabContent>
