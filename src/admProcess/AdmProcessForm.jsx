@@ -61,21 +61,25 @@ class AdmProcessForm extends Component {
                     <Field name='budgetAllocation' component={LabelAndInput} readOnly={readOnly}
                         label='Dotação Orçamentária' cols='12 6' placeholder='Descreva a dotação ornamentária do processo' />
 
-                    { this.props.url &&
-                    <Field name='urlReferenceTerm'
-                        component={DownloadBtn} label='Termo de Referência Atual'
-                        cols='12 12' readOnly={readOnly} />
+                    {this.props.url &&
+                        <Field name='urlReferenceTerm'
+                            component={DownloadBtn} label='Termo de Referência Atual'
+                            cols='12 12' readOnly={readOnly} />
                     }
-                    <Field name='urlReferenceTerm'
-                        maxFiles={1}
-                        handleUpload={this.handleUpload}
-                        component={FileUpload} label='Termo de Referência'
-                        cols='12 12' readOnly={readOnly} placeholder='Adicionar termo' />
 
+                    {this.props.type !== 'OSC' &&
+                        <Field name='urlReferenceTerm'
+                            maxFiles={1}
+                            handleUpload={this.handleUpload}
+                            component={FileUpload} label='Termo de Referência'
+                            cols='12 12' readOnly={readOnly} placeholder='Adicionar termo' />
+                    }
                 </div>
                 <div className='box-footer'>
-                    <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
-                    <button type='button' className='btn btn-default' onClick={this.props.init}> Cancelar </button>
+                    {this.props.type !== 'OSC' &&
+                        <button type='submit' className={`btn btn-${this.props.submitClass}`}> {this.props.submitLabel} </button>
+                    }
+                    <button type='button' className='btn btn-default' onClick={this.props.init}> {this.props.type === 'OSC' ? 'Voltar' : 'Cancelar'} </button>
                 </div>
             </form>
         )

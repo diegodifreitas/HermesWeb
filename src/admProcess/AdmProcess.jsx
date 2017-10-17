@@ -22,12 +22,12 @@ class AdmProcess extends Component {
         super(props)
         this.update = this.update.bind(this)
         this.create = this.create.bind(this)
-        
+
     }
 
     componentWillMount() {
         this.props.selectTab('tabList')
-        if (this.props.auth.user.type === 'OSC') {
+        if (this.props.user.type === 'OSC') {
             this.props.showTabs('tabList')
         } else {
             this.props.showTabs('tabList', 'tabCreate')
@@ -58,27 +58,33 @@ class AdmProcess extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List />
+                                <List type={this.props.user.type} />
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form
+                                    type={this.props.user.type}
                                     onSubmit={this.create}
                                     submitLabel='Incluir'
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
+                                    type={this.props.user.type}
+                                    readOnly={this.props.user.type === 'OSC' ? true : false}
                                     onSubmit={this.update}
-                                    submitLabel='Alterar'
+                                    submitLabel={this.props.user.type === 'OSC' ? 'Voltar' : 'Alterar'}
                                     submitClass='primary' />
                             </TabContent>
-                            <TabContent id='tabDelete'>
-                                <Form
-                                    onSubmit={this.props.remove}
-                                    readOnly={true}
-                                    submitLabel='Excluir'
-                                    submitClass='danger' />
-                            </TabContent>
+                            {this.props.user.type !== 'OSC' &&
+                                <TabContent id='tabDelete'>
+                                    <Form
+                                        type={this.props.user.type}
+                                        onSubmit={this.props.remove}
+                                        readOnly={true}
+                                        submitLabel='Excluir'
+                                        submitClass='danger' />
+                                </TabContent>
+                            }
                         </TabsContent>
                     </Tabs>
                 </Content>
@@ -88,6 +94,6 @@ class AdmProcess extends Component {
 }
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
-const mapStateToProps = state => ({ auth: state.auth, file: state.admProcess.file })
+const mapStateToProps = state => ({ user: state.auth.user, file: state.admProcess.file })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcess)

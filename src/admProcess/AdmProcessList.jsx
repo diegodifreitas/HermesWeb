@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 import Grid from '../common/layout/Grid'
+import ButtonIcon from '../common/ui/button/ButtonIcon'
+
 import { getList, showUpdate, showDelete } from './admProcessActions'
 
 class AdmProcessList extends Component {
@@ -22,12 +24,15 @@ class AdmProcessList extends Component {
                 <td> {ap.description} </td>
                 <td> {moment(ap.date, 'YYYY/MM/DD').format('DD/MM/YYYY')} </td>
                 <td>
-                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(ap)} >
-                        <i className='fa fa-pencil' />
-                    </button>
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(ap)} >
-                        <i className='fa fa-trash-o' />
-                    </button>
+                    {this.props.type !== 'OSC' &&
+                        <span>
+                            <ButtonIcon cssStyle='btn btn-warning' onClick={() => this.props.showUpdate(ap)} icon='pencil' tooltip='Alterar' />
+                            <ButtonIcon cssStyle='btn btn-danger' onClick={() => this.props.this.props.showDelete(ap)} icon='trash-o' tooltip='Deletar' />
+                        </span>
+                    }
+                    {this.props.type === 'OSC' &&
+                        <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.props.showUpdate(ap)} icon='address-book-o' tooltip='Detalhar' />
+                    }
                 </td>
             </tr>
         ))
