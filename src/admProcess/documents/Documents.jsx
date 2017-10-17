@@ -40,7 +40,7 @@ class Documents extends Component {
        Api.postFile(form)    
         .then( res => {
             let fileInfo = res.data[0]
-            const url = 'http://localhost:8084/HS_WEB/storage/download?fileName=' + fileInfo.originalName
+            const url = fileInfo.originalName
             const contentType = fileInfo.contentType
             const name = data.name
             const type = data.type
