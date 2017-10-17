@@ -21,13 +21,15 @@ export function validate(values) {
     }
     if (!values.phone) {
         errors.phone = 'Telefone obrigatório'
+    } else if (! /^[1-9]{2} [2-9][0-9]{3,4}\-[0-9]{4}/i.test(values.phone)) {
+        errors.phone = 'Telefone inválido'
     }
     if (!values.office) {
         errors.office = 'Cargo obrigatório'
     }
 
-    let begging = moment(values.beginningOfMandate, "DD/MM/YYYY").format("MM/DD/YYYY")
-    let end = moment(values.endOfMandate, "DD/MM/YYYY").format("MM/DD/YYYY")
+    let begging = moment(values.beginningOfMandate, "DD/MM/YYYY").format()
+    let end = moment(values.endOfMandate, "DD/MM/YYYY").format()    
 
     if (!values.beginningOfMandate) {
         errors.beginningOfMandate = 'Cargo obrigatório'

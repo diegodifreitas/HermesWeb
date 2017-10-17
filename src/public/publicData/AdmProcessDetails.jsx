@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 import { toastr } from 'react-redux-toastr'
+import consts from '../../consts'
+
 
 import Api from '../../main/api'
 import Grid from '../../common/layout/Grid'
@@ -36,11 +38,42 @@ class AdmProcessDetails extends Component {
             })
     }
 
+    renderdDocuments() {
+        const list = this.state.admProcess.documentList || []
+        return list.map(x => (
+
+            <Grid cols='6 4' >
+                <div className="box box-widget widget-user">
+                    <div className="widget-user-header bg-aqua">
+                        <h3 className="widget-user-username"> {x.name} </h3>
+                        <h5 className="widget-user-desc"> {x.type} </h5>
+                    </div>
+                    <div className="widget-user-image">
+                        <a href={`${consts.API_URL}/storage/download?fileName=` + x.url} target="_blank" classNameName="btn btn-app" >
+                            <img className="img" style={{ width: "90px" }} src="http://www.iconarchive.com/download/i65471/icojam/blue-bits/document-arrow-down.ico" alt="User Avatar" />
+                        </a>
+                    </div>
+                    <div className="box-footer">
+                        <div className="row">
+                            <div className="col-sm-12 border-right">
+                                <div className="description-block">
+                                    <h5 className="description-header">{moment(x.expirationDate, 'YYYY/MM/DD').format('DD/MM/YYYY')}</h5>
+                                    <span className="description-text">Data de Expiração</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Grid>
+        ))
+    }
+
     render() {
         const { admProcess } = this.state
         return (
             <div className="container-fluid">
-                <div className="main">
+                <div className="main" style={{ height: 'auto' }}>
                     <ContentHeader title='Processo Administrativo' />
                     <Content >
                         <Box color='primary direct-chat direct-chat-primary'>
@@ -51,24 +84,29 @@ class AdmProcessDetails extends Component {
                             }
                             <BoxBody>
                                 <div className="box-widget widget-user-2">
-                                    <div className="widget-user-header bg-blue">
+                                    <div className="widget-user-header bg-aqua">
                                         <div className="widget-user-image">
-                                            <a href={admProcess.urlReferenceTerm} target="_blank" className="btn btn-app" style={{ height: '70px', float: 'left', marginRight: '20px' }}>
-                                                <i className="fa fa-save"></i> Termo de <br />referência</a>
+                                            <a href={`${consts.API_URL}/storage/download?fileName=` + admProcess.urlReferenceTerm} target="_blank" classNameName="btn btn-app" >
+                                                <img className="img" style={{ width: "65px", height: 'auto', float: 'left' }} src="http://www.iconarchive.com/download/i65471/icojam/blue-bits/document-arrow-down.ico" alt="User Avatar" />
+                                            </a>
                                         </div>
                                         <h3 className="widget-user-username">{admProcess.modality}  &nbsp; <b>nº:</b> {admProcess.modalityNumber} </h3>
                                         <h5 className="widget-user-desc">{admProcess.description}</h5>
                                     </div>
                                 </div>
-                            </BoxBody>
-                            <div className="box-footer no-padding">
                                 <ul className="nav nav-stacked">
                                     <li style={{ margin: '20px' }}><b>PRTP:</b> {admProcess.prctp}</li>
                                     <li style={{ margin: '20px' }}><b>Objeto:</b> {admProcess.object}</li>
                                     <li style={{ margin: '20px' }}><b>Data de publicação:</b> {moment(admProcess.date, 'YYYY/MM/DD').format('DD/MM/YYYY')}</li>
                                     <li style={{ margin: '20px' }}><b>Dotação orçamentária:</b> R$ {admProcess.budgetAllocation}</li>
                                 </ul>
-                            </div>
+
+                                <fieldset>
+                                    <legend> Documentos </legend>
+                                    {this.renderdDocuments()}
+                                </fieldset>
+
+                            </BoxBody>
                         </Box>
                     </  Content>
                 </div>
