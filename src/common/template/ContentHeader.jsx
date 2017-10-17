@@ -7,7 +7,9 @@ const routes = {
     '/osc': 'OSC',
     '/users': 'Gestão de Usuários',
     '/myAccount': 'Meus Dados',
-    '/publicdata': 'Dados Públicos'
+    '/publicdata': 'Dados Públicos',
+    '/members': 'Membros',
+    '/documents': 'Documentos'
 };
 
 
