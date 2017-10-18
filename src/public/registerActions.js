@@ -19,7 +19,7 @@ const submit = (values, method) => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                window.location.href = 'http://localhost:3000/singup/success'
+                window.location.href = `${window.location.host}/singup/success`
                 dispatch(clean())
             })
             .catch(e => {

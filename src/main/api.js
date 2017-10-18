@@ -9,6 +9,11 @@ export const getAdmProcess = (search = '') => api.get('admprocess' + search)
 export const deleteAdmProcess = (admProcess) => api.delete('admprocess/' + admProcess.id)
 export const putAdmProcess = (admProcess) => api.put('admprocess', admProcess)
 
+export const postAdm = (adm) => api.post('administrator', adm)
+export const getAdm = (search = '') => api.get('administrator' + search)
+export const deleteAdm = (adm) => api.delete('administrator/' + adm.id)
+export const putAdm = (adm) => api.put('administrator', adm)
+
 export const postMonitoringProcess = (monitoringProcess) => api.post('monitoringProcess', monitoringProcess)
 export const getMonitoringProcess = (search) => api.get('monitoringProcess?idProcesso=' + search)
 export const deleteMonitoringProcess = (monitoringProcess) => api.delete('monitoringProcess/' + monitoringProcess.id)
@@ -49,6 +54,11 @@ const apis = {
   postAdmProcess,
   deleteAdmProcess,
   putAdmProcess,
+
+  getAdm,
+  postAdm,
+  deleteAdm,
+  putAdm,
 
   postMonitoringProcess,
   getMonitoringProcess,

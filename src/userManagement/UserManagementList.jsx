@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getList, showUpdate, showDelete, update } from './userManagementActions'
+import { getList, showUpdate, showDelete } from './userManagementActions'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
@@ -16,7 +16,7 @@ class UserManagementList extends Component {
     }
 
     renderRows() {
-        const { openModal, showUpdate, update } = this.props
+        const { openModal, showUpdate, update, showDelete } = this.props
 
         let styles = {
             imgList: { width: '80px', verticalAlign: 'middle' },
@@ -39,6 +39,9 @@ class UserManagementList extends Component {
                         }} icon='check' />
                     }
 
+                    {((user.approvalADM === true || user.approvalADM === true) && user.type !== 'PUBLIC-SERVER') &&
+                        <ButtonIcon cssStyle='danger' tooltip='Excluir' onClick={() => showDelete(user)} icon='trash' />
+                    }
                 </td>
             </tr>
         ))
@@ -83,7 +86,6 @@ const mapDispatchToProps = dispatch => bindActionCreators(
         showUpdate,
         showDelete,
         openModal,
-        closeModal,
-        update
+        closeModal
     }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagementList)

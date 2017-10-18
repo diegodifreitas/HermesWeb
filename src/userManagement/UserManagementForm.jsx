@@ -66,25 +66,32 @@ class UserManagementForm extends Component {
                                     cols='12 3' readOnly={readOnly} placeholder='Informe seu cargo' />
                             }
 
-                            {this.props.typeValue !== 'ADMINISTRATOR' && this.props.typeValue !== 'PUBLIC-SERVER' &&
+                            {this.props.typeValue === 'OSC' &&
                                 <div>
+                                     <Field name='registrationCM' component={LabelAndInput} label='Registro Municipal'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe o número do Registro Municipal' />
+                                        
+                                    <Field name='cnpj' component={LabelAndInput} label='CNPJ'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe o CNPJ' />
+
                                     <Field name='phone' component={LabelAndInput} label='Telefone'
                                         cols='12 3' readOnly={readOnly} placeholder='Informe um número de telefone' />
-
-                                    <Field name='street' component={LabelAndInput} readOnly={readOnly}
-                                        label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
-
-                                    <Field name='neighborhood' component={LabelAndInput} label='Bairro'
-                                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
-
-                                    <Field name='city' component={LabelAndInput} label='Cidade'
+                                   
+                                    <Field name='address.city' component={LabelAndInput} label='Cidade'
                                         cols='12 3' readOnly={readOnly} placeholder='Informe a cidade' />
+
+                                    <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
+                                        label='Endereço' cols='12 3' placeholder='Ex: Av. João de Camargo' />
+
+                                    <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
+                                        label='Numero' cols='12 3' placeholder='Ex: 89' />
+
+                                    <Field name='address.neighborhood' component={LabelAndInput} label='Bairro'
+                                        cols='12 3' readOnly={readOnly} placeholder='Informe o bairro' />
                                 </div>
                             }
                         </div>
                     }
-
-
                 </BoxBody>
 
                 <BoxFooter >

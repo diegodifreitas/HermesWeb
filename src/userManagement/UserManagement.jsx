@@ -14,13 +14,40 @@ import List from './UserManagementList'
 import Form from './UserManagementForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { create, update, remove } from './userManagementActions'
+import { createPs, createAdm, createOsc, updatePs, updateAdm, updateOsc, remove } from './userManagementActions'
 
 class UserManagement extends Component {
+
+    constructor(props) {
+        super(props)
+        this.update = this.update.bind(this)
+        this.create = this.create.bind(this)
+
+    }
 
     componentWillMount() {
         this.props.selectTab('tabList')
         this.props.showTabs('tabList', 'tabCreate')
+    }
+
+    update(formData) {
+        if (formData.type === 'ADMINISTRATOR') {
+            this.props.updateAdm(formData)
+        } else if (formData.type === 'PUBLIC-SERVER') {
+            this.props.createPs(formData)
+        } else if (formData.type === 'OSC') {
+            this.props.updateOsc(formData)
+        }
+    }
+
+    create(formData) {
+        if (formData.type === 'ADMINISTRATOR') {
+            this.props.createAdm(formData)
+        } else if (formData.type === 'PUBLIC-SERVER') {
+            this.props.createPs(formData)
+        } else if (formData.type === 'OSC') {
+            this.props.createOsc(formData)
+        }
     }
 
     render() {
@@ -37,24 +64,24 @@ class UserManagement extends Component {
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List />
+                                <List update={this.update} />
                             </TabContent>
                             <TabContent id='tabCreate'>
-                                <Form onSubmit= {this.props.create} 
-                                    submitLabel='Incluir' 
-                                    submitClass='primary'/>
+                                <Form onSubmit={this.create}
+                                    submitLabel='Incluir'
+                                    submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabUpdate'>
-                                <Form 
-                                    onSubmit= {this.props.update} 
-                                    submitLabel='Alterar' 
-                                    submitClass='primary'/>
+                                <Form
+                                    onSubmit={this.update}
+                                    submitLabel='Alterar'
+                                    submitClass='primary' />
                             </TabContent>
-                            <TabContent id='tabDelete'> 
-                                <Form 
-                                    onSubmit= {this.props.remove}
-                                    readOnly={true} 
-                                    submitLabel='Excluir' 
+                            <TabContent id='tabDelete'>
+                                <Form
+                                    onSubmit={this.props.remove}
+                                    readOnly={true}
+                                    submitLabel='Excluir'
                                     submitClass='danger' />
                             </TabContent>
                         </TabsContent>
@@ -64,6 +91,6 @@ class UserManagement extends Component {
         )
     }
 }
-const mapDispatchToProps = dispatch => 
-    bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ selectTab, showTabs, createPs, createAdm, createOsc, updatePs, updateAdm, updateOsc, remove }, dispatch)
 export default connect(null, mapDispatchToProps)(UserManagement)

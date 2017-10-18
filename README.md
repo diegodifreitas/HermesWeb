@@ -5,15 +5,17 @@ Sistema de software para gestão de parcerias entre a administração pública e
 
 ## Getting Started
 
+before starting the web application, it is necessary to implement the API module at the address http://localhost:8084/
+
+Use node and npm.
+
 * npm install
-* npm install -g json-server
-* json-server --watch db.json --port 3001
 * npm run start
 * localhost:3000
 
 ### Prerequisites
 
-* node 6+
+* node 8+
 * npm
 
 ## Running the tests

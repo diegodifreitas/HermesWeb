@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom';
+
 import { logout } from '../../public/auth/authActions'
 
 class Navbar extends Component {
@@ -37,8 +39,7 @@ class Navbar extends Component {
                             </li>
                             <li className="user-footer">
                                 <div className="pull-right">
-                                    <a href="#" onClick={this.props.logout}
-                                        className="btn btn-default btn-flat">Sair</a>
+                                    <Link to='/' onClick={this.props.logout} className="btn btn-default btn-flat" >Sair</Link>
                                 </div>
                             </li>
                         </ul>

@@ -17,13 +17,30 @@ export const getList = (field, value) => {
     }
 }
 
-export const create = (values) => {
-    return submit(values, 'postUser')
+export const createAdm = (values) => {
+    return submit(values, 'postAdm')
 }
 
-export const update = (values) => {
-    return submit(values, 'putUser')
+export const updateAdm = (values) => {
+    return submit(values, 'putAdm')
 }
+
+export const createPs = (values) => {
+    return submit(values, 'postServer')
+}
+
+export const updatePs = (values) => {
+    return submit(values, 'putServer')
+}
+
+export const createOsc = (values) => {
+    return submit(values, 'postOsc')
+}
+
+export const updateOsc = (values) => {
+    return submit(values, 'putOsc')
+}
+
 
 export const remove = (values) => {
     return submit(values, 'deleteUser')
