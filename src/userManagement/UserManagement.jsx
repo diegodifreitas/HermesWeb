@@ -20,7 +20,7 @@ class UserManagement extends Component {
 
     componentWillMount() {
         this.props.selectTab('tabList')
-        this.props.showTabs('tabList')
+        this.props.showTabs('tabList', 'tabCreate')
     }
 
     render() {

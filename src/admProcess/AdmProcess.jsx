@@ -35,12 +35,12 @@ class AdmProcess extends Component {
     }
 
     update(formData) {
-        const url = "localhost:8084/HS_WEB/storage/download?fileName=" + this.props.file[0].originalName
+        const url = this.props.file[0].originalName
         this.props.update({ ...formData, urlReferenceTerm: url })
     }
 
     create(formData) {
-        const url = "localhost:8084/HS_WEB/storage/download?fileName=" + this.props.file[0].originalName
+        const url = this.props.file[0].originalName
         this.props.create({ ...formData, urlReferenceTerm: url })
     }
 
