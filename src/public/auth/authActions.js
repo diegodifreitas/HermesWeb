@@ -4,19 +4,28 @@ import consts from '../../consts'
 import * as querystring from 'querystring'
 
 export function login(values) {
-    return submit(values, `${consts.OAPI_URL}/login`)
+    return submit(values, `${consts.OAPI_URL}login`)
 }
 
 export function signup(values) {
-    return submit(values, `${consts.OAPI_URL}/signup`)
+    return submit(values, `${consts.OAPI_URL}signup`)
 }
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, querystring.stringify({ ...values }))
-            .then(resp => {
+        axios.post(url, values, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then((resp) => {
+
+                console.log(resp)
+                console.log(resp.request.getAllResponseHeaders())
+                console.log(resp.request.getResponseHeader('Authorization'))
+
                 dispatch([
-                    { type: 'USER_FETCHED', payload: resp.data }
+                    { type: 'USER_FETCHED', payload: resp.headers }
                 ])
             })
             .catch(e => {

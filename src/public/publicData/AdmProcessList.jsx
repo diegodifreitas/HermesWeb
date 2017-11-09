@@ -11,10 +11,10 @@ class AdmProcessList extends Component {
         const list = this.props.list || []
         return list.map(ap => (
             <tr key={ap.id}>
-                <td> {ap.prctp} </td>
+                <td> {ap.prtp} </td>
                 <td> {ap.modality}  &nbsp; <b>nº:</b> &nbsp; {ap.modalityNumber} </td>
                 <td> {ap.description} </td>
-                <td> {moment(ap.date, 'YYYY/MM/DD').format('DD/MM/YYYY')} </td>
+                <td> {ap.date} </td>
                 <td>
                     <Link to={'/publicdata/' + ap.id} >
                         <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'

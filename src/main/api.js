@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8084/HS_WEB/'
+  baseURL: 'http://localhost:8080',
+  headers: { 'Access-Control-Expose-Headers': 'Authentication'}
 })
 
 export const postAdmProcess = (admProcess) => api.post('admprocess', admProcess)
@@ -19,11 +20,11 @@ export const getMonitoringProcess = (search) => api.get('monitoringProcess?idPro
 export const deleteMonitoringProcess = (monitoringProcess) => api.delete('monitoringProcess/' + monitoringProcess.id)
 export const putMonitoringProcess = (monitoringProcess) => api.put('monitoringProcess/' + monitoringProcess.id, monitoringProcess)
 
-export const postOsc = (osc) => api.post('osc', osc)
-export const getOsc = (search = '') => api.get('osc' + search)
-export const getOscById = (id) => api.get('osc/' + id)
-export const deleteOsc = (osc) => api.delete('osc/' + osc.id)
-export const putOsc = (osc) => api.put('osc', osc)
+export const postOsc = (osc) => api.post('oscs', osc)
+export const getOsc = (search = '') => api.get('oscs' + search)
+export const getOscById = (id) => api.get('oscs/' + id)
+export const deleteOsc = (osc) => api.delete('oscs/' + osc.id)
+export const putOsc = (osc) => api.put('oscs', osc)
 
 export const postDocument = (doc) => api.post('document', doc)
 export const getDocument = (search = '') => api.get('document' + search)
