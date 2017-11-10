@@ -23,28 +23,29 @@ export const postOsc = (osc) => api.post('oscs', osc)
 export const getOsc = (search = '') => api.get('oscs' + search)
 export const getOscById = (id) => api.get('oscs/' + id)
 export const deleteOsc = (osc) => api.delete('oscs/' + osc.id)
-export const putOsc = (osc) => api.put('oscs', osc)
+export const putOsc = (osc) => api.put('oscs/' + osc.id, osc)
 
-export const postDocument = (doc) => api.post('document', doc)
-export const getDocument = (search = '') => api.get('document' + search)
-export const getDocumentById = (id) => api.get('document/' + id)
-export const deleteDocument = (doc) => api.delete('document/' + doc.id)
-export const putDocument = (doc) => api.put('document', doc)
+export const postDocument = (doc) => api.post('documents', doc)
+export const getDocument = (search = '') => api.get('documents' + search)
+export const getDocumentById = (id) => api.get('documents/' + id)
+export const deleteDocument = (doc) => api.delete('documents/' + doc.id)
+export const putDocument = (doc) => api.put('documents', doc)
 
-export const postUser = (user) => api.post('user', user)
-export const getUser = (search = '') => api.get('user' + search)
-export const deleteUser = (user) => api.delete('user/' + user.id)
-export const putUser = (user) => api.put('user', user)
+export const postUser = (user) => api.post('users', user)
+export const getUser = (search = '') => api.get('users' + search)
+export const deleteUser = (user) => api.delete('users/' + user.id)
+export const getUserById = (id) => api.get('users/' + id)
+export const putUser = (user) => api.put('users', user)
 
-export const postServer = (server) => api.post('publicserver', server)
-export const getServer = (search = '') => api.get('publicserver' + search)
-export const deleteServer = (server) => api.delete('publicserver/' + server.id)
-export const putServer = (server) => api.put('publicserver', server)
+export const postServer = (server) => api.post('publicservers', server)
+export const getServer = (search = '') => api.get('publicservers' + search)
+export const deleteServer = (server) => api.delete('publicservers/' + server.id)
+export const putServer = (server) => api.put('publicservers', server)
 
-export const postMember = (member, osc) => api.post(`osc/${osc}/member`, member)
-export const getMember = (search = '', osc) => api.get(`osc/${osc}/member${search}`)
-export const deleteMember = (member, osc) => api.delete(`osc/${osc}/member/` + member.id)
-export const putMember = (member, osc) => api.put(`osc/${osc}/member`, member)
+export const postMember = (member, osc) => api.post(`members`, member)
+export const getMember = (search = '', osc) => api.get(`members${search}`)
+export const deleteMember = (member, osc) => api.delete(`members/` + member.id)
+export const putMember = (member, osc) => api.put(`members`, member)
 
 export const postFile = (file) => api.post('storage/upload', file)
 export const getFile = (url) => api.get('storage/download/' + url)
@@ -89,6 +90,7 @@ const apis = {
   postUser,
   deleteUser,
   putUser,
+  getUserById,
 
   getServer,
   postServer,
