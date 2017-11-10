@@ -27,7 +27,6 @@ class AdmProcessList extends Component {
 
     render() {
         const { list } = this.props
-        console.log(list)
         return (
             <div>
                 {(list.length === 0 || list.length === null) &&
