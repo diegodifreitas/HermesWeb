@@ -20,12 +20,11 @@ function submit(values, url) {
         })
             .then((resp) => {
 
-                console.log(resp)
-                console.log(resp.request.getAllResponseHeaders())
-                console.log(resp.request.getResponseHeader('Authorization'))
+                console.log(resp.data)
+              
 
                 dispatch([
-                    { type: 'USER_FETCHED', payload: resp.headers }
+                    { type: 'USER_FETCHED', payload: resp.data }
                 ])
             })
             .catch(e => {
