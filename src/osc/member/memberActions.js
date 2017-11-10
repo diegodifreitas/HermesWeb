@@ -5,14 +5,14 @@ import Api from '../../main/api'
 import { showTabs, selectTab } from '../../common/tabs/tabActions'
 import { closeModal } from '../../common/ui/modal/modalActions'
 
-const INITIAL_VALUE = { responsible: false }
+const INITIAL_VALUE = { id: null }
 
 export const getList = (idOsc, field, value) => {
     let search = idOsc ? `?osc=${idOsc}` : ''
 
-    console.log(idOsc)
-
     const request = Api.getMember(search, idOsc)
+
+    console.log(request)
     return [
         requestMember(),
         {
@@ -28,6 +28,7 @@ export const requestMember = member => ({
 })
 
 export const create = (values, oscId) => {
+    values.oscId = oscId
     return submit(values, 'postMember', oscId)
 }
 
@@ -48,7 +49,11 @@ const submit = (values, method, oscId) => {
                 dispatch(init(oscId))
             })
             .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+                if( e.response.data.errors ){
+                    e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
+                }else {
+                    toastr.error("Erro", e.response.data.msg)
+                }
             })
     }
 }

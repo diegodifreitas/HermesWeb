@@ -23,11 +23,11 @@ class MemberForm extends Component {
             <form onSubmit={handleSubmit}>
                 <BoxBody>
 
-                    <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
-                        label='Responsável' cols='12 2' />
+                    {/* <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
+                        label='Responsável' cols='12 2' /> */}
 
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 10' placeholder='Informe um Nome*' />
+                        label='Nome' cols='12 6' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 6' readOnly={readOnly} placeholder='Informe um email*' />
@@ -35,23 +35,23 @@ class MemberForm extends Component {
                     <Field name='phone' component={LabelAndInput} label='Telefone'
                         cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    <Field name='cpf' component={LabelAndMask} mask='999.999.999-99' label='CPF'
+                    {/* <Field name='cpf' component={LabelAndMask} mask='999.999.999-99' label='CPF'
                         cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
 
                     <Field name='rg' component={LabelAndInput} label='RG'
-                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' />
+                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' /> */}
 
                     <Field name='office' component={LabelAndInput} label='Cargo'
-                        cols='12 4' readOnly={readOnly} placeholder='Qual seu cargo?' />
+                        cols='12 6' readOnly={readOnly} placeholder='Qual seu cargo?' />
 
-                    <Field name='beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
+                  {/*   <Field name='beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
                         cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
 
                     <Field name='endOfMandate' component={LabelAndDate} label='Término do Mandato'
                         cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
-
+ */}
                 </BoxBody>
-                <BoxBody>
+             {/*    <BoxBody>
                     <fieldset>
                         <legend> Localização </legend>
                         <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
@@ -66,7 +66,7 @@ class MemberForm extends Component {
                         <Field name='address.city' component={LabelAndInput} readOnly={readOnly}
                             label='Cidade' cols='12 6' placeholder='Ex: Av. Santa Rita do Sapucai - MG' />
                     </fieldset>
-                </BoxBody>
+                </BoxBody> */}
 
                 <BoxFooter >
                     {this.props.user.type === 'OSC' &&
@@ -89,10 +89,7 @@ class MemberForm extends Component {
 MemberForm = reduxForm({
     form: 'memberForm',
     validate,
-    destroyOnUnmount: false,
-    initialValues: {
-        responsible: false
-    }
+    destroyOnUnmount: false
 })(MemberForm)
 const mapStateToProps = state => ({
     user: state.auth.user,
