@@ -13,16 +13,8 @@ export function signup(values) {
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, values, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
+        axios.post(url, values)
             .then((resp) => {
-
-                console.log(resp.data)
-              
-
                 dispatch([
                     { type: 'USER_FETCHED', payload: resp.data }
                 ])
