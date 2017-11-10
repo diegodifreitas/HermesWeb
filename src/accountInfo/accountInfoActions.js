@@ -16,17 +16,32 @@ export const updateAdm = (values) => {
     return submit(values, 'putUser')
 }
 
+export const getUserById = (id) => {
+    //const search = `?email=${email}`
+
+    return dispatch => {
+        Api.getUserById(id)
+            .then(resp => {
+                dispatch({ type: 'USER_FETCHED', payload: resp.data })
+                dispatch(init(resp.data))
+            })
+            .catch(e => {
+                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+            })
+    }
+
+}
+
 
 const submit = (values, method) => {
     return dispatch => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                dispatch({ type: 'USER_FETCHED', payload: resp.data })
-                dispatch(init(resp.data))
+                dispatch({ type: 'USER_FETCHED', payload: values })
+                dispatch(init(values))
             })
             .catch(e => {
-                console.log(e)
                 e.response.data.errors.forEach(error => toastr.error('Erro', error))
             })
     }

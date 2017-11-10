@@ -13,7 +13,12 @@ import TabContent from '../common/tabs/TabContent'
 
 import Form from './AccountInfoForm'
 
-import { updateOsc, updateAdm, updatePublicServer, init } from './accountInfoActions'
+import { updateOsc, updateAdm, updatePublicServer, init, getUserById } from './accountInfoActions'
+
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ updateOsc, updateAdm, updatePublicServer, init, getUserById }, dispatch)
+const mapStateToProps = state => ({ user: state.auth.user })
 
 class AccountInfo extends Component {
     constructor(props) {
@@ -22,6 +27,7 @@ class AccountInfo extends Component {
     }
     componentWillMount() {
         this.props.init(this.props.user)
+        this.props.getUserById(this.props.user.id)
     }
 
     update(formData) {
@@ -33,7 +39,6 @@ class AccountInfo extends Component {
         if (formData.type === 'ADMINISTRATOR')
             updateAdm(formData)
     }
-
 
     render() {
         return (
@@ -60,7 +65,4 @@ class AccountInfo extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({ updateOsc, updateAdm, updatePublicServer, init }, dispatch)
-const mapStateToProps = state => ({ user: state.auth.user })
 export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)
