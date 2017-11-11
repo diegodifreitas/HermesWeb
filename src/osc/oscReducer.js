@@ -1,11 +1,16 @@
-const INITIAL_STATE = { payload: {}, isFetching: false }
+const INITIAL_STATE = { list: {}, total: 0, isFetching: false }
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "OSC_REQUEST":
             return { ...state, isFetching: true }
         case "OSC_RECEIVE":
-            return { ...state, payload: action.payload.data, isFetching: false }
+            return {
+                ...state,
+                total: action.payload.data.totalElements,
+                list: action.payload.data.content,
+                isFetching: false
+            }
         default:
             return state
     }

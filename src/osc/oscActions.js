@@ -44,7 +44,14 @@ const submit = (values, method) => {
                 dispatch(init())
             })
             .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+
+                if (e.response.data.errors) {
+                    e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
+                } else if (e.response.data.msg) {
+                    toastr.error("Erro", e.response.data.msg)
+                } else if (e.response.data.error) {
+                    toastr.error("Erro", "Ocorreu um problema interno no servidor, contate o desenvolvedor do sistema!")
+                }
             })
     }
 }

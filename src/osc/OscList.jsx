@@ -121,8 +121,8 @@ class OscList extends Component {
     }
 }
 const mapStateToProps = state => ({
-    list: state.osc.payload.payload,
-    qtd: state.osc.payload.quantity,
+    list: state.osc.list,
+    qtd: state.osc.total,
     isLoading: state.osc.isFetching,
     user: state.auth.user
 })
