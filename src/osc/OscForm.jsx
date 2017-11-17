@@ -37,9 +37,9 @@ class OSCForm extends Component {
                 </BoxBody>
                 <BoxBody>
                     <fieldset>
-                        <legend> Localização da OSC </legend>
+                        <legend> Logradouro </legend>
                         <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
-                            label='Endereço' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
+                            label='Rua/Avenida/Praça' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
                             label='Número' cols='12 4' placeholder='Ex: 456' />
