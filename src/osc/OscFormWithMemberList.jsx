@@ -17,12 +17,15 @@ import OscForm from './OscForm'
 import MemberList from './member/MemberList'
 import MemberForm from './member/MemberForm'
 
+import BoardMemberList from './boardMember/BoardMemberList'
+import BoardMemberForm from './boardMember/BoardMemberForm'
+
 import { validate } from '../validate/oscFormValidate'
 
 class OscFormWithMemberList extends Component {
 
     render() {
-        const { handleSubmit, readOnly, openModal, memberList, clean, closeModal, modal } = this.props
+        const { handleSubmit, readOnly, openModal, memberList, boardMemberList, clean, closeModal, modal } = this.props
 
         return (
             <form onSubmit={handleSubmit}>
@@ -31,9 +34,24 @@ class OscFormWithMemberList extends Component {
 
                 <BoxBody>
                     <fieldset>
-                        <legend> Membros
+                        <legend> Membros da diretoria
                             {this.props.user.type === 'OSC' &&
                                 <ButtonIcon cssStyle='success' tooltip='Adicionar Membro' type="button"
+                                    onClick={() => {
+                                        clean()
+                                        openModal()
+                                    }} icon='plus' />
+                            }
+                        </legend>
+                        <BoardMemberList list={boardMemberList} handleOpen={this.props.openModal} />
+                    </fieldset>
+                </BoxBody>
+
+                <BoxBody>
+                    <fieldset>
+                        <legend> Funcionários
+                            {this.props.user.type === 'OSC' &&
+                                <ButtonIcon cssStyle='success' tooltip='Adicionar Funcionário' type="button"
                                     onClick={() => {
                                         clean()
                                         openModal()
@@ -48,6 +66,18 @@ class OscFormWithMemberList extends Component {
                     visible={modal.visible}
                     closeModal={closeModal}
                     title={'Membro da Diretoria'}
+                >
+                    <BoardMemberForm onSubmit={handleSubmit}
+                        submitLabel='Incluir'
+                        submitClass='primary'
+                        readOnly={readOnly}
+                    />
+                </Modal >
+
+                <Modal
+                    visible={modal.visible}
+                    closeModal={closeModal}
+                    title={'Funcionarios'}
                 >
                     <MemberForm onSubmit={handleSubmit}
                         submitLabel='Incluir'
@@ -85,7 +115,8 @@ const mapStateToProps = state => (
         visible: state.modal.visible,
         user: state.auth.user,
         modal: state.modal,
-        memberList: selector(state, 'boardMemberList'),
+        boardMemberList: selector(state, 'boardMembers'),
+        memberList: selector(state, 'members'),
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {

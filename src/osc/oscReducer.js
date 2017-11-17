@@ -7,8 +7,8 @@ export default (state = INITIAL_STATE, action) => {
         case "OSC_RECEIVE":
             return {
                 ...state,
-                total: action.payload.data.totalElements,
-                list: action.payload.data.content,
+                total: action.payload.data.totalElements ? action.payload.data.totalElements : 0,
+                list: action.payload.data.content ? action.payload.data.content : {},
                 isFetching: false
             }
         default:
