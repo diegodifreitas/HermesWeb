@@ -20,9 +20,13 @@ function submit(values, url) {
                 ])
             })
             .catch(e => {
-                /*  e.response.data.errors.forEach(
-                     error => toastr.error('Erro', error)) */
-                toastr.error('Erro', 'Email ou senha Incorretos!')
+                /*   */
+                if (e.response.data.status == 401) {
+                    toastr.error('Erro', 'Email ou senha Incorretos!')
+                } else {
+                    e.response.data.errors.forEach(
+                        error => toastr.error('Erro', error))
+                }
             })
     }
 }
