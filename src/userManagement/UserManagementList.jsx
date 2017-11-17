@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { getList, showUpdate, showDelete } from './userManagementActions'
+import { getList, showUpdate, showDelete, readyById, approval } from './userManagementActions'
 import { openModal, closeModal } from '../common/ui/modal/modalActions'
 
 import FieldSearch from '../common/form/FieldSearch'
@@ -16,7 +16,7 @@ class UserManagementList extends Component {
     }
 
     renderRows() {
-        const { openModal, showUpdate, update, showDelete } = this.props
+        const { openModal, showUpdate, readyById, update, showDelete, approval } = this.props
 
         let styles = {
             imgList: { width: '80px', verticalAlign: 'middle' },
@@ -28,14 +28,17 @@ class UserManagementList extends Component {
             <tr key={user.id}>
                 <td style={styles.td} > {user.name} </td>
                 <td style={styles.td} > {user.email} </td>
-                <td style={styles.td}> {user.type} </td>
+                <td style={styles.td}> { user.type === 'ADMINISTRATOR' ? 'Administrador' : 
+                                        (user.type === 'PUBLIC-SERVER') ? 'Servidor Publico' : user.type } </td>
                 <td>
 
-                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => showUpdate(user)} icon='user-o' />
+
+                    <ButtonIcon cssStyle='primary' tooltip='Detalhes' onClick={() => readyById(user.id)} icon='user-o' />
+                    
                     {user.approvalADM === false &&
                         <ButtonIcon cssStyle='success' tooltip='Aprovar Usuario' onClick={() => {
                             user.approvalADM = true
-                            update(user)
+                            approval(user)
                         }} icon='check' />
                     }
 
@@ -86,6 +89,8 @@ const mapDispatchToProps = dispatch => bindActionCreators(
         showUpdate,
         showDelete,
         openModal,
-        closeModal
+        closeModal,
+        readyById,
+        approval
     }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(UserManagementList)

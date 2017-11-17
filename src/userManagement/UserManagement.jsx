@@ -34,7 +34,7 @@ class UserManagement extends Component {
         if (formData.type === 'ADMINISTRATOR') {
             this.props.updateAdm(formData)
         } else if (formData.type === 'PUBLIC-SERVER') {
-            this.props.createPs(formData)
+            this.props.updatePs(formData)
         } else if (formData.type === 'OSC') {
             this.props.updateOsc(formData)
         }

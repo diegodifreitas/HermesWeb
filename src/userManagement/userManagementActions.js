@@ -7,18 +7,39 @@ import { showTabs, selectTab } from '../common/tabs/tabActions'
 const INITIAL_VALUE = {}
 
 export const getList = (field, value) => {
-   
+
     let search = value ? `?q=${value}` : ''
-   
+
     const request = Api.getUser(search)
-    return {
-        type: "USERS_FETCHED",
-        payload: request
+    if (request) {
+        return {
+            type: "USERS_FETCHED",
+            payload: request
+        }
+    } else {
+        return {
+            type: "USERS_FETCHED",
+            payload: { data: { content: [] } }
+        }
     }
 }
 
+export const readyById = (id) => {
+    return dispatch => {
+        Api.getUserById(id)
+            .then(resp => {
+                dispatch(showUpdate(resp.data))
+            })
+    }
+}
+
+
 export const createAdm = (values) => {
     return submit(values, 'postAdm')
+}
+
+export const approval = (values) => {
+    return submit(values, 'putUser')
 }
 
 export const updateAdm = (values) => {
@@ -54,9 +75,13 @@ const submit = (values, method) => {
                 dispatch(init())
             })
             .catch(e => {
-                //alterar isso quando integrar com a API
-                //toastr.error('Ocorreu um Erro', 'Verifique os campos!')
-                e.response.data.errors.forEach( error => toastr.error('Erro', error))           
+                if (e.response.data.errors) {
+                    e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
+                } else if (e.response.data.status === 500) {
+                    toastr.error("Erro", "Ocorreu um erro interno no servidor.")
+                } else {
+                    toastr.error("Erro", e.response.data.msg)
+                }
             })
     }
 }
