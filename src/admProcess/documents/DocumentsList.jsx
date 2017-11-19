@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import moment from 'moment'
 
 import { showUpdate, showDelete, getList } from './documentsActions'
 import Grid from '../../common/layout/Grid'
@@ -20,7 +19,7 @@ class DocumentsList extends Component {
             <tr key={doc.id}>
                 <td>{doc.name}</td>
                 <td>{doc.type}</td>
-                <td>{moment(doc.expirationDate, 'YYYY/MM/DD').format('DD/MM/YYYY')} </td>
+                <td>{doc.expirationDate} </td>
                 <td>
                     <button className='btn btn-warning' onClick={() => this.props.showUpdate(doc)}>
                         <i className='fa fa-pencil'></i>
@@ -77,8 +76,12 @@ const mapStateToProps = state => (
     {
         visible: state.modal.visible,
         user: state.auth.user,
-        isLoading: state.member.isFetching,
-        list: state.document.payload.payload
+        list: state.document.list,
+        totalPage: state.document.totalPage,
+        last: state.document.last,
+        first: state.document.first,
+        numberOfElements: state.document.numberOfElements,
+        isLoading: state.document.isFetching
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {

@@ -1,79 +1,80 @@
 import React, { Component } from 'react'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { Field, FieldArray, reduxForm } from 'redux-form'
 
-import BoxBody from '../../common/template/box/BoxBody'
-import BoxFooter from '../../common/template/box/BoxFooter'
 import LabelAndInput from '../../common/form/LabelAndInput'
 import LabelAndDate from '../../common/form/LabelAndDate'
 import LabelAndCombo from './LabelAndCombo'
-import DownloadBtn from '../DownloadBtn'
 
-import { init, close } from './documentsActions'
 import AttachmentList from './AttachmentList'
 import FileInput from './FileInput'
-import { validate } from '../../validate/memberFormValidate'
+import Grid from '../../common/layout/Grid'
 
-import { getList } from '../admProcessActions'
+const DocumentsForm = ({ readOnly, fields, meta: { warning, error, touched, submitFailed } }) => (
 
-class DocumentsForm extends Component {
+    <div className="box">
+        <div className="box-header with-border">
+            <h2 className="box-title"> <strong>Documentos </strong> </h2>
 
-    componentWillMount() {
-        this.props.getList()
-    }
-
-    render() {
-        const { handleSubmit, readOnly, user, close, init, attachments } = this.props
-        return (
-
-            <form role='form' onSubmit={handleSubmit}>
-                <div className='box-body'>
-                    <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 12' placeholder='Informe o nome do documento' />
-                    <Field name='type' component={LabelAndInput} readOnly={readOnly}
-                        label='Tipo' cols='12 6' placeholder='Informe o tipo do documento' />
-                    <Field name='expirationDate' component={LabelAndDate} readOnly={readOnly}
-                        label='Data de expiração' cols='12 6' placeholder='Informe a data de expiração' />
-
-                    <Field name='admProcess' label='Processo Administrativo' cols='12 12'
-                        values={this.props.admProcess}
-                        component={LabelAndCombo} readOnly={readOnly} />
-
-                    {this.props.url &&
-                        <Field name='url'
-                            component={DownloadBtn} label='Documento Atual'
-                            cols='12 12' readOnly={readOnly} />
+            <div className="box-tools pull-right">
+                <button type="button" className="btn btn-box-tool" onClick={() => fields.push({})}>
+                    <i className="fa fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <div className="box-body">
+            {fields.length === 0 &&
+                <Grid cols='12 12'>
+                    <div className="alert alert-info alert-dismissible">
+                        <h4><i className="icon fa fa-info"></i> Nenhum documento cadastrado!</h4>
+                    </div>
+                    {error && <label className="control-label help-block" htmlFor="inputError">
+                        <i className="fa fa-times-circle-o"></i>
+                        {/* &nbsp; */} {error}</label>
                     }
+                </Grid>
+            }
+            {fields.length > 0 &&
+                fields.map((document, index) => (
+                    <Grid key={index} cols='12 6'>
+                        <span >
+                            <div className="box box-primary box-solid">
+                                <div className="box-header with-border">
+                                    <h3 className="box-title">Documento #{index + 1}</h3>
 
-                    <Field
-                        name="file"
-                        type="file"
-                        component={FileInput} />
-                        
-                    {/* <AttachmentList cols='12 12' list={attachments} readOnly={readOnly}
-                        field='attachmentList' legend='Anexos' /> */}
+                                    <div className="box-tools pull-right">
+                                        <button
+                                            className="btn btn-box-tool"
+                                            type="button"
+                                            title="Remover documento"
+                                            onClick={() => fields.remove(index)}
+                                        >
+                                            <i className="fa fa-times"></i>
+                                        </button>
+                                    </div>
 
-                </div>
-                <div className='box-footer'>
-                    <button type='submit' className={`btn btn-${this.props.submitClass}`}>
-                        {this.props.submitLabel}
-                    </button>
-                    <button type='button' className='btn btn-default'
-                        onClick={this.props.init}>Cancelar</button>
-                </div>
-            </form>
-        )
-    }
-}
+                                </div>
 
-DocumentsForm = reduxForm({ form: 'documentForm', destroyOnUnmount: false })(DocumentsForm)
-const selector = formValueSelector('documentForm')
-const mapStateToProps = state => ({
-    attachments: selector(state, 'attachmentList'),
-    admProcess: state.admProcess.payload.payload,
-    user: state.auth.user,
-    url: selector(state, 'url'),
-})
-const mapDispatchToProps = dispatch => bindActionCreators({ init, getList }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentsForm)
+                                <div className="box-body">
+                                    <Field name={`${document}.name`} component={LabelAndInput} readOnly={readOnly}
+                                        label='Nome' cols='12 12' placeholder='Informe o nome do documento' />
+                                    <Field name={`${document}.type`} component={LabelAndInput} readOnly={readOnly}
+                                        label='Tipo' cols='12 6' placeholder='Informe o tipo do documento' />
+                                    <Field name={`${document}.expirationDate`} component={LabelAndDate} readOnly={readOnly}
+                                        label='Data de expiração' cols='12 6' placeholder='Informe a data de expiração' />
+
+                                    <Field
+                                        name={`${document}.file`}
+                                        type="file"
+                                        component={FileInput} />
+                                    {/*  <FieldArray name={`${document}.hobbies`} component={renderHobbies} /> */}
+                                </div>
+                                {submitFailed && error && <span>{error}</span>}
+                            </div>
+                        </span>
+                    </Grid>
+                ))}
+        </div>
+    </div>
+)
+
+export default DocumentsForm
