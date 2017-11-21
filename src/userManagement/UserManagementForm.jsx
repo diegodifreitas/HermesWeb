@@ -47,7 +47,7 @@ class UserManagementForm extends Component {
                         values={[
                             { id: 1, value: "PUBLIC-SERVER", nome: "Servidor Público" },
                             { id: 2, value: "ADMINISTRATOR", nome: "Administrador" },
-                            { id: 3, value: "OSC", nome: "OSC" }
+                           /*  { id: 3, value: "OSC", nome: "OSC" } */
                         ]} />
 
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
@@ -56,8 +56,8 @@ class UserManagementForm extends Component {
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    {/* <Field name='password' component={LabelAndInput} type="password" label='Senha'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe uma senha*' /> */}
+                    <Field name='password' component={LabelAndInput} type="password" label='Senha'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe uma senha*' /> 
 
                     {this.props.typeValue !== undefined &&
                         <div>

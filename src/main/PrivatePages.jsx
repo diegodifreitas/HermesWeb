@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import { mapActiveUrlToMenu } from '../common/template/menu/menuActiveClass'
 import Header from '../common/template/Header'
@@ -13,6 +14,8 @@ import AdministratorRoutes from './routes/AdministratorRoutes'
 import PublicServerRoutes from './routes/PublicServerRoutes'
 import OSCRoutes from './routes/OSCRoutes'
 
+import { getPublicAdmById } from './../publicAdm/publicAdmActions'
+
 class PrivatePages extends Component {
   componentDidMount() {
     const ele = document.getElementById('ipl-progress-indicator')
@@ -22,6 +25,8 @@ class PrivatePages extends Component {
       }, 1000)
     }
 
+
+    this.props.getPublicAdmById(1)
     mapActiveUrlToMenu()
   }
 
@@ -58,4 +63,5 @@ class PrivatePages extends Component {
 
 
 const mapStateToProps = state => ({ auth: state.auth })
-export default connect(mapStateToProps, null)(PrivatePages)
+const mapDispatchToProps = dispatch => bindActionCreators({ getPublicAdmById }, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(PrivatePages)

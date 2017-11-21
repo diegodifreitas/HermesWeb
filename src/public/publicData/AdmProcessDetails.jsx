@@ -40,29 +40,23 @@ class AdmProcessDetails extends Component {
 
     renderdDocuments() {
         const list = this.state.admProcess.documents|| []
-        return list.map(x => (
 
-            <Grid cols='6 4' >
-                <div className="box box-widget widget-user">
-                    <div className="widget-user-header bg-aqua">
-                        <h3 className="widget-user-username"> {x.name} </h3>
-                        <h5 className="widget-user-desc"> {x.type} </h5>
-                    </div>
-                    <div className="widget-user-image">
-                        <a href={`${consts.API_URL}/storage/download?fileName=` + x.url} target="_blank" classNameName="btn btn-app" >
-                            <img className="img" style={{ width: "90px" }} src="http://www.iconarchive.com/download/i65471/icojam/blue-bits/document-arrow-down.ico" alt="User Avatar" />
-                        </a>
-                    </div>
-                    <div className="box-footer">
-                        <div className="row">
-                            <div className="col-sm-12 border-right">
-                                <div className="description-block">
-                                    <h5 className="description-header">{moment(x.expirationDate, 'YYYY/MM/DD').format('DD/MM/YYYY')}</h5>
-                                    <span className="description-text">Data de Expiração</span>
-                                </div>
+        return list.map((x, index) => (
+            <Grid cols='6 4' key={index}>
+                <div className="info-box bg-blue">
+                    <a href={`${consts.API_URL}/storage/download?fileName=` + x.url} target="_blank" >
+                        <span className="info-box-icon"><i style={ {color: "white"} } className="ion ion-ios-cloud-download-outline"></i></span>
+                    </a>
+                    <div className="info-box-content">
+                    <span className="info-box-text">{x.name}</span>
+                    <span className="info-box-number">{x.type}</span>
 
-                            </div>
-                        </div>
+                    <div className="progress">
+                        <div className="progress-bar" style= { {width: "100%"}} ></div>
+                    </div>
+                    <span className="progress-description">
+                        {x.expirationDate}
+                        </span>
                     </div>
                 </div>
             </Grid>
@@ -76,38 +70,38 @@ class AdmProcessDetails extends Component {
                 <div className="main" style={{ height: 'auto' }}>
                     <ContentHeader title='Processo Administrativo' />
                     <Content >
-                        <Box color='primary direct-chat direct-chat-primary'>
+                        <Box color='primary'>
                             {this.state.isLoading &&
                                 <div className="overlay">
                                     <i className="fa fa-refresh fa-spin"></i>
                                 </div>
                             }
                             <BoxBody>
-                                <div className="box-widget widget-user-2">
-                                    <div className="widget-user-header bg-aqua">
-                                        <div className="widget-user-image">
-                                            <a href={`${consts.API_URL}/storage/download?fileName=` + admProcess.nameReferenceTerm} target="_blank" classNameName="btn btn-app" >
-                                                <img className="img" style={{ width: "65px", height: 'auto', float: 'left' }} src="http://www.iconarchive.com/download/i65471/icojam/blue-bits/document-arrow-down.ico" alt="User Avatar" />
-                                            </a>
-                                        </div>
-                                        <h3 className="widget-user-username">{admProcess.modality}  &nbsp; <b>nº:</b> {admProcess.modalityNumber} </h3>
-                                        <h5 className="widget-user-desc">{admProcess.description}</h5>
+                                <div className="box-widget widget-user">
+                                    <div className="widget-user-header" style={{height: "65px"}}>
+                                        <h3 className="widget-user-username">{admProcess.description}</h3>
+                                        <h5 className="widget-user-desc">{admProcess.modality} <strong>Nº</strong> {admProcess.modalityNumber}</h5>
                                     </div>
-                                </div>
-                                <ul className="nav nav-stacked">
-                                    <li style={{ margin: '20px' }}><b>PRTP:</b> {admProcess.prtp}</li>
-                                    <li style={{ margin: '20px' }}><b>Objeto:</b> {admProcess.object}</li>
-                                    <li style={{ margin: '20px' }}><b>Data de publicação:</b> {admProcess.date}</li>
-                                    <li style={{ margin: '20px' }}><b>Dotação orçamentária:</b> R$ {admProcess.budgetAllocation}</li>
-                                </ul>
-
-                                <fieldset>
-                                    <legend> Documentos </legend>
-                                    {this.renderdDocuments()}
-                                </fieldset>
-
+                                        <ul className="nav">
+                                            <li style={{ margin: '20px' }}><b>PRTP:</b> {admProcess.prtp}</li>
+                                            <li style={{ margin: '20px' }}><b>Objeto:</b> {admProcess.object}</li>
+                                            <li style={{ margin: '20px' }}><b>Data de publicação:</b> {admProcess.date}</li>
+                                            <li style={{ margin: '20px' }}><b>Dotação orçamentária:</b> R$ {admProcess.budgetAllocation}</li>
+                                        </ul> 
+                                    </div>
                             </BoxBody>
                         </Box>
+                        <Box color='primary'>
+                        <BoxBody>
+                                    <legend> Documentos </legend>
+                                  {this.renderdDocuments()}
+                         </BoxBody>
+{/*                                     <fieldset>
+                                     
+                                        {this.renderdDocuments()}
+                                    </fieldset> */}
+                        </Box>                                      
+
                     </  Content>
                 </div>
             </div>

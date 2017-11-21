@@ -12,6 +12,9 @@ class Menu extends Component {
             < ul className='sidebar-menu tree' data-widget="tree" >
                 <li className='header'> Menu de navegação </li>
                 <MenuItem path='/' label='Painel de Informações' icon='dashboard' />
+                {(user.type === 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
+                    <MenuItem path='/publicAdm' label='Administração Pública' icon='building' />
+                }
                 <MenuItem path='/myAccount' label='Minha Conta' icon='id-card-o' />
                 {user.type === 'OSC' &&
                     <MenuItem path='/members' label='Membros' icon='users' />
@@ -24,13 +27,6 @@ class Menu extends Component {
                 }
                 {(user.type !== 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
                     <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
-                }
-                {(user.type === 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
-                    <MenuItem path='/publicAdm' label='Administração Pública' icon='users' />
-                }
-
-                {(user.type === 'PUBLIC-SERVER' && user.approvalADM === true && user.approvalPS === true) &&
-                    <MenuItem path='/documents' label='Documentos' icon='file-text-o' />
                 }
             </ul >
         )

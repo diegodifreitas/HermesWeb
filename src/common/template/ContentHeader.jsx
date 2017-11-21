@@ -9,7 +9,8 @@ const routes = {
     '/myAccount': 'Meus Dados',
     '/publicdata': 'Dados Públicos',
     '/members': 'Membros',
-    '/documents': 'Documentos'
+    '/documents': 'Documentos',
+    '/publicAdm': 'Administração Pública'  
 };
 
 
