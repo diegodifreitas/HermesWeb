@@ -29,7 +29,13 @@ export const postDocument = (doc) => api.post('documents', doc)
 export const getDocument = (search = '') => api.get('documents' + search)
 export const getDocumentById = (id) => api.get('documents/' + id)
 export const deleteDocument = (doc) => api.delete('documents/' + doc.id)
-export const putDocument = (doc) => api.put('documents', doc)
+export const putDocument = (doc) => api.put('documents/' + doc.id, doc)
+
+export const postPublicAdm = (publicAdm) => api.post('publicadm', publicAdm)
+export const getPublicAdm = (search = '') => api.get('publicadm' + search)
+export const getPublicAdmById = (id) => api.get('publicadm/' + id)
+export const deletePublicAdm = (publicAdm) => api.delete('publicadm/' + publicAdm.id)
+export const putPublicAdm = (publicAdm) => api.put('publicadm/' + publicAdm.id, publicAdm)
 
 export const postUser = (user) => api.post('users', user)
 export const getUser = (search = '') => api.get('users' + search)
@@ -69,6 +75,12 @@ const apis = {
 
   getFile,
   postFile,
+
+ postPublicAdm,
+ getPublicAdm,
+ getPublicAdmById,
+ deletePublicAdm,
+ putPublicAdm, 
 
   getOsc,
   postOsc,
