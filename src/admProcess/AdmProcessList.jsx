@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-import moment from 'moment'
 
 import Grid from '../common/layout/Grid'
 import ButtonIcon from '../common/ui/button/ButtonIcon'
@@ -19,15 +18,15 @@ class AdmProcessList extends Component {
         const list = this.props.list || []
         return list.map(ap => (
             <tr key={ap.id}>
-                <td> {ap.prctp} </td>
+                <td> {ap.prtp} </td>
                 <td> {ap.modality}  &nbsp; <b>nº:</b> &nbsp; {ap.modalityNumber} </td>
                 <td> {ap.description} </td>
-                <td> {moment(ap.date, 'YYYY/MM/DD').format('DD/MM/YYYY')} </td>
+                <td> {ap.date} </td>
                 <td>
                     {this.props.type !== 'OSC' &&
                         <span>
                             <ButtonIcon cssStyle='btn btn-warning' onClick={() => this.props.showUpdate(ap)} icon='pencil' tooltip='Alterar' />
-                            <ButtonIcon cssStyle='btn btn-danger' onClick={() => this.props.this.props.showDelete(ap)} icon='trash-o' tooltip='Deletar' />
+                            <ButtonIcon cssStyle='btn btn-danger' onClick={() => this.props.showDelete(ap)} icon='trash-o' tooltip='Deletar' />
                         </span>
                     }
                     {this.props.type === 'OSC' &&
@@ -39,17 +38,17 @@ class AdmProcessList extends Component {
     }
 
     render() {
-        const { qtd } = this.props
+        const { numberOfElements } = this.props
         return (
             <div className='box-body table-responsive no-padding'>
-                {(qtd === 0 && !this.props.isLoading) &&
+                {(numberOfElements === 0 && !this.props.isLoading) &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible" style={{ margin: "0 0 0 0" }}>
                             <h4><i className="icon fa fa-info"></i> Nenhum Processo administrativo cadastrado!</h4>
                         </div>
                     </Grid>
                 }
-                {(qtd > 0 && !this.props.isLoading) &&
+                {(numberOfElements > 0 && !this.props.isLoading) &&
                     <table className='table table-hover'>
                         <thead>
                             <tr>
@@ -77,8 +76,12 @@ class AdmProcessList extends Component {
 }
 const mapStateToProps = state => (
     {
-        list: state.admProcess.payload.payload,
-        qtd: state.admProcess.payload.quantity,
+        user: state.auth.user,
+        list: state.admProcess.list,
+        totalPage: state.admProcess.totalPage,
+        last: state.admProcess.last,
+        first: state.admProcess.first,
+        numberOfElements: state.admProcess.numberOfElements,
         isLoading: state.admProcess.isFetching
     })
 const mapDispatchToProps = dispatch => bindActionCreators({ getList, showUpdate, showDelete }, dispatch)
