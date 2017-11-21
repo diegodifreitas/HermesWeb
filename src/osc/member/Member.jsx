@@ -32,11 +32,8 @@ class Member extends Component {
     create(data) {
         this.props.create(data, this.props.user.id)
     }
-    update(data) {
-        const begin = moment(data.beginningOfMandate, 'YYYY/MM/DD').format('DD/MM/YYYY')
-        const end = moment(data.endOfMandate, 'YYYY/MM/DD').format('DD/MM/YYYY')
 
-        data = { ...data, beginningOfMandate: begin, endOfMandate: end }
+    update(data) {
         this.props.update(data, this.props.user.id)
     }
     delete(data) {
@@ -94,6 +91,10 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators({ init, create, update, remove }, dispatch)
 const mapStateToProps = state => ({
     user: state.auth.user,
-    list: state.member.payload.payload
+    list: state.member.list,
+    totalPage: state.member.totalPage,
+    last: state.member.last,
+    first: state.member.first,
+    numberOfElements: state.member.numberOfElements
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Member)

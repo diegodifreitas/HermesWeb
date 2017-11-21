@@ -1,8 +1,6 @@
 import { toastr } from 'react-redux-toastr'
 import { initialize } from 'redux-form'
 
-import moment from 'moment'
-
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
@@ -44,8 +42,7 @@ export const create = (values) => {
 }
 
 export const update = (values) => {
-    const date = moment(values.date, 'YYYY/MM/DD').format('MM/DD/YYYY')
-    return submit({ ...values, date }, 'putAdmProcess')
+    return submit(values, 'putAdmProcess')
 }
 
 export const remove = (values) => {
@@ -61,7 +58,13 @@ const submit = (values, method) => {
                 dispatch(init())
             })
             .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+                if (e.response.data.errors) {
+                    e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
+                } else if (e.response.data.msg) {
+                    toastr.error("Erro", e.response.data.msg)
+                } else if (e.response.data.error) {
+                    toastr.error("Erro", "Ocorreu um problema interno no servidor, contate o desenvolvedor do sistema!")
+                }
             })
     }
 }

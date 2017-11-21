@@ -39,8 +39,8 @@ class UserManagementForm extends Component {
             <form onSubmit={handleSubmit}>
                 <BoxBody>
 
-                    <Field name='image' component={LabelAndUpload}
-                        label='Foto' cols='12 3 3' placeholder='Adicionar imagem' />
+                    {/* <Field name='image' component={LabelAndUpload}
+                        label='Foto' cols='12 3 3' placeholder='Adicionar imagem' /> */}
 
                     <Field name='type' component={LabelAndCombo} label='Tipo'
                         cols='12 3' readOnly={readOnly} placeholder='Informe o tipo do usuario'
@@ -51,13 +51,13 @@ class UserManagementForm extends Component {
                         ]} />
 
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
-                        label='Nome' cols='12 3' placeholder='Informe um Nome*' />
+                        label='Nome' cols='12 6' placeholder='Informe um Nome*' />
 
                     <Field name='email' component={LabelAndInput} type="email" label='Email'
                         cols='12 3' readOnly={readOnly} placeholder='Informe um email*' />
 
-                    <Field name='password' component={LabelAndInput} type="password" label='Senha'
-                        cols='12 3' readOnly={readOnly} placeholder='Informe uma senha*' />
+                    {/* <Field name='password' component={LabelAndInput} type="password" label='Senha'
+                        cols='12 3' readOnly={readOnly} placeholder='Informe uma senha*' /> */}
 
                     {this.props.typeValue !== undefined &&
                         <div>

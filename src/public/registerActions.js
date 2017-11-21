@@ -2,7 +2,7 @@ import { toastr } from 'react-redux-toastr'
 import { initialize } from 'redux-form'
 import Api from '../main/api'
 
-const INITIAL_VALUE = { }
+const INITIAL_VALUE = {}
 
 export const requestOsc = osc => ({
     type: 'OSC_REQUEST',
@@ -10,6 +10,11 @@ export const requestOsc = osc => ({
 })
 
 export const create = (values) => {
+
+    values.aprovalADM = false
+    values.aprovalADM = false
+    values.type = 'OSC'
+
     return submit(values, 'postOsc')
 }
 
@@ -19,11 +24,11 @@ const submit = (values, method) => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                window.location.href = `${window.location.host}/singup/success`
+                window.location.href = `http://localhost:3000/singup/success`
                 dispatch(clean())
             })
             .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error('Erro', error))
+                e.response.data.errors.forEach(error => toastr.error(error.fieldName, error.message))
             })
     }
 }

@@ -17,7 +17,7 @@ class MemberList extends Component {
                 <td> {member.name} </td>
                 <td> {member.email} </td>
                 <td> {member.phone} </td>
-                <td> {member.cpf} </td>
+                <td> {member.office} </td>
                 <td>
                     {user.type === 'OSC' &&
                         <span>
@@ -54,7 +54,7 @@ class MemberList extends Component {
                                         <th> Nome </th>
                                         <th> Email </th>
                                         <th> Telefone </th>
-                                        <th> CPF </th>
+                                        <th> Cargo </th>
                                         <th className='table-action'> Ações </th>
                                     </tr>
                                 </thead>

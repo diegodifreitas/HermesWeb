@@ -39,7 +39,7 @@ class AdmProcessDetails extends Component {
     }
 
     renderdDocuments() {
-        const list = this.state.admProcess.documentList || []
+        const list = this.state.admProcess.documents|| []
         return list.map(x => (
 
             <Grid cols='6 4' >
@@ -86,7 +86,7 @@ class AdmProcessDetails extends Component {
                                 <div className="box-widget widget-user-2">
                                     <div className="widget-user-header bg-aqua">
                                         <div className="widget-user-image">
-                                            <a href={`${consts.API_URL}/storage/download?fileName=` + admProcess.urlReferenceTerm} target="_blank" classNameName="btn btn-app" >
+                                            <a href={`${consts.API_URL}/storage/download?fileName=` + admProcess.nameReferenceTerm} target="_blank" classNameName="btn btn-app" >
                                                 <img className="img" style={{ width: "65px", height: 'auto', float: 'left' }} src="http://www.iconarchive.com/download/i65471/icojam/blue-bits/document-arrow-down.ico" alt="User Avatar" />
                                             </a>
                                         </div>
@@ -95,9 +95,9 @@ class AdmProcessDetails extends Component {
                                     </div>
                                 </div>
                                 <ul className="nav nav-stacked">
-                                    <li style={{ margin: '20px' }}><b>PRTP:</b> {admProcess.prctp}</li>
+                                    <li style={{ margin: '20px' }}><b>PRTP:</b> {admProcess.prtp}</li>
                                     <li style={{ margin: '20px' }}><b>Objeto:</b> {admProcess.object}</li>
-                                    <li style={{ margin: '20px' }}><b>Data de publicação:</b> {moment(admProcess.date, 'YYYY/MM/DD').format('DD/MM/YYYY')}</li>
+                                    <li style={{ margin: '20px' }}><b>Data de publicação:</b> {admProcess.date}</li>
                                     <li style={{ margin: '20px' }}><b>Dotação orçamentária:</b> R$ {admProcess.budgetAllocation}</li>
                                 </ul>
 

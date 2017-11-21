@@ -24,7 +24,7 @@ class OSCForm extends Component {
                             cols='12 4' readOnly={readOnly} placeholder='Ex. 35 3445-0281' />
 
                         <Field name='registrationCM' component={LabelAndInput} label='Conselho Municipal'
-                            cols='12 4' readOnly={readOnly} placeholder='Ex. 13-5436' />
+                            cols='12 4' readOnly={readOnly} placeholder='Ex. Saúde' />
 
                         <Field name='email' component={LabelAndInput} label='Email'
                             cols='12 6' readOnly={readOnly} placeholder='Informe um email para a organização' type='email' />
@@ -37,9 +37,9 @@ class OSCForm extends Component {
                 </BoxBody>
                 <BoxBody>
                     <fieldset>
-                        <legend> Localização da OSC </legend>
+                        <legend> Logradouro </legend>
                         <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
-                            label='Endereço' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
+                            label='Rua / Avenida / Praça' cols='12 8' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
                             label='Número' cols='12 4' placeholder='Ex: 456' />

@@ -10,11 +10,11 @@ import LabelAndDate from '../../common/form/LabelAndDate'
 import LabelAndToggle from '../../common/form/LabelAndToggle'
 import LabelAndMask from '../../common/form/LabelAndMask'
 
-import { init, close } from './memberActions'
+import { init, close } from './boardMemberActions'
 
 import { validate } from '../../validate/memberFormValidate'
 
-class MemberForm extends Component {
+class BoardMemberForm extends Component {
 
     render() {
         const { handleSubmit, readOnly, user, close, init } = this.props
@@ -23,8 +23,8 @@ class MemberForm extends Component {
             <form onSubmit={handleSubmit}>
                 <BoxBody>
 
-                    {/* <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
-                        label='Responsável' cols='12 2' /> */}
+                    <Field name='responsible' component={LabelAndToggle} readOnly={readOnly}
+                        label='Responsável' cols='12 2' />
 
                     <Field name='name' component={LabelAndInput} readOnly={readOnly}
                         label='Nome' cols='12 6' placeholder='Informe um Nome*' />
@@ -35,27 +35,27 @@ class MemberForm extends Component {
                     <Field name='phone' component={LabelAndInput} label='Telefone'
                         cols='12 6' readOnly={readOnly} placeholder='Informe um número de telefone' />
 
-                    {/* <Field name='cpf' component={LabelAndMask} mask='999.999.999-99' label='CPF'
+                     <Field name='cpf' component={LabelAndMask} mask='999.999.999-99' label='CPF'
                         cols='12 6' readOnly={readOnly} placeholder='Ex. 126.845.658-61' />
 
                     <Field name='rg' component={LabelAndInput} label='RG'
-                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' /> */}
+                        cols='12 6' readOnly={readOnly} placeholder='Ex. 15.754.580' />
 
                     <Field name='office' component={LabelAndInput} label='Cargo'
                         cols='12 6' readOnly={readOnly} placeholder='Qual seu cargo?' />
 
-                  {/*   <Field name='beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
+                    <Field name='beginningOfMandate' component={LabelAndDate} label='Início do Mandato'
                         cols='12 4' readOnly={readOnly} placeholder='Informe a data de início do mandato' type='text' />
 
                     <Field name='endOfMandate' component={LabelAndDate} label='Término do Mandato'
                         cols='12 4' readOnly={readOnly} placeholder='Informe a data de término do mandato' type='text' />
- */}
+                        
                 </BoxBody>
-             {/*    <BoxBody>
+                <BoxBody>
                     <fieldset>
-                        <legend> Localização </legend>
+                        <legend> Logradouro </legend>
                         <Field name='address.street' component={LabelAndInput} readOnly={readOnly}
-                            label='Endereço' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
+                            label='Endereço/Rua/Praça' cols='12 6' placeholder='Ex: Av. João de Camargo, 89' />
 
                         <Field name='address.number' component={LabelAndInput} readOnly={readOnly}
                             label='Número' cols='12 6' placeholder='Ex: 456' />
@@ -66,7 +66,7 @@ class MemberForm extends Component {
                         <Field name='address.city' component={LabelAndInput} readOnly={readOnly}
                             label='Cidade' cols='12 6' placeholder='Ex: Av. Santa Rita do Sapucai - MG' />
                     </fieldset>
-                </BoxBody> */}
+                </BoxBody> 
 
                 <BoxFooter >
                     {this.props.user.type === 'OSC' &&
@@ -86,13 +86,13 @@ class MemberForm extends Component {
     }
 }
 
-MemberForm = reduxForm({
-    form: 'memberForm',
+BoardMemberForm = reduxForm({
+    form: 'boardMemberForm',
     validate,
     destroyOnUnmount: false
-})(MemberForm)
+})(BoardMemberForm)
 const mapStateToProps = state => ({
     user: state.auth.user,
 })
 const mapDispatchToProps = dispatch => bindActionCreators({ init, close }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(MemberForm)
+export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberForm)

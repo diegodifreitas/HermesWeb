@@ -1,12 +1,20 @@
 import React, { Component } from 'react'
-import Grid from '../layout/Grid'
+import Grid from '../../common/layout/Grid'
 
 export default class LabelAndCombo extends Component {
     renderOptions() {
-        const empty = { id: null, value: null, nome: 'Selecione' }
-        const values = this.props.values ? [empty, ...this.props.values] : [empty]
+
+        let empty = { id: 0, value: null, name: 'Selecione' }
+        let values = []
+
+        if (this.props.input.value) {
+            values = this.props.values ? [this.props.input.value, ...this.props.values] : [empty]
+        } else {
+            values = this.props.values ? [empty, ...this.props.values] : [empty]
+        }
+        
         return values.map(v => (
-            <option key={v.id} value={v.value}>{v.nome}</option>
+            <option key={v.id} value={v.id}>{v.name}</option>
         ))
     }
     render() {

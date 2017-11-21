@@ -4,25 +4,29 @@ import consts from '../../consts'
 import * as querystring from 'querystring'
 
 export function login(values) {
-    return submit(values, `${consts.OAPI_URL}/login`)
+    return submit(values, `${consts.OAPI_URL}login`)
 }
 
 export function signup(values) {
-    return submit(values, `${consts.OAPI_URL}/signup`)
+    return submit(values, `${consts.OAPI_URL}signup`)
 }
 
 function submit(values, url) {
     return dispatch => {
-        axios.post(url, querystring.stringify({ ...values }))
-            .then(resp => {
+        axios.post(url, values)
+            .then((resp) => {
                 dispatch([
                     { type: 'USER_FETCHED', payload: resp.data }
                 ])
             })
             .catch(e => {
-                /*  e.response.data.errors.forEach(
-                     error => toastr.error('Erro', error)) */
-                toastr.error('Erro', 'Email ou senha Incorretos!')
+                /*   */
+                if (e.response.data.status == 401) {
+                    toastr.error('Erro', 'Email ou senha Incorretos!')
+                } else {
+                    e.response.data.errors.forEach(
+                        error => toastr.error('Erro', error))
+                }
             })
     }
 }

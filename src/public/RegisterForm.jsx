@@ -21,7 +21,8 @@ RegisterForm = reduxForm({
     form: 'oscForm', validate, destroyOnUnmount: false,
     initialValues: {
         approvalADM: false,
-        approvalPS: false
+        approvalPS: false,
+        type:'OSC'
     }
 })(RegisterForm)
 

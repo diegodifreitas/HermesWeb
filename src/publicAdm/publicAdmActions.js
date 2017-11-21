@@ -4,28 +4,20 @@ import { initialize } from 'redux-form'
 import Api from '../main/api'
 import { showTabs, selectTab } from '../common/tabs/tabActions'
 
-export const updateOsc = (values) => {
-    return submit(values, 'putOsc')
+export const update = (values) => {
+    return submit(values, 'putPublicAdm')
 }
 
-export const updatePublicServer = (values) => {
-    return submit(values, 'putServer')
-}
-
-export const updateAdm = (values) => {
-    return submit(values, 'putUser')
-}
-
-export const getUserById = (id) => {
-    //const search = `?email=${email}`
+export const getPublicAdmById = (id) => {
 
     return dispatch => {
-        Api.getUserById(id)
+        Api.getPublicAdmById(id)
             .then(resp => {
-                dispatch({ type: 'USER_FETCHED', payload: resp.data })
+                dispatch({ type: 'PUBLIC_ADM_FETCHED', payload: resp })
                 dispatch(init(resp.data))
             })
             .catch(e => {
+                console.log(e)
                 if (e.response.data.errors) {
                     e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
                 } else if (e.response.data.msg) {
@@ -44,7 +36,7 @@ const submit = (values, method) => {
         Api[method](values)
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso!')
-                dispatch({ type: 'USER_FETCHED', payload: values })
+                dispatch({ type: 'PUBLIC_ADM_FETCHED', payload: values })
                 dispatch(init(values))
             })
             .catch(e => {
@@ -63,6 +55,6 @@ export const init = (data) => {
     return [
         showTabs('tabList'),
         selectTab('tabList'),
-        initialize('accountInfoForm', data)
+        initialize('publicAdmForm', data)
     ]
 }

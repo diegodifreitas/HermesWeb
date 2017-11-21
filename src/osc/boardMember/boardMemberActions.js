@@ -10,34 +10,34 @@ const INITIAL_VALUE = { id: null }
 export const getList = (idOsc, field, value) => {
     let search = idOsc ? `?osc=${idOsc}` : ''
 
-    const request = Api.getMember(search, idOsc)
+    const request = Api.getBoardMember(search, idOsc)
 
     console.log(request)
     return [
         requestMember(),
         {
-            type: "MEMBER_RECEIVE",
+            type: "BOARD_MEMBER_RECEIVE",
             payload: request
         }
     ]
 }
 
 export const requestMember = member => ({
-    type: 'MEMBER_REQUEST',
+    type: 'BOARD_MEMBER_REQUEST',
     payload: member
 })
 
 export const create = (values, oscId) => {
     values.oscId = oscId
-    return submit(values, 'postMember', oscId)
+    return submit(values, 'postBoardMember', oscId)
 }
 
 export const update = (values, oscId) => {
-    return submit(values, 'putMember', oscId)
+    return submit(values, 'putBoardMember', oscId)
 }
 
 export const remove = (values, oscId) => {
-    return submit(values, 'deleteMember', oscId)
+    return submit(values, 'deleteBoardMember', oscId)
 }
 
 const submit = (values, method, oscId) => {
@@ -62,7 +62,7 @@ export const showUpdate = (member) => {
     return [
         showTabs('tabUpdate'),
         selectTab('tabUpdate'),
-        initialize('memberForm', member)
+        initialize('boardMemberForm', member)
     ]
 }
 
@@ -70,7 +70,7 @@ export const showDelete = (member) => {
     return [
         showTabs('tabDelete'),
         selectTab('tabDelete'),
-        initialize('memberForm', member)
+        initialize('boardMemberForm', member)
     ]
 }
 

@@ -2,31 +2,33 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import { showUpdate, showDelete, getList } from './documentsActions'
+import { showUpdate, showDelete } from './boardMemberActions'
 import Grid from '../../common/layout/Grid'
 import BoxBody from '../../common/template/box/BoxBody'
 import ButtonIcon from '../../common/ui/button/ButtonIcon'
 
-class DocumentsList extends Component {
-
-    componentWillMount() {
-        this.props.getList()
-    }
+class BoardMemberList extends Component {
 
     renderRows() {
-        const list = this.props.list || []
-        return list.map(doc => (
-            <tr key={doc.id}>
-                <td>{doc.name}</td>
-                <td>{doc.type}</td>
-                <td>{doc.expirationDate} </td>
+        const { list = [], user, showUpdate, showDelete } = this.props
+
+        return list.map((member) => (
+            <tr key={member.id}>
+                <td> {member.name} </td>
+                <td> {member.email} </td>
+                <td> {member.phone} </td>
+                <td> {member.office} </td>
                 <td>
-                    <button className='btn btn-warning' onClick={() => this.props.showUpdate(doc)}>
-                        <i className='fa fa-pencil'></i>
-                    </button>
-                    <button className='btn btn-danger' onClick={() => this.props.showDelete(doc)}>
-                        <i className='fa fa-trash-o'></i>
-                    </button>
+                    {user.type === 'OSC' &&
+                        <span>
+                            <ButtonIcon tooltip='Editar' cssStyle='warning' onClick={() => showUpdate(member)} icon='pencil' />
+                            <ButtonIcon tooltip='Excluir' cssStyle='btn btn-danger' onClick={() => showDelete(member)} icon='trash-o' />
+                        </span>
+                    }
+                    {user.type !== 'OSC' &&
+                        <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'
+                            onClick={() => this.props.handleOpen(member, 'boardMemberForm')} icon='user-o' />
+                    }
                 </td>
             </tr>
         ))
@@ -39,7 +41,7 @@ class DocumentsList extends Component {
                 {(list.length === 0 && !this.props.isLoading) &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible">
-                            <h4><i className="icon fa fa-info"></i> Nenhum documento cadastrado!</h4>
+                            <h4><i className="icon fa fa-info"></i> Nenhum funcionário cadastrado!</h4>
                         </div>
                     </Grid>
                 }
@@ -50,8 +52,9 @@ class DocumentsList extends Component {
                                 <thead>
                                     <tr>
                                         <th> Nome </th>
-                                        <th> Tipo </th>
-                                        <th> Data de expiração </th>
+                                        <th> Email </th>
+                                        <th> Telefone </th>
+                                        <th> Cargo </th>
                                         <th className='table-action'> Ações </th>
                                     </tr>
                                 </thead>
@@ -76,17 +79,11 @@ const mapStateToProps = state => (
     {
         visible: state.modal.visible,
         user: state.auth.user,
-        list: state.document.list,
-        totalPage: state.document.totalPage,
-        last: state.document.last,
-        first: state.document.first,
-        numberOfElements: state.document.numberOfElements,
-        isLoading: state.document.isFetching
+        isLoading: state.member.isFetching
     })
 const mapDispatchToProps = dispatch => bindActionCreators(
     {
         showDelete,
-        showUpdate,
-        getList
+        showUpdate
     }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(DocumentsList)
+export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberList)

@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: 'http://localhost:8084/HS_WEB/'
+  baseURL: 'http://localhost:8080',
 })
 
 export const postAdmProcess = (admProcess) => api.post('admprocess', admProcess)
 export const getAdmProcess = (search = '') => api.get('admprocess' + search)
 export const deleteAdmProcess = (admProcess) => api.delete('admprocess/' + admProcess.id)
-export const putAdmProcess = (admProcess) => api.put('admprocess', admProcess)
+export const putAdmProcess = (admProcess) => api.put('admprocess/' + admProcess.id, admProcess)
 
 export const postAdm = (adm) => api.post('administrator', adm)
 export const getAdm = (search = '') => api.get('administrator' + search)
@@ -19,32 +19,40 @@ export const getMonitoringProcess = (search) => api.get('monitoringProcess?idPro
 export const deleteMonitoringProcess = (monitoringProcess) => api.delete('monitoringProcess/' + monitoringProcess.id)
 export const putMonitoringProcess = (monitoringProcess) => api.put('monitoringProcess/' + monitoringProcess.id, monitoringProcess)
 
-export const postOsc = (osc) => api.post('osc', osc)
-export const getOsc = (search = '') => api.get('osc' + search)
-export const getOscById = (id) => api.get('osc/' + id)
-export const deleteOsc = (osc) => api.delete('osc/' + osc.id)
-export const putOsc = (osc) => api.put('osc', osc)
+export const postOsc = (osc) => api.post('oscs', osc)
+export const getOsc = (search = '') => api.get('oscs' + search)
+export const getOscById = (id) => api.get('oscs/' + id)
+export const deleteOsc = (osc) => api.delete('oscs/' + osc.id)
+export const putOsc = (osc) => api.put('oscs/' + osc.id, osc)
 
-export const postDocument = (doc) => api.post('document', doc)
-export const getDocument = (search = '') => api.get('document' + search)
-export const getDocumentById = (id) => api.get('document/' + id)
-export const deleteDocument = (doc) => api.delete('document/' + doc.id)
-export const putDocument = (doc) => api.put('document', doc)
+export const postDocument = (doc) => api.post('documents', doc)
+export const getDocument = (search = '') => api.get('documents' + search)
+export const getDocumentById = (id) => api.get('documents/' + id)
+export const deleteDocument = (doc) => api.delete('documents/' + doc.id)
+export const putDocument = (doc) => api.put('documents/' + doc.id, doc)
 
-export const postUser = (user) => api.post('user', user)
-export const getUser = (search = '') => api.get('user' + search)
-export const deleteUser = (user) => api.delete('user/' + user.id)
-export const putUser = (user) => api.put('user', user)
+export const postPublicAdm = (publicAdm) => api.post('publicadm', publicAdm)
+export const getPublicAdm = (search = '') => api.get('publicadm' + search)
+export const getPublicAdmById = (id) => api.get('publicadm/' + id)
+export const deletePublicAdm = (publicAdm) => api.delete('publicadm/' + publicAdm.id)
+export const putPublicAdm = (publicAdm) => api.put('publicadm/' + publicAdm.id, publicAdm)
 
-export const postServer = (server) => api.post('publicserver', server)
-export const getServer = (search = '') => api.get('publicserver' + search)
-export const deleteServer = (server) => api.delete('publicserver/' + server.id)
-export const putServer = (server) => api.put('publicserver', server)
+export const postUser = (user) => api.post('users', user)
+export const getUser = (search = '') => api.get('users' + search)
+export const deleteUser = (user) => api.delete('users/' + user.id)
+export const getUserById = (id) => api.get('users/' + id)
+export const putUser = (user) => api.put('users/' + user.id, user)
 
-export const postMember = (member, osc) => api.post(`osc/${osc}/member`, member)
-export const getMember = (search = '', osc) => api.get(`osc/${osc}/member${search}`)
-export const deleteMember = (member, osc) => api.delete(`osc/${osc}/member/` + member.id)
-export const putMember = (member, osc) => api.put(`osc/${osc}/member`, member)
+export const postServer = (server) => api.post('publicservers', server)
+export const getServer = (search = '') => api.get('publicservers' + search)
+export const getServerById = (id) => api.get('publicservers/' + id)
+export const deleteServer = (server) => api.delete('publicservers/' + server.id)
+export const putServer = (server) => api.put('publicservers/' + server.id, server)
+
+export const postMember = (member, osc) => api.post(`members`, member)
+export const getMember = (search = '', osc) => api.get(`members${search}`)
+export const deleteMember = (member, osc) => api.delete(`members/` + member.id)
+export const putMember = (member, osc) => api.put(`members`, member)
 
 export const postFile = (file) => api.post('storage/upload', file)
 export const getFile = (url) => api.get('storage/download/' + url)
@@ -68,6 +76,12 @@ const apis = {
   getFile,
   postFile,
 
+ postPublicAdm,
+ getPublicAdm,
+ getPublicAdmById,
+ deletePublicAdm,
+ putPublicAdm, 
+
   getOsc,
   postOsc,
   deleteOsc,
@@ -89,11 +103,13 @@ const apis = {
   postUser,
   deleteUser,
   putUser,
+  getUserById,
 
   getServer,
   postServer,
   deleteServer,
-  putServer
+  putServer,
+  getServerById
 }
 
 export default apis

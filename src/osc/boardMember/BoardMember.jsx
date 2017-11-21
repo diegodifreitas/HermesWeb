@@ -2,69 +2,64 @@ import React, { Component } from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import moment from 'moment'
 
-import ContentHeader from '../common/template/ContentHeader'
-import Content from '../common/template/Content'
-import Tabs from '../common/tabs/Tabs'
-import TabsHeader from '../common/tabs/TabsHeader'
-import TabsContent from '../common/tabs/TabsContent'
-import TabHeader from '../common/tabs/TabHeader'
-import TabContent from '../common/tabs/TabContent'
-import List from './UserManagementList'
-import Form from './UserManagementForm'
+import ContentHeader from '../../common/template/ContentHeader'
+import Content from '../../common/template/Content'
+import Tabs from '../../common/tabs/Tabs'
+import TabsHeader from '../../common/tabs/TabsHeader'
+import TabsContent from '../../common/tabs/TabsContent'
+import TabHeader from '../../common/tabs/TabHeader'
+import TabContent from '../../common/tabs/TabContent'
+import List from './MemberList'
+import Form from './MemberForm'
 
-import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { createPs, createAdm, createOsc, updatePs, updateAdm, updateOsc, remove } from './userManagementActions'
+import { init, create, update, remove } from './memberActions'
 
-class UserManagement extends Component {
+class BoardMember extends Component {
 
     constructor(props) {
         super(props)
         this.update = this.update.bind(this)
         this.create = this.create.bind(this)
-
+        this.delete = this.delete.bind(this)
     }
 
     componentWillMount() {
-        this.props.selectTab('tabList')
-        this.props.showTabs('tabList', 'tabCreate')
+        this.props.init(this.props.user.id)
     }
 
-    update(formData) {
-        if (formData.type === 'ADMINISTRATOR') {
-            this.props.updateAdm(formData)
-        } else if (formData.type === 'PUBLIC-SERVER') {
-            this.props.updatePs(formData)
-        } else if (formData.type === 'OSC') {
-            this.props.updateOsc(formData)
-        }
+    create(data) {
+        this.props.create(data, this.props.user.id)
     }
 
-    create(formData) {
-        if (formData.type === 'ADMINISTRATOR') {
-            this.props.createAdm(formData)
-        } else if (formData.type === 'PUBLIC-SERVER') {
-            this.props.createPs(formData)
-        } else if (formData.type === 'OSC') {
-            this.props.createOsc(formData)
-        }
+    update(data) {
+        this.props.update(data, this.props.user.id)
+    }
+    delete(data) {
+        this.props.remove(data, this.props.user.id)
     }
 
     render() {
         return (
             <div className=''>
-                <ContentHeader title='Gestão de Usuários' />
+                <ContentHeader title='Membros da Diretoria' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
                             <TabHeader label='Listar' icon='bars' target='tabList' />
                             <TabHeader label='Incluir' icon='plus' target='tabCreate' />
-                            <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            {this.props.user.type !== 'OSC' &&
+                                <TabHeader label='Detalhes' icon='address-book-o' target='tabUpdate' />
+                            }
+                            {this.props.user.type === 'OSC' &&
+                                <TabHeader label='Alterar' icon='pencil' target='tabUpdate' />
+                            }
                             <TabHeader label='Excluir' icon='trash-o' target='tabDelete' />
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
-                                <List update={this.update} />
+                                <List list={this.props.list} />
                             </TabContent>
                             <TabContent id='tabCreate'>
                                 <Form onSubmit={this.create}
@@ -73,13 +68,14 @@ class UserManagement extends Component {
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
+                                    readOnly={this.props.user.type === 'OSC' ? false : true}
                                     onSubmit={this.update}
                                     submitLabel='Alterar'
                                     submitClass='primary' />
                             </TabContent>
                             <TabContent id='tabDelete'>
                                 <Form
-                                    onSubmit={this.props.remove}
+                                    onSubmit={this.delete}
                                     readOnly={true}
                                     submitLabel='Excluir'
                                     submitClass='danger' />
@@ -92,5 +88,13 @@ class UserManagement extends Component {
     }
 }
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ selectTab, showTabs, createPs, createAdm, createOsc, updatePs, updateAdm, updateOsc, remove }, dispatch)
-export default connect(null, mapDispatchToProps)(UserManagement)
+    bindActionCreators({ init, create, update, remove }, dispatch)
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    list: state.member.list,
+    totalPage: state.member.totalPage,
+    last: state.member.last,
+    first: state.member.first,
+    numberOfElements: state.member.numberOfElements
+})
+export default connect(mapStateToProps, mapDispatchToProps)(BoardMemberForm)

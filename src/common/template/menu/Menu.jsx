@@ -25,6 +25,9 @@ class Menu extends Component {
                 {(user.type !== 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
                     <MenuItem path='/admProcess' label='Processo Administrativo' icon='bullhorn' />
                 }
+                {(user.type === 'ADMINISTRATOR' && user.approvalADM === true && user.approvalPS === true) &&
+                    <MenuItem path='/publicAdm' label='Administração Pública' icon='users' />
+                }
 
                 {(user.type === 'PUBLIC-SERVER' && user.approvalADM === true && user.approvalPS === true) &&
                     <MenuItem path='/documents' label='Documentos' icon='file-text-o' />

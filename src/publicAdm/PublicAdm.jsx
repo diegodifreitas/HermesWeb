@@ -11,48 +11,37 @@ import TabsContent from '../common/tabs/TabsContent'
 import TabHeader from '../common/tabs/TabHeader'
 import TabContent from '../common/tabs/TabContent'
 
-import Form from './AccountInfoForm'
+import Form from './PublicAdmForm'
 
-import { updateOsc, updateAdm, updatePublicServer, init, getUserById } from './accountInfoActions'
+import { update, init, getPublicAdmById } from './publicAdmActions'
 
 
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ updateOsc, updateAdm, updatePublicServer, init, getUserById }, dispatch)
+    bindActionCreators({ update, init, getPublicAdmById }, dispatch)
 const mapStateToProps = state => ({ user: state.auth.user })
 
-class AccountInfo extends Component {
+class PublicAdm extends Component {
     constructor(props) {
         super(props)
-        this.update = this.update.bind(this)
     }
     componentWillMount() {
         this.props.init(this.props.user)
-        this.props.getUserById(this.props.user.id)
-    }
-
-    update(formData) {
-        const { updateOsc, updateAdm, updatePublicServer } = this.props
-        if (formData.type === 'OSC')
-            updateOsc(formData)
-        if (formData.type === 'PUBLIC-SERVER')
-            updatePublicServer(formData)
-        if (formData.type === 'ADMINISTRATOR')
-            updateAdm(formData)
+        this.props.getPublicAdmById(1)
     }
 
     render() {
         return (
             <div className=''>
-                <ContentHeader routes={this.props.match} title='Informações da Conta' />
+                <ContentHeader routes={this.props.match} title='Administração Pública' />
                 <Content >
                     <Tabs>
                         <TabsHeader>
-                            <TabHeader label='Meus dados' icon='bars' target='tabList' />
+                            <TabHeader label='Atualizar informações' icon='bars' target='tabList' />
                         </TabsHeader>
                         <TabsContent>
                             <TabContent id='tabList'>
                                 <Form
-                                    onSubmit={this.update}
+                                    onSubmit={this.props.update}
                                     submitLabel='Atualizar'
                                     submitClass='primary'
                                     user={this.props.user} />
@@ -65,4 +54,4 @@ class AccountInfo extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(PublicAdm)

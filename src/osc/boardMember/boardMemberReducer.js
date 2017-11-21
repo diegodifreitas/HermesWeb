@@ -4,24 +4,24 @@ const INITIAL_STATE = {
     totalPage: 0,
     last: true,
     first: true,
-    numberOfElements: 0,
-    isFetching: false
+    numberOfElements: 0
 }
+
 
 export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case "DOCUMENTS_REQUEST":
+        case "BOARD_MEMBER_REQUEST":
             return { ...state, isFetching: true }
-        case "DOCUMENTS_RECEIVE":
-            return {
-                ...state,
-                list: action.payload.data.content,
+        case "BOARD_MEMBER_RECEIVE":
+            return { 
+                ...state, 
+                list: action.payload.data.content, 
                 isFetching: false,
                 totalPage: action.payload.data.totalPage,
                 last: action.payload.data.last,
                 first: action.payload.data.first,
                 numberOfElements: action.payload.data.numberOfElements
-            }
+             }
         default:
             return state
     }

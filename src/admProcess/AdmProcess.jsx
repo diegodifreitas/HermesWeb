@@ -14,15 +14,12 @@ import List from './AdmProcessList'
 import Form from './AdmProcessForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
-import { create, update, remove } from './admProcessActions'
+import { create, update, remove, init } from './admProcessActions'
 
 class AdmProcess extends Component {
 
     constructor(props) {
         super(props)
-        this.update = this.update.bind(this)
-        this.create = this.create.bind(this)
-
     }
 
     componentWillMount() {
@@ -34,15 +31,7 @@ class AdmProcess extends Component {
         }
     }
 
-    update(formData) {
-        const url = this.props.file[0].originalName
-        this.props.update({ ...formData, urlReferenceTerm: url })
-    }
-
-    create(formData) {
-        const url = this.props.file[0].originalName
-        this.props.create({ ...formData, urlReferenceTerm: url })
-    }
+    // const url = this.props.file[0].originalName
 
     render() {
         return (
@@ -63,17 +52,19 @@ class AdmProcess extends Component {
                             <TabContent id='tabCreate'>
                                 <Form
                                     type={this.props.user.type}
-                                    onSubmit={this.create}
+                                    onSubmit={this.props.create}
                                     submitLabel='Incluir'
-                                    submitClass='primary' />
+                                    submitClass='primary'
+                                    init={this.props.init} />
                             </TabContent>
                             <TabContent id='tabUpdate'>
                                 <Form
                                     type={this.props.user.type}
                                     readOnly={this.props.user.type === 'OSC' ? true : false}
-                                    onSubmit={this.update}
+                                    onSubmit={this.props.update}
                                     submitLabel={this.props.user.type === 'OSC' ? 'Voltar' : 'Alterar'}
-                                    submitClass='primary' />
+                                    submitClass='primary'
+                                    init={this.props.init} />
                             </TabContent>
                             {this.props.user.type !== 'OSC' &&
                                 <TabContent id='tabDelete'>
@@ -82,7 +73,8 @@ class AdmProcess extends Component {
                                         onSubmit={this.props.remove}
                                         readOnly={true}
                                         submitLabel='Excluir'
-                                        submitClass='danger' />
+                                        submitClass='danger'
+                                        init={this.props.init} />
                                 </TabContent>
                             }
                         </TabsContent>
@@ -93,7 +85,15 @@ class AdmProcess extends Component {
     }
 }
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ selectTab, showTabs, create, update, remove }, dispatch)
-const mapStateToProps = state => ({ user: state.auth.user, file: state.admProcess.file })
+    bindActionCreators({ selectTab, showTabs, create, update, remove, init }, dispatch)
+const mapStateToProps = state => ({
+    user: state.auth.user,
+    list: state.admProcess.list,
+    totalPage: state.admProcess.totalPage,
+    last: state.admProcess.last,
+    first: state.admProcess.first,
+    numberOfElements: state.admProcess.numberOfElements,
+    file: state.admProcess.file
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdmProcess)
