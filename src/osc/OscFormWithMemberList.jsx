@@ -47,7 +47,7 @@ class OscFormWithMemberList extends Component {
                     </fieldset>
                 </BoxBody>
 
-                <BoxBody>
+                {/* <BoxBody>
                     <fieldset>
                         <legend> Funcionários
                             {this.props.user.type === 'OSC' &&
@@ -60,7 +60,7 @@ class OscFormWithMemberList extends Component {
                         </legend>
                         <MemberList list={memberList} handleOpen={this.props.openModal} />
                     </fieldset>
-                </BoxBody>
+                </BoxBody> */}
 
                 <Modal
                     visible={modal.visible}
@@ -74,7 +74,7 @@ class OscFormWithMemberList extends Component {
                     />
                 </Modal >
 
-                <Modal
+              {/*   <Modal
                     visible={modal.visible}
                     closeModal={closeModal}
                     title={'Funcionarios'}
@@ -84,7 +84,7 @@ class OscFormWithMemberList extends Component {
                         submitClass='primary'
                         readOnly={readOnly}
                     />
-                </Modal >
+                </Modal > */}
 
                 <BoxFooter >
                     {this.props.user.type === 'OSC' || this.props.showSubmit &&
