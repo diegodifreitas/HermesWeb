@@ -26,11 +26,11 @@ const validate = values => {
         errors.modality = 'Obrigatório'
     }
 
-    if (values.osc) {
+  /*   if (values.osc) {
         if (!values.osc.id || values.osc.id === 0) {
             errors.osc.id = 'Obrigatório'
         }
-    }
+    } */
 
     if (!values.documents || !values.documents.length) {
         errors.documents = { _error: 'Para a publicação do processo é necessario adicionar o termo de referência.' }
