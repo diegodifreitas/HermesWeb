@@ -43,7 +43,7 @@ class AccountInfo extends Component {
     render() {
         return (
             <div className=''>
-                <ContentHeader routes={this.props.match} title='Informações da Conta' />
+                <ContentHeader routes={this.props.match} title='Minha conta' />
                 <Content >
                     <Tabs>
                         <TabsHeader>

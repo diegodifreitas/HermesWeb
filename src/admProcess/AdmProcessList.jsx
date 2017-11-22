@@ -30,7 +30,12 @@ class AdmProcessList extends Component {
                         </span>
                     }
                     {this.props.type === 'OSC' &&
-                        <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.props.showUpdate(ap)} icon='address-book-o' tooltip='Detalhar' />
+                        <span>
+                            <ButtonIcon cssStyle='btn btn-primary' onClick={() => this.props.showUpdate(ap)} icon='address-book-o' tooltip='Detalhar' />
+                            <Link to='/plan'>
+                                <ButtonIcon cssStyle='btn btn-success' icon='file-text' tooltip='Enviar Plano de Trabalho' />
+                            </Link>
+                        </span>
                     }
                 </td>
             </tr>

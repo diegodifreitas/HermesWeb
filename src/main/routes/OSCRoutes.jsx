@@ -6,6 +6,7 @@ import AccountInfo from '../../accountInfo/AccountInfo'
 import AdmProcess from '../../admProcess/AdmProcess'
 import Dashboard from '../../dashboard/Dashboard'
 import Member from '../../osc/member/Member'
+import WorkPlan from '../../workPlan/WorkPlan'
 
 export default props => (
 
@@ -16,6 +17,7 @@ export default props => (
         <Route exact path='/admProcess' component={AdmProcess} />
         }
         <Route exact path='/members' component={Member} />
+        <Route exact path='/plan' component={WorkPlan} />
         <Route path='*' component={Dashboard} />
     </Switch>
 )
