@@ -9,20 +9,28 @@ class AdmProcessList extends Component {
 
     renderRows() {
         const list = this.props.list || []
-        return list.map(ap => (
-            <tr key={ap.id}>
-                <td> {ap.prtp} </td>
-                <td> {ap.modality}  &nbsp; <b>nº:</b> &nbsp; {ap.modalityNumber} </td>
-                <td> {ap.description} </td>
-                <td> {ap.date} </td>
-                <td>
-                    <Link to={'/publicdata/' + ap.id} >
-                        <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'
-                            icon='user-o' />
-                    </Link>
-                </td>
-            </tr>
-        ))
+        return list.map(ap => {
+            const osc = ap.osc || { name: 'Não informada' }
+            return (
+                <tr key={ap.id}>
+                    <td> {ap.prtp} </td>
+                    <td> {ap.description} </td>
+                    {this.props.modality === 'Chamamento Público' &&
+                        <td> {ap.modalityNumber} </td>
+                    }
+                    {this.props.modality !== 'Chamamento Público' &&
+                        <td> {osc.name} </td>
+                    }
+                    <td> {ap.date} </td>
+                    <td>
+                        <Link to={'/publicdata/' + ap.id} >
+                            <ButtonIcon type='button' cssStyle='primary' tooltip='Detalhes'
+                                icon='user-o' />
+                        </Link>
+                    </td>
+                </tr>
+            )
+        })
     }
 
     render() {
@@ -32,7 +40,7 @@ class AdmProcessList extends Component {
                 {(list.length === 0 || list.length === null) &&
                     <Grid cols='12 12'>
                         <div className="alert alert-info alert-dismissible">
-                            <h4><i className="icon fa fa-info"></i> Nenhum Processo administrativo disponível!</h4>
+                            <h4><i className="icon fa fa-info"></i> Nenhum Processo da modalidade {this.props.modality} disponível!</h4>
                         </div>
                     </Grid>
                 }
@@ -42,8 +50,13 @@ class AdmProcessList extends Component {
                             <thead>
                                 <tr>
                                     <th> PRTP </th>
-                                    <th> Modalidade </th>
                                     <th> Descrição Sumária </th>
+                                    {this.props.modality === 'Chamamento Público' &&
+                                        <th> Nº da modalidade </th>
+                                    }
+                                    {this.props.modality !== 'Chamamento Público' &&
+                                        <th> OSC </th>
+                                    }
                                     <th> Data de publicação </th>
                                     <th className='table-action'> Ações </th>
                                 </tr>
