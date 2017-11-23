@@ -101,7 +101,7 @@ class OscList extends Component {
                             <tr>
                                 <th> Nome </th>
                                 <th> CNPJ </th>
-                                <th> Phone </th>
+                                <th> Telefone </th>
                                 <th> Situação </th>
                                 <th className='table-action'> Ações </th>
                             </tr>
