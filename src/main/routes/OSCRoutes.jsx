@@ -14,9 +14,11 @@ export default props => (
         <Route exact path='/' component={Dashboard} onUpdater={mapActiveUrlToMenu()} />
         <Route exact path='/myAccount' component={AccountInfo} />
         {props.approval &&
-        <Route exact path='/admProcess' component={AdmProcess} />
+            <Route exact path='/admProcess' component={AdmProcess} />
         }
-        <Route exact path='/members' component={Member} />
+        {props.approvedPS &&
+            <Route exact path='/members' component={Member} />
+        }
         <Route exact path='/plan' component={WorkPlan} />
         <Route path='*' component={Dashboard} />
     </Switch>
