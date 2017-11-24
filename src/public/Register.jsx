@@ -22,20 +22,36 @@ class Register extends Component {
     }
 
     render() {
+        const { isFetching } = this.props
         return (
             <div className="container-fluid">
+
                 <div className="main">
                     <PanelLeft link='/login' label='Entrar' />
                     <div className="col-sm-6 right-side">
-                        <RegisterForm onSubmit={this.handleSubmit} />
+                        {
+                            !isFetching &&
+                            <RegisterForm onSubmit={this.handleSubmit} />
+                        }
+                        {
+                            isFetching &&
+                            <div className="overlay">
+                                <i className="fa fa-refresh fa-spin"></i>
+                            </div>
+                        }
                     </div>
                     <Toastr />
                 </div>
             </div>
+
         )
     }
 }
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ create }, dispatch)
-export default connect(null, mapDispatchToProps)(Register)
+
+const mapStateToProps = state => ({
+    isFetching: state.osc.isFetching
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

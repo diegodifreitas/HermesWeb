@@ -28,7 +28,13 @@ const submit = (values, method) => {
                 dispatch(clean())
             })
             .catch(e => {
-                e.response.data.errors.forEach(error => toastr.error(error.fieldName, error.message))
+                if (e.response.data.errors) {
+                    e.response.data.errors.forEach(error => toastr.error("Erro", "Campo " + error.fieldName + " - " + error.message))
+                } else if (e.response.data.msg) {
+                    toastr.error("Erro", e.response.data.msg)
+                } else if (e.response.data.error) {
+                    toastr.error("Erro", "Email já cadastrado no sistema!")
+                }
             })
     }
 }

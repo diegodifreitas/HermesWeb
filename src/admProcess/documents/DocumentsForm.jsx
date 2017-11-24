@@ -66,6 +66,11 @@ const DocumentsForm = ({ readOnly, fields, meta: { warning, error, touched, subm
                                         name={`${document}.file`}
                                         type="file"
                                         component={FileInput} />
+                                    {false &&
+                                        <Field
+                                            name={`${document}.url`}
+                                            component={LabelAndInput} />
+                                    }
                                     {/*  <FieldArray name={`${document}.hobbies`} component={renderHobbies} /> */}
                                 </div>
                                 {submitFailed && error && <span>{error}</span>}

@@ -54,11 +54,11 @@ class AdmProcessForm extends Component {
                             label='Objeto' cols='12 12' placeholder='Descreva o objeto do processo' />
                     </Row>
                     <Row>
-                        <FieldArray name="documents" component={DocumentForm} />
+                        <FieldArray name="documents" readOnly={readOnly} component={DocumentForm} />
                     </Row>
                     {(modality === 'Dispensa' || modality === 'Inexigibilidade') &&
                         <Row>
-                            <FieldArray name="osc" component={OscSelect} />
+                            <FieldArray name="osc"  readOnly={readOnly} component={OscSelect} />
                         </Row>
                     }
                 </div>

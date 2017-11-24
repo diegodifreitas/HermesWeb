@@ -39,8 +39,6 @@ class AdmProcess extends Component {
 
         data.documents = data.documents.map((doc, i) => {
 
-            doc.attachments = []
-
             const form = new FormData();
             form.append("files", doc.file[0]);
 
@@ -50,15 +48,14 @@ class AdmProcess extends Component {
                     const name = fileInfo.originalName
                     const contentType = fileInfo.contentType
 
-                    doc.attachments[i] = { name, contentType }
+                    doc.url = name
 
                 })
                 .catch(e => console.log(e))
 
-            //doc.attachments = attachments
             return doc
         })
-        console.log(data)
+
         this.props.create(data)
     }
 

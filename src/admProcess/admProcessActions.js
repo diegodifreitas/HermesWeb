@@ -38,6 +38,10 @@ export const requestAdmProcess = admProcess => ({
 })
 
 export const create = (values) => {
+
+    console.log(values)
+
+
     return submit(values, 'postAdmProcess')
 }
 
