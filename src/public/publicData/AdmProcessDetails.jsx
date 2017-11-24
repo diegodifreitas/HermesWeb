@@ -74,6 +74,13 @@ class AdmProcessDetails extends Component {
                     </div>
                     <ul className="nav">
                         <li style={{ margin: '20px' }}><b>Email:</b> {osc.email}</li>
+                        <li>
+                            <Link to='/singup'>
+                                <ButtonIcon cssStyle='primary' tooltip='Submeter Plano de Trabalho' icon='file-o'>
+                                    &nbsp; Submeter Plano de Trabalho
+                                </ButtonIcon>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </Grid>

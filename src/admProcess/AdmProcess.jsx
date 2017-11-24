@@ -33,25 +33,32 @@ class AdmProcess extends Component {
         }
     }
 
-    // const url = this.props.file[0].originalName
+    async upload(form) {
+        try {
+            let url = await Api.postFile(form)
+                .then(res => {
+                    return res.data[0].originalName
+                })
+
+            return url.then(res => {
+                return res.data[0].originalName
+            })
+
+        } catch (err) {
+            return 'processo_adm-012345.pdf';
+        }
+    }
 
     create(data) {
 
         data.documents = data.documents.map((doc, i) => {
 
+            //doc.url = "lololo.png"
             const form = new FormData();
+
             form.append("files", doc.file[0]);
 
-            Api.postFile(form)
-                .then(res => {
-                    let fileInfo = res.data[0]
-                    const name = fileInfo.originalName
-                    const contentType = fileInfo.contentType
-
-                    doc.url = name
-
-                })
-                .catch(e => console.log(e))
+            doc.url = 'processo_adm-012345.pdf'
 
             return doc
         })
