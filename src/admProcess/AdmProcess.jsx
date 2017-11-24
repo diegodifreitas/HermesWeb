@@ -15,11 +15,13 @@ import Form from './AdmProcessForm'
 
 import { selectTab, showTabs } from '../common/tabs/tabActions'
 import { create, update, remove, init } from './admProcessActions'
+import Api from '../main/api'
 
 class AdmProcess extends Component {
 
     constructor(props) {
         super(props)
+        this.create = this.create.bind(this)
     }
 
     componentWillMount() {
@@ -32,6 +34,33 @@ class AdmProcess extends Component {
     }
 
     // const url = this.props.file[0].originalName
+
+    create(data) {
+
+        data.documents = data.documents.map((doc, i) => {
+
+            doc.attachments = []
+
+            const form = new FormData();
+            form.append("files", doc.file[0]);
+
+            Api.postFile(form)
+                .then(res => {
+                    let fileInfo = res.data[0]
+                    const name = fileInfo.originalName
+                    const contentType = fileInfo.contentType
+
+                    doc.attachments[i] = { name, contentType }
+
+                })
+                .catch(e => console.log(e))
+
+            //doc.attachments = attachments
+            return doc
+        })
+        console.log(data)
+        this.props.create(data)
+    }
 
     render() {
         return (
@@ -52,7 +81,7 @@ class AdmProcess extends Component {
                             <TabContent id='tabCreate'>
                                 <Form
                                     type={this.props.user.type}
-                                    onSubmit={this.props.create}
+                                    onSubmit={this.create}
                                     submitLabel='Incluir'
                                     submitClass='primary'
                                     init={this.props.init} />
