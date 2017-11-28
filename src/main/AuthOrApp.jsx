@@ -1,6 +1,6 @@
 import '../common/template/dependencies'
 import React, { Component } from 'react'
-import axios from 'axios'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -8,16 +8,14 @@ import PublicPages from './PublicPages'
 import PrivatePages from './PrivatePages'
 import { validateToken } from '../public/auth/authActions'
 
-import moment from 'moment'
-import 'moment/locale/pt-br'
-moment.locale('pt-BR')
-
 class AuthOrApp extends Component {
-    componentWillMount() {
+    /*
+     componentWillMount() {
         if (this.props.auth.user) {
-            //this.props.validateToken(this.props.auth.user.token)
+            this.props.validateToken(this.props.auth.user.token)
         }
     }
+    */
 
     render() {
         const { user, validToken } = this.props.auth
