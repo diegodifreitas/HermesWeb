@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
-import { init } from './accountInfoActions'
 import LabelAndInput from '../common/form/LabelAndInput'
 import BoxBody from '../common/template/box/BoxBody'
 import BoxFooter from '../common/template/box/BoxFooter'
@@ -55,6 +52,10 @@ class AccountInfoForm extends Component {
     }
 }
 
-AccountInfoForm = reduxForm({ form: 'accountInfoForm', destroyOnUnmount: false, validate })(AccountInfoForm)
-const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
-export default connect(null, mapDispatchToProps)(AccountInfoForm)
+AccountInfoForm = reduxForm({
+     form: 'accountInfoForm', 
+     destroyOnUnmount: false, 
+     validate 
+    })(AccountInfoForm)
+
+export default AccountInfoForm
