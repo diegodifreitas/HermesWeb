@@ -1,7 +1,5 @@
 import React from 'react'
 
-//import { Router, Route, IndexRoute, Redirect, hashHistory } from 'react-router'
-
 import { Route, Switch } from 'react-router-dom'
 
 import { mapActiveUrlToMenu } from '../../common/template/menu/menuActiveClass'
