@@ -25,7 +25,6 @@ class PrivatePages extends Component {
       }, 1000)
     }
 
-
     this.props.getPublicAdmById(1)
     mapActiveUrlToMenu()
   }

@@ -5,7 +5,7 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import TabReducer from '../common/tabs/tabReducer'
 import ModalReducer from '../common/ui/modal/modalReducer'
 import AdmProcessReducer from '../admProcess/admProcessReducer'
-import MonitoringProcessReducer from '../admProcess/monitoring/monitoringProcessReducer'
+
 import OscReducer from '../osc/oscReducer'
 import MemberReducer from '../osc/member/memberReducer'
 import BoardMemberReducer from '../osc/boardMember/boardMemberReducer'
@@ -29,7 +29,6 @@ const rootReducer = combineReducers({
     users: UserManagementReducer,
     publicAdm: PublicAdmReducer,
     accountInfo: AccountInfoReducer,
-    monitoringProcess: MonitoringProcessReducer,
     auth: AuthReducer
 
 })
